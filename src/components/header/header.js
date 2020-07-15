@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
   },
+  button: {
+    color: theme.palette.secondary.light,
+  },
 
   inputRoot: {
     color: "inherit",
@@ -119,7 +122,7 @@ const Header = () => {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Button variant="contained" color="primary">ADD LISTING</Button>
+            <Button variant="contained" className={classes.button}>ADD LISTING</Button>
             <IconButton
               edge="end"
               aria-label="account of current user"
