@@ -15,29 +15,15 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     backgroundImage: `url(${MarbleBackground})`,
   },
-  categoryHeaderText: {
-    fontSize: 15,
-    fontWeight: 500,
-    color: theme.palette.common.white,
-  },
-  itemText: {
-    fontSize: 50,
-    fontWeight: 500,
-  },
-  button: {
-    color: theme.palette.secondary.light,
-  },
+  
 }));
 
 function App() {
   const classes = useStyles();
   return (
-    <div>
+    <div className={classes.paperContainer}>
       <Header />
-      <Button variant="contained" className={classes.itemText}>
-        {" "}
-        Welcome to Terrel Davies...{" "}
-      </Button>
+      
     </div>
   );
 }
