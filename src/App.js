@@ -5,8 +5,6 @@ import Button from "@material-ui/core/Button";
 import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
-import theme from "./theme/muiTheme";
 const useStyles = makeStyles((theme) => ({
   "@global": {
     body: {
@@ -34,12 +32,13 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
   return (
-
-      <div>
-        <Header />
-        <Button variant="contained" className={classes.itemText}> Welcome to Terrel Davies... </Button>
-      </div>
-
+    <div>
+      <Header />
+      <Button variant="contained" className={classes.itemText}>
+        {" "}
+        Welcome to Terrel Davies...{" "}
+      </Button>
+    </div>
   );
 }
 

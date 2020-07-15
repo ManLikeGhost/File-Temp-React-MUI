@@ -36,13 +36,9 @@ const useStyles = makeStyles((theme) => ({
   inputRoot: {
     color: "inherit",
   },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 7),
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: 200,
-    },
+  menuBackground: {
+    background: "transparent",
+    boxShadow: "none",
   },
   sectionDesktop: {
     display: "none",
@@ -114,7 +110,7 @@ const Header = () => {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.menuBackground}>
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
             Terrel Davies
@@ -122,7 +118,9 @@ const Header = () => {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Button variant="contained" className={classes.button}>ADD LISTING</Button>
+            <Button variant="contained" className={classes.button}>
+              ADD LISTING
+            </Button>
             <IconButton
               edge="end"
               aria-label="account of current user"
