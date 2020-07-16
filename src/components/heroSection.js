@@ -3,13 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import InputBase from '@material-ui/core/InputBase';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import DirectionsIcon from '@material-ui/icons/Directions';
+import InputBase from "@material-ui/core/InputBase";
+import IconButton from "@material-ui/core/IconButton";
+import SearchIcon from "@material-ui/icons/Search";
 import HeroImage from "../img/heroImage.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -18,8 +14,9 @@ const useStyles = makeStyles((theme) => ({
   },
   heroImage: {
     position: "relative",
-    // backgroundColor: theme.palette.grey[800],
+    backgroundColor: "transparent",
     color: theme.palette.common.white,
+    marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4),
     height: "100vh",
     backgroundImage: `url(${HeroImage})`,
@@ -31,9 +28,9 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: 0,
     bottom: 0,
-    right: 0,
-    left: 0,
-    // backgroundColor: "rgba(0,0,0,.3)",
+    right: 25,
+    left: 25,
+    backgroundColor: "rgba(0,0,0,.3)",
   },
   heroContent: {
     position: "relative",
@@ -42,20 +39,17 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(6),
       paddingRight: 0,
     },
-    // marginLeft: theme.spacing(5),
+
     marginTop: 100,
-  },
-  searchField: {
-    backgroundColor: "white",
   },
   iconButton: {
     padding: 10,
   },
-  root: {
-    padding: '2px 4px',
-    display: 'flex',
-    alignItems: 'center',
-    width: 400,
+  searchForm: {
+    padding: "2px 4px",
+    display: "flex",
+    alignItems: "center",
+    width: 700,
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -65,12 +59,12 @@ const useStyles = makeStyles((theme) => ({
 const HeroSection = () => {
   const classes = useStyles();
   return (
-    <Paper className={classes.heroImage}>
+    <Paper elevation={0} className={classes.heroImage}>
       {/* Increase the priority of the hero background image */}
       {<img style={{ display: "none" }} src={HeroImage} alt="" />}
       <div className={classes.overlay} />
       <Grid container justify="center">
-        <Grid item md={6}>
+        <Grid item md={8}>
           <div className={classes.heroContent}>
             <Typography
               component="h1"
@@ -80,14 +74,8 @@ const HeroSection = () => {
             >
               We help our clients make better informed decisions in real estate.
             </Typography>
-            {/* <TextField id="filled-search" 
-            fullWidth
-            className={classes.searchField}
-            type="search" 
-            variant="filled" 
-            placeholder="SEARCH BY STATE, AREA, OR CITY "/> */}
-            <Paper component="form" className={classes.root}>
-          
+
+            <Paper component="form" className={classes.searchForm}>
               <InputBase
                 className={classes.input}
                 placeholder="SEARCH BY STATE, AREA, OR CITY "
@@ -98,10 +86,8 @@ const HeroSection = () => {
                 className={classes.iconButton}
                 aria-label="search"
               >
-                <SearchIcon />
+                <SearchIcon color="primary" />
               </IconButton>
-              {/* <Divider className={classes.divider} orientation="vertical" /> */}
-             
             </Paper>
           </div>
         </Grid>
@@ -111,9 +97,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
-// div className={styles.heroImage}>
-//     <Typography>
-//     We help our clients make better informed decisions in real estate.
-//     </Typography>
-//   </div>
