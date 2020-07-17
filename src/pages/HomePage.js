@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../components/header';
 import HeroSection from '../components/heroSection';
-import Properties from '../components/Properties';
+import PortfoliosList from '../components/PortfoliosList';
 import ContactDetails from '../components/contactDetails'
 
 const HomePage = () => {
@@ -10,7 +10,7 @@ const HomePage = () => {
             <Header />
             <HeroSection/>
             <ContactDetails/>
-            <Properties/>
+            <PortfoliosList/>
         </div>
     )
 }
