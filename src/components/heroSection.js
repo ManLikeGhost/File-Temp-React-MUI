@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 10,
   },
   searchForm: {
+    marginTop: '30px',
     padding: "2px 4px",
     display: "flex",
     alignItems: "center",

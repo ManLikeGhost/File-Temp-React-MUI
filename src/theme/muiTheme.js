@@ -10,18 +10,19 @@ const theme = createMuiTheme({
       light: "#f4a87d",
       main: "#bf7950",
       dark: "#8b4c26",
-      contrastText: "#000000",
+      text: "#000000",
     },
     secondary: {
       light: "#376b64",
       main: "#04403a",
       dark: "#001b14",
-      contrastText: "#ffffff",
+      text: "#ffffff",
     },
     shape: {
       borderRadius: 8,
     },
   },
+  fontFamily: "Roboto Condensed",
 });
 
 export default theme;
