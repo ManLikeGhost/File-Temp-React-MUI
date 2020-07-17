@@ -14,7 +14,10 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImgMediaCard() {
+export default function Property({imagePath,
+  saleText,
+  address,
+  details}) {
   const classes = useStyles();
 
   return (
@@ -22,28 +25,22 @@ export default function ImgMediaCard() {
       <CardActionArea>
         <CardMedia
           component="img"
-          alt="Contemplative Reptile"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          alt={saleText}
+          height="220"
+          image={imagePath}
           title="Contemplative Reptile"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+          <Typography gutterBottom variant="h5" component="h2" color='primary'>
+            {saleText}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+          <Typography variant="body2" component="p" color='secondary'>
+           {address}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
+        {details}
       </CardActions>
     </Card>
   );
