@@ -3,7 +3,8 @@ import Header from '../components/header';
 import HeroSection from '../components/heroSection';
 import PortfoliosList from '../components/PortfoliosList';
 import PropertiesList from '../components/PropertiesList';
-import ContactDetails from '../components/contactDetails'
+import ContactDetails from '../components/contactDetails';
+import HomePageStats from '../components/homePageStats.jsx'
 
 const HomePage = () => {
     return (
@@ -13,6 +14,7 @@ const HomePage = () => {
             <ContactDetails/>
             <PortfoliosList/>
             <PropertiesList/>
+            <HomePageStats />
         </div>
     )
 }

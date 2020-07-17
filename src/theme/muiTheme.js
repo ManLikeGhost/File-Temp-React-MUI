@@ -5,7 +5,7 @@ import createTypography from '@material-ui/core/styles/createTypography';
 
 const theme = createMuiTheme({
   typography: createTypography(createPalette({}), {
-    fontFamily: '"PlayfairDisplay-Black"'
+    fontFamily: '"PlayfairDisplay"'
   }),
   palette: {
     primary: {

@@ -1,6 +1,7 @@
 import React from "react";
 import MarbleBackground from "./img/MarbleBackground.png";
-import HomePage from './pages/HomePage'
+
+import HomePage from './pages/HomePage.jsx'
 
 import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
