@@ -1,13 +1,13 @@
 import React from "react";
 import Portfolio from "./Portfolio";
-import SectionTitle from "./sectionTitle";
+import SectionTitle from "../sectionTitle";
 
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+import FlatIcon from '../../img/Flats-Icon.png';
+import HouseIcon from '../../img/Houses-Icon.png';
+import CommercialProjectsIcon from '../../img/commercial-projects-Icon.png';
+import LandIcon from '../../img/Land-Icon.png'
 
 const iconSize = { fontSize: 90 };
 const iconColor = "primary";
@@ -16,22 +16,22 @@ const portfolios = [
   {
     id: 0,
     title: "Flats",
-    icon: <FavoriteIcon style={iconSize} color={iconColor} />,
+    icon: FlatIcon,
   },
   {
     id: 1,
     title: "Houses",
-    icon: <ShareIcon style={iconSize} color={iconColor} />,
+    icon: HouseIcon,
   },
   {
     id: 2,
     title: "Commercial Properties",
-    icon: <ExpandMoreIcon style={iconSize} color={iconColor} />,
+    icon: CommercialProjectsIcon,
   },
   {
     id: 3,
     title: "Land",
-    icon: <MoreVertIcon style={iconSize} color={iconColor} />,
+    icon: LandIcon,
   },
 ];
 

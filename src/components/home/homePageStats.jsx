@@ -1,11 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import EstateAgentImage from "../img/Estate-Agent.png";
-import AreasCoveredImage from "../img/Areas-Covered.png";
-import PropertyListingImage from "../img/Property-Listings.png";
+import EstateAgentImage from "../../img/Estate-Agent.png";
+import AreasCoveredImage from "../../img/Areas-Covered.png";
+import PropertyListingImage from "../../img/Property-Listings.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {

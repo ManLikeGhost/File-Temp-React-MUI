@@ -1,8 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from '@material-ui/core/Paper';
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
@@ -37,7 +35,9 @@ export default function Portfolio({ title, icon }) {
   return (
     <div className={classes.root}>
       <Paper elevation={3}>
-        <div className={classes.iconStyle}>{icon}</div>
+        <div className={classes.iconStyle}>
+          <img src={icon} alt={title} />
+        </div>
         <Typography
           variant="h4"
           component="p"

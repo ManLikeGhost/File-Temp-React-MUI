@@ -1,14 +1,11 @@
 import React from "react";
 import Property from "./Property";
-import SectionTitle from "./sectionTitle";
-import PropertyImage from '../img/houses/5.png'
+import SectionTitle from "../sectionTitle";
+import PropertyImage from '../../img/houses/5.png'
 
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 const iconSize = { fontSize: 90 };
 const iconColor = "primary";

@@ -27,7 +27,7 @@ export default function Property({imagePath,
           alt={saleText}
           height="300"
           image={imagePath}
-          title="Contemplative Reptile"
+          title={saleText}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2" color='primary'>

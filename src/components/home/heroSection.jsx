@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
-import HeroImage from "../img/heroImage.png";
+import HeroImage from "../../img/heroImage.png";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
