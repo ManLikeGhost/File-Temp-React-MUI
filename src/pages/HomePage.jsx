@@ -7,6 +7,7 @@ import PropertiesList from '../components/home/PropertiesList';
 import ContactDetails from '../components/home/contactDetails';
 import HomePageStats from '../components/home/homePageStats.jsx';
 import AboutHome from '../components/home/about';
+import AddListingSection from '../components/home/addListing'
 
 const HomePage = () => {
     return (
@@ -18,6 +19,7 @@ const HomePage = () => {
             <PropertiesList/>
             <HomePageStats />
             <AboutHome />
+            <AddListingSection/>
         </div>
     )
 }

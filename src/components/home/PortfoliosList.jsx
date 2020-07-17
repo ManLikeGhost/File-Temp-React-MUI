@@ -7,10 +7,8 @@ import Box from "@material-ui/core/Box";
 import FlatIcon from '../../img/Flats-Icon.png';
 import HouseIcon from '../../img/Houses-Icon.png';
 import CommercialProjectsIcon from '../../img/commercial-projects-Icon.png';
-import LandIcon from '../../img/Land-Icon.png'
+import LandIcon from '../../img/Land-Icon.png';
 
-const iconSize = { fontSize: 90 };
-const iconColor = "primary";
 
 const portfolios = [
   {
