@@ -6,7 +6,13 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+@font-face{
+  font-family: "PlayfairDisplay";
+  src: url('./fonts/Playfair_Display/PlayfairDisplay-Regular.ttf') format('ttf'),
+  /* url('./fonts/iransans/eot/IRANSansWeb.eot') format('eot'),
+  url('./fonts/iransans/woff/IRANSansWeb.woff') format('woff'),
+  url('./fonts/iransans/woff2/IRANSansWeb.woff2') format('woff2') */
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

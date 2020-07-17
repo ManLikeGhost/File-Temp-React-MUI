@@ -1,10 +1,12 @@
 // import { createMuiTheme } from '@material-ui/core/styles';
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import createPalette from '@material-ui/core/styles/createPalette';
+import createTypography from '@material-ui/core/styles/createTypography';
 
 const theme = createMuiTheme({
-  typography: {
-    useNextVariants: true,
-  },
+  typography: createTypography(createPalette({}), {
+    fontFamily: '"PlayfairDisplay-Black"'
+  }),
   palette: {
     primary: {
       light: "#f4a87d",
@@ -22,7 +24,6 @@ const theme = createMuiTheme({
       borderRadius: 8,
     },
   },
-  fontFamily: "Roboto Condensed",
 });
 
 export default theme;

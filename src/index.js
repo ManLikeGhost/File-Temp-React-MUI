@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import CssBaseline from '@material-ui/core/CssBaseline';
 import "./index.css";
 
 // THEME
@@ -12,6 +13,7 @@ import * as serviceWorker from "./serviceWorker";
 ReactDOM.render(
   <React.StrictMode>
     <MuiThemeProvider theme={theme}>
+    <CssBaseline />
       <App />
     </MuiThemeProvider>
   </React.StrictMode>,
