@@ -21,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
   paperContainer: {
     height: "100%",
     backgroundImage: `url(${MarbleBackground})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
   },
   
 }));

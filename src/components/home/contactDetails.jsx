@@ -6,11 +6,15 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import {makeStyles} from '@material-ui/core/styles';
+import MarbleBackground from '../../img/MarbleBackground.png'
 
 const useStyles = makeStyles(theme=>({
   root:{
     margin: theme.spacing(2),
-    marginLeft: theme.spacing(5)
+    marginLeft: theme.spacing(5),
+    backgroundImage: `url(${MarbleBackground})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
   },
   firstText:{
     fontStyle: "normal",

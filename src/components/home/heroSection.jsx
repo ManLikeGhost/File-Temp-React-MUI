@@ -64,7 +64,7 @@ const HeroSection = () => {
       {/* Increase the priority of the hero background image */}
       {<img style={{ display: "none" }} src={HeroImage} alt="" />}
       <div className={classes.overlay} />
-      <Grid container justify="center">
+      <Grid container justify="center"  alignItems='center'>
         <Grid item md={8}>
           <div className={classes.heroContent}>
             <Typography
