@@ -7,7 +7,8 @@ import PropertiesList from '../components/home/PropertiesList';
 import ContactDetails from '../components/home/contactDetails';
 import HomePageStats from '../components/home/homePageStats.jsx';
 import AboutHome from '../components/home/about';
-import AddListingSection from '../components/home/addListing'
+import AddListingSection from '../components/home/addListing';
+import SaleRentShortlet from '../components/home/saleRentShortlet';
 
 const HomePage = () => {
     return (
@@ -20,6 +21,7 @@ const HomePage = () => {
             <HomePageStats />
             <AboutHome />
             <AddListingSection/>
+            <SaleRentShortlet />
         </div>
     )
 }

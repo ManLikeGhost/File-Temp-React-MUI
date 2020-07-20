@@ -1,47 +1,13 @@
 import React from "react";
 import Property from "./Property";
 import SectionTitle from "../sectionTitle";
-import PropertyImage from '../../img/houses/5.png'
+import {properties} from '../../demoData/demoData'
 
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 
-const iconSize = { fontSize: 90 };
-const iconColor = "primary";
 
-const properties = [
-  {
-    id: 0,
-    imagePath:  PropertyImage,
-    saleText:`Office spaces for sale`,
-    address:`Skyline Towers, Adeola Odeku Street, V.I.`,
-    details: <FavoriteIcon style={iconSize} color={iconColor} />,
-    
-  },
-  {
-    id: 1,
-    imagePath: PropertyImage,
-    saleText:`Office spaces for sale`,
-    address:`Skyline Towers, Adeola Odeku Street, V.I.`,
-    details: <FavoriteIcon style={iconSize} color={iconColor} />,
-    
-  },
-  {
-    id: 2,
-    imagePath: PropertyImage,
-    saleText:`Office spaces for sale`,
-    address:`Skyline Towers, Adeola Odeku Street, V.I.`,
-    details: <FavoriteIcon style={iconSize} color={iconColor} />,
-  },
-  {
-    id: 3,
-    imagePath: PropertyImage,
-    saleText:`Office spaces for sale`,
-    address:`Skyline Towers, Adeola Odeku Street, V.I.`,
-    details: <FavoriteIcon style={iconSize} color={iconColor} />,
-  },
-];
+
 
 function PropertiesList() {
   return (

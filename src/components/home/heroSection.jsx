@@ -81,6 +81,7 @@ const HeroSection = () => {
                 className={classes.input}
                 placeholder="SEARCH BY STATE, AREA, OR CITY "
                 inputProps={{ "aria-label": "search by state" }}
+                
               />
               <IconButton
                 type="submit"
