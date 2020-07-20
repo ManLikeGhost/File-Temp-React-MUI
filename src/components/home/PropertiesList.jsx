@@ -17,7 +17,7 @@ function PropertiesList() {
         <Grid container justify="center" alignItems="center" spacing={2}>
           {properties.map((property) => (
             <Grid key={property.id} item xs={3}>
-              <Property imagePath={property.imagePath} saleText={property.saleText} address={property.address} details={property.details}  />
+              <Property imagePath={property.imagePath} saleText={property.saleText} address={property.address} />
             </Grid>
           ))}
         </Grid>
