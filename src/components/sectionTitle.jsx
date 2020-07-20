@@ -19,7 +19,7 @@ const sectionTitle = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
+      <Grid container>
         <Grid item xs={12}>
           <Typography className={classes.title} variant="h3">
             {props.children}
