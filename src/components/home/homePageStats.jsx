@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(5)
   },
   container: {
-      margin: theme.spacing(3),
+      marginTop: theme.spacing(3),
+      marginBottom: theme.spacing(3),
     padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
@@ -32,7 +33,7 @@ export default function CenteredGrid() {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3} justify="center" alignItems="center" className={classes.container}>
+      <Grid container justify="center" alignItems="center" className={classes.container}>
         <Grid item xs={4} className={classes.gridItem}>
           <img src={EstateAgentImage} alt="" height="100" />
           <Typography variant="h2" color="secondary" className= {classes.number}>

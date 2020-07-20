@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.secondary.main,
     margin: "50px 0",
-    height: "80vh",
+    height: "100vh",
   },
   textStyle: {
     fontStyle: "normal",

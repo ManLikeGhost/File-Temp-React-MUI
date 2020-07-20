@@ -2,10 +2,19 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import SectionTitle from "../sectionTitle";
+import MarbleBackground from '../../img/MarbleBackground.png'
 
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
+  backgroundImage :{
+    height: '80vh',
+    backgroundImage: `url(${MarbleBackground})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    // width: `calc(100vw + 48px)`,
+    
+  },
   text: {
     padding: "20px",
     color: " #BF7950",
@@ -14,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "41px",
     lineHeight: "41px",
     textAlign: "justify",
+    backgroundColor: "transparent",
   },
   button: {
     marginLeft: "50px",
@@ -33,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 const AboutHome = () => {
   const classes = useStyles();
   return (
-    <div>
+    <div className={classes.backgroundImage}>
       <SectionTitle>About Terrell Davies Enterprise</SectionTitle>
       <Typography className={classes.text}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
