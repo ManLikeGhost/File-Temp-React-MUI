@@ -25,11 +25,16 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.text,
   },
   button: {
-    height: 90,
-    width: 308,
-    fontWeight: 500,
-    fontSize: 29,
-    lineHeight: 29,
+    // height: 50,
+    // width: 308,
+    // fontWeight: 500,
+    fontSize: 20,
+    // lineHeight: 29,
+    margin: theme.spacing(1),
+    minWidth: 200, 
+    minHeight: 90, 
+    // minWidth: '30px', 
+    // minHeight: '30px'
   },
 }));
 
