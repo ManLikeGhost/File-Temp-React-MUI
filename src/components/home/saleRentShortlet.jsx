@@ -65,7 +65,7 @@ const SaleRentShortlet = () => {
         <Grid item xs={4}>
           <Typography className={classes.title}>For Rent by Town</Typography>
           <div className={classes.unorderedList}>
-            <List component="nav" dense='true'  aria-label="secondary mailbox folders">
+            <List component="nav" dense='true'  aria-label="for rent sale shortlet">
               <ListItem button>
                 <ListItemText primary="Lekki (1250)" />
               </ListItem>
@@ -87,7 +87,7 @@ const SaleRentShortlet = () => {
         <Grid item xs={4}>
           <Typography className={classes.title}>Shortlet by Town</Typography>
           <div className={classes.unorderedList}>
-            <List component="nav" dense='true'  aria-label="secondary mailbox folders">
+            <List component="nav" dense='true'  aria-label="for rent sale shortlet">
               <ListItem button>
                 <ListItemText primary="Lekki (1250)" />
               </ListItem>
@@ -112,7 +112,7 @@ const SaleRentShortlet = () => {
         <Grid item xs={4}>
           <Typography className={classes.title}>For Sale by Surburb</Typography>
           <div className={classes.unorderedList}>
-            <List component="nav" dense='true' aria-label="secondary mailbox folders">
+            <List component="nav" dense='true' aria-label="for rent sale shortlet">
               <ListItem button>
                 <ListItemText primary="Lekki (1250)" />
               </ListItem>
@@ -134,7 +134,7 @@ const SaleRentShortlet = () => {
         <Grid item xs={4}>
           <Typography className={classes.title}>For Rent by Surburb</Typography>
           <div className={classes.unorderedList}>
-            <List component="nav" dense='true'  aria-label="secondary mailbox folders">
+            <List component="nav" dense='true'  aria-label="for rent sale shortlet">
               <ListItem button>
                 <ListItemText primary="Lekki (1250)" />
               </ListItem>

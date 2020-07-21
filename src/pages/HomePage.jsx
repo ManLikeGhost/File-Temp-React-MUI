@@ -9,6 +9,8 @@ import HomePageStats from '../components/home/homePageStats.jsx';
 import AboutHome from '../components/home/about';
 import AddListingSection from '../components/home/addListing';
 import SaleRentShortlet from '../components/home/saleRentShortlet';
+import Footer from '../components/footer';
+//MUI
 import { makeStyles } from "@material-ui/core/styles";
 import MarbleBackground from "../img/MarbleBackground.png";
 
@@ -40,6 +42,7 @@ const HomePage = () => {
             <AboutHome />
             <AddListingSection/>
             <SaleRentShortlet />
+            <Footer />
         </div>
     )
 }
