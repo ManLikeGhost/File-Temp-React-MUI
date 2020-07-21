@@ -17,15 +17,28 @@ const useStyles = makeStyles((theme) => ({
       height: "100%",
     },
   },
-  iconStyle: {
+  iconBox: {
+    width: "100%",
+    // height: "150px",
+    margin: "0 auto",
     textAlign: "center",
   },
+  icon:{
+    width: "100%",
+    height: "80px",
+    objectFit: "contain"
+  },
   titleStyle: {
-    fontWeight: "fontWeightMedium",
+    fontWeight: "Medium",
     paddingBottom: 3,
-    // fontSize: 18,
+    fontSize: 18,
     fontFamily: theme.fontFamily,
     color: theme.palette.secondary.main,
+  },
+  paperContainer:{
+    padding: 50,
+    border: `1px solid ${theme.palette.primary.main}`,
+    // boxShadow: '5px 10px 5px 1px'
   },
 }));
 
@@ -34,9 +47,9 @@ export default function Portfolio({ title, icon }) {
 
   return (
     <div className={classes.root}>
-      <Paper elevation={3}>
-        <div className={classes.iconStyle}>
-          <img src={icon} alt={title} />
+      <Paper elevation={3} className={classes.paperContainer}>
+        <div className={classes.iconBox}>
+          <img src={icon} alt={title} className={classes.icon} />
         </div>
         <Typography
           variant="h4"

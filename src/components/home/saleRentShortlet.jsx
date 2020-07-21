@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
     // lineHeight: 55,
   },
   unorderedList: {
-    backgroundColor: theme.palette.background.paper,
     marginLeft: 100,
     color: theme.palette.primary.main,
     // fontSize: 30,

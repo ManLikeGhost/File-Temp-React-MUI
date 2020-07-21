@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.white,
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4),
-    height: "100vh",
+    height: "150vh",
     backgroundImage: `url(${HeroImage})`,
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
@@ -32,15 +32,17 @@ const useStyles = makeStyles((theme) => ({
     left: 25,
     backgroundColor: "rgba(0,0,0,.3)",
   },
+//   heroMargin:{
+// marginTop: 500
+//   },
   heroContent: {
     position: "relative",
     // padding: theme.spacing(5),
+    marginTop: "25em",
     [theme.breakpoints.up("md")]: {
       padding: theme.spacing(6),
       paddingRight: 0,
     },
-
-    marginTop: 100,
   },
   iconButton: {
     padding: 10,
@@ -50,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "2px 4px",
     display: "flex",
     alignItems: "center",
-    width: 700,
+    width: "57em",
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -72,6 +74,7 @@ const HeroSection = () => {
               variant="h3"
               color="inherit"
               gutterBottom
+              // className={classes.heroMargin}
             >
               We help our clients make better informed decisions in real estate.
             </Typography>

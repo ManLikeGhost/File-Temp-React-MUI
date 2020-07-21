@@ -10,6 +10,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
+import MarbleBackground from "../img/MarbleBackground.png";
+
 import FooterLogo from "../img/Footer-Logo.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,32 +26,46 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     borderTop: `1px solid ${theme.palette.primary.main}`,
+    color: theme.palette.primary.main,
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
     [theme.breakpoints.up("sm")]: {
       paddingTop: theme.spacing(6),
       paddingBottom: theme.spacing(6),
     },
-    marginTop: `calc(5% + 60px)`,
+    marginTop: `calc(5% + 150px)`,
     bottom: 0,
+    // height: "100vh",
+    backgroundImage: `url(${MarbleBackground})`,
+    backgroundPosition: "center center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
   },
   logoContainer:{
-
+    width: "150px",
+    height: "150px",
+    // margin: "0 auto",
   },
   footerLogo: {
-    width: "80%",
+    // width: "80%",
+    maxWidth: "100%",
+    maxHeight: "100%",
+    objectFit: "contain"
   },
   title: {
     // padding: theme.spacing(2),
     textAlign: "left",
     color: theme.palette.secondary.main,
-    // fontWeight: "bold",
-    // fontSize: 25,
+    fontWeight: "bold",
+    fontSize: 25,
     // lineHeight: 55,
   },
-  text: {
+  footerContactDetails:{
+    margin: "0 auto",
     color: theme.palette.primary.main,
-  },
+    marginTop: 50,
+    marginLeft: 70,
+  }
 }));
 
 const footers = [
@@ -72,10 +88,11 @@ const Footer = () => {
 
   return (
     <div>
-      <Container maxWidth="md" component="footer" className={classes.footer}>
-        <Grid container spacing={4} justify="space-evenly">
+      <CssBaseline/>
+      <Container maxWidth="lg" component="footer" className={classes.footer}>
+        <Grid container spacing={4} justify="center" alignItem="center">
           <Grid item xs={4}>
-              <div>
+              <div className={classes.logoContainer}>
               <img src={FooterLogo} alt="" className={classes.footerLogo} />
               </div>
           
@@ -106,7 +123,7 @@ const Footer = () => {
             </Grid>
           ))}
         </Grid>
-        <Grid container className={classes.text}>
+        <Grid container className={classes.footerContactDetails}  justify="space-between" alignItem="center">
           <Grid item xs={4}>
             Office 3, First Floor, <br />
             Office Suite, 4 Sandpit Road, <br />
