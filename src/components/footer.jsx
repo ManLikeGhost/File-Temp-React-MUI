@@ -9,6 +9,10 @@ import Box from "@material-ui/core/Box";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import TwitterIcon from "@material-ui/icons/Twitter";
 
 import MarbleBackground from "../img/MarbleBackground.png";
 
@@ -65,6 +69,9 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
     marginTop: 50,
     marginLeft: 70,
+  },
+  text:{
+    textAlign: 'left'
   }
 }));
 
@@ -123,7 +130,7 @@ const Footer = () => {
             </Grid>
           ))}
         </Grid>
-        <Grid container className={classes.footerContactDetails}  justify="space-between" alignItem="center">
+        <Grid container className={classes.footerContactDetails}  justify="center" alignItem="center">
           <Grid item xs={4}>
             Office 3, First Floor, <br />
             Office Suite, 4 Sandpit Road, <br />
@@ -135,7 +142,25 @@ const Footer = () => {
             +2348121412045
           </Grid>
           <Grid item xs={4}>
+          <Grid item xs={12}>
+            
             info@terrelldavies.co.uk
+            
+          </Grid>
+          <Grid item xs={12}>
+            
+          <Link color="inherit" href="#">
+            <FacebookIcon color="primary" fontSize="small" />
+          </Link>
+
+           <Link href="#"><InstagramIcon color="primary" fontSize="small" /></Link>
+           <Link href="#"><LinkedInIcon color="primary" fontSize="small" /></Link>
+           <Link href="#"><TwitterIcon color="primary" fontSize="small" /></Link>
+       
+            
+          </Grid>
+            
+            
           </Grid>
         </Grid>
         <Box mt={5} textAlign="center">

@@ -12,11 +12,11 @@ import Box from "@material-ui/core/Box";
 function PropertiesList() {
   return (
     <div>
-      <SectionTitle>Our Property Listings</SectionTitle>
+      <SectionTitle>Lastest Listed Properties</SectionTitle>
       <Box p={(2, 4)}>
-        <Grid container justify="center" alignItems="center" spacing={2}>
+        <Grid container justify="center" alignItems="center">
           {properties.map((property) => (
-            <Grid key={property.id} item xs={3}>
+            <Grid key={property.id} item xs={4}>
               <Property imagePath={property.imagePath} saleText={property.saleText} address={property.address} />
             </Grid>
           ))}

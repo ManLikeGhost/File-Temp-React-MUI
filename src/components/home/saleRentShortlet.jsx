@@ -8,28 +8,24 @@ import { makeStyles } from "@material-ui/core/styles";
 import MarbleBackground from "../../img/MarbleBackground.png";
 
 const useStyles = makeStyles((theme) => ({
-  root:{
+  root: {
+    padding: " 0 200px",
     height: "100vh",
     backgroundImage: `url(${MarbleBackground})`,
-    // marginTop: theme.spacing(4),
-    // marginBottom: theme.spacing(4),
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
   },
   title: {
-    padding: theme.spacing(2),
-    textAlign: "center",
+    textAlign: "left",
     color: theme.palette.secondary.main,
     fontWeight: "bold",
     fontSize: 25,
-    // lineHeight: 55,
   },
   unorderedList: {
-    marginLeft: 100,
+    textAlign: "left",
+
     color: theme.palette.primary.main,
-    // fontSize: 30,
-// lineHeight: 30,
   },
 }));
 
@@ -42,7 +38,11 @@ const SaleRentShortlet = () => {
         <Grid item xs={4}>
           <Typography className={classes.title}>For Sale by Town</Typography>
           <div className={classes.unorderedList}>
-            <List component="nav" dense='true' aria-label="secondary mailbox folders">
+            <List
+              component="nav"
+              dense="true"
+              aria-label="secondary mailbox folders"
+            >
               <ListItem button>
                 <ListItemText primary="Lekki (1250)" />
               </ListItem>
@@ -64,7 +64,11 @@ const SaleRentShortlet = () => {
         <Grid item xs={4}>
           <Typography className={classes.title}>For Rent by Town</Typography>
           <div className={classes.unorderedList}>
-            <List component="nav" dense='true'  aria-label="for rent sale shortlet">
+            <List
+              component="nav"
+              dense="true"
+              aria-label="for rent sale shortlet"
+            >
               <ListItem button>
                 <ListItemText primary="Lekki (1250)" />
               </ListItem>
@@ -86,7 +90,11 @@ const SaleRentShortlet = () => {
         <Grid item xs={4}>
           <Typography className={classes.title}>Shortlet by Town</Typography>
           <div className={classes.unorderedList}>
-            <List component="nav" dense='true'  aria-label="for rent sale shortlet">
+            <List
+              component="nav"
+              dense="true"
+              aria-label="for rent sale shortlet"
+            >
               <ListItem button>
                 <ListItemText primary="Lekki (1250)" />
               </ListItem>
@@ -111,7 +119,11 @@ const SaleRentShortlet = () => {
         <Grid item xs={4}>
           <Typography className={classes.title}>For Sale by Surburb</Typography>
           <div className={classes.unorderedList}>
-            <List component="nav" dense='true' aria-label="for rent sale shortlet">
+            <List
+              component="nav"
+              dense="true"
+              aria-label="for rent sale shortlet"
+            >
               <ListItem button>
                 <ListItemText primary="Lekki (1250)" />
               </ListItem>
@@ -133,7 +145,11 @@ const SaleRentShortlet = () => {
         <Grid item xs={4}>
           <Typography className={classes.title}>For Rent by Surburb</Typography>
           <div className={classes.unorderedList}>
-            <List component="nav" dense='true'  aria-label="for rent sale shortlet">
+            <List
+              component="nav"
+              dense="true"
+              aria-label="for rent sale shortlet"
+            >
               <ListItem button>
                 <ListItemText primary="Lekki (1250)" />
               </ListItem>
@@ -155,7 +171,11 @@ const SaleRentShortlet = () => {
         <Grid item xs={4}>
           <Typography className={classes.title}>Shortlet by Surburb</Typography>
           <div className={classes.unorderedList}>
-            <List component="nav" dense='true'  aria-label="secondary mailbox folders">
+            <List
+              component="nav"
+              dense="true"
+              aria-label="secondary mailbox folders"
+            >
               <ListItem button>
                 <ListItemText primary="Lekki (1250)" />
               </ListItem>
@@ -178,9 +198,15 @@ const SaleRentShortlet = () => {
       {/* By Catergory*/}
       <Grid container direction="row" justify="center" alignItems="center">
         <Grid item xs={4}>
-          <Typography className={classes.title}>For Sale by Category</Typography>
+          <Typography className={classes.title}>
+            For Sale by Category
+          </Typography>
           <div className={classes.unorderedList}>
-            <List component="nav" dense='true' aria-label="secondary mailbox folders">
+            <List
+              component="nav"
+              dense="true"
+              aria-label="secondary mailbox folders"
+            >
               <ListItem button>
                 <ListItemText primary="Lekki (1250)" />
               </ListItem>
@@ -200,9 +226,15 @@ const SaleRentShortlet = () => {
           </div>
         </Grid>
         <Grid item xs={4}>
-          <Typography className={classes.title}>For Rent by Category</Typography>
+          <Typography className={classes.title}>
+            For Rent by Category
+          </Typography>
           <div className={classes.unorderedList}>
-            <List component="nav" dense='true'  aria-label="secondary mailbox folders">
+            <List
+              component="nav"
+              dense="true"
+              aria-label="secondary mailbox folders"
+            >
               <ListItem button>
                 <ListItemText primary="Lekki (1250)" />
               </ListItem>
@@ -222,9 +254,15 @@ const SaleRentShortlet = () => {
           </div>
         </Grid>
         <Grid item xs={4}>
-          <Typography className={classes.title}>Shortlet by Category</Typography>
+          <Typography className={classes.title}>
+            Shortlet by Category
+          </Typography>
           <div className={classes.unorderedList}>
-            <List component="nav" dense='true'  aria-label="secondary mailbox folders">
+            <List
+              component="nav"
+              dense="true"
+              aria-label="secondary mailbox folders"
+            >
               <ListItem button>
                 <ListItemText primary="Lekki (1250)" />
               </ListItem>
