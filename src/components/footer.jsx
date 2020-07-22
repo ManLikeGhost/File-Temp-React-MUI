@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
   },
-  logoContainer:{
+  logoContainer: {
     width: "150px",
     height: "150px",
     // margin: "0 auto",
@@ -64,13 +64,13 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 25,
     // lineHeight: 55,
   },
-  footerContactDetails:{
+  footerContactDetails: {
     margin: "0 auto",
     color: theme.palette.primary.main,
     marginTop: 50,
     marginLeft: 70,
   },
-  text:{
+  text: {
     textAlign: 'left'
   }
 }));
@@ -95,14 +95,14 @@ const Footer = () => {
 
   return (
     <div>
-      <CssBaseline/>
+      <CssBaseline />
       <Container maxWidth="lg" component="footer" className={classes.footer}>
-        <Grid container spacing={4} justify="center" alignItem="center">
+        <Grid container spacing={4} justify="center" alignItem="center" align='center'>
           <Grid item xs={4}>
-              <div className={classes.logoContainer}>
+            <div className={classes.logoContainer}>
               <img src={FooterLogo} alt="" className={classes.footerLogo} />
-              </div>
-          
+            </div>
+
           </Grid>
           {footers.map((footer) => (
             <Grid item xs={8} sm={3} key={footer.title}>
@@ -130,37 +130,43 @@ const Footer = () => {
             </Grid>
           ))}
         </Grid>
-        <Grid container className={classes.footerContactDetails}  justify="center" alignItem="center">
+        <Grid container className={classes.footerContactDetails} justify="center" alignItem="center">
           <Grid item xs={4}>
-            Office 3, First Floor, <br />
+            <Typography align='center'>
+              Office 3, First Floor, <br />
             Office Suite, 4 Sandpit Road, <br />
             Dartford, Kent DA1 5BU
+            </Typography>
+
           </Grid>
           <Grid item xs={4}>
-            +01322 628780, <br />
+            <Typography align='left'>
+              +01322 628780, <br />
             +013226 86765, <br />
             +2348121412045
+            </Typography>
+
           </Grid>
           <Grid item xs={4}>
-          <Grid item xs={12}>
-            
-            info@terrelldavies.co.uk
-            
-          </Grid>
-          <Grid item xs={12}>
-            
-          <Link color="inherit" href="#">
-            <FacebookIcon color="primary" fontSize="small" />
-          </Link>
+            <Grid item xs={12}>
+              <Typography align='left'>
+                info@terrelldavies.co.uk
+            </Typography>
+            </Grid>
+            <Grid item xs={12}>
 
-           <Link href="#"><InstagramIcon color="primary" fontSize="small" /></Link>
-           <Link href="#"><LinkedInIcon color="primary" fontSize="small" /></Link>
-           <Link href="#"><TwitterIcon color="primary" fontSize="small" /></Link>
-       
-            
-          </Grid>
-            
-            
+              <Link color="inherit" href="#">
+                <FacebookIcon color="primary" fontSize="small" />
+              </Link>
+
+              <Link href="#"><InstagramIcon color="primary" fontSize="small" /></Link>
+              <Link href="#"><LinkedInIcon color="primary" fontSize="small" /></Link>
+              <Link href="#"><TwitterIcon color="primary" fontSize="small" /></Link>
+
+
+            </Grid>
+
+
           </Grid>
         </Grid>
         <Box mt={5} textAlign="center">
@@ -174,14 +180,14 @@ const Footer = () => {
 
 const Copyright = () => {
   return (
-   
-        <Typography variant="body2" color="textSecondary">
-          {new Date().getFullYear()} {"Copyright © "}
-          <Link color="inherit" href="https://pbgdigital.co.uk">
-            Terrell Davies Enterprise. All rights reserved.
+
+    <Typography variant="p" color="primary">
+      {new Date().getFullYear()} {"Copyright © "}
+      <Link color="inherit" href="https://pbgdigital.co.uk">
+        Terrell Davies Enterprise. All rights reserved.
           </Link>{" "}
-        </Typography>
-      
+    </Typography>
+
   );
 };
 
