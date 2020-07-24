@@ -230,7 +230,7 @@ const SignUpPage = () => {
             <Grid item xs={12}>
               <FormControlLabel
                 className={classes.text}
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
+                control={<Checkbox value="acceptTerms" color="primary" />}
                 label="By registering you accept our Terms of Use and Privacy and agree that we and our selected partners may contact you with relevant offers and services."
               />
             </Grid>
