@@ -11,6 +11,7 @@ import SignUpPage from "./pages/SignUpPage";
 
 import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
+import AboutHome from "./components/home/about";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -30,6 +31,9 @@ function App() {
     <div className={classes.paperContainer}>
       <Router>
         <Switch>
+          <Route path="/About">
+            <AboutHome />
+          </Route>
           <Route path="/signin">
             <SignInPage />
           </Route>
