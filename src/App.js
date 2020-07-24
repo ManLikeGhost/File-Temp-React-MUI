@@ -16,12 +16,13 @@ const useStyles = makeStyles((theme) => ({
   "@global": {
     body: {
       backgroundColor: theme.palette.common.white,
+      maxWidth: '1980px',
     },
   },
-  paperContainer: {
-    height: "100vh",
-    backgroundImage: `url(${MarbleBackground})`,
-  },
+  // paperContainer: {
+  //   height: "100vh",
+  //   backgroundImage: `url(${MarbleBackground})`,
+  // },
 }));
 
 function App() {
