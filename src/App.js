@@ -1,9 +1,7 @@
 import React from "react";
 //Router
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-import MarbleBackground from "./img/MarbleBackground.png";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import HomePage from "./pages/HomePage.jsx";
 import SignInPage from "./pages/SignInPage";

@@ -124,7 +124,7 @@ const NavigationHeader = () => {
     <div className={classes.grow}>
       <AppBar position="static" className={classes.menuBackground}>
         <Toolbar>
-          <Link href="/" variant="nav">
+          <Link href="/" variant="body2">
           <img 
           src={Logo} 
           alt="TD logo"

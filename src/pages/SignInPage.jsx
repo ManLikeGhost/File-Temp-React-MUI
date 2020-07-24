@@ -1,95 +1,202 @@
-import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import React, { useState } from "react";
 
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
 
-const SigInPage = () => ( <React.Fragment>
-    <Typography variant="h6" gutterBottom>
-      Shipping address
-    </Typography>
-    <Grid container spacing={3}>
-      <Grid item xs={12} sm={6}>
-        <TextField
-          required
-          id="firstName"
-          name="firstName"
-          label="First name"
-          fullWidth
-          autoComplete="given-name"
-        />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <TextField
-          required
-          id="lastName"
-          name="lastName"
-          label="Last name"
-          fullWidth
-          autoComplete="family-name"
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField
-          required
-          id="address1"
-          name="address1"
-          label="Address line 1"
-          fullWidth
-          autoComplete="shipping address-line1"
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField
-          id="address2"
-          name="address2"
-          label="Address line 2"
-          fullWidth
-          autoComplete="shipping address-line2"
-        />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <TextField
-          required
-          id="city"
-          name="city"
-          label="City"
-          fullWidth
-          autoComplete="shipping address-level2"
-        />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <TextField id="state" name="state" label="State/Province/Region" fullWidth />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <TextField
-          required
-          id="zip"
-          name="zip"
-          label="Zip / Postal code"
-          fullWidth
-          autoComplete="shipping postal-code"
-        />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <TextField
-          required
-          id="country"
-          name="country"
-          label="Country"
-          fullWidth
-          autoComplete="shipping country"
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <FormControlLabel
-          control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-          label="Use this address for payment details"
-        />
-      </Grid>
-    </Grid>
-  </React.Fragment>);
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import Typography from "@material-ui/core/Typography";
 
-export default SigInPage;
+import { makeStyles } from "@material-ui/core/styles";
+
+import BackgroundImage from "../img/SignIn-UpImage.png";
+import NavigationHeader from "../components/navigationHeader";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    height: "1000px",
+    background: `url(${BackgroundImage}) no-repeat center center fixed`,
+    backgroundSize: "cover",
+  },
+
+  paper: {
+    width: "628.4px",
+    height: "553px",
+    margin: "50px auto",
+    padding: "20px",
+    background: "#F5E9DE",
+    border: "0.8px solid #BF7950",
+    boxShadow: "0px 4px 25px rgba(0, 0, 0, 0.25)",
+    borderRadius: "4px",
+  },
+  signIn: {
+    // textAlign: "right",
+    color: "white",
+    fontSize: "25px",
+    lineHeight: "25px",
+    margin: "71px auto",
+  },
+  icon: {
+    fontSize: "150px",
+    color: theme.palette.primary.main,
+    marginLeft: 130,
+    // marginBottom: "-500",
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    // margin: theme.spacing(3, 1, 100, 1),
+    padding: theme.spacing(1, 6),
+  },
+  label: {
+    fontSize: "15px",
+  },
+
+  accountFormControl: {
+    margin: theme.spacing(1),
+    width: "100%",
+    // minWidth: 120,
+  },
+  margin: {
+    marginBottom: "-150px",
+  },
+  text: {
+    fontSize: "12px",
+    color: theme.palette.secondary.main,
+  },
+  title: {
+    marginTop: "100px",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: "30px",
+    color: theme.palette.secondary.main,
+  },
+  subtitle: {
+    textAlign: "center",
+    fontSize: "20px",
+    color: theme.palette.secondary.main,
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+    borderRadius: "2px",
+    fontWeight: 500,
+    fontSize: "20px",
+    lineHeight: "20px",
+    textAlign: "center",
+    // width: "440.54px",
+    height: "59.53px",
+  },
+}));
+
+const SignInPage = () => {
+  const classes = useStyles();
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [accountType, setAccountType] = useState("");
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+  });
+  const handleChange = (name) => (event) => {
+    setState({
+      ...state,
+      [name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const { email, password} = state;
+    const user = {
+      email,
+      password,
+    };
+    // this.props.setCurrentUser(user);
+    console.log({ user });
+  };
+
+  // const handleAccountTypeChange = (event) => {
+  //   setAccountType(event.target.value);
+  // };
+
+  return (
+    <div>
+      <NavigationHeader />
+      <div className={classes.root}>
+        <CssBaseline />
+        <Grid container direction="row" justify="flex-end" alignItems="center">
+          <Grid item xs={2}>
+            <Link href="/signup" variant="body2">
+              <Typography className={classes.signIn}>SIGN UP</Typography>
+            </Link>
+          </Grid>
+        </Grid>
+        <Grid container direction="row" justify="center" alignItems="center">
+          <Grid item xs={4} className={classes.margin}>
+            <AccountCircleIcon className={classes.icon} />
+          </Grid>
+        </Grid>
+
+        <div className={classes.paper}>
+          <Typography component="h1" variant="h5" className={classes.title}>
+            Sign In
+          </Typography>
+          <Typography component="h1" variant="h5" className={classes.subtitle}>
+            Log into your account
+          </Typography>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  // variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email"
+                  name="email"
+                  autoComplete="email"
+                  value={state.email}
+                  onChange={handleChange("email")}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  // variant="outlined"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  value={state.password}
+                  onChange={handleChange("password")}
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              LOGIN
+            </Button>
+          </form>
+          <Grid container>
+            <Grid item xs>
+              <Link href="#" variant="body2" color="secondary">
+                Forgot password?
+              </Link>
+            </Grid>
+          </Grid>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SignInPage;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Avatar from "@material-ui/core/Avatar";
+
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -7,7 +7,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
+
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -15,16 +15,13 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
+
 import BackgroundImage from "../img/SignIn-UpImage.png";
 import NavigationHeader from "../components/navigationHeader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // height: "100%",
-    // width: "100vw",
     height: "1000px",
-    // minWidth: '1280px',
     background: `url(${BackgroundImage}) no-repeat center center fixed`,
     backgroundSize: "cover",
   },
@@ -41,11 +38,10 @@ const useStyles = makeStyles((theme) => ({
   },
   signIn: {
     // textAlign: "right",
-    color: 'white',
+    color: "white",
     fontSize: "25px",
-lineHeight: "25px",
-margin: '71px auto',
-
+    lineHeight: "25px",
+    margin: "71px auto",
   },
   icon: {
     fontSize: "150px",
@@ -100,11 +96,40 @@ margin: '71px auto',
 
 const SignUpPage = () => {
   const classes = useStyles();
-  const [accountType, setAccountType] = useState("");
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [accountType, setAccountType] = useState("");
+  const [state, setState] = useState({
+    name: '',
+    email: '',
+    password: '',
+    accountType:'',
+  });
 
-  const handleAccountTypeChange = (event) => {
-    setAccountType(event.target.value);
+  const handleChange = name => event => {
+    setState({
+      ...state,
+      [name]: event.target.value,
+    });
   };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    const {name, email, password, accountType} = state;
+    const user = {
+      name,
+      email,
+      password,
+      accountType
+    }
+    // this.props.setCurrentUser(user);
+    console.log({user})
+  }
+
+  // const handleAccountTypeChange = (event) => {
+  //   setAccountType(event.target.value);
+  // };
 
   return (
     <div>
@@ -113,10 +138,9 @@ const SignUpPage = () => {
         <CssBaseline />
         <Grid container direction="row" justify="flex-end" alignItems="center">
           <Grid item xs={2}>
-           
             <Link href="/signin" variant="body2">
-            <Typography className={classes.signIn}>SIGN IN</Typography>
-              </Link>
+              <Typography className={classes.signIn}>SIGN IN</Typography>
+            </Link>
           </Grid>
         </Grid>
         <Grid container direction="row" justify="center" alignItems="center">
@@ -132,7 +156,7 @@ const SignUpPage = () => {
           <Typography component="h1" variant="h5" className={classes.subtitle}>
             Create your account
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12}>
                 <TextField
@@ -143,6 +167,8 @@ const SignUpPage = () => {
                   fullWidth
                   autoComplete="full-name"
                   className={classes.label}
+                  value={state.name}
+                    onChange={handleChange('name')}
                 />
               </Grid>
 
@@ -155,6 +181,8 @@ const SignUpPage = () => {
                   label="Email"
                   name="email"
                   autoComplete="email"
+                  value={state.email}
+                  onChange={handleChange('email')}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -167,6 +195,8 @@ const SignUpPage = () => {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  value={state.password}
+                  onChange={handleChange('password')}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -177,13 +207,13 @@ const SignUpPage = () => {
                     fullWidth
                     labelId="accountType"
                     id="accountType"
-                    value={accountType}
-                    onChange={handleAccountTypeChange}
+                    value={state.accountType}
+                    onChange={handleChange("accountType")}
                   >
-                    <MenuItem value={10}> Property Shopper</MenuItem>
-                    <MenuItem value={20}>Real Estate Agent</MenuItem>
-                    <MenuItem value={30}>Property Developer</MenuItem>
-                    <MenuItem value={30}>Home Owner</MenuItem>
+                    <MenuItem value={"propertyShopper"}> Property Shopper</MenuItem>
+                    <MenuItem value={"realEstateAgent"}>Real Estate Agent</MenuItem>
+                    <MenuItem value={"propertyDeveloper"}>Property Developer</MenuItem>
+                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -204,13 +234,6 @@ const SignUpPage = () => {
                 label="By registering you accept our Terms of Use and Privacy and agree that we and our selected partners may contact you with relevant offers and services."
               />
             </Grid>
-            {/* <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="/signin" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid> */}
           </form>
         </div>
       </div>
