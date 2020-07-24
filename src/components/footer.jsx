@@ -40,12 +40,8 @@ const useStyles = makeStyles((theme) => ({
     width: "80%",
   },
   title: {
-    // padding: theme.spacing(2),
     textAlign: "left",
     color: theme.palette.secondary.main,
-    // fontWeight: "bold",
-    // fontSize: 25,
-    // lineHeight: 55,
   },
   text: {
     color: theme.palette.primary.main,
