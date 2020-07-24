@@ -10,6 +10,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
+import Link from "@material-ui/core/Link";
 
 import Logo from '../img/logo.png';
 
@@ -45,9 +46,10 @@ const useStyles = makeStyles((theme) => ({
     color: "inherit",
   },
   menuBackground: {
-    marginTop: 50,
+    marginTop: 20,
     background: "transparent",
     boxShadow: "none",
+    marginBottom: 20,
   },
   sectionDesktop: {
     display: "none",
@@ -122,12 +124,15 @@ const NavigationHeader = () => {
     <div className={classes.grow}>
       <AppBar position="static" className={classes.menuBackground}>
         <Toolbar>
+          <Link href="/" variant="nav">
           <img 
           src={Logo} 
           alt="TD logo"
           className={classes.logo}
           />
 
+          </Link>
+          
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Button variant="outlined" className={classes.button}>
