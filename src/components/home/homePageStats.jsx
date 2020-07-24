@@ -8,9 +8,10 @@ import PropertyListingImage from "../../img/Property-Listings.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    // flexGrow: 1,
     backgroundColor: "#F5E9DE",
-    marginTop: theme.spacing(5)
+    margin: theme.spacing(5),
+    border: `1px solid ${theme.palette.primary.main}`
   },
   container: {
       marginTop: theme.spacing(3),

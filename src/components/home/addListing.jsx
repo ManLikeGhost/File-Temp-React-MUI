@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.secondary.main,
-    margin: "50px 0",
+    margin: "50px",
     height: "100vh",
   },
   textStyle: {
@@ -25,16 +25,11 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.text,
   },
   button: {
-    // height: 50,
-    // width: 308,
-    // fontWeight: 500,
-    fontSize: 20,
-    // lineHeight: 29,
     margin: theme.spacing(1),
-    minWidth: 200, 
-    minHeight: 90, 
-    // minWidth: '30px', 
-    // minHeight: '30px'
+    color: theme.palette.primary.contrastText,
+    fontSize: 21,
+    borderRadius: 1,
+    border: `2px solid ${theme.palette.primary.main}`,
   },
 }));
 

@@ -7,12 +7,12 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
-
 import AccountCircle from "@material-ui/icons/AccountCircle";
-
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
-import Logo from '../img/logo.png'
+
+import Logo from '../img/logo.png';
+
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -89,6 +89,7 @@ const NavigationHeader = () => {
   };
 
   const menuId = "primary-menu";
+  
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}

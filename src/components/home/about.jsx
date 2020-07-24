@@ -16,26 +16,17 @@ const useStyles = makeStyles((theme) => ({
     
   },
   text: {
-    padding: "20px",
-    color: " #BF7950",
-    fontStyle: "normal",
-    fontWeight: "300",
-    fontSize: "41px",
-    lineHeight: "41px",
+    padding: "20px 80px",
+    color: theme.palette.primary.main,
+    fontSize: "30px",
     textAlign: "justify",
-    backgroundColor: "transparent",
   },
   button: {
-    marginLeft: "50px",
-    borderRadius: "2px",
-    width: "244px",
-    height: "71.09px",
-    // fontFamily: "Metropolis",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: "23px",
-    lineHeight: "23px",
-    textAlign: "center",
+    marginLeft: "60px",
+    color: theme.palette.primary.contrastText,
+    fontSize: 21,
+    borderRadius: 1,
+    border: `2px solid ${theme.palette.primary.main}`
   },
  
 }));

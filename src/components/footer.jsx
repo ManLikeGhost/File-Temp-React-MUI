@@ -9,6 +9,12 @@ import Box from "@material-ui/core/Box";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import TwitterIcon from "@material-ui/icons/Twitter";
+
+import MarbleBackground from "../img/MarbleBackground.png";
 
 import FooterLogo from "../img/Footer-Logo.png";
 
@@ -24,28 +30,48 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     borderTop: `1px solid ${theme.palette.primary.main}`,
+    color: theme.palette.primary.main,
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
     [theme.breakpoints.up("sm")]: {
       paddingTop: theme.spacing(6),
       paddingBottom: theme.spacing(6),
     },
-    marginTop: `calc(5% + 60px)`,
+    marginTop: `calc(5% + 150px)`,
     bottom: 0,
+    // height: "100vh",
+    backgroundImage: `url(${MarbleBackground})`,
+    backgroundPosition: "center center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
   },
-  logoContainer:{
-
+  logoContainer: {
+    width: "150px",
+    height: "150px",
+    // margin: "0 auto",
   },
   footerLogo: {
-    width: "80%",
+    // width: "80%",
+    maxWidth: "100%",
+    maxHeight: "100%",
+    objectFit: "contain"
   },
   title: {
     textAlign: "left",
     color: theme.palette.secondary.main,
+    fontWeight: "bold",
+    fontSize: 25,
+    // lineHeight: 55,
+  },
+  footerContactDetails: {
+    margin: "0 auto",
+    color: theme.palette.primary.main,
+    marginTop: 50,
+    marginLeft: 70,
   },
   text: {
-    color: theme.palette.primary.main,
-  },
+    textAlign: 'left'
+  }
 }));
 
 const footers = [
@@ -68,13 +94,14 @@ const Footer = () => {
 
   return (
     <div>
-      <Container maxWidth="md" component="footer" className={classes.footer}>
-        <Grid container spacing={4} justify="space-evenly">
+      <CssBaseline />
+      <Container maxWidth="lg" component="footer" className={classes.footer}>
+        <Grid container spacing={4} justify="center" alignItem="center" align='center'>
           <Grid item xs={4}>
-              <div>
+            <div className={classes.logoContainer}>
               <img src={FooterLogo} alt="" className={classes.footerLogo} />
-              </div>
-          
+            </div>
+
           </Grid>
           {footers.map((footer) => (
             <Grid item xs={8} sm={3} key={footer.title}>
@@ -102,19 +129,43 @@ const Footer = () => {
             </Grid>
           ))}
         </Grid>
-        <Grid container className={classes.text}>
+        <Grid container className={classes.footerContactDetails} justify="center" alignItem="center">
           <Grid item xs={4}>
-            Office 3, First Floor, <br />
+            <Typography align='center'>
+              Office 3, First Floor, <br />
             Office Suite, 4 Sandpit Road, <br />
             Dartford, Kent DA1 5BU
+            </Typography>
+
           </Grid>
           <Grid item xs={4}>
-            +01322 628780, <br />
+            <Typography align='left'>
+              +01322 628780, <br />
             +013226 86765, <br />
             +2348121412045
+            </Typography>
+
           </Grid>
           <Grid item xs={4}>
-            info@terrelldavies.co.uk
+            <Grid item xs={12}>
+              <Typography align='left'>
+                info@terrelldavies.co.uk
+            </Typography>
+            </Grid>
+            <Grid item xs={12}>
+
+              <Link color="inherit" href="#">
+                <FacebookIcon color="primary" fontSize="small" />
+              </Link>
+
+              <Link href="#"><InstagramIcon color="primary" fontSize="small" /></Link>
+              <Link href="#"><LinkedInIcon color="primary" fontSize="small" /></Link>
+              <Link href="#"><TwitterIcon color="primary" fontSize="small" /></Link>
+
+
+            </Grid>
+
+
           </Grid>
         </Grid>
         <Box mt={5} textAlign="center">
@@ -128,14 +179,14 @@ const Footer = () => {
 
 const Copyright = () => {
   return (
-   
-        <Typography variant="body2" color="textSecondary">
-          {new Date().getFullYear()} {"Copyright © "}
-          <Link color="inherit" href="https://pbgdigital.co.uk">
-            Terrell Davies Enterprise. All rights reserved.
+
+    <Typography variant="p" color="primary">
+      {new Date().getFullYear()} {"Copyright © "}
+      <Link color="inherit" href="https://pbgdigital.co.uk">
+        Terrell Davies Enterprise. All rights reserved.
           </Link>{" "}
-        </Typography>
-      
+    </Typography>
+
   );
 };
 
