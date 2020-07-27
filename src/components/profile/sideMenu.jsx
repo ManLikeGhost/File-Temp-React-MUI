@@ -4,7 +4,8 @@ import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import List from "@material-ui/core/List";
 import Link from "@material-ui/core/Link";
-
+import Typography from "@material-ui/core/Typography";
+import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -27,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
+  bigAvatar: {
+    width: 60,
+    height: 60,
+  },
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
@@ -58,6 +63,11 @@ const sideMenu = () => {
         anchor="left"
       >
         <div className={classes.toolbar} />
+        <Avatar alt="Ridbay" src="" className={classes.bigAvatar} />
+        <Typography>John Doe</Typography>
+        <Link>
+          <Typography>Click to change photo</Typography>
+        </Link>
         <Divider />
         <List>
           {menuList.map((menu) => (
