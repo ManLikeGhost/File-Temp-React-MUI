@@ -11,7 +11,7 @@ import SignUpPage from "./pages/SignUpPage";
 
 import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
-import AboutHome from "./components/home/about";
+import AboutPage from "./pages/AboutPage";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -32,7 +32,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/About">
-            <AboutHome />
+            <AboutPage />
           </Route>
           <Route path="/signin">
             <SignInPage />
@@ -40,7 +40,7 @@ function App() {
           <Route path="/signup">
             <SignUpPage />
           </Route>
-          <Route path="/">
+          <Route path="/" exact>
             <HomePage />
           </Route>
         </Switch>

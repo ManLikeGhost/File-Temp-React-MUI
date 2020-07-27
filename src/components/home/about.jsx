@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 const AboutHome = () => {
   const classes = useStyles();
-  return (
+  return(
     <div className={classes.backgroundImage}>
       <SectionTitle>About Terrell Davies Enterprise</SectionTitle>
       <Typography className={classes.text}>
