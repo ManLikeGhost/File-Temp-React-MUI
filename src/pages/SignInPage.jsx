@@ -109,6 +109,7 @@ const SignInPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const { email, password} = state;
+    
     const user = {
       email,
       password,

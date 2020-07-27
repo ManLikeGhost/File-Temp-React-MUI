@@ -12,19 +12,17 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-const drawerWidth = 240;
+const drawerWidth = 268;
 
 const useStyles = makeStyles((theme) => ({
-  appBar: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+    
   },
   drawerPaper: {
     width: drawerWidth,
+    padding: "50px"
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
@@ -32,11 +30,7 @@ const useStyles = makeStyles((theme) => ({
     width: 60,
     height: 60,
   },
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
-  },
+  
 }));
 
 const menuList = [
@@ -53,7 +47,7 @@ const sideMenu = () => {
   return (
     <div>
       <CssBaseline />
-
+      
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -62,13 +56,13 @@ const sideMenu = () => {
         }}
         anchor="left"
       >
-        <div className={classes.toolbar} />
+        {/* <div className={classes.toolbar} /> */}
         <Avatar alt="Ridbay" src="" className={classes.bigAvatar} />
         <Typography>John Doe</Typography>
         <Link>
           <Typography>Click to change photo</Typography>
         </Link>
-        <Divider />
+       
         <List>
           {menuList.map((menu) => (
             <Link color="inherit" href="#" key={menu}>
@@ -78,7 +72,7 @@ const sideMenu = () => {
             </Link>
           ))}
         </List>
-        <Divider />
+       
         <List>
           <Link color="inherit" href="/login">
             <ListItem button>
@@ -90,6 +84,7 @@ const sideMenu = () => {
           </Link>
         </List>
       </Drawer>
+      <Divider orientation="vertical" flexItem color="primary"/>
     </div>
   );
 };
