@@ -1,11 +1,13 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+
 import SideMenu from "../components/profile/sideMenu";
 import ContentSection from "../components/profile/contentSection";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    padding: "150px",
   },
 }));
 

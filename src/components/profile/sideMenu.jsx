@@ -6,7 +6,7 @@ import List from "@material-ui/core/List";
 import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
-import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -18,19 +18,25 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    
   },
   drawerPaper: {
     width: drawerWidth,
-    padding: "50px"
+    padding: "50px",
+    borderRight: `10px solid white`,
   },
+
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   bigAvatar: {
     width: 60,
     height: 60,
   },
-  
+  divider: {
+    padding: "50px auto",
+    height: "10%",
+    width: "10vw",
+    backgroundColor: "blue",
+  },
 }));
 
 const menuList = [
@@ -46,45 +52,36 @@ const sideMenu = () => {
 
   return (
     <div>
-      <CssBaseline />
-      
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        anchor="left"
-      >
-        {/* <div className={classes.toolbar} /> */}
-        <Avatar alt="Ridbay" src="" className={classes.bigAvatar} />
-        <Typography>John Doe</Typography>
-        <Link>
-          <Typography>Click to change photo</Typography>
-        </Link>
-       
-        <List>
-          {menuList.map((menu) => (
-            <Link color="inherit" href="#" key={menu}>
+      <Grid container>
+        <Grid item>
+          <Avatar alt="Ridbay" src="" className={classes.bigAvatar} />
+          <Typography>John Doe</Typography>
+          <Link>
+            <Typography>Click to change photo</Typography>
+          </Link>
+
+          <List>
+            {menuList.map((menu) => (
+              <Link color="inherit" href="#" key={menu}>
+                <ListItem button>
+                  <ListItemText primary={menu} />
+                </ListItem>
+              </Link>
+            ))}
+          </List>
+
+          <List>
+            <Link color="inherit" href="/login">
               <ListItem button>
-                <ListItemText primary={menu} />
+                <ListItemText primary="Logout" />
+                <ListItemIcon>
+                  <ExitToAppIcon />
+                </ListItemIcon>
               </ListItem>
             </Link>
-          ))}
-        </List>
-       
-        <List>
-          <Link color="inherit" href="/login">
-            <ListItem button>
-              <ListItemText primary="Logout" />
-              <ListItemIcon>
-                <ExitToAppIcon />
-              </ListItemIcon>
-            </ListItem>
-          </Link>
-        </List>
-      </Drawer>
-      <Divider orientation="vertical" flexItem color="primary"/>
+          </List>
+        </Grid>
+      </Grid>
     </div>
   );
 };
