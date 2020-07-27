@@ -101,31 +101,46 @@ const SignUpPage = () => {
   // const [password, setPassword] = useState("");
   // const [accountType, setAccountType] = useState("");
   const [state, setState] = useState({
-    name: '',
-    email: '',
-    password: '',
-    accountType:'',
+    name: "",
+    email: "",
+    password: "",
+    accountType: "",
   });
+  const [error, setError] = useState(null);
 
-  const handleChange = name => event => {
+  const handleChange = (name) => (event) => {
     setState({
       ...state,
       [name]: event.target.value,
     });
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const {name, email, password, accountType} = state;
+    const { name, email, password, accountType } = state;
+    if (!name) {
+      return setError("*Name is required");
+    }
+    if (!email) {
+      return setError("*Email is required");
+    }
+
+    if (!password) {
+      return setError("*Password is required");
+    }
+    if (!accountType) {
+      return setError("*Please select account type");
+    }
+
     const user = {
       name,
       email,
       password,
-      accountType
-    }
+      accountType,
+    };
     // this.props.setCurrentUser(user);
-    console.log({user})
-  }
+    console.log({ user });
+  };
 
   // const handleAccountTypeChange = (event) => {
   //   setAccountType(event.target.value);
@@ -156,6 +171,17 @@ const SignUpPage = () => {
           <Typography component="h1" variant="h5" className={classes.subtitle}>
             Create your account
           </Typography>
+
+          {error ? (
+            <Typography
+              component="h1"
+              variant="h5"
+              className={classes.subtitle}
+            >
+              {error}
+            </Typography>
+          ) : null}
+
           <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12}>
@@ -168,7 +194,7 @@ const SignUpPage = () => {
                   autoComplete="full-name"
                   className={classes.label}
                   value={state.name}
-                    onChange={handleChange('name')}
+                  onChange={handleChange("name")}
                 />
               </Grid>
 
@@ -182,7 +208,7 @@ const SignUpPage = () => {
                   name="email"
                   autoComplete="email"
                   value={state.email}
-                  onChange={handleChange('email')}
+                  onChange={handleChange("email")}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -196,7 +222,7 @@ const SignUpPage = () => {
                   id="password"
                   autoComplete="current-password"
                   value={state.password}
-                  onChange={handleChange('password')}
+                  onChange={handleChange("password")}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -210,9 +236,16 @@ const SignUpPage = () => {
                     value={state.accountType}
                     onChange={handleChange("accountType")}
                   >
-                    <MenuItem value={"propertyShopper"}> Property Shopper</MenuItem>
-                    <MenuItem value={"realEstateAgent"}>Real Estate Agent</MenuItem>
-                    <MenuItem value={"propertyDeveloper"}>Property Developer</MenuItem>
+                    <MenuItem value={"propertyShopper"}>
+                      {" "}
+                      Property Shopper
+                    </MenuItem>
+                    <MenuItem value={"realEstateAgent"}>
+                      Real Estate Agent
+                    </MenuItem>
+                    <MenuItem value={"propertyDeveloper"}>
+                      Property Developer
+                    </MenuItem>
                     <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
                   </Select>
                 </FormControl>
