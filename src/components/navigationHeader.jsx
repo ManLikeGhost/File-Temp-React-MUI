@@ -12,7 +12,7 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 
-import Logo from '../img/logo.png';
+import Logo from "../img/logo.png";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -21,13 +21,11 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
     marginLeft: theme.spacing(2),
-
   },
-  logo:{
+  logo: {
     marginLeft: 20,
- 
   },
-  
+
   title: {
     display: "none",
     [theme.breakpoints.up("sm")]: {
@@ -39,7 +37,11 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.dark,
     fontSize: 21,
     borderRadius: 1,
-    border: '2px solid'
+    border: "2px solid",
+    "&:hover": {
+      background: theme.palette.primary.main,
+      color: theme.palette.primary.contrastText,
+    },
   },
 
   inputRoot: {
@@ -91,7 +93,7 @@ const NavigationHeader = () => {
   };
 
   const menuId = "primary-menu";
-  
+
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -125,14 +127,9 @@ const NavigationHeader = () => {
       <AppBar position="static" className={classes.menuBackground}>
         <Toolbar>
           <Link href="/" variant="body2">
-          <img 
-          src={Logo} 
-          alt="TD logo"
-          className={classes.logo}
-          />
-
+            <img src={Logo} alt="TD logo" className={classes.logo} />
           </Link>
-          
+
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Button variant="outlined" className={classes.button}>
@@ -146,7 +143,7 @@ const NavigationHeader = () => {
               // onClick={handleMenuOpen}
               color="inherit"
             >
-              <AccountCircle fontSize= 'large'  color="primary"  />
+              <AccountCircle fontSize="large" color="primary" />
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
@@ -166,7 +163,7 @@ const NavigationHeader = () => {
             aria-label="open drawer"
             onClick={handleMenuOpen}
           >
-            <MenuIcon fontSize= 'large'  color="primary" />
+            <MenuIcon fontSize="large" color="primary" />
           </IconButton>
         </Toolbar>
       </AppBar>
