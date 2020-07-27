@@ -75,6 +75,15 @@ const AboutPage = () => {
           </Grid>
         </div>  
         <SectionTitle>Why Terrell Davies</SectionTitle>
+          <Typography className={classes.text}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+              tempor incididuntut labore et dolore magna aliqua. Quis ipsum
+              suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan
+              lacus vel facilisis ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
+              ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas
+              accumsan lacus vel faca
+            </Typography>
         <SectionTitle>Testimonials</SectionTitle>
         <SectionTitle>Strategic Partners</SectionTitle>  
         <Footer />
