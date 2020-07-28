@@ -12,19 +12,19 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import AccountSettings from "./accountSettings";
 import ContentSection from "./contentSection";
-const routes = [
-  {
-    path: "/",
-    exact: true,
-    sidebar: () => <div>ContentSection</div>,
-    main: () => <ContentSection />,
-  },
-  {
-    path: "/bubblegum",
-    sidebar: () => <div>AccountSettings</div>,
-    main: () => <AccountSettings />,
-  },
-];
+// const routes = [
+//   {
+//     path: "/",
+//     exact: true,
+//     sidebar: () => <div>ContentSection</div>,
+//     main: () => <ContentSection />,
+//   },
+//   {
+//     path: "/bubblegum",
+//     sidebar: () => <div>AccountSettings</div>,
+//     main: () => <AccountSettings />,
+//   },
+// ];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,11 +47,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const sideMenu = () => {
+const SideMenu = () => {
   const classes = useStyles();
 
   return (
-    <Router>
+   
       <div className={classes.root}>
         <Grid
           container
@@ -114,20 +114,8 @@ const sideMenu = () => {
           </Grid>
         </Grid>
       </div>
-      <Switch>
-        {routes.map((route, index) => (
-          // Render more <Route>s with the same paths as
-          // above, but different components this time.
-          <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            children={<route.main />}
-          />
-        ))}
-      </Switch>
-    </Router>
+      
   );
 };
 
-export default sideMenu;
+export default SideMenu;

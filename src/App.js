@@ -33,7 +33,7 @@ function App() {
       <CssBaseline />
       <Router>
         <Switch>
-          <Route exact path="/About">
+          <Route exact path="/about">
             <AboutPage />
           </Route>
           <Route exact path="/signin">

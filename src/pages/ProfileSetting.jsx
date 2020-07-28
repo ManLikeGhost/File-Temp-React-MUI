@@ -1,8 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-import SideMenu from "../components/profile/sideMenu";
-import ContentSection from "../components/profile/contentSection";
+import SwitchRoutes from "../components/test/SwitchRoutes";
+import Account from "../components/test/account";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,9 +14,9 @@ const useStyles = makeStyles((theme) => ({
 const ProfileSetting = () => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <SideMenu />
-      <ContentSection />
+    <div>
+      <Account />
+      <SwitchRoutes />
     </div>
   );
 };

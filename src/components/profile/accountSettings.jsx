@@ -1,6 +1,6 @@
 import React from "react";
 
-function accountSettings() {
+function AccountSettings() {
   return (
     <div>
       <h1>Account</h1>
@@ -8,4 +8,4 @@ function accountSettings() {
   );
 }
 
-export default accountSettings;
+export default AccountSettings;
