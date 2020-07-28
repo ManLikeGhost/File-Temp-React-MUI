@@ -1,88 +1,132 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import CssBaseline from "@material-ui/core/CssBaseline";
+
 import List from "@material-ui/core/List";
 import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-const drawerWidth = 268;
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import AccountSettings from "./accountSettings";
+import ContentSection from "./contentSection";
+const routes = [
+  {
+    path: "/",
+    exact: true,
+    sidebar: () => <div>ContentSection</div>,
+    main: () => <ContentSection />,
+  },
+  {
+    path: "/bubblegum",
+    sidebar: () => <div>AccountSettings</div>,
+    main: () => <AccountSettings />,
+  },
+];
 
 const useStyles = makeStyles((theme) => ({
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-    padding: "50px",
-    borderRight: `10px solid white`,
+  root: {
+    background: "#F5E9DE",
+    textAlign: "center",
+    width: `calc(100vw - 48px)`,
   },
 
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
   bigAvatar: {
-    width: 60,
-    height: 60,
+    width: theme.spacing(6),
+    height: theme.spacing(6),
+    color: theme.palette.primary.main,
   },
-  divider: {
-    padding: "50px auto",
-    height: "10%",
-    width: "10vw",
-    backgroundColor: "blue",
+  bigText: {
+    fontWeight: 600,
+    fontSize: "1rem",
+    lineHeight: "3rem",
+    textAlign: "center",
+    color: "#04403A",
   },
 }));
-
-const menuList = [
-  "Account",
-  "Listings",
-  "Subscriptions",
-  "Saved Property",
-  "Security",
-];
 
 const sideMenu = () => {
   const classes = useStyles();
 
   return (
-    <div>
-      <Grid container>
-        <Grid item>
-          <Avatar alt="Ridbay" src="" className={classes.bigAvatar} />
-          <Typography>John Doe</Typography>
-          <Link>
-            <Typography>Click to change photo</Typography>
-          </Link>
+    <Router>
+      <div className={classes.root}>
+        <Grid
+          container
+          spacing={3}
+          direction="column"
+          justify="center"
+          alignItems="center"
+        >
+          <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+          >
+            <Avatar
+              alt="terrel davies"
+              src=""
+              className={classes.bigAvatar}
+              fontSize="large"
+              color="primary"
+            />
 
-          <List>
-            {menuList.map((menu) => (
-              <Link color="inherit" href="#" key={menu}>
-                <ListItem button>
-                  <ListItemText primary={menu} />
-                </ListItem>
-              </Link>
-            ))}
-          </List>
-
-          <List>
-            <Link color="inherit" href="/login">
-              <ListItem button>
-                <ListItemText primary="Logout" />
-                <ListItemIcon>
-                  <ExitToAppIcon />
-                </ListItemIcon>
-              </ListItem>
+            <Typography className={classes.bigText}>John Doe</Typography>
+            <Link>
+              <Typography>Click to change photo</Typography>
             </Link>
-          </List>
+          </Grid>
+          <Grid item>
+            <List>
+              <Link color="inherit" href="/account">
+                <Typography className={classes.bigText}>Account</Typography>
+              </Link>
+              <Link color="inherit" href="/listings">
+                <Typography className={classes.bigText}>Listings</Typography>
+              </Link>
+              <Link color="inherit" href="/subscriptions">
+                <Typography className={classes.bigText}>
+                  Subscriptions
+                </Typography>
+              </Link>
+              <Link color="inherit" href="/saved-property">
+                <Typography className={classes.bigText}>
+                  Saved Property
+                </Typography>
+              </Link>
+              <Link color="inherit" href="/security">
+                <Typography className={classes.bigText}>Security</Typography>
+              </Link>
+            </List>
+          </Grid>
+          <Grid>
+            <List>
+              <Link color="inherit" href="/login">
+                <Typography className={classes.bigText}>
+                  Logout
+                  <ExitToAppIcon />
+                </Typography>
+              </Link>
+            </List>
+          </Grid>
         </Grid>
-      </Grid>
-    </div>
+      </div>
+      <Switch>
+        {routes.map((route, index) => (
+          // Render more <Route>s with the same paths as
+          // above, but different components this time.
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            children={<route.main />}
+          />
+        ))}
+      </Switch>
+    </Router>
   );
 };
 

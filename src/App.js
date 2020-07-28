@@ -9,6 +9,7 @@ import SignUpPage from "./pages/SignUpPage";
 import ProfileSetting from "./pages/ProfileSetting";
 
 import "./App.css";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import AboutPage from "./pages/AboutPage";
 
@@ -29,15 +30,16 @@ function App() {
   const classes = useStyles();
   return (
     <div className={classes.paperContainer}>
+      <CssBaseline />
       <Router>
         <Switch>
-          <Route path="/About">
+          <Route exact path="/About">
             <AboutPage />
           </Route>
-          <Route path="/signin">
+          <Route exact path="/signin">
             <SignInPage />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignUpPage />
           </Route>
 
@@ -45,7 +47,7 @@ function App() {
             <ProfileSetting />
           </Route>
 
-    <Route path="/" exact>
+          <Route exact path="/" exact>
             <HomePage />
           </Route>
         </Switch>

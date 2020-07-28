@@ -1,1 +1,1 @@
-git add . && git commit -m "Develop Sign Up page" && git push origin master
+git add . && git commit -m "Added Avatar to Account setting Sidebar menu" && git push origin master
