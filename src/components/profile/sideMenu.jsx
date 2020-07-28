@@ -1,30 +1,15 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-
+import {
+  Link
+} from "react-router-dom";
 import List from "@material-ui/core/List";
-import Link from "@material-ui/core/Link";
+
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-import AccountSettings from "./accountSettings";
-import ContentSection from "./contentSection";
-// const routes = [
-//   {
-//     path: "/",
-//     exact: true,
-//     sidebar: () => <div>ContentSection</div>,
-//     main: () => <ContentSection />,
-//   },
-//   {
-//     path: "/bubblegum",
-//     sidebar: () => <div>AccountSettings</div>,
-//     main: () => <AccountSettings />,
-//   },
-// ];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -81,23 +66,23 @@ const SideMenu = () => {
           </Grid>
           <Grid item>
             <List>
-              <Link color="inherit" href="/account">
+              <Link to="/sidebar/account">
                 <Typography className={classes.bigText}>Account</Typography>
               </Link>
-              <Link color="inherit" href="/listings">
+              <Link color="inherit" to="/sidebar/listings">
                 <Typography className={classes.bigText}>Listings</Typography>
               </Link>
-              <Link color="inherit" href="/subscriptions">
+              <Link to="/sidebar/subscriptions">
                 <Typography className={classes.bigText}>
                   Subscriptions
                 </Typography>
               </Link>
-              <Link color="inherit" href="/saved-property">
+              <Link to="/sidebar/savedProperty">
                 <Typography className={classes.bigText}>
                   Saved Property
                 </Typography>
               </Link>
-              <Link color="inherit" href="/security">
+              <Link to="/sidebar/security">
                 <Typography className={classes.bigText}>Security</Typography>
               </Link>
             </List>

@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
 }));
-const ContentSection = (props) => {
+const Listings = (props) => {
   const classes = useStyles();
   return (
     <div>
@@ -38,4 +38,4 @@ const ContentSection = (props) => {
   );
 };
 
-export default ContentSection;
+export default Listings;

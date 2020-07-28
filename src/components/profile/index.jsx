@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import SplitPane from 'react-split-pane';
 import SideMenu from './sideMenu'
-import ContentSection from './contentSection';
+
 import AccountSettings from './accountSettings';
 
 const SideMenuIndex= () => (
@@ -17,7 +17,7 @@ const SideMenuIndex= () => (
         <SideMenu />
      
       <div>
-        <Route path="/listings" component={ContentSection} />
+        {/* <Route path="/listings" component={ContentSection} /> */}
         <Route path="/account" component={AccountSettings} />
       </div>
     </SplitPane>

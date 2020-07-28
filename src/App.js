@@ -6,8 +6,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
-import ProfileSetting from "./pages/ProfileSetting";
 
+import Sidebar from "./pages/Sidebar";
 import "./App.css";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
@@ -42,12 +42,11 @@ function App() {
           <Route exact path="/signup">
             <SignUpPage />
           </Route>
-
-          <Route path="/profile">
-            <ProfileSetting />
+          <Route path="/sidebar">
+            <Sidebar />
           </Route>
 
-          <Route exact path="/" exact>
+          <Route exact path="/">
             <HomePage />
           </Route>
         </Switch>
