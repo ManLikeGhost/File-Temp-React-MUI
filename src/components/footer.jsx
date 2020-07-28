@@ -57,7 +57,6 @@ const useStyles = makeStyles((theme) => ({
     objectFit: "contain"
   },
   title: {
-    // padding: theme.spacing(2),
     textAlign: "left",
     color: theme.palette.secondary.main,
     fontWeight: "bold",

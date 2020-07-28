@@ -3,19 +3,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-
+import FormatAlignRightIcon from '@material-ui/icons/FormatAlignRight';
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
+
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
+import Link from "@material-ui/core/Link";
 
-import Logo from '../img/logo.png';
-import { Link } from 'react-router-dom';
-
-
-
+import Logo from "../img/logo.png";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -24,13 +21,11 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
     marginLeft: theme.spacing(2),
-
   },
-  logo:{
+  logo: {
     marginLeft: 20,
- 
   },
-  
+
   title: {
     display: "none",
     [theme.breakpoints.up("sm")]: {
@@ -42,16 +37,21 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.dark,
     fontSize: 21,
     borderRadius: 1,
-    border: '2px solid'
+    border: "2px solid",
+    "&:hover": {
+      background: theme.palette.primary.main,
+      color: theme.palette.primary.contrastText,
+    },
   },
 
   inputRoot: {
     color: "inherit",
   },
   menuBackground: {
-    marginTop: 50,
+    marginTop: 20,
     background: "transparent",
     boxShadow: "none",
+    marginBottom: 20,
   },
   sectionDesktop: {
     display: "none",
@@ -93,7 +93,7 @@ const NavigationHeader = () => {
   };
 
   const menuId = "primary-menu";
-  
+
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -129,11 +129,9 @@ const NavigationHeader = () => {
     <div className={classes.grow}>
       <AppBar position="static" className={classes.menuBackground}>
         <Toolbar>
-          <img 
-          src={Logo} 
-          alt="TD logo"
-          className={classes.logo}
-          />
+          <Link href="/" variant="body2">
+            <img src={Logo} alt="TD logo" className={classes.logo} />
+          </Link>
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
@@ -148,7 +146,7 @@ const NavigationHeader = () => {
               // onClick={handleMenuOpen}
               color="inherit"
             >
-              <AccountCircle fontSize= 'large'  color="primary"  />
+              <AccountCircle fontSize="large" color="primary" />
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
@@ -168,7 +166,7 @@ const NavigationHeader = () => {
             aria-label="open drawer"
             onClick={handleMenuOpen}
           >
-            <MenuIcon fontSize= 'large'  color="primary" />
+            <FormatAlignRightIcon fontSize="large" color="primary" />
           </IconButton>
         </Toolbar>
       </AppBar>

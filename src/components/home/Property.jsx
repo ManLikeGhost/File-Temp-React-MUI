@@ -48,7 +48,7 @@ export default function Property({ imagePath, saleText, address, details }) {
         component="img"
         alt={saleText}
         height="200"
-        image={imagePath}
+        image={imagePath || 'http://placehold.it/200'}
         title={saleText}
       />
 

@@ -1,13 +1,12 @@
 import React from "react";
 //Router
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-import MarbleBackground from "./img/MarbleBackground.png";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import HomePage from "./pages/HomePage.jsx";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
+import ProfileSetting from "./pages/ProfileSetting";
 
 import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
@@ -17,12 +16,13 @@ const useStyles = makeStyles((theme) => ({
   "@global": {
     body: {
       backgroundColor: theme.palette.common.white,
+      maxWidth: "1980px",
     },
   },
-  paperContainer: {
-    height: "100vh",
-    backgroundImage: `url(${MarbleBackground})`,
-  },
+  // paperContainer: {
+  //   height: "100vh",
+  //   backgroundImage: `url(${MarbleBackground})`,
+  // },
 }));
 
 function App() {
@@ -40,7 +40,12 @@ function App() {
           <Route path="/signup">
             <SignUpPage />
           </Route>
-          <Route path="/" exact>
+
+          <Route path="/profile">
+            <ProfileSetting />
+          </Route>
+
+    <Route path="/" exact>
             <HomePage />
           </Route>
         </Switch>
