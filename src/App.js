@@ -7,7 +7,7 @@ import HomePage from "./pages/HomePage.jsx";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 
-import Sidebar from "./pages/Sidebar";
+import ProfileSettings from "./pages/ProfileSettings";
 import "./App.css";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
@@ -42,8 +42,8 @@ function App() {
           <Route exact path="/signup">
             <SignUpPage />
           </Route>
-          <Route path="/sidebar">
-            <Sidebar />
+          <Route path="/profile-settings">
+            <ProfileSettings />
           </Route>
 
           <Route exact path="/">

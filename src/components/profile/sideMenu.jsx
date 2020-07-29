@@ -15,7 +15,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     background: "#F5E9DE",
     textAlign: "center",
-    width: `calc(100vw - 48px)`,
+    // width: `calc(100vw - 100px)`,
+    width: theme.spacing(20),
+    marginTop: theme.spacing(6),
+    marginLeft: theme.spacing(20),
   },
 
   bigAvatar: {
@@ -66,23 +69,23 @@ const SideMenu = () => {
           </Grid>
           <Grid item>
             <List>
-              <Link to="/sidebar/account">
+              <Link to="/profile-settings/account">
                 <Typography className={classes.bigText}>Account</Typography>
               </Link>
-              <Link color="inherit" to="/sidebar/listings">
+              <Link color="inherit" to="/profile-settings/listings">
                 <Typography className={classes.bigText}>Listings</Typography>
               </Link>
-              <Link to="/sidebar/subscriptions">
+              <Link to="/profile-settings/subscriptions">
                 <Typography className={classes.bigText}>
                   Subscriptions
                 </Typography>
               </Link>
-              <Link to="/sidebar/savedProperty">
+              <Link to="/profile-settings/savedProperty">
                 <Typography className={classes.bigText}>
                   Saved Property
                 </Typography>
               </Link>
-              <Link to="/sidebar/security">
+              <Link to="/profile-settings/security">
                 <Typography className={classes.bigText}>Security</Typography>
               </Link>
             </List>

@@ -15,28 +15,28 @@ import SideMenu from '../components/profile/sideMenu';
 const routes = [
 
   {
-    path: "/sidebar/account",
+    path: "/profile-settings/account",
     main: () => <AccountSettings />
   },
   {
-    path: "/sidebar/listings",
+    path: "/profile-settings/listings",
     main: () => <Listings />
   },
   {
-    path: "/sidebar/savedProperty",
+    path: "/profile-settings/savedProperty",
     main: () => <SavedProperty />
   },
   {
-    path: "/sidebar/security",
+    path: "/profile-settings/security",
     main: () => <Security />
   },
   {
-    path: "/sidebar/subscriptions",
+    path: "/profile-settings/subscriptions",
     main: () => <Subscriptions />
   }
 ];
 
-export default function Sidebar() {
+export default function ProfileSettings() {
   return (
     <Router>
       <div style={{ display: "flex" }}>
