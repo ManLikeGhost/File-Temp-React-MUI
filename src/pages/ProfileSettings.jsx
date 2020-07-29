@@ -10,31 +10,33 @@ import Security from "../components/profile/security";
 import Subscriptions from "../components/profile/subscriptions";
 import SideMenu from "../components/profile/sideMenu";
 import ProfileTitle from "../components/profile/profileTitle";
+import Marble from "../img/MarbleBackground.png";
+import NavigationHeader from '../components/navigationHeader'
 const useStyles = makeStyles((theme) => ({
+  root: {
+    height: "500px",
+    backgroundRepeat: "no-repeat",
+    background: `url(${Marble}) no-repeat center center fixed`,
+    backgroundSize: "cover",
+  },
   profileContainer: {
     background: "#F5E9DE",
     textAlign: "center",
     // width: `calc(100vw - 100px)`,
     // width: theme.spacing(20),
     margin: theme.spacing(20),
+    marginLeft:theme.spacing(40),
+    border: "0.8px solid #BF7950",
+    boxShadow: "0px 4px 25px rgba(0, 0, 0, 0.25)",
+    borderRadius: " 4px",
+    height: "666px",
+    width:"666px",
   },
   divider: {
     margin: theme.spacing(6, 0),
-    height: 300,
+    height: 500,
     width: 1,
     background: theme.palette.primary.main,
-  },
-  bigAvatar: {
-    width: theme.spacing(6),
-    height: theme.spacing(6),
-    color: theme.palette.primary.main,
-  },
-  bigText: {
-    fontWeight: 600,
-    fontSize: "1rem",
-    lineHeight: "3rem",
-    textAlign: "center",
-    color: "#04403A",
   },
 }));
 
@@ -72,11 +74,11 @@ const ProfileSettings = () => {
 
   return (
     <Router>
-      <div className="BackgroundImage">
-        {routes.map((route, index) => (
+      <div className={classes.root}>
+        <NavigationHeader />
+        {/* {routes.map((route, index) => (
           <ProfileTitle>{route.title}</ProfileTitle>
-        ))}
-
+        ))} */}
         <div className={classes.profileContainer}>
           <Grid container>
             <Grid item xs={3}>
