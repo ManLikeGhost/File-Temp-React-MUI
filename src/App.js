@@ -12,6 +12,7 @@ import "./App.css";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import AboutPage from "./pages/AboutPage";
+import Page404 from "./pages/Page404";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -49,6 +50,7 @@ function App() {
           <Route exact path="/">
             <HomePage />
           </Route>
+          <Route component={Page404} />
         </Switch>
       </Router>
     </div>
