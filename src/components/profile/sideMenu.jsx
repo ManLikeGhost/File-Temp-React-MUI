@@ -12,15 +12,7 @@ import Grid from "@material-ui/core/Grid";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    background: "#F5E9DE",
-    textAlign: "center",
-    // width: `calc(100vw - 100px)`,
-    width: theme.spacing(20),
-    marginTop: theme.spacing(6),
-    marginLeft: theme.spacing(20),
-  },
-
+ 
   bigAvatar: {
     width: theme.spacing(6),
     height: theme.spacing(6),
@@ -40,7 +32,7 @@ const SideMenu = () => {
 
   return (
    
-      <div className={classes.root}>
+      <div>
         <Grid
           container
           spacing={3}
@@ -72,7 +64,7 @@ const SideMenu = () => {
               <Link to="/profile-settings/account">
                 <Typography className={classes.bigText}>Account</Typography>
               </Link>
-              <Link color="inherit" to="/profile-settings/listings">
+              <Link to="/profile-settings/listings">
                 <Typography className={classes.bigText}>Listings</Typography>
               </Link>
               <Link to="/profile-settings/subscriptions">
