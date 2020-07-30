@@ -104,8 +104,8 @@ const NavigationHeader = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}><Link to="/about"> About Terrel Davies</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}>Our Portfolio Listings</MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link href="about"> About Terrel Davies</Link></MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link href="#">Our Portfolio Listings</Link></MenuItem>
       <MenuItem onClick={handleMenuClose}>Pricing</MenuItem>
       <MenuItem onClick={handleMenuClose}>Blog</MenuItem>
       <MenuItem onClick={handleMenuClose}>Contact</MenuItem>

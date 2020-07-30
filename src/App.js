@@ -12,6 +12,9 @@ import "./App.css";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import AboutPage from "./pages/AboutPage";
+import ForRent from "./components/listings/forRent";
+
+
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -33,6 +36,9 @@ function App() {
       <CssBaseline />
       <Router>
         <Switch>
+          <Route exact path="/forRent">
+            <ForRent />
+          </Route>
           <Route exact path="/about">
             <AboutPage />
           </Route>
