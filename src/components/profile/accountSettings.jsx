@@ -9,15 +9,12 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import { makeStyles } from "@material-ui/core/styles";
 
-import NavigationHeader from "../navigationHeader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,9 +54,8 @@ const useStyles = makeStyles((theme) => ({
   label: {
     fontSize: "15px",
   },
-
   accountFormControl: {
-    margin: theme.spacing(1),
+    // margin: theme.spacing(1),
     width: "100%",
     // minWidth: 120,
   },
