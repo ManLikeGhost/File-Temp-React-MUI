@@ -1,19 +1,23 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import ButtonAccount from './miniComponents/button';
-import MessageAccount from './miniComponents/message';
-import './content.css';
+import ButtonAccount from "./miniComponents/button";
+import MessageAccount from "./miniComponents/message";
+import ProfileSectionTitle from "./miniComponents/profilesectionTitle";
 
-const Subscriptions=()=> {
+import "./content.css";
+
+const Subscriptions = () => {
   return (
-    <div  className="content">
-        <MessageAccount>
+    <div className="content">
+      <ProfileSectionTitle>
+        <div>Subscriptions</div>
+        <div>Manage your subscription plans</div>
+      </ProfileSectionTitle>
+      <MessageAccount>
         You have no subscription plan on your page.
-        </MessageAccount>
-        <ButtonAccount>VIEW PLANS</ButtonAccount>
-     
+      </MessageAccount>
+      <ButtonAccount>VIEW PLANS</ButtonAccount>
     </div>
   );
-}
+};
 
 export default Subscriptions;
