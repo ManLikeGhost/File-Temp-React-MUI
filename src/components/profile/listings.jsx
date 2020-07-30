@@ -15,16 +15,18 @@ const Listings = (props) => {
   const [properties, setProperties] = useState(0);
   const classes = useStyles();
   return (
-    <div className="content">
-      <ProfileSectionTitle> 
-            <div>Listings</div>
-            <div> Manage your listings</div>
-          </ProfileSectionTitle>
-      <MessageAccount>
-        You have <span className={classes.number}>{properties}</span> property
-        listings on your page.
-      </MessageAccount>
-      <ButtonAccount>ADD LISTINGS</ButtonAccount>
+    <div>
+      <ProfileSectionTitle>
+        <div>Listings</div>
+        <div> Manage your listings</div>
+      </ProfileSectionTitle>
+      <div className="content">
+        <MessageAccount>
+          You have <span className={classes.number}>{properties}</span> property
+          listings on your page.
+        </MessageAccount>
+        <ButtonAccount>ADD LISTINGS</ButtonAccount>
+      </div>
     </div>
   );
 };
