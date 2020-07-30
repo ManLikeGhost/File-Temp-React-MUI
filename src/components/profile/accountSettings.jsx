@@ -1,5 +1,5 @@
-import React,{useState} from "react";
-import ProfileSectionTitle from './profilesectionTitle';
+import React, { useState } from "react";
+import ProfileSectionTitle from "./profilesectionTitle";
 
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -94,64 +94,69 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// function AccountSettings() {
-//   return (
-//     <div>
-      
-//       <ProfileSectionTitle>
-//         Account
-//       </ProfileSectionTitle>
-//     </div>
-//   );
-// }
 
-// export default AccountSettings;
 const AccountSettings = () => {
   const classes = useStyles();
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [accountType, setAccountType] = useState("");
-  const [state, setState] = useState({
-    name: "",
-    email: "",
-    password: "",
+  const [account, setAccount] = useState({
     accountType: "",
+    name: "",
+    companyName: "",
+    address: "",
+    locality: "",
+    state: "",
+    country: "",
+    phone: "",
+    mobile: "",
+    email: "",
+    services: "",
+    facebook: "",
+    twitter: "",
+    linkedin: "",
   });
-  const [error, setError] = useState(null);
 
   const handleChange = (name) => (event) => {
-    setState({
-      ...state,
+    setAccount({
+      ...account,
       [name]: event.target.value,
     });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { name, email, password, accountType } = state;
-    if (!name) {
-      return setError("*Name is required");
-    }
-    if (!email) {
-      return setError("*Email is required");
-    }
-
-    if (!password) {
-      return setError("*Password is required");
-    }
-    if (!accountType) {
-      return setError("*Please select account type");
-    }
-
-    const user = {
-      name,
-      email,
-      password,
+    const {
       accountType,
+      name,
+      companyName,
+      address,
+      locality,
+      state,
+      country,
+      phone,
+      mobile,
+      email,
+      services,
+      facebook,
+      twitter,
+      linkedin,
+    } = account;
+    const newAccount = {
+      accountType,
+      name,
+      companyName,
+      address,
+      locality,
+      state,
+      country,
+      phone,
+      mobile,
+      email,
+      services,
+      facebook,
+      twitter,
+      linkedin,
     };
-    // this.props.setCurrentUser(user);
-    console.log({ user });
+    // this.props.setCurrentAccount(newAccount);
+    console.log({ newAccount });
   };
 
   // const handleAccountTypeChange = (event) => {
@@ -160,81 +165,26 @@ const AccountSettings = () => {
 
   return (
     <div>
-      
       <div>
         <CssBaseline />
-        
 
         <div>
-        
-        <ProfileSectionTitle>         Account
-       </ProfileSectionTitle>
-          {error ? (
-            <Typography
-              component="h1"
-              variant="h5"
-              className={classes.subtitle}
-            >
-              {error}
-            </Typography>
-          ) : null}
+          <ProfileSectionTitle> Account</ProfileSectionTitle>
 
-          <form className={classes.form} noValidate onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={12}>
-                <TextField
-                  required
-                  id="fullName"
-                  name="fullName"
-                  label="Full name"
-                  fullWidth
-                  autoComplete="full-name"
-                  className={classes.label}
-                  value={state.name}
-                  onChange={handleChange("name")}
-                />
-              </Grid>
-
-              <Grid item xs={12}>
-                <TextField
-                  // variant="outlined"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email"
-                  name="email"
-                  autoComplete="email"
-                  value={state.email}
-                  onChange={handleChange("email")}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  // variant="outlined"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  value={state.password}
-                  onChange={handleChange("password")}
-                />
-              </Grid>
-              <Grid item xs={12}>
+          <form className={classes.form} onSubmit={handleSubmit}>
+            <Grid container>
+              <Grid item xs={6}>
                 <FormControl className={classes.accountFormControl}>
                   <InputLabel id="accountType">Account Type</InputLabel>
                   <Select
-                    required
                     fullWidth
                     labelId="accountType"
                     id="accountType"
-                    value={state.accountType}
+                    value={account.accountType}
                     onChange={handleChange("accountType")}
                   >
                     <MenuItem value={"propertyShopper"}>
-                      {" "}
+                     
                       Property Shopper
                     </MenuItem>
                     <MenuItem value={"realEstateAgent"}>
@@ -248,6 +198,179 @@ const AccountSettings = () => {
                 </FormControl>
               </Grid>
             </Grid>
+
+            <Grid container spacing={2}>
+              <Grid item xs={6} sm={6}>
+                <TextField
+                  id="name"
+                  name="name"
+                  label="Name"
+                  fullWidth
+                  autoComplete="name"
+                  className={classes.label}
+                  value={account.name}
+                  onChange={handleChange("name")}
+                />
+              </Grid>
+
+              <Grid item xs={6}>
+                <TextField
+                  // variant="outlined"
+                  type="text"
+                  id="company"
+                  name="company"
+                  label="Company Name"
+                  fullWidth
+                  autoComplete="company"
+                  className={classes.label}
+                  value={account.companyName}
+                  onChange={handleChange("companyName")}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  name="address"
+                  label="Address"
+                  type="text"
+                  id="address"
+                  autoComplete="address-line1"
+                  value={account.address}
+                  onChange={handleChange("address")}
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={2}>
+              <Grid item xs={4}>
+              
+                <TextField
+                  id="locality"
+                  name="locality"
+                  label="Locality"
+                  fullWidth
+                  autoComplete="shipping locality"
+                  className={classes.label}
+                  value={account.locality}
+                  onChange={handleChange("locality")}
+                />
+              </Grid>
+              <Grid item xs={4}>
+               
+                <TextField
+                  id="state"
+                  name="state"
+                  label="State"
+                  fullWidth
+                  autoComplete="shipping region"
+                  className={classes.label}
+                  value={account.state}
+                  onChange={handleChange("state")}
+                />
+              </Grid>
+              <Grid item xs={4}>
+                
+                <TextField
+                  id="country"
+                  name="country"
+                  label="Country"
+                  fullWidth
+                  autoComplete="shipping country"
+                  className={classes.label}
+                  value={account.country}
+                  onChange={handleChange("country")}
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <TextField
+                  id="phone"
+                  name="phone"
+                  label="Phone"
+                  fullWidth
+                  autoComplete="tel"
+                  className={classes.label}
+                  value={account.phone}
+                  onChange={handleChange("phone")}
+                />
+              </Grid>
+              <Grid item xs={6}>
+               
+                <TextField
+                  id="mobile"
+                  name="mobile"
+                  label="Mobile"
+                  fullWidth
+                  autoComplete="tel"
+                  className={classes.label}
+                  value={account.mobile}
+                  onChange={handleChange("mobile")}
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  id="email"
+                  name="email"
+                  label="Email"
+                  type="email"
+                  fullWidth
+                  autoComplete="email"
+                  className={classes.label}
+                  value={account.email}
+                  onChange={handleChange("email")}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="services"
+                  name="services"
+                  label="Your Services"
+                  fullWidth
+                  autoComplete="services"
+                  className={classes.label}
+                  value={account.services}
+                  onChange={handleChange("services")}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="facebook"
+                  name="facebook"
+                  label="Facebook Profile"
+                  fullWidth
+                  autoComplete="facebook"
+                  className={classes.label}
+                  value={account.facebook}
+                  onChange={handleChange("facebook")}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="twitter"
+                  name="twitter"
+                  label="Twitter Profile"
+                  fullWidth
+                  autoComplete="twitter"
+                  className={classes.label}
+                  value={account.twitter}
+                  onChange={handleChange("twitter")}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="linkedin"
+                  name="linkedin"
+                  label="Linkedin Profile"
+                  fullWidth
+                  autoComplete="linkedin"
+                  className={classes.label}
+                  value={account.linkedin}
+                  onChange={handleChange("linkedin")}
+                />
+              </Grid>
+            </Grid>
             <Button
               type="submit"
               fullWidth
@@ -255,9 +378,8 @@ const AccountSettings = () => {
               color="primary"
               className={classes.submit}
             >
-              Sign Up
+              Save
             </Button>
-            
           </form>
         </div>
       </div>
