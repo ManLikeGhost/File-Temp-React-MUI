@@ -1,9 +1,17 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import ButtonAccount from './miniComponents/button';
+import MessageAccount from './miniComponents/message';
+import './content.css';
 
-function Subscriptions() {
+const Subscriptions=()=> {
   return (
-    <div>
-      <h1>Subscriptions</h1>
+    <div  className="content">
+        <MessageAccount>
+        You have no subscription plan on your page.
+        </MessageAccount>
+        <ButtonAccount>VIEW PLANS</ButtonAccount>
+     
     </div>
   );
 }

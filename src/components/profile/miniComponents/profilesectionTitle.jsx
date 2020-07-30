@@ -4,6 +4,11 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
+  root:{
+    // display: "inline-block",
+    // verticalAlign: "top",
+    // marginTop:`calc(100% - 500px)`
+  },
   title: {
     margin: "20px 0",
     paddingLeft: theme.spacing(10),
