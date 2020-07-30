@@ -6,6 +6,7 @@ import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
 
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
@@ -26,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: "#04403A",
   },
+  inputUpload:{
+    display: 'none',
+  }
 }));
 
 const SideMenu = () => {
@@ -50,9 +54,25 @@ const SideMenu = () => {
           />
 
           <Typography className={classes.bigText}>John Doe</Typography>
-          <Link>
+          {/* <Link>
             <Typography>Click to change photo</Typography>
-          </Link>
+          </Link> */}
+          <input
+            accept="image/*"
+            className={classes.inputUpload}
+            id="upload-file"
+            type="file"
+          />
+          <label htmlFor="upload-file">
+            <IconButton
+              color="primary"
+              aria-label="upload picture"
+              component="span"
+            >
+              <Typography>Click to change photo</Typography>
+            </IconButton>
+          </label>
+          
         </Grid>
         <Grid item>
           <List>
