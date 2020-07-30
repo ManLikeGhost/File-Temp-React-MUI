@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProfileSectionTitle from "./profilesectionTitle";
+import ProfileSectionTitle from "./miniComponents/profilesectionTitle";
 
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -15,6 +15,7 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import { makeStyles } from "@material-ui/core/styles";
 
+import ButtonAccount from './miniComponents/button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -85,8 +86,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "20px",
     lineHeight: "20px",
     textAlign: "center",
-    // width: "440.54px",
-    height: "59.53px",
+    width: "220.54px",
+    height: "48.53px",
   },
 }));
 
@@ -165,7 +166,10 @@ const AccountSettings = () => {
         <CssBaseline />
 
         <div>
-          <ProfileSectionTitle> Account</ProfileSectionTitle>
+          <ProfileSectionTitle> 
+            <div>Account</div>
+            <div> Edit your account settings</div>
+          </ProfileSectionTitle>
 
           <form className={classes.form} onSubmit={handleSubmit}>
             <Grid container>
@@ -367,6 +371,7 @@ const AccountSettings = () => {
                 />
               </Grid>
             </Grid>
+            
             <Button
               type="submit"
               fullWidth
