@@ -1,8 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import List from "@material-ui/core/List";
-
+import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
@@ -54,24 +54,10 @@ const SideMenu = () => {
           />
 
           <Typography className={classes.bigText}>John Doe</Typography>
-          {/* <Link>
+          <Link href="/profileImage">
             <Typography>Click to change photo</Typography>
-          </Link> */}
-          <input
-            accept="image/*"
-            className={classes.inputUpload}
-            id="upload-file"
-            type="file"
-          />
-          <label htmlFor="upload-file">
-            <IconButton
-              color="primary"
-              aria-label="upload picture"
-              component="span"
-            >
-              <Typography>Click to change photo</Typography>
-            </IconButton>
-          </label>
+          </Link>
+          
           
         </Grid>
         <Grid item>

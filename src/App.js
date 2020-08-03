@@ -13,6 +13,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import AboutPage from "./pages/AboutPage";
 import Page404 from "./pages/Page404";
+import ProfileImage from "./pages/ProfileImage"
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -46,6 +47,10 @@ function App() {
           <Route path="/profile-settings">
             <ProfileSettings />
           </Route>
+          <Route path="/profile-image">
+            <ProfileImage />
+          </Route>
+          
 
           <Route exact path="/">
             <HomePage />
