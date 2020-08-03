@@ -15,7 +15,8 @@ import AboutPage from "./pages/AboutPage";
 import ForRent from "./components/listings/forRent";
 
 import Page404 from "./pages/Page404";
-import ProfileImage from "./pages/ProfileImage"
+import ProfileImage from "./pages/ProfileImage";
+import SubscriptionPlans from "./pages/SubscriptionPlans";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -55,7 +56,10 @@ function App() {
           <Route path="/profile-image">
             <ProfileImage />
           </Route>
-          
+
+          <Route path="/subscription-plans">
+            <SubscriptionPlans />
+          </Route>
 
           <Route exact path="/">
             <HomePage />
