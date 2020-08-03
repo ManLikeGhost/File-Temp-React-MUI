@@ -14,7 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import AboutPage from "./pages/AboutPage";
 import ForRent from "./components/listings/forRent";
 
-
+import Page404 from "./pages/Page404";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -55,6 +55,7 @@ function App() {
           <Route exact path="/">
             <HomePage />
           </Route>
+          <Route component={Page404} />
         </Switch>
       </Router>
     </div>

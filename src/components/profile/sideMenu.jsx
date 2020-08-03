@@ -1,26 +1,20 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import List from "@material-ui/core/List";
 
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
 
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: "#F5E9DE",
-    textAlign: "center",
-    // width: `calc(100vw - 100px)`,
-    width: theme.spacing(20),
-    marginTop: theme.spacing(6),
-    marginLeft: theme.spacing(20),
+    marginTop: theme.spacing(20),
+    // width: theme.spacing(20),
   },
-
   bigAvatar: {
     width: theme.spacing(6),
     height: theme.spacing(6),
@@ -33,76 +27,86 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: "#04403A",
   },
+  inputUpload:{
+    display: 'none',
+  }
 }));
 
 const SideMenu = () => {
   const classes = useStyles();
 
   return (
-   
-      <div className={classes.root}>
-        <Grid
-          container
-          spacing={3}
-          direction="column"
-          justify="center"
-          alignItems="center"
-        >
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-          >
-            <Avatar
-              alt="terrel davies"
-              src=""
-              className={classes.bigAvatar}
-              fontSize="large"
-              color="primary"
-            />
+    <div className={classes.root}>
+      <Grid
+        container
+        spacing={3}
+        direction="column"
+        justify="center"
+        alignItems="center"
+      >
+        <Grid container direction="column" justify="center" alignItems="center">
+          <Avatar
+            alt="terrel davies"
+            src=""
+            className={classes.bigAvatar}
+            fontSize="large"
+            color="primary"
+          />
 
-            <Typography className={classes.bigText}>John Doe</Typography>
-            <Link>
+          <Typography className={classes.bigText}>John Doe</Typography>
+          {/* <Link>
+            <Typography>Click to change photo</Typography>
+          </Link> */}
+          <input
+            accept="image/*"
+            className={classes.inputUpload}
+            id="upload-file"
+            type="file"
+          />
+          <label htmlFor="upload-file">
+            <IconButton
+              color="primary"
+              aria-label="upload picture"
+              component="span"
+            >
               <Typography>Click to change photo</Typography>
-            </Link>
-          </Grid>
-          <Grid item>
-            <List>
-              <Link to="/profile-settings/account">
-                <Typography className={classes.bigText}>Account</Typography>
-              </Link>
-              <Link color="inherit" to="/profile-settings/listings">
-                <Typography className={classes.bigText}>Listings</Typography>
-              </Link>
-              <Link to="/profile-settings/subscriptions">
-                <Typography className={classes.bigText}>
-                  Subscriptions
-                </Typography>
-              </Link>
-              <Link to="/profile-settings/savedProperty">
-                <Typography className={classes.bigText}>
-                  Saved Property
-                </Typography>
-              </Link>
-              <Link to="/profile-settings/security">
-                <Typography className={classes.bigText}>Security</Typography>
-              </Link>
-            </List>
-          </Grid>
-          <Grid>
-            <List>
-              <Link color="inherit" href="/login">
-                <Typography className={classes.bigText}>
-                  Logout
-                  <ExitToAppIcon />
-                </Typography>
-              </Link>
-            </List>
-          </Grid>
+            </IconButton>
+          </label>
+          
         </Grid>
-      </div>
-      
+        <Grid item>
+          <List>
+            <Link to="/profile-settings/account">
+              <Typography className={classes.bigText}>Account</Typography>
+            </Link>
+            <Link to="/profile-settings/listings">
+              <Typography className={classes.bigText}>Listings</Typography>
+            </Link>
+            <Link to="/profile-settings/subscriptions">
+              <Typography className={classes.bigText}>Subscriptions</Typography>
+            </Link>
+            <Link to="/profile-settings/savedProperty">
+              <Typography className={classes.bigText}>
+                Saved Property
+              </Typography>
+            </Link>
+            <Link to="/profile-settings/security">
+              <Typography className={classes.bigText}>Security</Typography>
+            </Link>
+          </List>
+        </Grid>
+        <Grid>
+          <List>
+            <Link color="inherit" href="/login">
+              <Typography className={classes.bigText}>
+                Logout
+                <ExitToAppIcon />
+              </Typography>
+            </Link>
+          </List>
+        </Grid>
+      </Grid>
+    </div>
   );
 };
 

@@ -6,6 +6,21 @@
   height: 40vmin;
   pointer-events: none;
 }
+
+.BackgroundImage{
+  height: "1000px";
+  /* background-image: url('./img/MarbleBackground.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat:no-repeat; */
+  background: url(./img/MarbleBackground.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+  
+}
 @font-face{
   font-family: "PlayfairDisplay";
   src: url('./fonts/Playfair_Display/PlayfairDisplay-Regular.ttf') format('ttf'),
