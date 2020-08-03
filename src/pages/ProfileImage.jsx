@@ -3,12 +3,13 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
-import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
-
+import NavigationHeader from "../components/navigationHeader";
+import ProfileFooter from "../components/profile/profileFooter";
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(20),
+    marginLeft: theme.spacing(10),
   },
   container: {
     background: "#F5E9DE",
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px 4px 25px rgba(0, 0, 0, 0.25)",
     borderRadius: "4px",
     width: "60vw",
-    margin: "10px 200px",
+    margin: "1px 200px",
     padding: "30px",
   },
   bigAvatar: {
@@ -41,15 +42,23 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #BF7950",
     boxSizing: "border-box",
     borderRadius: " 4px",
-    color:theme.palette.primary.main,
+    color: theme.palette.primary.main,
   },
-  noFileChosenText:{
+  noFileChosenText: {
     fontWeight: 300,
     fontSize: "18px",
     lineHeight: "18px",
-    marginTop:theme.spacing(1),
+    marginTop: theme.spacing(1),
     marginLeft: "-30px",
     color: "rgba(0, 0, 0, 0.51)",
+  },
+  fileTypeDesc: {
+    marginTop: theme.spacing(2),
+    fontWeight: 300,
+    fontSize: "18px",
+    lineHeight: "18px",
+
+    color: " rgba(0, 0, 0, 0.51)",
   },
 }));
 
@@ -84,59 +93,74 @@ const ProfileImage = () => {
   };
 
   return (
-    <div className={classes.root}>
-      <Grid container className={classes.container}>
-        <Grid item xs={4}>
-          <Avatar
-            alt="terrel davies"
-            src={avatar}
-            className={classes.bigAvatar}
-            fontSize="large"
-            color="primary"
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <Typography className={classes.uploadImageText}>
-            Upload Profile Image
-          </Typography>
-          <input
-            accept="image/*"
-            className={classes.inputUpload}
-            id="upload-file"
-            type="file"
-            onChange={fileChangedHandler}
-          />
-          <label htmlFor="upload-file">
-            <Grid container>
-              <Grid item xs={6}>
-                <Button variant="contained" component="span"  className={classes.chooseFileButton}>
-                  Choose file
-                </Button>
+    <div className="BackgroundImage">
+      <NavigationHeader />
+
+      <div className={classes.root}>
+        <Grid container className={classes.container}>
+          <Grid item xs={4}>
+            <Avatar
+              alt="terrel davies"
+              src={avatar}
+              className={classes.bigAvatar}
+              fontSize="large"
+              color="primary"
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <Typography className={classes.uploadImageText}>
+              Upload Profile Image
+            </Typography>
+            <input
+              accept="image/*"
+              className={classes.inputUpload}
+              id="upload-file"
+              type="file"
+              onChange={fileChangedHandler}
+            />
+            <label htmlFor="upload-file">
+              <Grid container>
+                <Grid item xs={6}>
+                  <Button
+                    variant="contained"
+                    component="span"
+                    className={classes.chooseFileButton}
+                  >
+                    Choose file
+                  </Button>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography className={classes.noFileChosenText}>
+                    No file chosen
+                  </Typography>
+                </Grid>
               </Grid>
-              <Grid item xs={6}>
-                <Typography className={classes.noFileChosenText}>No file chosen</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Typography>JPG, GIF, or PNG. Max size of 800k</Typography>
-              </Grid>
+            </label>
+            <Grid item xs={12}>
+              <Typography className={classes.fileTypeDesc}>
+                JPG, GIF, or PNG. Max size of 800k
+              </Typography>
             </Grid>
-          </label>
-        </Grid>
-        <Grid xs={2} container
-  direction="row"
-  justify="center"
-  alignItems="flex-end">
-          
-          <Button
-            variant="contained"
-            color="primary"
-            component="span"
-            onClick={uploadHandler}
+          </Grid>
+          <Grid
+            xs={2}
+            container
+            direction="row"
+            justify="center"
+            alignItems="flex-end"
           >
-            Upload
-          </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              component="span"
+              onClick={uploadHandler}
+            >
+              Upload
+            </Button>
+          </Grid>
         </Grid>
-      </Grid>
+      </div>
+      <ProfileFooter />
     </div>
   );
 };
