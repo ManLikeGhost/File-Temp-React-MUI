@@ -1,40 +1,24 @@
 import React from "react";
 
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardHeader from "@material-ui/core/CardHeader";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
-import Divider from "@material-ui/core/Divider";
 
-import Typography from "@material-ui/core/Typography";
-
-import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
 import NavigationHeader from "../components/navigationHeader";
 import SubscriptionPlan from "../components/subscriptionPlan/subscriptionPlan";
+import ProfileTitle from "../components/profile/profileTitle";
 import Footer from "../components/footer";
-
-const useStyles = makeStyles((theme) => ({
-  "@global": {
-    ul: {
-      margin: 0,
-      padding: 0,
-      listStyle: "none",
-    },
-  },
-}));
 
 const plans = [
   {
     title: "Free",
     price: "0",
-    description: ["10 users included", " ", " ", " "],
-    buttonText: "Sign up for free",
-    buttonVariant: "outlined",
+    discount1: "",
+    discount2: "",
+    listings1: "5",
+    listings2: "",
+    listings3: "",
   },
   {
     title: "BRONZE",
@@ -84,13 +68,11 @@ const plans = [
 ];
 
 export default function SubscriptionPlans() {
-  const classes = useStyles();
-
   return (
-    <React.Fragment>
-      <CssBaseline />
+    <div className="BackgroundImage">
+      {/* <CssBaseline /> */}
       <NavigationHeader />
-
+      <ProfileTitle>Subscription Plans</ProfileTitle>
       <Container component="main">
         <Grid container justify="center" alignItems="flex-end">
           {/* <Grid item xs={12} sm={12} md={4}>
@@ -194,6 +176,6 @@ export default function SubscriptionPlans() {
       {/* Footer */}
       <Footer />
       {/* End footer */}
-    </React.Fragment>
+    </div>
   );
 }

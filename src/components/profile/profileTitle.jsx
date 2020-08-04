@@ -16,9 +16,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const profileTitle = (props) => {
+const ProfileTitle = (props) => {
   const classes = useStyles();
-  console.log(props)
+  console.log(props);
   return (
     <div className={classes.root}>
       <Grid container>
@@ -32,4 +32,4 @@ const profileTitle = (props) => {
   );
 };
 
-export default profileTitle;
+export default ProfileTitle;

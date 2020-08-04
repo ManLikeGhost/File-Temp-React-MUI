@@ -10,13 +10,23 @@ import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
+  "@global": {
+    ul: {
+      margin: 0,
+      padding: 0,
+      listStyle: "none",
+    },
+  },
+  freePlan: {
+    margin: "120px 0",
+  },
   cardContainer: {
     background: "#F5E9DE",
     border: "1px solid #BF7950",
     boxSizing: "border-box",
     borderRadius: "4px",
-    width: "300px",
-    margin: "0 auto",
+    width: "350px",
+    margin: "0 10px",
     marginBottom: "50px",
   },
   cardHeader: {
@@ -78,10 +88,7 @@ const SubscriptionPlan = (props) => {
         <Card className={classes.cardContainer}>
           <CardHeader
             title={plan.title}
-            // subheader="Most popular"
             titleTypographyProps={{ align: "center" }}
-            // subheaderTypographyProps={{ align: "center" }}
-            // action={tier.title === "Pro" ? <StarIcon /> : null}
             className={classes.cardHeader}
           />
           <CardContent>
@@ -108,20 +115,26 @@ const SubscriptionPlan = (props) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography
-                    variant="h6"
-                    color="textSecondary"
-                    className={classes.discount}
-                  >
-                    ₦{plan.discount1} for 6 months (5% discount)
-                  </Typography>
-                  <Typography
-                    variant="h6"
-                    color="textSecondary"
-                    className={classes.discount}
-                  >
-                    ₦{plan.discount2} for 12 months (10% discount)
-                  </Typography>
+                  {plan.title === "Free" ? (
+                    <div className={classes.freePlan}></div>
+                  ) : (
+                    <div>
+                      <Typography
+                        variant="h6"
+                        color="textSecondary"
+                        className={classes.discount}
+                      >
+                        ₦{plan.discount1} for 6 months (5% discount)
+                      </Typography>
+                      <Typography
+                        variant="h6"
+                        color="textSecondary"
+                        className={classes.discount}
+                      >
+                        ₦{plan.discount2} for 12 months (10% discount)
+                      </Typography>
+                    </div>
+                  )}
                 </Grid>
               </Grid>
             </div>
@@ -133,27 +146,33 @@ const SubscriptionPlan = (props) => {
                 align="center"
                 className={classes.listings}
               >
-                Up to {plan.listing1} Listings
+                Up to {plan.listings1} Listings
               </Typography>
               <Divider variant="middle" className={classes.divider} />
-              <Typography
-                component="li"
-                variant="subtitle1"
-                align="center"
-                className={classes.listings}
-              >
-                Up to {plan.listing2} Premium Listings
-              </Typography>
-              <Divider variant="middle" className={classes.divider} />
-              <Typography
-                component="li"
-                variant="subtitle1"
-                align="center"
-                className={classes.listings}
-              >
-                Up to {plan.listing3} Featured Ad Listings
-              </Typography>
-              <Divider variant="middle" className={classes.divider} />
+              {plan.title === "Free" ? (
+                <div className={classes.freePlan}></div>
+              ) : (
+                <div>
+                  <Typography
+                    component="li"
+                    variant="subtitle1"
+                    align="center"
+                    className={classes.listings}
+                  >
+                    Up to {plan.listings2} Premium Listings
+                  </Typography>
+                  <Divider variant="middle" className={classes.divider} />
+                  <Typography
+                    component="li"
+                    variant="subtitle1"
+                    align="center"
+                    className={classes.listings}
+                  >
+                    Up to {plan.listings3} Featured Ad Listings
+                  </Typography>
+                  <Divider variant="middle" className={classes.divider} />
+                </div>
+              )}
             </ul>
           </CardContent>
           <CardActions className={classes.buttonContainer}>
