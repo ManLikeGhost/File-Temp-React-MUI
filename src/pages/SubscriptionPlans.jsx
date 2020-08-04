@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
+import Divider from "@material-ui/core/Divider";
 import StarIcon from "@material-ui/icons/StarBorder";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -57,6 +58,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "baseline",
     marginBottom: theme.spacing(2),
     textAlign: "center"
+  },
+  divider: {
+    margin: "20px 0",
+    backgroundColor: theme.palette.primary.main,
+    height: "1px",
   },
   footer: {
     borderTop: `1px solid ${theme.palette.divider}`,
@@ -159,17 +165,21 @@ export default function SubscriptionPlans() {
                 </div>
                 <ul>
                   <Typography component="li" variant="subtitle1" align="center">
-                    "20 users included"
+                   {" "}
                   </Typography>
+                  <Divider variant="middle" className={classes.divider}/>
                   <Typography component="li" variant="subtitle1" align="center">
                     "20 users included"
                   </Typography>
+                  <Divider variant="middle" className={classes.divider}/>
+                  <Typography component="li" variant="subtitle1" align="center">
+                  {" "}
+                  </Typography>
+                  <Divider variant="middle" className={classes.divider}/>
                   <Typography component="li" variant="subtitle1" align="center">
                     "20 users included"
                   </Typography>
-                  <Typography component="li" variant="subtitle1" align="center">
-                    "20 users included"
-                  </Typography>
+                  <Divider variant="middle" className={classes.divider}/>
                   <Typography component="li" variant="subtitle1" align="center">
                     "20 users included"
                   </Typography>
