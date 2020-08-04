@@ -16,8 +16,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import NavigationHeader from "../components/navigationHeader";
-import Footer from "../components/footer";
 import SubscriptionPlan from "../components/subscriptionPlan/subscriptionPlan";
+import Footer from "../components/footer";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -42,28 +42,61 @@ const useStyles = makeStyles((theme) => ({
   heroContent: {
     padding: theme.spacing(8, 0, 6),
   },
-  cardContainer: {
-    background: "#F5E9DE",
-    border: "1px solid #BF7950",
-    boxSizing: "border-box",
-    borderRadius: "4px",
-  },
-  cardHeader: {
-    backgroundColor: theme.palette.primary.main,
-    color: "white",
-  },
-  cardPricing: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "baseline",
-    marginBottom: theme.spacing(2),
-    textAlign: "center"
-  },
-  divider: {
-    margin: "20px 0",
-    backgroundColor: theme.palette.primary.main,
-    height: "1px",
-  },
+  // cardContainer: {
+  //   background: "#F5E9DE",
+  //   border: "1px solid #BF7950",
+  //   boxSizing: "border-box",
+  //   borderRadius: "4px",
+  // },
+  // cardHeader: {
+  //   backgroundColor: theme.palette.primary.main,
+  //   color: "white",
+  // },
+  // cardPricing: {
+  //   display: "flex",
+  //   justifyContent: "center",
+  //   alignItems: "baseline",
+  //   marginBottom: theme.spacing(2),
+  //   textAlign: "center",
+  // },
+  // price: {
+  //   fontSize: "2rem",
+  //   color: theme.palette.secondary.main,
+  // },
+  // naira: {
+  //   fontSize: "1rem",
+  // },
+  // monthly: {
+  //   color: theme.palette.secondary.main,
+  // },
+  // discount: {
+  //   fontSize: "15px",
+  //   // lineHeight: "13px",
+  //   textAlign: "center",
+  //   color: "rgba(0, 0, 0, 0.51)",
+  //   paddingTop: "10px",
+  // },
+  // listings: {
+  //   fontSize: "20px",
+  //   color: theme.palette.primary.main,
+  //   fontWeight: "bold",
+  // },
+  // divider: {
+  //   margin: "20px 0",
+  //   backgroundColor: theme.palette.primary.main,
+  //   height: "1px",
+  // },
+  // buttonContainer: {
+  //   textAlign: "center",
+  //   // display: "grid",
+  //   margin: "0 auto",
+  // },
+  // subscriptionButton: {
+  //   borderRadius: "2px",
+  //   // width: "195px",
+  //   // height: "49px",
+  //   marginLeft: "30%",
+  // },
   footer: {
     borderTop: `1px solid ${theme.palette.divider}`,
     marginTop: theme.spacing(8),
@@ -85,30 +118,30 @@ const plans = [
     buttonVariant: "outlined",
   },
   {
-    title: "Pro",
-    subheader: "Most popular",
-    price: "15",
-    description: [
-      "20 users included",
-      "10 GB of storage",
-      "Help center access",
-      "Priority email support",
-    ],
-    buttonText: "Get started",
-    buttonVariant: "contained",
+    title: "BRONZE",
+
+    price: "10,000",
+    discount1: "57,000",
+    listings1: "250",
+    listings2: "50",
+    listings3: "40",
   },
   {
-    title: "Enterprise",
-    price: "30",
-    description: [
-      "50 users included",
-      "30 GB of storage",
-      "Help center access",
-      "Phone & email support",
-    ],
+    title: "SILVER",
 
-    buttonText: "Contact us",
-    buttonVariant: "outlined",
+    price: "10,000",
+    discount1: "57,000",
+    listings1: "250",
+    listings2: "50",
+    listings3: "40",
+  },
+  {
+    title: "GOLD",
+    price: "10,000",
+    discount1: "57,000",
+    listings1: "250",
+    listings2: "50",
+    listings3: "40",
   },
 ];
 
@@ -135,9 +168,9 @@ export default function SubscriptionPlans() {
       <Container maxWidth="md" component="main">
         <Grid container spacing={5} alignItems="center">
           <Grid item xs={12} sm={12} md={4}>
-            <Card  className={classes.cardContainer}>
+            <Card className={classes.cardContainer}>
               <CardHeader
-                title="STANDARD"
+                title="Bronze"
                 // subheader="Most popular"
                 titleTypographyProps={{ align: "center" }}
                 // subheaderTypographyProps={{ align: "center" }}
@@ -150,48 +183,84 @@ export default function SubscriptionPlans() {
                     <Grid item xs={12}>
                       <Typography
                         component="h2"
-                        variant="h3"
-                        color="textPrimary"
+                        variant="p"
+                        color="secondary"
+                        className={classes.price}
                       >
-                        ₦{"0"}
+                        <span className={classes.naira}>₦</span>
+                        {"10,000"}
                       </Typography>
                     </Grid>
                     <Grid item xs={12}>
-                      <Typography variant="h6" color="textSecondary">
+                      <Typography
+                        variant="h5"
+                        color="textSecondary"
+                        className={classes.monthly}
+                      >
                         monthly
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Typography
+                        variant="h6"
+                        color="textSecondary"
+                        className={classes.discount}
+                      >
+                        ₦{"57,000"} for 6 months (5% discount)
+                      </Typography>
+                      <Typography
+                        variant="h6"
+                        color="textSecondary"
+                        className={classes.discount}
+                      >
+                        ₦{"100,000"} for 12 months (10% discount)
                       </Typography>
                     </Grid>
                   </Grid>
                 </div>
                 <ul>
-                  <Typography component="li" variant="subtitle1" align="center">
-                   {" "}
+                  <Divider variant="middle" className={classes.divider} />
+                  <Typography
+                    component="li"
+                    variant="subtitle1"
+                    align="center"
+                    className={classes.listings}
+                  >
+                    Up to {250} Listings
                   </Typography>
-                  <Divider variant="middle" className={classes.divider}/>
-                  <Typography component="li" variant="subtitle1" align="center">
-                    "20 users included"
+                  <Divider variant="middle" className={classes.divider} />
+                  <Typography
+                    component="li"
+                    variant="subtitle1"
+                    align="center"
+                    className={classes.listings}
+                  >
+                    Up to {50} Premium Listings
                   </Typography>
-                  <Divider variant="middle" className={classes.divider}/>
-                  <Typography component="li" variant="subtitle1" align="center">
-                  {" "}
+                  <Divider variant="middle" className={classes.divider} />
+                  <Typography
+                    component="li"
+                    variant="subtitle1"
+                    align="center"
+                    className={classes.listings}
+                  >
+                    Up to {40} Featured Ad Listings
                   </Typography>
-                  <Divider variant="middle" className={classes.divider}/>
-                  <Typography component="li" variant="subtitle1" align="center">
-                    "20 users included"
-                  </Typography>
-                  <Divider variant="middle" className={classes.divider}/>
-                  <Typography component="li" variant="subtitle1" align="center">
-                    "20 users included"
-                  </Typography>
+                  <Divider variant="middle" className={classes.divider} />
                 </ul>
               </CardContent>
-              <CardActions>
-                <Button fullWidth variant="contained" color="primary">
+              <CardActions className={classes.buttonContainer}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.subscriptionButton}
+                >
                   SUBSCRIBE
                 </Button>
               </CardActions>
             </Card>
           </Grid>
+          <SubscriptionPlan />
         </Grid>
       </Container>
       {/* Footer */}
