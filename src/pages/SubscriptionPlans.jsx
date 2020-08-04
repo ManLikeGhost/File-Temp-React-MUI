@@ -95,6 +95,7 @@ const plans = [
       "Help center access",
       "Phone & email support",
     ],
+
     buttonText: "Contact us",
     buttonVariant: "outlined",
   },
