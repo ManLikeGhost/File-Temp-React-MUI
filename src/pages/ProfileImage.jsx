@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(20),
+    // marginTop: theme.spacing(20),
   },
   container: {
     background: "#F5E9DE",
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px 4px 25px rgba(0, 0, 0, 0.25)",
     borderRadius: "4px",
     width: "60vw",
-    margin: "10px 200px",
+    margin: "250px 200px 10px 250px",
     padding: "30px",
   },
   bigAvatar: {
@@ -41,13 +41,13 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #BF7950",
     boxSizing: "border-box",
     borderRadius: " 4px",
-    color:theme.palette.primary.main,
+    color: theme.palette.primary.main,
   },
-  noFileChosenText:{
+  noFileChosenText: {
     fontWeight: 300,
     fontSize: "18px",
     lineHeight: "18px",
-    marginTop:theme.spacing(1),
+    marginTop: theme.spacing(1),
     marginLeft: "-30px",
     color: "rgba(0, 0, 0, 0.51)",
   },
@@ -84,7 +84,7 @@ const ProfileImage = () => {
   };
 
   return (
-    <div className={classes.root}>
+    <div className="BackgroundImage">
       <Grid container className={classes.container}>
         <Grid item xs={4}>
           <Avatar
@@ -109,12 +109,18 @@ const ProfileImage = () => {
           <label htmlFor="upload-file">
             <Grid container>
               <Grid item xs={6}>
-                <Button variant="contained" component="span"  className={classes.chooseFileButton}>
+                <Button
+                  variant="contained"
+                  component="span"
+                  className={classes.chooseFileButton}
+                >
                   Choose file
                 </Button>
               </Grid>
               <Grid item xs={6}>
-                <Typography className={classes.noFileChosenText}>No file chosen</Typography>
+                <Typography className={classes.noFileChosenText}>
+                  No file chosen
+                </Typography>
               </Grid>
               <Grid item xs={6}>
                 <Typography>JPG, GIF, or PNG. Max size of 800k</Typography>
@@ -122,11 +128,13 @@ const ProfileImage = () => {
             </Grid>
           </label>
         </Grid>
-        <Grid xs={2} container
-  direction="row"
-  justify="center"
-  alignItems="flex-end">
-          
+        <Grid
+          xs={2}
+          container
+          direction="row"
+          justify="center"
+          alignItems="flex-end"
+        >
           <Button
             variant="contained"
             color="primary"
