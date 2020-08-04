@@ -3,8 +3,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
-import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
+import NavigationHeader from '../components/navigationHeader'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px 4px 25px rgba(0, 0, 0, 0.25)",
     borderRadius: "4px",
     width: "60vw",
-    margin: "250px 200px 10px 250px",
+    margin: "100px 200px 100px 250px",
     padding: "30px",
   },
   bigAvatar: {
@@ -85,6 +85,7 @@ const ProfileImage = () => {
 
   return (
     <div className="BackgroundImage">
+      <NavigationHeader/>
       <Grid container className={classes.container}>
         <Grid item xs={4}>
           <Avatar
