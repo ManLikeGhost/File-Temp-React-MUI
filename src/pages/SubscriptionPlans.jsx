@@ -1,5 +1,5 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
+
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -8,13 +8,12 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
-import StarIcon from "@material-ui/icons/StarBorder";
-import Toolbar from "@material-ui/core/Toolbar";
+
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
+
 import NavigationHeader from "../components/navigationHeader";
 import SubscriptionPlan from "../components/subscriptionPlan/subscriptionPlan";
 import Footer from "../components/footer";
@@ -25,86 +24,6 @@ const useStyles = makeStyles((theme) => ({
       margin: 0,
       padding: 0,
       listStyle: "none",
-    },
-  },
-  appBar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
-  },
-  toolbar: {
-    flexWrap: "wrap",
-  },
-  toolbarTitle: {
-    flexGrow: 1,
-  },
-  link: {
-    margin: theme.spacing(1, 1.5),
-  },
-  heroContent: {
-    padding: theme.spacing(8, 0, 6),
-  },
-  // cardContainer: {
-  //   background: "#F5E9DE",
-  //   border: "1px solid #BF7950",
-  //   boxSizing: "border-box",
-  //   borderRadius: "4px",
-  // },
-  // cardHeader: {
-  //   backgroundColor: theme.palette.primary.main,
-  //   color: "white",
-  // },
-  // cardPricing: {
-  //   display: "flex",
-  //   justifyContent: "center",
-  //   alignItems: "baseline",
-  //   marginBottom: theme.spacing(2),
-  //   textAlign: "center",
-  // },
-  // price: {
-  //   fontSize: "2rem",
-  //   color: theme.palette.secondary.main,
-  // },
-  // naira: {
-  //   fontSize: "1rem",
-  // },
-  // monthly: {
-  //   color: theme.palette.secondary.main,
-  // },
-  // discount: {
-  //   fontSize: "15px",
-  //   // lineHeight: "13px",
-  //   textAlign: "center",
-  //   color: "rgba(0, 0, 0, 0.51)",
-  //   paddingTop: "10px",
-  // },
-  // listings: {
-  //   fontSize: "20px",
-  //   color: theme.palette.primary.main,
-  //   fontWeight: "bold",
-  // },
-  // divider: {
-  //   margin: "20px 0",
-  //   backgroundColor: theme.palette.primary.main,
-  //   height: "1px",
-  // },
-  // buttonContainer: {
-  //   textAlign: "center",
-  //   // display: "grid",
-  //   margin: "0 auto",
-  // },
-  // subscriptionButton: {
-  //   borderRadius: "2px",
-  //   // width: "195px",
-  //   // height: "49px",
-  //   marginLeft: "30%",
-  // },
-  footer: {
-    borderTop: `1px solid ${theme.palette.divider}`,
-    marginTop: theme.spacing(8),
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3),
-    [theme.breakpoints.up("sm")]: {
-      paddingTop: theme.spacing(6),
-      paddingBottom: theme.spacing(6),
     },
   },
 }));
@@ -171,22 +90,10 @@ export default function SubscriptionPlans() {
     <React.Fragment>
       <CssBaseline />
       <NavigationHeader />
-      {/* Hero unit */}
-      <Container maxWidth="sm" component="main" className={classes.heroContent}>
-        <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="textPrimary"
-          gutterBottom
-        >
-          Pricing
-        </Typography>
-      </Container>
-      {/* End hero unit */}
-      <Container maxWidth="md" component="main">
-        <Grid container spacing={5} alignItems="center">
-          <Grid item xs={12} sm={12} md={4}>
+
+      <Container component="main">
+        <Grid container justify="center" alignItems="flex-end">
+          {/* <Grid item xs={12} sm={12} md={4}>
             <Card className={classes.cardContainer}>
               <CardHeader
                 title="Bronze"
@@ -278,7 +185,7 @@ export default function SubscriptionPlans() {
                 </Button>
               </CardActions>
             </Card>
-          </Grid>
+          </Grid> */}
           {plans.map((plan) => (
             <SubscriptionPlan plan={plan} />
           ))}

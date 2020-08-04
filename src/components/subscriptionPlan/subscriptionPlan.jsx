@@ -10,14 +10,14 @@ import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  heroContent: {
-    padding: theme.spacing(8, 0, 6),
-  },
   cardContainer: {
     background: "#F5E9DE",
     border: "1px solid #BF7950",
     boxSizing: "border-box",
     borderRadius: "4px",
+    width: "300px",
+    margin: "0 auto",
+    marginBottom: "50px",
   },
   cardHeader: {
     backgroundColor: theme.palette.primary.main,
@@ -70,12 +70,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const SubscriptionPlan = (props) => {
-  console.log(props);
   const classes = useStyles();
   const { plan } = props;
   return (
     <div>
-      <Grid item xs={12} sm={12} md={4}>
+      <Grid item key={plan.title} xs={12} sm={12} md={4}>
         <Card className={classes.cardContainer}>
           <CardHeader
             title={plan.title}
