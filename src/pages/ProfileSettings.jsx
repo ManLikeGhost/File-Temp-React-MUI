@@ -11,6 +11,7 @@ import Subscriptions from "../components/profile/subscriptions";
 import SideMenu from "../components/profile/sideMenu";
 import Marble from "../img/MarbleBackground.png";
 import NavigationHeader from "../components/navigationHeader";
+import ProfileTitle from "../components/profile/profileTitle"
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "500px",
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     // width: `calc(100vw - 100px)`,
     // width: theme.spacing(20),
-    margin: theme.spacing(20),
+    margin: theme.spacing(10),
     marginLeft: theme.spacing(40),
     border: "0.8px solid #BF7950",
     boxShadow: "0px 4px 25px rgba(0, 0, 0, 0.25)",
@@ -78,6 +79,7 @@ const ProfileSettings = () => {
         {/* {routes.map((route, index) => (
           <ProfileTitle>{route.title}</ProfileTitle>
         ))} */}
+        <ProfileTitle>Dashboard</ProfileTitle>
         <div className={classes.profileContainer}>
           <Grid container>
             <Grid item xs={3}>

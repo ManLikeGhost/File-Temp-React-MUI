@@ -5,11 +5,17 @@ import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import NavigationHeader from "../components/navigationHeader";
+import ProfileTitle from "../components/profile/profileTitle";
 import ProfileFooter from "../components/profile/profileFooter";
+
+
+
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(20),
-    marginLeft: theme.spacing(10),
+    // marginTop: theme.spacing(20),
+    // marginLeft: theme.spacing(10),
   },
   container: {
     background: "#F5E9DE",
@@ -17,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px 4px 25px rgba(0, 0, 0, 0.25)",
     borderRadius: "4px",
     width: "60vw",
-    margin: "100px 200px 100px 250px",
+    margin: "100px 200px 0px 250px",
     padding: "30px",
   },
   bigAvatar: {
@@ -97,6 +103,7 @@ const ProfileImage = () => {
       <NavigationHeader />
 
       <div className={classes.root}>
+        <ProfileTitle>Profile Settings</ProfileTitle>
         <Grid container className={classes.container}>
           <Grid item xs={4}>
             <Avatar

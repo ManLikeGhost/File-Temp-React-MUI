@@ -5,10 +5,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   title: {
-    margin: "20px 0",
+    // margin: "20px 0",
     padding: theme.spacing(2),
     textAlign: "center",
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
     fontStyle: "normal",
     fontWeight: "bold",
     fontSize: "41px",
@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 const profileTitle = (props) => {
   const classes = useStyles();
+  console.log(props)
   return (
     <div className={classes.root}>
       <Grid container>
