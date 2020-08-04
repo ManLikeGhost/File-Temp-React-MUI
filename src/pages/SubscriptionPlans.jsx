@@ -41,17 +41,22 @@ const useStyles = makeStyles((theme) => ({
   heroContent: {
     padding: theme.spacing(8, 0, 6),
   },
+  cardContainer: {
+    background: "#F5E9DE",
+    border: "1px solid #BF7950",
+    boxSizing: "border-box",
+    borderRadius: "4px",
+  },
   cardHeader: {
-    backgroundColor:
-      theme.palette.type === "light"
-        ? theme.palette.grey[200]
-        : theme.palette.grey[700],
+    backgroundColor: theme.palette.primary.main,
+    color: "white",
   },
   cardPricing: {
     display: "flex",
     justifyContent: "center",
     alignItems: "baseline",
     marginBottom: theme.spacing(2),
+    textAlign: "center"
   },
   footer: {
     borderTop: `1px solid ${theme.palette.divider}`,
@@ -122,20 +127,20 @@ export default function SubscriptionPlans() {
       </Container>
       {/* End hero unit */}
       <Container maxWidth="md" component="main">
-        <Grid container spacing={5} alignItems="flex-end">
+        <Grid container spacing={5} alignItems="center">
           <Grid item xs={12} sm={12} md={4}>
-            <Card>
+            <Card  className={classes.cardContainer}>
               <CardHeader
                 title="STANDARD"
                 // subheader="Most popular"
                 titleTypographyProps={{ align: "center" }}
-                subheaderTypographyProps={{ align: "center" }}
+                // subheaderTypographyProps={{ align: "center" }}
                 // action={tier.title === "Pro" ? <StarIcon /> : null}
                 className={classes.cardHeader}
               />
               <CardContent>
                 <div className={classes.cardPricing}>
-                  <Grid container>
+                  <Grid container justify="center" alignItems="center">
                     <Grid item xs={12}>
                       <Typography
                         component="h2"
