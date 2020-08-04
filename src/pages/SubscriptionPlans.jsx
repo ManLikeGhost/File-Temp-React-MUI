@@ -119,29 +119,48 @@ const plans = [
   },
   {
     title: "BRONZE",
-
     price: "10,000",
     discount1: "57,000",
+    discount2: "100,000",
     listings1: "250",
     listings2: "50",
     listings3: "40",
   },
   {
     title: "SILVER",
-
-    price: "10,000",
-    discount1: "57,000",
-    listings1: "250",
-    listings2: "50",
-    listings3: "40",
+    price: "15,000",
+    discount1: "85,000",
+    discount2: "162,000",
+    listings1: "270",
+    listings2: "60",
+    listings3: "45",
   },
   {
     title: "GOLD",
-    price: "10,000",
-    discount1: "57,000",
-    listings1: "250",
-    listings2: "50",
-    listings3: "40",
+    price: "20,000",
+    discount1: "114,000",
+    discount2: "216,000",
+    listings1: "290",
+    listings2: "70",
+    listings3: "50",
+  },
+  {
+    title: "PLATINUM",
+    price: "25,000",
+    discount1: "142,500",
+    discount2: "270,000",
+    listings1: "310",
+    listings2: "80",
+    listings3: "55",
+  },
+  {
+    title: "PLATINUM+",
+    price: "35,000",
+    discount1: "199,500",
+    discount2: "378,000",
+    listings1: "350",
+    listings2: "100",
+    listings3: "65",
   },
 ];
 
@@ -260,7 +279,9 @@ export default function SubscriptionPlans() {
               </CardActions>
             </Card>
           </Grid>
-          <SubscriptionPlan />
+          {plans.map((plan) => (
+            <SubscriptionPlan plan={plan} />
+          ))}
         </Grid>
       </Container>
       {/* Footer */}

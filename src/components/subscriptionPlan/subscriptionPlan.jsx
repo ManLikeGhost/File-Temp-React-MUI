@@ -70,20 +70,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const SubscriptionPlan = (props) => {
+  console.log(props);
   const classes = useStyles();
   const { plan } = props;
   return (
     <div>
-      <Grid
-        item
-        // key={plan.title}
-        xs={12}
-        // sm={plan.title === "Enterprise" ? 12 : 6}
-        md={4}
-      >
+      <Grid item xs={12} sm={12} md={4}>
         <Card className={classes.cardContainer}>
           <CardHeader
-            title="Bronze"
+            title={plan.title}
             // subheader="Most popular"
             titleTypographyProps={{ align: "center" }}
             // subheaderTypographyProps={{ align: "center" }}
@@ -101,7 +96,7 @@ const SubscriptionPlan = (props) => {
                     className={classes.price}
                   >
                     <span className={classes.naira}>₦</span>
-                    {"10,000"}
+                    {plan.price}
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
@@ -119,14 +114,14 @@ const SubscriptionPlan = (props) => {
                     color="textSecondary"
                     className={classes.discount}
                   >
-                    ₦{"57,000"} for 6 months (5% discount)
+                    ₦{plan.discount1} for 6 months (5% discount)
                   </Typography>
                   <Typography
                     variant="h6"
                     color="textSecondary"
                     className={classes.discount}
                   >
-                    ₦{"100,000"} for 12 months (10% discount)
+                    ₦{plan.discount2} for 12 months (10% discount)
                   </Typography>
                 </Grid>
               </Grid>
@@ -139,7 +134,7 @@ const SubscriptionPlan = (props) => {
                 align="center"
                 className={classes.listings}
               >
-                Up to {250} Listings
+                Up to {plan.listing1} Listings
               </Typography>
               <Divider variant="middle" className={classes.divider} />
               <Typography
@@ -148,7 +143,7 @@ const SubscriptionPlan = (props) => {
                 align="center"
                 className={classes.listings}
               >
-                Up to {50} Premium Listings
+                Up to {plan.listing2} Premium Listings
               </Typography>
               <Divider variant="middle" className={classes.divider} />
               <Typography
@@ -157,7 +152,7 @@ const SubscriptionPlan = (props) => {
                 align="center"
                 className={classes.listings}
               >
-                Up to {40} Featured Ad Listings
+                Up to {plan.listing3} Featured Ad Listings
               </Typography>
               <Divider variant="middle" className={classes.divider} />
             </ul>
