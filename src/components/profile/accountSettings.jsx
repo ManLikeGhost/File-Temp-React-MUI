@@ -4,9 +4,7 @@ import ProfileSectionTitle from "./miniComponents/profilesectionTitle";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
+
 import Grid from "@material-ui/core/Grid";
 
 import MenuItem from "@material-ui/core/MenuItem";
@@ -14,8 +12,6 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import { makeStyles } from "@material-ui/core/styles";
-
-import ButtonAccount from './miniComponents/button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -91,7 +87,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const AccountSettings = () => {
   const classes = useStyles();
   const [account, setAccount] = useState({
@@ -166,7 +161,7 @@ const AccountSettings = () => {
         <CssBaseline />
 
         <div>
-          <ProfileSectionTitle> 
+          <ProfileSectionTitle>
             <div>Account</div>
             <div> Edit your account settings</div>
           </ProfileSectionTitle>
@@ -184,7 +179,6 @@ const AccountSettings = () => {
                     onChange={handleChange("accountType")}
                   >
                     <MenuItem value={"propertyShopper"}>
-                     
                       Property Shopper
                     </MenuItem>
                     <MenuItem value={"realEstateAgent"}>
@@ -242,7 +236,6 @@ const AccountSettings = () => {
             </Grid>
             <Grid container spacing={2}>
               <Grid item xs={4}>
-              
                 <TextField
                   id="locality"
                   name="locality"
@@ -255,7 +248,6 @@ const AccountSettings = () => {
                 />
               </Grid>
               <Grid item xs={4}>
-               
                 <TextField
                   id="state"
                   name="state"
@@ -268,7 +260,6 @@ const AccountSettings = () => {
                 />
               </Grid>
               <Grid item xs={4}>
-                
                 <TextField
                   id="country"
                   name="country"
@@ -295,7 +286,6 @@ const AccountSettings = () => {
                 />
               </Grid>
               <Grid item xs={6}>
-               
                 <TextField
                   id="mobile"
                   name="mobile"
@@ -371,7 +361,7 @@ const AccountSettings = () => {
                 />
               </Grid>
             </Grid>
-            
+
             <Button
               type="submit"
               fullWidth

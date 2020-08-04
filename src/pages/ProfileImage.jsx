@@ -4,11 +4,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import NavigationHeader from '../components/navigationHeader'
-
+import NavigationHeader from "../components/navigationHeader";
+import ProfileFooter from "../components/profile/profileFooter";
 const useStyles = makeStyles((theme) => ({
   root: {
-    // marginTop: theme.spacing(20),
+    marginTop: theme.spacing(20),
+    marginLeft: theme.spacing(10),
   },
   container: {
     background: "#F5E9DE",
@@ -51,6 +52,14 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "-30px",
     color: "rgba(0, 0, 0, 0.51)",
   },
+  fileTypeDesc: {
+    marginTop: theme.spacing(2),
+    fontWeight: 300,
+    fontSize: "18px",
+    lineHeight: "18px",
+
+    color: " rgba(0, 0, 0, 0.51)",
+  },
 }));
 
 const ProfileImage = () => {
@@ -85,67 +94,73 @@ const ProfileImage = () => {
 
   return (
     <div className="BackgroundImage">
-      <NavigationHeader/>
-      <Grid container className={classes.container}>
-        <Grid item xs={4}>
-          <Avatar
-            alt="terrel davies"
-            src={avatar}
-            className={classes.bigAvatar}
-            fontSize="large"
-            color="primary"
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <Typography className={classes.uploadImageText}>
-            Upload Profile Image
-          </Typography>
-          <input
-            accept="image/*"
-            className={classes.inputUpload}
-            id="upload-file"
-            type="file"
-            onChange={fileChangedHandler}
-          />
-          <label htmlFor="upload-file">
-            <Grid container>
-              <Grid item xs={6}>
-                <Button
-                  variant="contained"
-                  component="span"
-                  className={classes.chooseFileButton}
-                >
-                  Choose file
-                </Button>
+      <NavigationHeader />
+
+      <div className={classes.root}>
+        <Grid container className={classes.container}>
+          <Grid item xs={4}>
+            <Avatar
+              alt="terrel davies"
+              src={avatar}
+              className={classes.bigAvatar}
+              fontSize="large"
+              color="primary"
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <Typography className={classes.uploadImageText}>
+              Upload Profile Image
+            </Typography>
+            <input
+              accept="image/*"
+              className={classes.inputUpload}
+              id="upload-file"
+              type="file"
+              onChange={fileChangedHandler}
+            />
+            <label htmlFor="upload-file">
+              <Grid container>
+                <Grid item xs={6}>
+                  <Button
+                    variant="contained"
+                    component="span"
+                    className={classes.chooseFileButton}
+                  >
+                    Choose file
+                  </Button>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography className={classes.noFileChosenText}>
+                    No file chosen
+                  </Typography>
+                </Grid>
               </Grid>
-              <Grid item xs={6}>
-                <Typography className={classes.noFileChosenText}>
-                  No file chosen
-                </Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Typography>JPG, GIF, or PNG. Max size of 800k</Typography>
-              </Grid>
+            </label>
+            <Grid item xs={12}>
+              <Typography className={classes.fileTypeDesc}>
+                JPG, GIF, or PNG. Max size of 800k
+              </Typography>
             </Grid>
-          </label>
-        </Grid>
-        <Grid
-          xs={2}
-          container
-          direction="row"
-          justify="center"
-          alignItems="flex-end"
-        >
-          <Button
-            variant="contained"
-            color="primary"
-            component="span"
-            onClick={uploadHandler}
+          </Grid>
+          <Grid
+            xs={2}
+            container
+            direction="row"
+            justify="center"
+            alignItems="flex-end"
           >
-            Upload
-          </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              component="span"
+              onClick={uploadHandler}
+            >
+              Upload
+            </Button>
+          </Grid>
         </Grid>
-      </Grid>
+      </div>
+      <ProfileFooter />
     </div>
   );
 };

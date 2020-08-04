@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonAccount from "./miniComponents/button";
 import MessageAccount from "./miniComponents/message";
@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const Listings = (props) => {
-  const [properties, setProperties] = useState(0);
+  // const [properties, setProperties] = useState(0);
+  const properties = 0;
   const classes = useStyles();
   return (
     <div>
