@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
+import UpgradeSubscriptionPage from "./pages/UpgradeSubscriptionPage";
+
 
 import ProfileSettings from "./pages/ProfileSettings";
 import "./App.css";
@@ -60,7 +62,10 @@ function App() {
           <Route path="/subscription-plans">
             <SubscriptionPlans />
           </Route>
-
+          <Route path="/upgrade-subscription">
+            <UpgradeSubscriptionPage />
+          </Route>
+          UpgradeSubscriptionPage
           <Route exact path="/">
             <HomePage />
           </Route>
