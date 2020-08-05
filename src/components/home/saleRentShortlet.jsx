@@ -40,7 +40,7 @@ const SaleRentShortlet = () => {
           <div className={classes.unorderedList}>
             <List
               component="nav"
-              dense="true"
+              dense={true}
               aria-label="secondary mailbox folders"
             >
               <ListItem button>
@@ -66,7 +66,7 @@ const SaleRentShortlet = () => {
           <div className={classes.unorderedList}>
             <List
               component="nav"
-              dense="true"
+              dense={true}
               aria-label="for rent sale shortlet"
             >
               <ListItem button>
@@ -92,7 +92,7 @@ const SaleRentShortlet = () => {
           <div className={classes.unorderedList}>
             <List
               component="nav"
-              dense="true"
+              dense={true}
               aria-label="for rent sale shortlet"
             >
               <ListItem button>
@@ -121,7 +121,7 @@ const SaleRentShortlet = () => {
           <div className={classes.unorderedList}>
             <List
               component="nav"
-              dense="true"
+              dense={true}
               aria-label="for rent sale shortlet"
             >
               <ListItem button>
@@ -147,7 +147,7 @@ const SaleRentShortlet = () => {
           <div className={classes.unorderedList}>
             <List
               component="nav"
-              dense="true"
+              dense={true}
               aria-label="for rent sale shortlet"
             >
               <ListItem button>
@@ -173,7 +173,7 @@ const SaleRentShortlet = () => {
           <div className={classes.unorderedList}>
             <List
               component="nav"
-              dense="true"
+              dense={true}
               aria-label="secondary mailbox folders"
             >
               <ListItem button>
@@ -204,7 +204,7 @@ const SaleRentShortlet = () => {
           <div className={classes.unorderedList}>
             <List
               component="nav"
-              dense="true"
+              dense={true}
               aria-label="secondary mailbox folders"
             >
               <ListItem button>
@@ -232,7 +232,7 @@ const SaleRentShortlet = () => {
           <div className={classes.unorderedList}>
             <List
               component="nav"
-              dense="true"
+              dense={true}
               aria-label="secondary mailbox folders"
             >
               <ListItem button>
@@ -260,7 +260,7 @@ const SaleRentShortlet = () => {
           <div className={classes.unorderedList}>
             <List
               component="nav"
-              dense="true"
+              dense={true}
               aria-label="secondary mailbox folders"
             >
               <ListItem button>

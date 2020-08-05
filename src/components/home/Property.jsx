@@ -64,7 +64,7 @@ export default function Property({ imagePath, saleText, address, details }) {
           >
             <LocationOnIcon fontSize="large" color="primary" />
           </Grid>
-          <Grid container xs={10}>
+          <Grid container>
             <Grid item xs={12}>
               <Typography
                 gutterBottom

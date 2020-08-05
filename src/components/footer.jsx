@@ -96,7 +96,7 @@ const Footer = () => {
     <div>
       <CssBaseline />
       <Container maxWidth="lg" component="footer" className={classes.footer}>
-        <Grid container spacing={4} justify="center" alignItem="center" align='center'>
+        <Grid container spacing={4} justify="center" alignItems="center" align='center'>
           <Grid item xs={4}>
             <div className={classes.logoContainer}>
               <img src={FooterLogo} alt="" className={classes.footerLogo} />
@@ -115,13 +115,13 @@ const Footer = () => {
               </Typography>
               <List
                 component="nav"
-                dense="true"
+                dense={true}
                 aria-label="footer menu"
                 key={footer.title}
                 className={classes.text}
               >
                 {footer.description.map((item) => (
-                  <ListItem button>
+                  <ListItem button  key={item}>
                     <ListItemText primary={item} />
                   </ListItem>
                 ))}
@@ -129,7 +129,7 @@ const Footer = () => {
             </Grid>
           ))}
         </Grid>
-        <Grid container className={classes.footerContactDetails} justify="center" alignItem="center">
+        <Grid container className={classes.footerContactDetails} justify="center" alignItems="center">
           <Grid item xs={4}>
             <Typography align='center'>
               Office 3, First Floor, <br />
@@ -180,7 +180,7 @@ const Footer = () => {
 const Copyright = () => {
   return (
 
-    <Typography variant="p" color="primary">
+    <Typography variant="body1" color="primary">
       {new Date().getFullYear()} {"Copyright © "}
       <Link color="inherit" href="https://pbgdigital.co.uk">
         Terrell Davies Enterprise. All rights reserved.
