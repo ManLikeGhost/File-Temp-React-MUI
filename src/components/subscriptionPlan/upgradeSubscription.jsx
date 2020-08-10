@@ -2,6 +2,9 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
+import MenuItem from "@material-ui/core/MenuItem";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -10,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     boxSizing: "border-box",
     borderRadius: "2px",
     paddingBottom: "50px",
+    marginTop: theme.spacing(2),
   },
   title: {
     background: theme.palette.primary.main,
@@ -40,7 +44,18 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.2rem",
   },
   textValue: {
+    fontWeight: "bold",
     color: theme.palette.primary.main,
+  },
+  button: {
+    background: theme.palette.primary.main,
+    borderRadius: theme.spacing(0.2),
+    color: "white",
+    fontSize: "1.2rem",
+    "&:hover": {
+      background: "white",
+      color: theme.palette.primary.main,
+    },
   },
 }));
 
@@ -57,7 +72,8 @@ const UpgradeSubscription = () => {
       >
         <Grid item xs={12} className={classes.title}>
           <Typography>
-            Current Subscription Status: <span className={classes.titleSpan} >STANDARD</span>
+            Current Subscription Status:{" "}
+            <span className={classes.titleSpan}>STANDARD</span>
           </Typography>
         </Grid>
         <Grid
@@ -89,33 +105,98 @@ const UpgradeSubscription = () => {
         <Grid container className={classes.listingContainer}>
           <Grid item xs={4}>
             <Typography className={classes.text}>
-              Expiry Date:<span className={classes.textValue}>{0}</span>{" "}
+              Expiry Date:
+              <span className={classes.textValue}>
+                {0} {`(0 Months)`}
+              </span>
             </Typography>
           </Grid>
         </Grid>
       </Grid>
 
-      <Grid container>
-        <Grid item xs={12}>
-          <Typography>
-            Current Subscription Status: <span>STANDARD</span>
-          </Typography>
+      <Grid
+        container
+        className={classes.container}
+        direction="row"
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item xs={12} className={classes.title}>
+          <Typography>Upgrade Details</Typography>
         </Grid>
-        <Grid item xs={4}>
-          Listings: {5}
+
+        <Grid
+          container
+          className={classes.listingContainer}
+          direction="row"
+          justify="center"
+          alignItems="center"
+          style={{ paddingRight: "30px" }}
+        >
+          <Grid item xs={12}>
+            <TextField
+              id="select-subscription"
+              select
+              label="New Subscription Plan"
+              variant="outlined"
+              fullWidth="true"
+            >
+              <MenuItem value={"realEstateAgent"}>Real Estate Agent</MenuItem>
+              <MenuItem value={"propertyDeveloper"}>
+                Property Developer
+              </MenuItem>
+              <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+            </TextField>
+          </Grid>
         </Grid>
-        <Grid item xs={4}>
-          Premium Listings: {0}
-        </Grid>
-        <Grid item xs={4}>
-          Featured Ad Listings: 0
-        </Grid>
-        <Divider />
-        <Grid item xs={4}>
-          Expiry Date: 0
+
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          className={classes.listingContainer}
+          spacing={3}
+          style={{ marginTop: "10px", paddingRight: "30px" }}
+        >
+          <Grid item xs={6}>
+            <TextField
+              id="select-subscription"
+              select
+              label=" Duration"
+              variant="outlined"
+              fullWidth="true"
+            >
+              <MenuItem value={"realEstateAgent"}>Real Estate Agent</MenuItem>
+              <MenuItem value={"propertyDeveloper"}>
+                Property Developer
+              </MenuItem>
+              <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+            </TextField>
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              id="select-subscription"
+              select
+              label="Payment Method"
+              variant="outlined"
+              fullWidth="true"
+            >
+              <MenuItem value={"realEstateAgent"}>Real Estate Agent</MenuItem>
+              <MenuItem value={"propertyDeveloper"}>
+                Property Developer
+              </MenuItem>
+              <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+            </TextField>
+          </Grid>
+          <Grid container justify="flex-end">
+            <Grid item style={{paddingRight: "10px", marginTop:"10px"}}>
+            <Button className={classes.button}>PROCEED</Button>
+            </Grid>
+           
+          </Grid>
         </Grid>
       </Grid>
-      <Grid container></Grid>
     </div>
   );
 };
