@@ -15,6 +15,8 @@ import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import Divider from "@material-ui/core/Divider";
+import MenuItem from '@material-ui/core/MenuItem';
+
 
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
@@ -282,7 +284,68 @@ const ForRent = () => {
                                 />
                               </Grid>
                             </Grid>
-    
+
+                            <Grid item container justify="center" spacing={3} xs={12}>
+                              <Grid item xs={5}>
+                                <TextField
+                                  id="outlined-secondary"
+                                  label="Locations"
+                                  variant="outlined"
+                                  color="secondary"
+                                />
+                              </Grid>
+
+                              <Grid item xs={5}>
+                                <TextField
+                                  id="outlined-secondary"
+                                  label="Locations"
+                                  variant="outlined"
+                                  color="secondary"
+                                />
+                              </Grid>
+                            </Grid>
+
+                            <Grid item container justify="center" spacing={3} xs={12}>
+                              <Grid item xs={5}>
+                                <TextField
+                                  id="outlined-secondary"
+                                  label="Locations"
+                                  variant="outlined"
+                                  color="secondary"
+                                />
+                              </Grid>
+
+                              <Grid item xs={5}>
+                                <TextField
+                                  id="outlined-secondary"
+                                  label="Locations"
+                                  variant="outlined"
+                                  color="secondary"
+                                />
+                              </Grid>
+                            </Grid>
+
+                            <Grid item container justify="center" spacing={3} xs={12}>
+                              <Grid item xs={5}>
+                                <TextField
+                                  id="outlined-secondary"
+                                  label="Locations"
+                                  variant="outlined"
+                                  color="secondary"
+                                />
+                              </Grid>
+
+                              <Grid item xs={5}>
+                                <TextField
+                                  id="outlined-secondary"
+                                  label="Locations"
+                                  variant="outlined"
+                                  color="secondary"
+                                />
+                              </Grid>
+                            </Grid>
+
+                            <Button variant="contained"color="primary">SEARCH</Button>
                           </FormControl>
                         </div>  
                       </form>
