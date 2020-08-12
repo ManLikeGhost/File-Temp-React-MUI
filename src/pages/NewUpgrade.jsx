@@ -1,6 +1,5 @@
 import React from "react";
-import UpgradeSubscription from "../components/subscriptionPlan/upgradeSubscription";
-
+import NewUpgrade from "../components/subscriptionPlan/newUpgrade";
 import { makeStyles } from "@material-ui/core/styles";
 import Footer from "../components/footer";
 import NavigationHeader from "../components/navigationHeader";
@@ -11,17 +10,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UpgradeSubscriptionPage = () => {
+const NewUpgradePage = () => {
   const classes = useStyles();
   return (
     <div className="BackgroundImage">
       <NavigationHeader />
       <div className={classes.root}>
-        <UpgradeSubscription />
+        <NewUpgrade />
       </div>
       <Footer />
     </div>
   );
 };
 
-export default UpgradeSubscriptionPage;
+export default NewUpgradePage;

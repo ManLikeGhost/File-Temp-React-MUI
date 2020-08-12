@@ -7,7 +7,7 @@ import HomePage from "./pages/HomePage.jsx";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import UpgradeSubscriptionPage from "./pages/UpgradeSubscriptionPage";
-
+import NewUpgradePage from "./pages/NewUpgrade";
 
 import ProfileSettings from "./pages/ProfileSettings";
 import "./App.css";
@@ -65,7 +65,10 @@ function App() {
           <Route path="/upgrade-subscription">
             <UpgradeSubscriptionPage />
           </Route>
-          UpgradeSubscriptionPage
+          <Route path="/new-upgrade">
+            <NewUpgradePage />
+          </Route>
+          
           <Route exact path="/">
             <HomePage />
           </Route>
