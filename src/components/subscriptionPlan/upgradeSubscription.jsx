@@ -4,6 +4,7 @@ import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
+import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
@@ -72,7 +73,7 @@ const UpgradeSubscription = () => {
       >
         <Grid item xs={12} className={classes.title}>
           <Typography>
-            Current Subscription Status:{" "}
+            Current Subscription Status:
             <span className={classes.titleSpan}>STANDARD</span>
           </Typography>
         </Grid>
@@ -103,7 +104,7 @@ const UpgradeSubscription = () => {
 
         <Divider variant="middle" className={classes.divider} />
         <Grid container className={classes.listingContainer}>
-          <Grid item xs={4}>
+          <Grid item xs={6}>
             <Typography className={classes.text}>
               Expiry Date:
               <span className={classes.textValue}>
@@ -133,6 +134,10 @@ const UpgradeSubscription = () => {
           alignItems="center"
           style={{ paddingRight: "30px" }}
         >
+          <Link href="/subscription-plans"  style={{marginLeft: "auto"}}>
+            <Typography>See Plans</Typography>
+          </Link>
+
           <Grid item xs={12}>
             <TextField
               id="select-subscription"
@@ -190,10 +195,9 @@ const UpgradeSubscription = () => {
             </TextField>
           </Grid>
           <Grid container justify="flex-end">
-            <Grid item style={{paddingRight: "10px", marginTop:"10px"}}>
-            <Button className={classes.button}>PROCEED</Button>
+            <Grid item style={{ paddingRight: "10px", marginTop: "10px" }}>
+              <Button className={classes.button}>PROCEED</Button>
             </Grid>
-           
           </Grid>
         </Grid>
       </Grid>
