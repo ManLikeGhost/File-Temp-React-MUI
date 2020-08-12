@@ -15,6 +15,11 @@ import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import Divider from "@material-ui/core/Divider";
+
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import TextField from '@material-ui/core/TextField';
+
 import { makeStyles } from "@material-ui/core/styles";
 
 
@@ -140,7 +145,10 @@ const useStyles = makeStyles((theme) => ({
   },
 
   textpaper: {
-     textalign: "center"
+      textAlign: "center",
+      background: "#F5E9DE",
+    
+    
   },
  
 }));
@@ -231,8 +239,53 @@ const ForRent = () => {
                         <FilterListIcon />Advanced Filters
                       </Typography>
                     </Grid>
-                    <Grid item container xs={12}>
+                    <Grid item container justify="center" xs={12}>
+                      <form action="">
+                        <div>
+                          <FormControl className={classes.locations}>
+                            <div>
+                              <Grid item container justify="center" xs={12}>
+                                <TextField
+                                  id="outlined-secondary"
+                                  label="Locations"
+                                  variant="outlined"
+                                  color="secondary"
+                                />
+                              </Grid>
+                            </div>
+                            <div>
+                              <Grid item container justify="center" xs={12}>
+                                <TextField
+                                  id="outlined-secondary"
+                                  label="Category"
+                                  variant="outlined"
+                                  color="secondary"
+                                />
+                              </Grid>
+                            </div>    
+                            <Grid item container justify="center" spacing={3} xs={12}>
+                              <Grid item xs={5}>
+                                <TextField
+                                  id="outlined-secondary"
+                                  label="Locations"
+                                  variant="outlined"
+                                  color="secondary"
+                                />
+                              </Grid>
 
+                              <Grid item xs={5}>
+                                <TextField
+                                  id="outlined-secondary"
+                                  label="Locations"
+                                  variant="outlined"
+                                  color="secondary"
+                                />
+                              </Grid>
+                            </Grid>
+    
+                          </FormControl>
+                        </div>  
+                      </form>
                     </Grid>
                   </Grid>
 
