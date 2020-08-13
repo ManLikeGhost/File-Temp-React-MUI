@@ -105,6 +105,16 @@ const useStyles = makeStyles((theme) => ({
     background: "#F5E9DE",
     border: "0.8px solid #BF7950",
   },
+  imageContainer: {
+    width: "150px",
+    height: "150px",
+    margin: "0 auto",
+  },
+  image: {
+    maxWidth: "100%",
+    maxHeight: "100%",
+    objectFit: "contain",
+  },
 }));
 
 const details = [
@@ -260,22 +270,25 @@ const NewUpgrade = () => {
               <Typography>Payments should be made to</Typography>
             </Grid>
             <Grid item container style={{ margin: "30px 0" }}>
-              <Grid item container xs={6}>
-                <Grid item xs={6}>
-                  
-                    <img src={ZenithBankLogo} alt="GTB Logo" className={classes.image} />
-                  
+              <Grid item container xs={6} spacing={2}>
+                <Grid item xs={3}>
+                  <div className={classes.imageContainer}>
+                    <img
+                      src={ZenithBankLogo}
+                      alt="Zenith Bank Logo"
+                      className={classes.image}
+                    />
+                  </div>
                 </Grid>
                 <Grid
                   item
-                  xs={6}
+                  xs={9}
                   style={{
-                    display: "flex",
-                    alignItems: "center",
-                    paddingRight: "10px",
+                    paddingTop: "50px",
+                    paddingLeft: "30px",
                   }}
                 >
-                  <Typography className={classes.greenText} nowrap={true} display="block">
+                  <Typography className={classes.greenText}>
                     Terrell Davies Enterprise
                   </Typography>
                   <Typography className={classes.greenText}>
@@ -285,12 +298,22 @@ const NewUpgrade = () => {
               </Grid>
               <Grid item container xs={6} spacing={2}>
                 <Grid item xs={3}>
-                  <img src={GTBLogo} alt="GTB Logo" />
+                  <div className={classes.imageContainer}>
+                    <img
+                      src={GTBLogo}
+                      alt="GTB Logo"
+                      className={classes.image}
+                    />
+                  </div>
                 </Grid>
-                <Grid item xs={9} style={{
-                   paddingTop:"50px",
-                   paddingLeft:"30px"
-                  }}>
+                <Grid
+                  item
+                  xs={9}
+                  style={{
+                    paddingTop: "50px",
+                    paddingLeft: "30px",
+                  }}
+                >
                   <Typography className={classes.greenText}>
                     Terrell Davies Enterprise
                   </Typography>
