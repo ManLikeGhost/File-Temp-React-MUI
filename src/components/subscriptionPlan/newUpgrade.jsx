@@ -259,13 +259,23 @@ const NewUpgrade = () => {
             <Grid>
               <Typography>Payments should be made to</Typography>
             </Grid>
-            <Grid item container style={{margin: "30px 0"}}>
+            <Grid item container style={{ margin: "30px 0" }}>
               <Grid item container xs={6}>
                 <Grid item xs={6}>
-                <img src={ZenithBankLogo} alt="GTB Logo" />
+                  
+                    <img src={ZenithBankLogo} alt="GTB Logo" className={classes.image} />
+                  
                 </Grid>
-                <Grid item xs={6} style={{display: "flex", alignItems:"center"}}>
-                  <Typography className={classes.greenText}>
+                <Grid
+                  item
+                  xs={6}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    paddingRight: "10px",
+                  }}
+                >
+                  <Typography className={classes.greenText} nowrap={true} display="block">
                     Terrell Davies Enterprise
                   </Typography>
                   <Typography className={classes.greenText}>
@@ -273,12 +283,14 @@ const NewUpgrade = () => {
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid item container xs={6}>
-                <Grid item xs={6}>
-                <img src={GTBLogo} alt="GTB Logo" />
-                  
+              <Grid item container xs={6} spacing={2}>
+                <Grid item xs={3}>
+                  <img src={GTBLogo} alt="GTB Logo" />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={9} style={{
+                   paddingTop:"50px",
+                   paddingLeft:"30px"
+                  }}>
                   <Typography className={classes.greenText}>
                     Terrell Davies Enterprise
                   </Typography>
