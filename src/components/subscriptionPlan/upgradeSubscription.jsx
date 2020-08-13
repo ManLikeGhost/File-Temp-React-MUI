@@ -196,7 +196,7 @@ const UpgradeSubscription = () => {
           </Grid>
           <Grid container justify="flex-end">
             <Grid item style={{ paddingRight: "10px", marginTop: "10px" }}>
-              <Button className={classes.button}>PROCEED</Button>
+              <Button href="/new-upgrade" className={classes.button}>PROCEED</Button>
             </Grid>
           </Grid>
         </Grid>

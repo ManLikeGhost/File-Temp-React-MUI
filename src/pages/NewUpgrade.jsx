@@ -6,7 +6,7 @@ import NavigationHeader from "../components/navigationHeader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: theme.spacing(3, 40, 3, 40),
+    margin: theme.spacing(3, 20, 3, 20),
   },
 }));
 

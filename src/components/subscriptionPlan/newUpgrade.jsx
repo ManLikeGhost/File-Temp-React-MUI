@@ -1,10 +1,12 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-
 import Typography from "@material-ui/core/Typography";
-
+import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import GTBLogo from "../../img/GTB-logo.png";
+import ZenithBankLogo from "../../img/ZenithBank-Logo.png";
+
 const useStyles = makeStyles((theme) => ({
   container: {
     background: "#FFFFFF",
@@ -60,6 +62,10 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: theme.spacing(2),
     marginLeft: "auto",
   },
+  greenText: {
+    fontSize: "20px",
+    fontWeight: "bold",
+  },
   button1: {
     background: theme.palette.primary.main,
     borderRadius: theme.spacing(0.2),
@@ -84,6 +90,20 @@ const useStyles = makeStyles((theme) => ({
       background: theme.palette.primary.main,
       color: "white",
     },
+  },
+  divider: {
+    margin: "20px 0",
+    backgroundColor: theme.palette.primary.main,
+    height: "1px",
+  },
+  financialContainer: {
+    // paddingLeft: theme.spacing(5),
+    // marginTop: theme.spacing(4),
+    textAlign: "left",
+    padding: theme.spacing(2, 5),
+    color: theme.palette.secondary.main,
+    background: "#F5E9DE",
+    border: "0.8px solid #BF7950",
   },
 }));
 
@@ -132,7 +152,7 @@ const NewUpgrade = () => {
         >
           <Grid item xs={12} sm container>
             {details.map((detail) => (
-              <Grid item xs={12}>
+              <Grid item xs={12} key={detail.value}>
                 <Typography style={{ display: "flex", marginTop: "15px" }}>
                   <span className={classes.text}>{detail.name}</span>
                   <span className={classes.textValue}>{detail.value}</span>
@@ -144,9 +164,7 @@ const NewUpgrade = () => {
 
         <Grid container className={classes.priceContainer}>
           <Grid item xs={6}>
-            <Typography style={{ fontSize: "20px", fontWeight: "bold" }}>
-              Price
-            </Typography>
+            <Typography className={classes.greenText}>Price</Typography>
           </Grid>
           <Grid item xs={6} style={{ textAlign: "right" }}>
             <Typography
@@ -214,15 +232,74 @@ const NewUpgrade = () => {
         justify="center"
         alignItems="center"
       >
-        <Grid item={3}></Grid>
-        <Grid item={3}>
+        <Grid item xs={3}></Grid>
+        <Grid item xs={3}>
           <Button className={classes.button1}>PROCEED </Button>
         </Grid>
-        <Grid item={3}>
+        <Grid item xs={3}>
           <Button className={classes.button2}>BACK</Button>
         </Grid>
-        <Grid item={3}></Grid>
+        <Grid item xs={3}></Grid>
       </Grid>
+
+      <div>
+        <Divider variant="middle" className={classes.divider} />
+        <Grid
+          container
+          className={classes.container}
+          direction="row"
+          justify="center"
+          alignItems="center"
+        >
+          <Grid item xs={12} className={classes.title}>
+            <Typography>Financial Partners</Typography>
+          </Grid>
+
+          <Grid container className={classes.financialContainer}>
+            <Grid>
+              <Typography>Payments should be made to</Typography>
+            </Grid>
+            <Grid item container style={{margin: "30px 0"}}>
+              <Grid item container xs={6}>
+                <Grid item xs={6}>
+                <img src={ZenithBankLogo} alt="GTB Logo" />
+                </Grid>
+                <Grid item xs={6} style={{display: "flex", alignItems:"center"}}>
+                  <Typography className={classes.greenText}>
+                    Terrell Davies Enterprise
+                  </Typography>
+                  <Typography className={classes.greenText}>
+                    Acc No: 1234567890
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Grid item container xs={6}>
+                <Grid item xs={6}>
+                <img src={GTBLogo} alt="GTB Logo" />
+                  
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography className={classes.greenText}>
+                    Terrell Davies Enterprise
+                  </Typography>
+                  <Typography className={classes.greenText}>
+                    Acc No: 1234567890
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+
+            <Grid item container>
+              <Grid item xs={12}>
+                <Typography>
+                  Payments are processed and confirmed within 24hrs. Please send
+                  your payment receipt to payments@terrelldavies.co.uk
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </div>
     </div>
   );
 };
