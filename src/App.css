@@ -1,6 +1,6 @@
 /* CSS DEBUGGING TO VISUALIZE ALL THE ELEMENTS ON THE PAGE */
-/* 
-* {
+
+/* * {
     outline: 1px solid purple;
 } */
 
@@ -19,6 +19,12 @@
 
 /* .divider {
   border: 1px solid #bf7950;
+} */
+
+/* .divider {
+  margin: "100px 0";
+  background-color:  #bf7950;
+  height: "1px";
 } */
 
 @font-face {
