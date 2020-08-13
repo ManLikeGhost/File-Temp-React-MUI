@@ -8,6 +8,7 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import UpgradeSubscriptionPage from "./pages/UpgradeSubscriptionPage";
 import NewUpgradePage from "./pages/NewUpgrade";
+import PaymentPage from "./pages/PaymentPage";
 
 import ProfileSettings from "./pages/ProfileSettings";
 import "./App.css";
@@ -67,6 +68,9 @@ function App() {
           </Route>
           <Route path="/new-upgrade">
             <NewUpgradePage />
+          </Route>
+          <Route path="/payment">
+            <PaymentPage />
           </Route>
           
           <Route exact path="/">
