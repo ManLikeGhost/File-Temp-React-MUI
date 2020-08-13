@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   divider: {
-    margin: "20px 0",
+    margin: "100px 0",
     backgroundColor: theme.palette.primary.main,
     height: "1px",
   },
@@ -267,7 +267,7 @@ const NewUpgrade = () => {
 
           <Grid container className={classes.financialContainer}>
             <Grid>
-              <Typography>Payments should be made to</Typography>
+              <Typography style={{fontSize: "1.2rem"}}>Payments should be made to</Typography>
             </Grid>
             <Grid item container style={{ margin: "30px 0" }}>
               <Grid item container xs={6} spacing={2}>
@@ -326,7 +326,7 @@ const NewUpgrade = () => {
 
             <Grid item container>
               <Grid item xs={12}>
-                <Typography>
+                <Typography style={{fontSize: "1.2rem"}}>
                   Payments are processed and confirmed within 24hrs. Please send
                   your payment receipt to payments@terrelldavies.co.uk
                 </Typography>
