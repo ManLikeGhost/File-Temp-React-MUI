@@ -9,6 +9,7 @@ import SignUpPage from "./pages/SignUpPage";
 import UpgradeSubscriptionPage from "./pages/UpgradeSubscriptionPage";
 import NewUpgradePage from "./pages/NewUpgrade";
 import PaymentPage from "./pages/PaymentPage";
+import PostPropertyPage from "./pages/PostPropertyPage";
 
 import ProfileSettings from "./pages/ProfileSettings";
 import "./App.css";
@@ -72,7 +73,10 @@ function App() {
           <Route path="/payment">
             <PaymentPage />
           </Route>
-          
+
+          <Route path="/post-property">
+            <PostPropertyPage />
+          </Route>
           <Route exact path="/">
             <HomePage />
           </Route>
