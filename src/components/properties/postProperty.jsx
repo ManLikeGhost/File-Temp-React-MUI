@@ -9,17 +9,37 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import { makeStyles } from "@material-ui/core/styles";
-import BackgroundImage from "../../img/MarbleBackground.png"
 
-import SectionTitle from "../sectionTitle"
+import SectionTitle from "../sectionTitle";
 
 const useStyles = makeStyles((theme) => ({
-
- 
+  detailsContainer: {
+    background: "#F5E9DE",
+    border: "0.8px solid #BF7950",
+    boxSizing: "border-box",
+    boxShadow: "0px 4px 13px rgba(0, 0, 0, 0.1)",
+    borderRadius: "2px",
+    // height: theme.spacing(8),
+    marginBottom: theme.spacing(2),
+    padding: theme.spacing(4),
+  },
+  detailsText:{
+      color: theme.palette.secondary.main,
+      fontSize: theme.spacing(3),
+      fontWeight: "bold",
+  },
+  formContainer:{
+    background: "#FFFFFF",
+    border: "0.8px solid #BF7950",
+    boxSizing: "border-box",
+    boxShadow: "0px 4px 13px rgba(0, 0, 0, 0.1)",
+    borderRadius:"2px",
+    padding: theme.spacing(3, 6),
+  },
   form: {
     width: "100%", // Fix IE 11 issue.
     // margin: theme.spacing(3, 1, 100, 1),
-    padding: theme.spacing(1, 6),
+    background: "white",
   },
   label: {
     fontSize: "15px",
@@ -31,22 +51,6 @@ const useStyles = makeStyles((theme) => ({
     // minWidth: 120,
   },
 
-  text: {
-    fontSize: "12px",
-    color: theme.palette.secondary.main,
-  },
-  title: {
-    marginTop: "100px",
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: "30px",
-    color: theme.palette.secondary.main,
-  },
-  subtitle: {
-    textAlign: "center",
-    fontSize: "20px",
-    color: theme.palette.secondary.main,
-  },
   submit: {
     margin: theme.spacing(3, 0, 2),
     borderRadius: "2px",
@@ -63,12 +67,13 @@ const PostProperty = () => {
   const classes = useStyles();
   return (
     <div>
-        <SectionTitle>Post a Property Request</SectionTitle>
-      <Grid container>
+      <SectionTitle>Post a Property Request</SectionTitle>
+      <Grid container className={classes.detailsContainer}>
         <Grid item>
-          <Typography>Property Details</Typography>
+          <Typography  className={classes.detailsText}>Property Details</Typography>
         </Grid>
       </Grid>
+      <div className={classes.formContainer}>
       <form className={classes.form}>
         <Grid container spacing={5}>
           <Grid item xs={8}>
@@ -136,7 +141,7 @@ const PostProperty = () => {
             />
           </Grid>
         </Grid>
-        <Grid container>
+        <Grid container spacing={6}>
           <Grid item xs={6}>
             <FormControl className={classes.accountFormControl}>
               <InputLabel id="accountType">Select Category</InputLabel>
@@ -289,12 +294,12 @@ const PostProperty = () => {
               rowsMax={20}
               aria-label="maximum height"
               style={{
-                  width:"39rem",
-                  height:"10rem"
+                width: "39rem",
+                height: "10rem",
               }}
-            //   placeholder=""
-        //       defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-        //   ut labore et dolore magna aliqua."
+              //   placeholder=""
+              //       defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+              //   ut labore et dolore magna aliqua."
             />
           </Grid>
         </Grid>
@@ -308,6 +313,7 @@ const PostProperty = () => {
           Sign Up
         </Button>
       </form>
+      </div>
     </div>
   );
 };
