@@ -7,38 +7,15 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
+import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import { makeStyles } from "@material-ui/core/styles";
+import BackgroundImage from "../../img/MarbleBackground.png"
+
+import SectionTitle from "../sectionTitle"
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    height: "1000px",
-    //   background: `url(${BackgroundImage}) no-repeat center center fixed`,
-    backgroundSize: "cover",
-  },
 
-  paper: {
-    width: "628.4px",
-    height: "709.1px",
-    margin: "50px auto",
-    padding: "20px",
-    background: "#F5E9DE",
-    border: "0.8px solid #BF7950",
-    boxShadow: "0px 4px 25px rgba(0, 0, 0, 0.25)",
-    borderRadius: "4px",
-  },
-  signIn: {
-    // textAlign: "right",
-    color: "white",
-    fontSize: "25px",
-    lineHeight: "25px",
-    margin: "71px auto",
-  },
-  icon: {
-    fontSize: "150px",
-    color: theme.palette.primary.main,
-    marginLeft: 130,
-    // marginBottom: "-500",
-  },
+ 
   form: {
     width: "100%", // Fix IE 11 issue.
     // margin: theme.spacing(3, 1, 100, 1),
@@ -53,9 +30,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     // minWidth: 120,
   },
-  margin: {
-    marginBottom: "-150px",
-  },
+
   text: {
     fontSize: "12px",
     color: theme.palette.secondary.main,
@@ -88,13 +63,14 @@ const PostProperty = () => {
   const classes = useStyles();
   return (
     <div>
+        <SectionTitle>Post a Property Request</SectionTitle>
       <Grid container>
         <Grid item>
           <Typography>Property Details</Typography>
         </Grid>
       </Grid>
       <form className={classes.form}>
-        <Grid container>
+        <Grid container spacing={5}>
           <Grid item xs={8}>
             <TextField
               required
@@ -131,7 +107,7 @@ const PostProperty = () => {
             </FormControl>
           </Grid>
         </Grid>
-        <Grid container>
+        <Grid container spacing={5}>
           <Grid item xs={6}>
             <TextField
               variant="outlined"
@@ -204,7 +180,7 @@ const PostProperty = () => {
             </FormControl>
           </Grid>
         </Grid>
-        <Grid container>
+        <Grid container spacing={6}>
           <Grid item xs={4}>
             <FormControl className={classes.accountFormControl}>
               <InputLabel id="accountType">Select State</InputLabel>
@@ -271,7 +247,6 @@ const PostProperty = () => {
         </Grid>
         <Grid container spacing={5}>
           <Grid item xs={6}>
-           
             <FormControl className={classes.accountFormControl}>
               <InputLabel id="accountType">Select No. of bedrooms</InputLabel>
               <Select
@@ -293,7 +268,6 @@ const PostProperty = () => {
             </FormControl>
           </Grid>
           <Grid item xs={6}>
-            
             <TextField
               required
               id="budget"
@@ -305,6 +279,22 @@ const PostProperty = () => {
               variant="outlined"
               //   value={state.name}
               //   onChange={handleChange("name")}
+            />
+          </Grid>
+        </Grid>
+        <Grid container>
+          <Grid>
+            <InputLabel id="accountType">Comments</InputLabel>
+            <TextareaAutosize
+              rowsMax={20}
+              aria-label="maximum height"
+              style={{
+                  width:"39rem",
+                  height:"10rem"
+              }}
+            //   placeholder=""
+        //       defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        //   ut labore et dolore magna aliqua."
             />
           </Grid>
         </Grid>

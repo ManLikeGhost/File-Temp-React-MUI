@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const sectionTitle = (props) => {
+const SectionTitle = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -31,4 +31,4 @@ const sectionTitle = (props) => {
   );
 };
 
-export default sectionTitle;
+export default SectionTitle;
