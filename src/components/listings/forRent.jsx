@@ -146,8 +146,22 @@ const useStyles = makeStyles((theme) => ({
   textpaper: {
       textAlign: "center",
       background: "#F5E9DE",
-    
-    
+  },
+
+  dropText: {
+    margin: "20px 0px 0px 30px",
+    width: "136px",
+    height: "20px",
+    left: "137px",
+    top: "626px",
+    fontfamily: "Metropolis",
+    fontstyle: "normal",
+    fontweight: "normal",
+    fontsize: "20px",
+    lineheight: "20px",
+    color: "#BF7950",
+
+
   },
  
 }));
@@ -200,14 +214,20 @@ const ForRent = () => {
                     </Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography  className={classes.dropText}>
-                      Menu 
-                    </Typography>
+                    <TextField
+                    id="outlined-select-native"
+                    select
+                    label="For Rent"
+                    ></TextField>
                   </Grid>  
                 </Grid>
               </Card>
               <Card className={classes.homeImg} variant="outlined">
-                <CardMedia className={classes.img} />
+                <CardMedia 
+                  className={classes.img} 
+                  image="../static/img/houses/4.png"
+                  title="Live from space album cover"
+                  />
                 <Divider orientation="vertical" flexItem />
               </Card>
             </Grid>
