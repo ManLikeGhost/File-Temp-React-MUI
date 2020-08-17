@@ -25,6 +25,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "30px",
     textAlign: "justify",
   },
+
+  holder: {
+    margin: "20px 50px 20px 100px",
+  },
+
   button: {
     marginLeft: "60px",
     color: theme.palette.primary.contrastText,
@@ -52,38 +57,29 @@ const AboutPage = () => {
           </Typography>
 
         <SectionTitle>Meet our Team </SectionTitle>
-        <div>
-          <Grid container spacing={3} direction="row" alignItems="center" justify="center">
-            <Grid item xs={8} sm={4}>
+        <div className={classes.holder}>
+          <Grid container spacing={3} justify="center">
+            <Grid item xs={4}>
               <Avatar alt="" src="" className={classes.large} />
             </Grid>
-            <Grid item xs={8} sm={4}>
+            <Grid item xs={4}>
               <Avatar alt="" src="" className={classes.large} />
             </Grid>
-            <Grid item xs={8} sm={4}>
+            <Grid item xs={4}>
               <Avatar alt="" src="" className={classes.large} />
             </Grid>
-            <Grid item xs={8} sm={4}>
+            <Grid item xs={4}>
               <Avatar alt="" src="" className={classes.large} />
             </Grid>
-            <Grid item xs={8} sm={4}>
+            <Grid item xs={4}>
               <Avatar alt="" src="" className={classes.large} />
             </Grid>
-            <Grid item xs={8} sm={4}>
+            <Grid item xs={4}>
               <Avatar alt="" src="" className={classes.large} />
             </Grid>  
           </Grid>
         </div>  
         <SectionTitle>Why Terrell Davies</SectionTitle>
-          <Typography className={classes.text}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididuntut labore et dolore magna aliqua. Quis ipsum
-              suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan
-              lacus vel facilisis ipsum dolor sit amet, consectetur adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
-              ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas
-              accumsan lacus vel faca
-            </Typography>
         <SectionTitle>Testimonials</SectionTitle>
         <SectionTitle>Strategic Partners</SectionTitle>  
         <Footer />

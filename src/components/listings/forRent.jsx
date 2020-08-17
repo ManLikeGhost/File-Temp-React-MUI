@@ -80,12 +80,9 @@ const useStyles = makeStyles((theme) => ({
     borderradius: "2px",
   },
 
-  all: {
-    padding: "10px",
-  },
   
   holder: {
-    margin: "20px 50px 20px 50px",
+    margin: "20px 50px 20px 100px",
   },
 
   typo: {
