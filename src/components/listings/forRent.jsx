@@ -4,6 +4,7 @@ import MarbleBackground from '../../img/MarbleBackground.png'
 import Footer from '../footer';
 import SaleRentShortlet from '../home/saleRentShortlet';
 
+import CardPropertyList from '../cardPropertyList.jsx';
 
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -14,7 +15,6 @@ import Typography from '@material-ui/core/Typography';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import Divider from "@material-ui/core/Divider";
 import MenuItem from '@material-ui/core/MenuItem';
 
 
@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
 
   
   holder: {
-    margin: "20px 50px 20px 100px",
+    margin: "20px 50px 20px 50px",
   },
 
   typo: {
@@ -161,8 +161,15 @@ const useStyles = makeStyles((theme) => ({
     lineheight: "20px",
     color: "#BF7950",
 
-
   },
+
+  dropMenu: {
+    width: "136px",
+  },
+
+  cardProp: {
+    padding: "10px 0px 0px 0px",
+  }
  
 }));
 
@@ -206,6 +213,8 @@ const ForRent = () => {
                   <Button color="primary">Non-Furnished</Button>
                 </CardActions> 
               </Card>
+            </Grid>
+            <Grid item>
               <Card className={classes.dropdownMenu} variant="outlined">
                 <Grid container>
                   <Grid item xs={6}>
@@ -215,22 +224,19 @@ const ForRent = () => {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
+                    className={classes.dropMenu}
                     id="outlined-select-native"
                     select
                     label="For Rent"
                     ></TextField>
                   </Grid>  
                 </Grid>
-              </Card>
-              <Card className={classes.homeImg} variant="outlined">
-                <CardMedia 
-                  className={classes.img} 
-                  image="../static/img/houses/4.png"
-                  title="Live from space album cover"
-                  />
-                <Divider orientation="vertical" flexItem />
-              </Card>
+              </Card> 
             </Grid>
+
+            <Grid item className={classes.cardProp}>
+                <CardPropertyList />
+            </Grid> 
           </Grid>
 
 
@@ -249,7 +255,9 @@ const ForRent = () => {
                 </CardActions>
               </Card>
             </Grid>
-            <Grid item xs={12}>
+            
+             {/*
+             <Grid item xs={12}>
               <Paper className={classes.aFilters}>
                 <div className={classes.paperform}>
                   <Grid container spacing={3}>
@@ -371,11 +379,11 @@ const ForRent = () => {
 
                 </div>
               </Paper>
-            </Grid>  
+             </Grid> */} 
           </Grid>
         </Grid>
       </div>
-              
+        
       <SaleRentShortlet />
       <Footer />
 
