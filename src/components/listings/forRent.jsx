@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     border: "0.8px solid #BF7950",
     boxsizing: "border-box",
     borderradius: "2px",
-    margin: "0px 0px 10px 0px", 
+    margin: "0px 0px 0px 0px", 
   },
 
   filters :{
@@ -169,8 +169,26 @@ const useStyles = makeStyles((theme) => ({
 
   cardProp: {
     padding: "10px 0px 0px 0px",
-  }
- 
+  },
+
+  button: {
+    width: "256.47px",
+    height: "29.55px",
+    background: "#BF7950",
+    borderradius: "2px",
+  },
+
+  locations: {
+    padding: "0px 0px 10px 0px",
+    width: "288.46px", 
+  },
+
+  category: {
+    padding: "0px 0px 10px 0px",
+    width: "288.46px",
+  },
+
+  
 }));
 
 
@@ -234,7 +252,7 @@ const ForRent = () => {
               </Card> 
             </Grid>
 
-            <Grid item className={classes.cardProp}>
+            <Grid item xs={6} className={classes.cardProp}>
                 <CardPropertyList />
             </Grid> 
           </Grid>
@@ -256,7 +274,6 @@ const ForRent = () => {
               </Card>
             </Grid>
             
-             {/*
              <Grid item xs={12}>
               <Paper className={classes.aFilters}>
                 <div className={classes.paperform}>
@@ -277,96 +294,109 @@ const ForRent = () => {
                                   label="Locations"
                                   variant="outlined"
                                   color="secondary"
+                                  className={classes.locations}
                                 />
                               </Grid>
                             </div>
                             <div>
                               <Grid item container justify="center" xs={12}>
                                 <TextField
-                                  id="outlined-secondary"
+                                  className={classes.category}
+                                  id="outlined-select-native"
+                                  variant="outlined"
+                                  select
                                   label="Category"
-                                  variant="outlined"
-                                  color="secondary"
-                                />
+                                  ></TextField>
                               </Grid>
-                            </div>    
+                            </div>
+
                             <Grid item container justify="center" spacing={3} xs={12}>
                               <Grid item xs={5}>
                                 <TextField
-                                  id="outlined-secondary"
-                                  label="Locations"
-                                  variant="outlined"
-                                  color="secondary"
-                                />
+                                className={classes.types}
+                                id="outlined-select-native"
+                                variant="outlined"
+                                select
+                                label="For Rent"
+                                ></TextField>
                               </Grid>
 
                               <Grid item xs={5}>
                                 <TextField
-                                  id="outlined-secondary"
-                                  label="Locations"
-                                  variant="outlined"
-                                  color="secondary"
-                                />
+                                className={classes.bedrooms}
+                                id="outlined-select-native"
+                                variant="outlined"
+                                select
+                                label="For Rent"
+                                ></TextField>
                               </Grid>
                             </Grid>
 
                             <Grid item container justify="center" spacing={3} xs={12}>
                               <Grid item xs={5}>
                                 <TextField
-                                  id="outlined-secondary"
-                                  label="Locations"
-                                  variant="outlined"
-                                  color="secondary"
-                                />
+                                className={classes.MinPrice}
+                                id="outlined-select-native"
+                                variant="outlined"
+                                select
+                                label="For Rent"
+                                ></TextField>
                               </Grid>
 
                               <Grid item xs={5}>
                                 <TextField
-                                  id="outlined-secondary"
-                                  label="Locations"
-                                  variant="outlined"
-                                  color="secondary"
-                                />
+                                className={classes.MaxPrice}
+                                id="outlined-select-native"
+                                variant="outlined"
+                                select
+                                label="For Rent"
+                                ></TextField>
+                              </Grid>
+                            </Grid>
+
+                            <Grid item container justify="center" spacing={3} xs={12}>
+                            <Grid item xs={5}>
+                                <TextField
+                                className={classes.furnished}
+                                id="outlined-select-native"
+                                variant="outlined"
+                                select
+                                label="For Rent"
+                                ></TextField>
+                              </Grid>
+
+                              <Grid item xs={5}>
+                                <TextField
+                                className={classes.added}
+                                id="outlined-select-native"
+                                variant="outlined"
+                                select
+                                label="For Rent"
+                                ></TextField>
                               </Grid>
                             </Grid>
 
                             <Grid item container justify="center" spacing={3} xs={12}>
                               <Grid item xs={5}>
                                 <TextField
-                                  id="outlined-secondary"
-                                  label="Locations"
-                                  variant="outlined"
-                                  color="secondary"
-                                />
+                                    className={classes.keywords}
+                                    id="outlined-secondary"
+                                    variant="outlined"
+                                    label="Category"
+                                    variant="outlined"
+                                    color="secondary"
+                                  />
                               </Grid>
 
                               <Grid item xs={5}>
                                 <TextField
-                                  id="outlined-secondary"
-                                  label="Locations"
-                                  variant="outlined"
-                                  color="secondary"
-                                />
-                              </Grid>
-                            </Grid>
-
-                            <Grid item container justify="center" spacing={3} xs={12}>
-                              <Grid item xs={5}>
-                                <TextField
-                                  id="outlined-secondary"
-                                  label="Locations"
-                                  variant="outlined"
-                                  color="secondary"
-                                />
-                              </Grid>
-
-                              <Grid item xs={5}>
-                                <TextField
-                                  id="outlined-secondary"
-                                  label="Locations"
-                                  variant="outlined"
-                                  color="secondary"
-                                />
+                                    className={classes.ref}
+                                    id="outlined-secondary"
+                                    variant="outlined"
+                                    label="Category"
+                                    variant="outlined"
+                                    color="secondary"
+                                  />
                               </Grid>
                             </Grid>
 
@@ -379,7 +409,24 @@ const ForRent = () => {
 
                 </div>
               </Paper>
-             </Grid> */} 
+             </Grid> 
+
+             <Grid item xs={12}>
+              <Card className={classes.cardRight} variant="outlined">
+                <CardContent>
+                  <Typography  className={classes.typo} color="textSecondary" gutterBottom>
+                    Subscribe to our Weekly Newsletter
+                  </Typography>
+                  <Typography color="textSecondary" gutterBottom>
+                    Get weekly updates on the best deal on property & developments in Nigeria.
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button className={classes.button} variant="contained"color="primary">Subscribe</Button>
+                </CardActions>
+              </Card>
+            </Grid>
+
           </Grid>
         </Grid>
       </div>

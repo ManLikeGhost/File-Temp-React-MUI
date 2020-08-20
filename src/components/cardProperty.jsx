@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
   locationIcon: {
     alignSelf: "flex-end",
   },
+  
 
   cardProperty: {
     padding: "20px 0px 0px 0px",
@@ -56,61 +57,35 @@ export default function CardProperty({ imagePath, saleText, address, details, de
 
   return (
     <div className={classes.cardProperty}>
-      <Grid container xs={12} spacing={1}>
-        <Card className={classes.root}>
-          <Grid item container xs={6}>
+      <Card className={classes.root}>
+        <Grid container xs={12}>
+          <Grid item xs={6}>
             <CardMedia
               component="img"
-              alt={saleText}
-              height="200"
-              image={imagePath || 'http://placehold.it/200'}
+              alt={description}
               title={saleText}
+              image={imagePath || 'http://placehold.it/200'}
             />
           </Grid>
 
-          <Grid item container xs={6}>
-            <CardContent className={classes.cardColor}>
-              <Grid container>
-                <Grid
-                  item
-                  xs={2}
-                  container
-                  direction="row"
-                  justify="center"
-                  alignItems="center"
-                >
-                  <LocationOnIcon fontSize="large" color="primary" />
-                </Grid>
-                <Grid container>
-                  <Grid item xs={12}>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="h4"
-                      color="primary"
-                      className={classes.propertyText}
-                    >
-                      {saleText}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Typography variant="body2" component="p" color="secondary" className={classes.addressText}>
-                      {address}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Typography variant="body2" component="p" color="secondary" >
-                      {description}
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
+          <Grid item xs={6}>
+            <CardContent>
+            <LocationOnIcon fontSize="large" color="primary" />
+              <Typography>
+                {address}
+              </Typography>
+              <Typography>
+                {details}
+              </Typography>
+              <Typography>
+                {description}
+              </Typography>
               <Divider variant="middle" className={classes.divider} />
               <CardPropertyFeatures />
             </CardContent>
-          </Grid>
-        </Card>
-      </Grid>
+          </Grid>  
+        </Grid>  
+      </Card>
     </div>
   );
 }
