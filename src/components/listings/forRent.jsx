@@ -9,16 +9,21 @@ import CardPropertyList from '../cardPropertyList.jsx';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
-import CardMedia from "@material-ui/core/CardMedia";
+
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import MenuItem from '@material-ui/core/MenuItem';
+
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 
-import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 
@@ -43,7 +48,8 @@ const useStyles = makeStyles((theme) => ({
     border: "0.8px solid #BF7950",
     boxsizing: "border-box",
     borderradius: "2px",
-    margin: "0px 0px 0px 0px", 
+    margin: "0px 0px 20px 0px",
+    //padding: "0px 0px 10px 0px", 
   },
 
   filters :{
@@ -139,8 +145,8 @@ const useStyles = makeStyles((theme) => ({
     top: "438px",
     background: "#FFFFFF",
     border: "0.8px solid #BF7950",
-    borderradius: "2px"
-
+    borderradius: "2px",
+    margin: "0px 0px 20px 0px",
   },
 
   textpaper: {
@@ -186,6 +192,49 @@ const useStyles = makeStyles((theme) => ({
   category: {
     padding: "0px 0px 10px 0px",
     width: "288.46px",
+  },
+  types: {
+    padding: "0px 0px 10px 0px",
+    width: "129px",
+  },
+  bedrooms : {
+    padding: "0px 0px 10px 0px",
+    width: "129px",
+  },
+  ref: {
+    padding: "0px 0px 10px 0px",
+    width: "129px",
+  },
+  keywords: {
+    padding: "0px 0px 10px 0px",
+    width: "129px",
+  },
+  added: {
+    padding: "0px 0px 10px 0px",
+    width: "129px",
+  },
+  furnished: {
+    padding: "0px 0px 10px 0px",
+    width: "129px",
+  },
+  MaxPrice: {
+    padding: "0px 0px 10px 0px",
+    width: "129px",
+  },
+  MinPrice: {
+    padding: "0px 0px 10px 0px",
+    width: "129px",
+  },
+  papah: {
+    width: "323.89px",
+    padding: "10px 0px 10px 0px",
+    height: "595.19px",
+    left: "848px",
+    top: "981.59px",
+    background: "#FFFFFF",
+    border: "0.8px solid #BF7950",
+    borderradius: "2px",
+    margin: "0px 0px 20px 0px",
   },
 
   
@@ -311,89 +360,89 @@ const ForRent = () => {
                             </div>
 
                             <Grid item container justify="center" spacing={3} xs={12}>
-                              <Grid item xs={5}>
+                              <Grid item xs={6}>
                                 <TextField
                                 className={classes.types}
                                 id="outlined-select-native"
                                 variant="outlined"
                                 select
-                                label="For Rent"
+                                label="types"
                                 ></TextField>
                               </Grid>
 
-                              <Grid item xs={5}>
+                              <Grid item xs={6}>
                                 <TextField
                                 className={classes.bedrooms}
                                 id="outlined-select-native"
                                 variant="outlined"
                                 select
-                                label="For Rent"
+                                label="bedrooms"
                                 ></TextField>
                               </Grid>
                             </Grid>
 
                             <Grid item container justify="center" spacing={3} xs={12}>
-                              <Grid item xs={5}>
+                              <Grid item xs={6}>
                                 <TextField
                                 className={classes.MinPrice}
                                 id="outlined-select-native"
                                 variant="outlined"
                                 select
-                                label="For Rent"
+                                label="MinPrice"
                                 ></TextField>
                               </Grid>
 
-                              <Grid item xs={5}>
+                              <Grid item xs={6}>
                                 <TextField
                                 className={classes.MaxPrice}
                                 id="outlined-select-native"
                                 variant="outlined"
                                 select
-                                label="For Rent"
+                                label="MaxPrice"
                                 ></TextField>
                               </Grid>
                             </Grid>
 
                             <Grid item container justify="center" spacing={3} xs={12}>
-                            <Grid item xs={5}>
+                            <Grid item xs={6}>
                                 <TextField
                                 className={classes.furnished}
                                 id="outlined-select-native"
                                 variant="outlined"
                                 select
-                                label="For Rent"
+                                label="furnished"
                                 ></TextField>
                               </Grid>
 
-                              <Grid item xs={5}>
+                              <Grid item xs={6}>
                                 <TextField
                                 className={classes.added}
                                 id="outlined-select-native"
                                 variant="outlined"
                                 select
-                                label="For Rent"
+                                label="added"
                                 ></TextField>
                               </Grid>
                             </Grid>
 
                             <Grid item container justify="center" spacing={3} xs={12}>
-                              <Grid item xs={5}>
+                              <Grid item xs={6}>
                                 <TextField
                                     className={classes.keywords}
                                     id="outlined-secondary"
                                     variant="outlined"
-                                    label="Category"
+                                    label="keywords"
                                     variant="outlined"
                                     color="secondary"
                                   />
                               </Grid>
 
-                              <Grid item xs={5}>
+                              <Grid item xs={6}>
                                 <TextField
                                     className={classes.ref}
                                     id="outlined-secondary"
                                     variant="outlined"
-                                    label="Category"
+                                    label="ref"
                                     variant="outlined"
                                     color="secondary"
                                   />
@@ -410,6 +459,61 @@ const ForRent = () => {
                 </div>
               </Paper>
              </Grid> 
+
+             <Grid item xs={12}>
+              <Paper className={classes.papah}>
+                <div className={classes.divy}>
+                <TableContainer component={Paper}>
+                  <Table className={classes.table} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>Property Type</TableCell>
+                        <TableCell align="right">Count</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      
+                        <TableRow >
+                          <TableCell component="th" scope="row">
+                            Flats
+                          </TableCell>
+                          <TableCell align="right">145</TableCell>
+                        </TableRow>
+                        <TableRow >
+                          <TableCell component="th" scope="row">
+                          House
+                          </TableCell>
+                          <TableCell align="right">3442</TableCell>
+                        </TableRow> 
+                        <TableRow >
+                          <TableCell component="th" scope="row">
+                          Lands
+                          </TableCell>
+                          <TableCell align="right">278</TableCell>
+                        </TableRow> 
+                        <TableRow >
+                          <TableCell component="th" scope="row">
+                          Commercial Property
+                          </TableCell>
+                          <TableCell align="right">56</TableCell>
+                        </TableRow>
+                        <TableRow >
+                        <TableCell component="th" scope="row">
+                          Type
+                          </TableCell>
+                          <TableCell>1bed</TableCell>
+                          <TableCell>2bed</TableCell>
+                          <TableCell>3bed</TableCell>
+                          <TableCell>4bed</TableCell>
+                          <TableCell>+5bed</TableCell>
+                        </TableRow>
+                         
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+                </div>
+              </Paper> 
+             </Grid>
 
              <Grid item xs={12}>
               <Card className={classes.cardRight} variant="outlined">
