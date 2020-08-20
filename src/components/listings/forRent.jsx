@@ -507,6 +507,16 @@ const ForRent = () => {
                           <TableCell>4bed</TableCell>
                           <TableCell>+5bed</TableCell>
                         </TableRow>
+                        <TableRow >
+                        <TableCell component="th" scope="row">
+                          Type
+                          </TableCell>
+                          <TableCell>1bed</TableCell>
+                          <TableCell>2bed</TableCell>
+                          <TableCell>3bed</TableCell>
+                          <TableCell>4bed</TableCell>
+                          <TableCell>+5bed</TableCell>
+                        </TableRow>
                          
                     </TableBody>
                   </Table>
