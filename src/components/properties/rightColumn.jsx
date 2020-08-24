@@ -24,7 +24,7 @@ const RightColumn = () => {
             <FormControl>
               <div>
                 <Grid item container justify="center" xs={12}>
-                <InputLabel id="accountType">Locations</InputLabel>
+                  <InputLabel id="accountType">Locations</InputLabel>
                   <TextField
                     id="outlined-secondary"
                     label="Locations"
