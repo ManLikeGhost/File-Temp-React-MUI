@@ -1,16 +1,17 @@
 import React from "react";
-import { detailsProperties } from "../demoData/demoDataCard";
+import { detailsProperties } from "../../demoData/demoDataCard";
+
 import CardProperty from "./cardProperty";
 import Grid from "@material-ui/core/Grid";
 
-import MarbleBackground from "../img/MarbleBackground.png";
+// import MarbleBackground from "../img/MarbleBackground.png";
 
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   backgroundImage: {
     height: "80vh",
-    backgroundImage: `url(${MarbleBackground})`,
+    // backgroundImage: `url(${MarbleBackground})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     // width: `calc(100vw + 48px)`,

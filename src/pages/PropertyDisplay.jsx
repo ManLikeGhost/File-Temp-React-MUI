@@ -1,10 +1,10 @@
 import React from "react";
 import NavigationHeader from "../components/navigationHeader.jsx";
-// import MarbleBackground from "../../img/MarbleBackground.png";
+import MarbleBackground from "../img/MarbleBackground.png";
 import Footer from "../components/footer";
 import SaleRentShortlet from "../components/home/saleRentShortlet";
 
-import CardPropertyList from "../components/cardPropertyList.jsx";
+import CardPropertyList from "../components/properties/cardPropertyList";
 
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -29,13 +29,10 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  // backgroundImage: {
-  //   height: "80vh",
-  //   backgroundImage: `url(${MarbleBackground})`,
-  //   backgroundSize: "cover",
-  //   backgroundPosition: "center",
-  //   // width: `calc(100vw + 48px)`,
-  // },
+  backgroundImage: {
+    background: `url(${MarbleBackground}) no-repeat center center fixed`,
+    backgroundSize: "cover",
+  },
   cardRight: {
     background: "#F5E9DE",
     width: "324px",
@@ -132,6 +129,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 21,
     borderRadius: 1,
     border: `2px solid ${theme.palette.primary.main}`,
+    width: "256.47px",
+    height: "29.55px",
+    background: "#BF7950",
+    borderradius: "2px",
   },
 
   aFilters: {
@@ -171,13 +172,6 @@ const useStyles = makeStyles((theme) => ({
   cardProp: {
     padding: "10px 0px 0px 0px",
   },
-
-  // button: {
-  //   width: "256.47px",
-  //   height: "29.55px",
-  //   background: "#BF7950",
-  //   borderradius: "2px",
-  // },
 
   locations: {
     padding: "0px 0px 10px 0px",
@@ -240,13 +234,10 @@ const PropertyDisplay = () => {
       <NavigationHeader />
       <div className={classes.holder}>
         <Grid container spacing={3}>
-          {
-            //left-column
-          }
           <Grid item container xs={8}>
             <Grid item>
               <Typography className={classes.typohead} color="textSecondary">
-                Flats for rent in Nigeria{" "}
+                Flats for rent in Nigeria
               </Typography>
             </Grid>
 

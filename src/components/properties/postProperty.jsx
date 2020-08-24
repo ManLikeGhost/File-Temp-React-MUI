@@ -118,7 +118,6 @@ const PostProperty = () => {
                   // onChange={handleChange("accountType")}
                 >
                   <MenuItem value={"propertyShopper"}>
-                    {" "}
                     Property Shopper
                   </MenuItem>
                   <MenuItem value={"realEstateAgent"}>
@@ -343,7 +342,9 @@ const PostProperty = () => {
                 marginTop: "2rem",
               }}
             >
-              <InputLabel id="comment" style={{paddingBottom: "10px"}}>Comments</InputLabel>
+              <InputLabel id="comment" style={{ paddingBottom: "10px" }}>
+                Comments
+              </InputLabel>
               <TextareaAutosize
                 rowsMax={20}
                 aria-label="maximum height"
