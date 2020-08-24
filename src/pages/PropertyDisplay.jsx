@@ -1,45 +1,42 @@
-import React from 'react';
-import NavigationHeader from '../navigationHeader.jsx'
-import MarbleBackground from '../../img/MarbleBackground.png'
-import Footer from '../footer';
-import SaleRentShortlet from '../home/saleRentShortlet';
+import React from "react";
+import NavigationHeader from "../components/navigationHeader.jsx";
+// import MarbleBackground from "../../img/MarbleBackground.png";
+import Footer from "../components/footer";
+import SaleRentShortlet from "../components/home/saleRentShortlet";
 
-import CardPropertyList from '../cardPropertyList.jsx';
+import CardPropertyList from "../components/cardPropertyList.jsx";
 
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Card from '@material-ui/core/Card';
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import Card from "@material-ui/core/Card";
 
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import CardActions from '@material-ui/core/CardActions';
-import Button from '@material-ui/core/Button';
-import FilterListIcon from '@material-ui/icons/FilterList';
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+import CardActions from "@material-ui/core/CardActions";
+import Button from "@material-ui/core/Button";
+import FilterListIcon from "@material-ui/icons/FilterList";
 
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
 
-
-import FormControl from '@material-ui/core/FormControl';
-import TextField from '@material-ui/core/TextField';
+import FormControl from "@material-ui/core/FormControl";
+import TextField from "@material-ui/core/TextField";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-
 const useStyles = makeStyles((theme) => ({
-  backgroundImage :{
-    height: '80vh',
-    backgroundImage: `url(${MarbleBackground})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    // width: `calc(100vw + 48px)`,
-    
-  },
-  cardRight :{
+  // backgroundImage: {
+  //   height: "80vh",
+  //   backgroundImage: `url(${MarbleBackground})`,
+  //   backgroundSize: "cover",
+  //   backgroundPosition: "center",
+  //   // width: `calc(100vw + 48px)`,
+  // },
+  cardRight: {
     background: "#F5E9DE",
     width: "324px",
     height: "200px",
@@ -49,10 +46,10 @@ const useStyles = makeStyles((theme) => ({
     boxsizing: "border-box",
     borderradius: "2px",
     margin: "0px 0px 20px 0px",
-    //padding: "0px 0px 10px 0px", 
+    //padding: "0px 0px 10px 0px",
   },
 
-  filters :{
+  filters: {
     width: "630px",
     height: "199px",
     left: "108px",
@@ -61,10 +58,10 @@ const useStyles = makeStyles((theme) => ({
     border: "0.8px solid #BF7950",
     boxsizing: "border-box",
     borderradius: "2px",
-    margin: "10px"
+    margin: "10px",
   },
-  
-  homeImg :{
+
+  homeImg: {
     width: "629.34",
     height: "261.67px",
     left: "108px",
@@ -73,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     border: "0.8px solid #BF7950",
     borderradius: "2px",
     margin: "10px 0px 0px 0px",
-  }, 
+  },
 
   dropdownMenu: {
     width: "630px",
@@ -86,7 +83,6 @@ const useStyles = makeStyles((theme) => ({
     borderradius: "2px",
   },
 
-  
   holder: {
     margin: "20px 50px 20px 50px",
   },
@@ -115,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "49px",
     padding: "0px 0px 0px 10px",
     lineHeight: "65px",
-    color: "#BF7950"
+    color: "#BF7950",
   },
 
   bar: {
@@ -129,15 +125,15 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "2px",
     margin: "0px 0px 10px 0px",
   },
-  
+
   button: {
     marginLeft: "60px",
     color: theme.palette.primary.contrastText,
     fontSize: 21,
     borderRadius: 1,
-    border: `2px solid ${theme.palette.primary.main}`
+    border: `2px solid ${theme.palette.primary.main}`,
   },
-  
+
   aFilters: {
     width: "323.89px",
     height: "531.52px",
@@ -150,8 +146,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   textpaper: {
-      textAlign: "center",
-      background: "#F5E9DE",
+    textAlign: "center",
+    background: "#F5E9DE",
   },
 
   dropText: {
@@ -166,7 +162,6 @@ const useStyles = makeStyles((theme) => ({
     fontsize: "20px",
     lineheight: "20px",
     color: "#BF7950",
-
   },
 
   dropMenu: {
@@ -177,16 +172,16 @@ const useStyles = makeStyles((theme) => ({
     padding: "10px 0px 0px 0px",
   },
 
-  button: {
-    width: "256.47px",
-    height: "29.55px",
-    background: "#BF7950",
-    borderradius: "2px",
-  },
+  // button: {
+  //   width: "256.47px",
+  //   height: "29.55px",
+  //   background: "#BF7950",
+  //   borderradius: "2px",
+  // },
 
   locations: {
     padding: "0px 0px 10px 0px",
-    width: "288.46px", 
+    width: "288.46px",
   },
 
   category: {
@@ -197,7 +192,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "0px 0px 10px 0px",
     width: "129px",
   },
-  bedrooms : {
+  bedrooms: {
     padding: "0px 0px 10px 0px",
     width: "129px",
   },
@@ -236,32 +231,32 @@ const useStyles = makeStyles((theme) => ({
     borderradius: "2px",
     margin: "0px 0px 20px 0px",
   },
-
-  
 }));
 
-
-const ForRent = () => {
+const PropertyDisplay = () => {
   const classes = useStyles();
   return (
     <div className={classes.backgroundImage}>
       <NavigationHeader />
       <div className={classes.holder}>
         <Grid container spacing={3}>
-          {//left-column  
+          {
+            //left-column
           }
           <Grid item container xs={8}>
             <Grid item>
-              <Typography  className={classes.typohead} color="textSecondary" >Flats for rent in Nigeria </Typography>
+              <Typography className={classes.typohead} color="textSecondary">
+                Flats for rent in Nigeria{" "}
+              </Typography>
             </Grid>
 
             <Grid item>
               <Card className={classes.bar} variant="outlined">
                 <CardContent>
-                  <Typography  className={classes.typo}>
+                  <Typography className={classes.typo}>
                     Quick Filters
                   </Typography>
-                </CardContent> 
+                </CardContent>
                 <CardActions>
                   <Button color="primary">1 Bedroom</Button>
                   <Button color="primary">2 Bedroom</Button>
@@ -278,58 +273,68 @@ const ForRent = () => {
                   <Button color="primary">Serviced</Button>
                   <Button color="primary">Furnished</Button>
                   <Button color="primary">Non-Furnished</Button>
-                </CardActions> 
+                </CardActions>
               </Card>
             </Grid>
             <Grid item>
               <Card className={classes.dropdownMenu} variant="outlined">
                 <Grid container>
                   <Grid item xs={6}>
-                    <Typography  className={classes.dropText}>
-                      Results 1-2 of 2 
+                    <Typography className={classes.dropText}>
+                      Results 1-2 of 2
                     </Typography>
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                    className={classes.dropMenu}
-                    id="outlined-select-native"
-                    select
-                    label="For Rent"
+                      className={classes.dropMenu}
+                      id="outlined-select-native"
+                      select
+                      label="For Rent"
                     ></TextField>
-                  </Grid>  
+                  </Grid>
                 </Grid>
-              </Card> 
+              </Card>
             </Grid>
 
             <Grid item xs={6} className={classes.cardProp}>
-                <CardPropertyList />
-            </Grid> 
+              <CardPropertyList />
+            </Grid>
           </Grid>
 
-
-          {//right-column  
+          {
+            //right-column
           }
           <Grid item container xs={4}>
             <Grid item xs={12}>
               <Card className={classes.cardRight} variant="outlined">
                 <CardContent>
-                  <Typography  className={classes.typo} color="textSecondary" gutterBottom>
+                  <Typography
+                    className={classes.typo}
+                    color="textSecondary"
+                    gutterBottom
+                  >
                     Can’t find your ideal property?
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button variant="contained"color="primary">POST A REQUEST</Button>
+                  <Button variant="contained" color="primary">
+                    POST A REQUEST
+                  </Button>
                 </CardActions>
               </Card>
             </Grid>
-            
-             <Grid item xs={12}>
+
+            <Grid item xs={12}>
               <Paper className={classes.aFilters}>
                 <div className={classes.paperform}>
                   <Grid container spacing={3}>
                     <Grid item xs={12}>
-                      <Typography  className={classes.textpaper} color="textSecondary">
-                        <FilterListIcon />Advanced Filters
+                      <Typography
+                        className={classes.textpaper}
+                        color="textSecondary"
+                      >
+                        <FilterListIcon />
+                        Advanced Filters
                       </Typography>
                     </Grid>
                     <Grid item container justify="center" xs={12}>
@@ -355,151 +360,173 @@ const ForRent = () => {
                                   variant="outlined"
                                   select
                                   label="Category"
-                                  ></TextField>
+                                ></TextField>
                               </Grid>
                             </div>
 
-                            <Grid item container justify="center" spacing={3} xs={12}>
+                            <Grid
+                              item
+                              container
+                              justify="center"
+                              spacing={3}
+                              xs={12}
+                            >
                               <Grid item xs={6}>
                                 <TextField
-                                className={classes.types}
-                                id="outlined-select-native"
-                                variant="outlined"
-                                select
-                                label="types"
+                                  className={classes.types}
+                                  id="outlined-select-native"
+                                  variant="outlined"
+                                  select
+                                  label="types"
                                 ></TextField>
                               </Grid>
 
                               <Grid item xs={6}>
                                 <TextField
-                                className={classes.bedrooms}
-                                id="outlined-select-native"
-                                variant="outlined"
-                                select
-                                label="bedrooms"
-                                ></TextField>
-                              </Grid>
-                            </Grid>
-
-                            <Grid item container justify="center" spacing={3} xs={12}>
-                              <Grid item xs={6}>
-                                <TextField
-                                className={classes.MinPrice}
-                                id="outlined-select-native"
-                                variant="outlined"
-                                select
-                                label="MinPrice"
-                                ></TextField>
-                              </Grid>
-
-                              <Grid item xs={6}>
-                                <TextField
-                                className={classes.MaxPrice}
-                                id="outlined-select-native"
-                                variant="outlined"
-                                select
-                                label="MaxPrice"
+                                  className={classes.bedrooms}
+                                  id="outlined-select-native"
+                                  variant="outlined"
+                                  select
+                                  label="bedrooms"
                                 ></TextField>
                               </Grid>
                             </Grid>
 
-                            <Grid item container justify="center" spacing={3} xs={12}>
-                            <Grid item xs={6}>
+                            <Grid
+                              item
+                              container
+                              justify="center"
+                              spacing={3}
+                              xs={12}
+                            >
+                              <Grid item xs={6}>
                                 <TextField
-                                className={classes.furnished}
-                                id="outlined-select-native"
-                                variant="outlined"
-                                select
-                                label="furnished"
+                                  className={classes.MinPrice}
+                                  id="outlined-select-native"
+                                  variant="outlined"
+                                  select
+                                  label="MinPrice"
                                 ></TextField>
                               </Grid>
 
                               <Grid item xs={6}>
                                 <TextField
-                                className={classes.added}
-                                id="outlined-select-native"
-                                variant="outlined"
-                                select
-                                label="added"
+                                  className={classes.MaxPrice}
+                                  id="outlined-select-native"
+                                  variant="outlined"
+                                  select
+                                  label="MaxPrice"
                                 ></TextField>
                               </Grid>
                             </Grid>
 
-                            <Grid item container justify="center" spacing={3} xs={12}>
+                            <Grid
+                              item
+                              container
+                              justify="center"
+                              spacing={3}
+                              xs={12}
+                            >
                               <Grid item xs={6}>
                                 <TextField
-                                    className={classes.keywords}
-                                    id="outlined-secondary"
-                                    variant="outlined"
-                                    label="keywords"
-                                    variant="outlined"
-                                    color="secondary"
-                                  />
+                                  className={classes.furnished}
+                                  id="outlined-select-native"
+                                  variant="outlined"
+                                  select
+                                  label="furnished"
+                                ></TextField>
                               </Grid>
 
                               <Grid item xs={6}>
                                 <TextField
-                                    className={classes.ref}
-                                    id="outlined-secondary"
-                                    variant="outlined"
-                                    label="ref"
-                                    variant="outlined"
-                                    color="secondary"
-                                  />
+                                  className={classes.added}
+                                  id="outlined-select-native"
+                                  variant="outlined"
+                                  select
+                                  label="added"
+                                ></TextField>
                               </Grid>
                             </Grid>
 
-                            <Button variant="contained"color="primary">SEARCH</Button>
+                            <Grid
+                              item
+                              container
+                              justify="center"
+                              spacing={3}
+                              xs={12}
+                            >
+                              <Grid item xs={6}>
+                                <TextField
+                                  className={classes.keywords}
+                                  id="outlined-secondary"
+                                  variant="outlined"
+                                  label="keywords"
+                                  color="secondary"
+                                />
+                              </Grid>
+
+                              <Grid item xs={6}>
+                                <TextField
+                                  className={classes.ref}
+                                  id="outlined-secondary"
+                                  variant="outlined"
+                                  label="ref"
+                                  color="secondary"
+                                />
+                              </Grid>
+                            </Grid>
+
+                            <Button variant="contained" color="primary">
+                              SEARCH
+                            </Button>
                           </FormControl>
-                        </div>  
+                        </div>
                       </form>
                     </Grid>
                   </Grid>
-
                 </div>
               </Paper>
-             </Grid> 
+            </Grid>
 
-             <Grid item xs={12}>
+            <Grid item xs={12}>
               <Paper className={classes.papah}>
                 <div className={classes.divy}>
-                <TableContainer component={Paper}>
-                  <Table className={classes.table} aria-label="simple table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Property Type</TableCell>
-                        <TableCell align="right">Count</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      
-                        <TableRow >
+                  <TableContainer component={Paper}>
+                    <Table className={classes.table} aria-label="simple table">
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>Property Type</TableCell>
+                          <TableCell align="right">Count</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        <TableRow>
                           <TableCell component="th" scope="row">
                             Flats
                           </TableCell>
                           <TableCell align="right">145</TableCell>
                         </TableRow>
-                        <TableRow >
+                        <TableRow>
                           <TableCell component="th" scope="row">
-                          House
+                            House
                           </TableCell>
                           <TableCell align="right">3442</TableCell>
-                        </TableRow> 
-                        <TableRow >
+                        </TableRow>
+                        <TableRow>
                           <TableCell component="th" scope="row">
-                          Lands
+                            Lands
                           </TableCell>
                           <TableCell align="right">278</TableCell>
-                        </TableRow> 
-                        <TableRow >
+                        </TableRow>
+                        <TableRow>
                           <TableCell component="th" scope="row">
-                          Commercial Property
+                            Commercial Property
                           </TableCell>
                           <TableCell align="right">56</TableCell>
                         </TableRow>
-                        <TableRow >
-                        <TableCell component="th" scope="row">
-                          Type
+                        <TableRow>
+                          <TableCell component="th" scope="row">
+                            Type
                           </TableCell>
                           <TableCell>1bed</TableCell>
                           <TableCell>2bed</TableCell>
@@ -507,9 +534,9 @@ const ForRent = () => {
                           <TableCell>4bed</TableCell>
                           <TableCell>+5bed</TableCell>
                         </TableRow>
-                        <TableRow >
-                        <TableCell component="th" scope="row">
-                          Type
+                        <TableRow>
+                          <TableCell component="th" scope="row">
+                            Type
                           </TableCell>
                           <TableCell>1bed</TableCell>
                           <TableCell>2bed</TableCell>
@@ -517,43 +544,46 @@ const ForRent = () => {
                           <TableCell>4bed</TableCell>
                           <TableCell>+5bed</TableCell>
                         </TableRow>
-                         
-                    </TableBody>
-                  </Table>
-                </TableContainer>
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
                 </div>
-              </Paper> 
-             </Grid>
+              </Paper>
+            </Grid>
 
-             <Grid item xs={12}>
+            <Grid item xs={12}>
               <Card className={classes.cardRight} variant="outlined">
                 <CardContent>
-                  <Typography  className={classes.typo} color="textSecondary" gutterBottom>
+                  <Typography
+                    className={classes.typo}
+                    color="textSecondary"
+                    gutterBottom
+                  >
                     Subscribe to our Weekly Newsletter
                   </Typography>
                   <Typography color="textSecondary" gutterBottom>
-                    Get weekly updates on the best deal on property & developments in Nigeria.
+                    Get weekly updates on the best deal on property &
+                    developments in Nigeria.
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button className={classes.button} variant="contained"color="primary">Subscribe</Button>
+                  <Button
+                    className={classes.button}
+                    variant="contained"
+                    color="primary"
+                  >
+                    Subscribe
+                  </Button>
                 </CardActions>
               </Card>
             </Grid>
-
           </Grid>
         </Grid>
       </div>
-        
+
       <SaleRentShortlet />
       <Footer />
-
-
     </div>
   );
 };
-export default ForRent;
-
-
-
-
+export default PropertyDisplay;

@@ -16,7 +16,7 @@ import "./App.css";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import AboutPage from "./pages/AboutPage";
-import ForRent from "./components/listings/forRent";
+import PropertyDisplay from "./pages/PropertyDisplay";
 
 import Page404 from "./pages/Page404";
 import ProfileImage from "./pages/ProfileImage";
@@ -42,8 +42,8 @@ function App() {
       <CssBaseline />
       <Router>
         <Switch>
-          <Route exact path="/forRent">
-            <ForRent />
+          <Route exact path="/property-display">
+            <PropertyDisplay />
           </Route>
           <Route exact path="/about">
             <AboutPage />
