@@ -5,6 +5,8 @@ import Footer from "../components/footer";
 import SaleRentShortlet from "../components/home/saleRentShortlet";
 
 import CardPropertyList from "../components/properties/cardPropertyList";
+import LeftColumn from "../components/properties/leftColumn";
+import RightColumn from "../components/properties/rightColumn";
 
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -235,67 +237,12 @@ const PropertyDisplay = () => {
       <div className={classes.holder}>
         <Grid container spacing={3}>
           <Grid item container xs={8}>
-            <Grid item>
-              <Typography className={classes.typohead} color="textSecondary">
-                Flats for rent in Nigeria
-              </Typography>
-            </Grid>
-
-            <Grid item>
-              <Card className={classes.bar} variant="outlined">
-                <CardContent>
-                  <Typography className={classes.typo}>
-                    Quick Filters
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button color="primary">1 Bedroom</Button>
-                  <Button color="primary">2 Bedroom</Button>
-                  <Button color="primary">3 Bedroom</Button>
-                  <Button color="primary">4 Bedroom</Button>
-                  <Button color="primary">+5 Bedroom</Button>
-                </CardActions>
-                <CardActions>
-                  <Button color="primary">Mini Flat</Button>
-                  <Button color="primary">Single Room</Button>
-                  <Button color="primary">1 Bedroom</Button>
-                </CardActions>
-                <CardActions>
-                  <Button color="primary">Serviced</Button>
-                  <Button color="primary">Furnished</Button>
-                  <Button color="primary">Non-Furnished</Button>
-                </CardActions>
-              </Card>
-            </Grid>
-            <Grid item>
-              <Card className={classes.dropdownMenu} variant="outlined">
-                <Grid container>
-                  <Grid item xs={6}>
-                    <Typography className={classes.dropText}>
-                      Results 1-2 of 2
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <TextField
-                      className={classes.dropMenu}
-                      id="outlined-select-native"
-                      select
-                      label="For Rent"
-                    ></TextField>
-                  </Grid>
-                </Grid>
-              </Card>
-            </Grid>
-
-            <Grid item xs={6} className={classes.cardProp}>
-              <CardPropertyList />
-            </Grid>
+            <LeftColumn />
+            <CardPropertyList />
           </Grid>
 
-          {
-            //right-column
-          }
           <Grid item container xs={4}>
+          <RightColumn />
             <Grid item xs={12}>
               <Card className={classes.cardRight} variant="outlined">
                 <CardContent>
