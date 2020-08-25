@@ -5,7 +5,6 @@ import Button from "@material-ui/core/Button";
 import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
-
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 
@@ -14,7 +13,9 @@ const RightColumn = () => {
     <div>
       <Grid container>
         <Grid item>
-          <Typography>Can’t find your ideal property?</Typography>
+          <Typography>
+            Can’t find your ideal property?
+          </Typography>
         </Grid>
         <Button>POST A REQUEST</Button>
       </Grid>
