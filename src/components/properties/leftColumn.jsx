@@ -33,6 +33,10 @@ const useStyles = makeStyles((theme) => ({
   resultDropdownFilter: {
     width: "100%",
   },
+  resultOf: {
+    fontSize: "1.5rem",
+    color: theme.palette.primary.main,
+  },
 }));
 
 const QuickFilterButton = withStyles({
@@ -137,9 +141,14 @@ const LeftColumn = () => {
         </Grid>
       </Grid>
 
-      <Grid container className={classes.quickFilterContainer}>
+      <Grid
+        container
+        className={classes.quickFilterContainer}
+        justify="center"
+        alignItems="center"
+      >
         <Grid item xs={4}>
-          <Typography>Results 1-4 of 4</Typography>
+          <Typography className={classes.resultOf}>Results 1-4 of 4</Typography>
         </Grid>
         <Grid item xs={4}></Grid>
         <Grid item xs={4}>

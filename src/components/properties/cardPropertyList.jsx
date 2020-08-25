@@ -26,9 +26,11 @@ const CardPropertyList = () => {
         {detailsProperties.map((cardProperty) => (
           <Grid key={cardProperty.id} item xs={12}>
             <CardProperty
+              title={cardProperty.title}
               imagePath={cardProperty.imagePath}
               saleText={cardProperty.saleText}
               address={cardProperty.address}
+              price={cardProperty.price}
               description={cardProperty.description}
             />
           </Grid>
