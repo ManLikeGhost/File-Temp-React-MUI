@@ -27,6 +27,46 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.main,
     marginBottom: theme.spacing(3),
   },
+  advancedFilter: {
+    background: " #FFFFFF",
+    border: `0.8px solid ${theme.palette.primary.main}`,
+    borderRadius: "2px",
+    padding: theme.spacing(2),
+    // display: "flex",
+    // flexDirection:"column",
+    // alignItems:"flex-start",
+  },
+  advancedFilterTitleContainer: {
+    background: "#F5E9DE",
+    border: `0.8px solid ${theme.palette.primary.main}`,
+    borderTop:"0px",
+    borderRadius: "0px 2px 0px 0px",
+    boxSizing: "border-box",
+    width: "100%",
+    height: "50px",
+    marginBottom: theme.spacing(5),
+    marginTop: "-16px"
+  },
+  formControl: {
+    marginLeft: theme.spacing(1),
+    marginBottom: theme.spacing(2),
+    minWidth: "100%",
+  },
+  button: {
+    backgroundColor: theme.palette.primary.main,
+    borderRadius: "2px",
+    fontSize: theme.spacing(2),
+    color: "white",
+    width: "100%",
+    height: theme.spacing(7),
+    "&:hover": {
+      backgroundColor: "white",
+      boxShadow: "none",
+      color: theme.palette.primary.main,
+      borderRadius: "2px",
+      border: `0.8px solid ${theme.palette.primary.main}`,
+    },
+  },
 }));
 
 const PostARequestButton = withStyles({
@@ -75,136 +115,202 @@ const RightColumn = () => {
           <PostARequestButton>POST A REQUEST</PostARequestButton>
         </Grid>
       </Grid>
-      <Grid item container justify="center" xs={12}>
-        <form action="">
-          <div>
-            <FormControl>
-              <div>
-                <Grid item container justify="center" xs={12}>
-                  <InputLabel id="accountType">Locations</InputLabel>
-                  <TextField
-                    id="outlined-secondary"
-                    label="Locations"
-                    variant="outlined"
-                    color="secondary"
-                    // className={classes.locations}
-                  />
-                </Grid>
-              </div>
-              <div>
-                <Grid item container justify="center" xs={12}>
-                  <FormControl>
-                    <InputLabel id="accountType">Account Type</InputLabel>
-                    <Select
-                      required
-                      fullWidth
-                      labelId="accountType"
-                      id="accountType"
-                      MenuItem
-                    >
-                      <MenuItem value={"forSale"}>For Sale</MenuItem>
-                      <MenuItem value={"forRent"}>For Rent</MenuItem>
-                      <MenuItem value={"forShortlet"}>For Shortlet</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Grid>
-              </div>
-
-              <Grid item container justify="center" spacing={3} xs={12}>
-                <Grid item xs={6}>
-                  <TextField
-                    // className={classes.types}
-                    id="outlined-select-native"
-                    variant="outlined"
-                    select
-                    label="types"
-                  ></TextField>
-                </Grid>
-
-                <Grid item xs={6}>
-                  <TextField
-                    // className={classes.bedrooms}
-                    id="outlined-select-native"
-                    variant="outlined"
-                    select
-                    label="bedrooms"
-                  ></TextField>
-                </Grid>
-              </Grid>
-
-              <Grid item container justify="center" spacing={3} xs={12}>
-                <Grid item xs={6}>
-                  <TextField
-                    // className={classes.MinPrice}
-                    id="outlined-select-native"
-                    variant="outlined"
-                    select
-                    label="MinPrice"
-                  ></TextField>
-                </Grid>
-
-                <Grid item xs={6}>
-                  <TextField
-                    // className={classes.MaxPrice}
-                    id="outlined-select-native"
-                    variant="outlined"
-                    select
-                    label="MaxPrice"
-                  ></TextField>
-                </Grid>
-              </Grid>
-
-              <Grid item container justify="center" spacing={3} xs={12}>
-                <Grid item xs={6}>
-                  <TextField
-                    // className={classes.furnished}
-                    id="outlined-select-native"
-                    variant="outlined"
-                    select
-                    label="furnished"
-                  ></TextField>
-                </Grid>
-
-                <Grid item xs={6}>
-                  <TextField
-                    // className={classes.added}
-                    id="outlined-select-native"
-                    variant="outlined"
-                    select
-                    label="added"
-                  ></TextField>
-                </Grid>
-              </Grid>
-
-              <Grid item container justify="center" spacing={3} xs={12}>
-                <Grid item xs={6}>
-                  <TextField
-                    // className={classes.keywords}
-                    id="outlined-secondary"
-                    variant="outlined"
-                    label="keywords"
-                    color="secondary"
-                  />
-                </Grid>
-
-                <Grid item xs={6}>
-                  <TextField
-                    // className={classes.ref}
-                    id="outlined-secondary"
-                    variant="outlined"
-                    label="ref"
-                    color="secondary"
-                  />
-                </Grid>
-              </Grid>
-
-              <Button variant="contained" color="primary">
-                SEARCH
-              </Button>
+      <div className={classes.advancedFilter}>
+        <div className={classes.advancedFilterTitleContainer}>
+          <Typography>Advanced Filter Options</Typography>
+        </div>
+        <Grid container justify="center" alignItems="center">
+          <Grid item xs={12}>
+            <TextField
+              id="location"
+              label="Location"
+              style={{ margin: 8 }}
+              placeholder="Enter a state, city or area"
+              helperText="Enter a state, city or area"
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel htmlFor="category">Category</InputLabel>
+              <Select
+                native
+                // value={state.category}
+                // onChange={handleCategoryChange}
+                inputProps={{
+                  name: "category",
+                  id: "category",
+                }}
+              >
+                <option aria-label="None" value="" />
+                <option value="rent">For Rent</option>
+                <option value="sale">For Sale</option>
+                <option value={30}>For something else</option>
+              </Select>
             </FormControl>
-          </div>
-        </form>
-      </Grid>
+          </Grid>
+          <Grid item container spacing={2}>
+            <Grid item xs={6}>
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel htmlFor="type">Type</InputLabel>
+                <Select
+                  native
+                  // value={state.type}
+                  // onChange={handleTypeChange}
+                  inputProps={{
+                    name: "type",
+                    id: "type",
+                  }}
+                >
+                  <option aria-label="None" value="" />
+                  <option value="rent">All types</option>
+                  <option value="sale">For Sale</option>
+                  <option value={30}>For something else</option>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={6}>
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel htmlFor="bedroom">Bedrooms</InputLabel>
+                <Select
+                  native
+                  // value={state.bedroom}
+                  // onChange={handleBedroomChange}
+                  inputProps={{
+                    name: "bedroom",
+                    id: "bedroom",
+                  }}
+                >
+                  <option aria-label="None" value="" />
+                  <option value="rent">Any</option>
+                  <option value="sale">For Sale</option>
+                  <option value={30}>For something else</option>
+                </Select>
+              </FormControl>
+            </Grid>
+          </Grid>
+          <Grid item container spacing={2}>
+            <Grid item xs={6}>
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel htmlFor="type">Min Price</InputLabel>
+                <Select
+                  native
+                  // value={state.type}
+                  // onChange={handleTypeChange}
+                  inputProps={{
+                    name: "type",
+                    id: "type",
+                  }}
+                >
+                  <option aria-label="None" value="" />
+                  <option value="rent">No Min</option>
+                  <option value="sale">For Sale</option>
+                  <option value={30}>For something else</option>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={6}>
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel htmlFor="bedroom">Max Price</InputLabel>
+                <Select
+                  native
+                  // value={state.bedroom}
+                  // onChange={handleBedroomChange}
+                  inputProps={{
+                    name: "bedroom",
+                    id: "bedroom",
+                  }}
+                >
+                  <option aria-label="None" value="" />
+                  <option value="rent">No Max</option>
+                  <option value="sale">For Sale</option>
+                  <option value={30}>For something else</option>
+                </Select>
+              </FormControl>
+            </Grid>
+          </Grid>
+          <Grid item container spacing={2}>
+            <Grid item xs={6}>
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel htmlFor="type">Furnished</InputLabel>
+                <Select
+                  native
+                  // value={state.type}
+                  // onChange={handleTypeChange}
+                  inputProps={{
+                    name: "type",
+                    id: "type",
+                  }}
+                >
+                  <option aria-label="None" value="" />
+                  <option value="rent">Any</option>
+                  <option value="sale">For Sale</option>
+                  <option value={30}>For something else</option>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={6}>
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel htmlFor="bedroom">Added to Site</InputLabel>
+                <Select
+                  native
+                  // value={state.bedroom}
+                  // onChange={handleBedroomChange}
+                  inputProps={{
+                    name: "bedroom",
+                    id: "bedroom",
+                  }}
+                >
+                  <option aria-label="None" value="" />
+                  <option value="rent">Any Time</option>
+                  <option value="sale">For Sale</option>
+                  <option value={30}>For something else</option>
+                </Select>
+              </FormControl>
+            </Grid>
+          </Grid>
+          <Grid item container spacing={2}>
+            <Grid item xs={6}>
+              <TextField
+                id="keywords"
+                label="Keywords"
+                style={{ margin: 8 }}
+                placeholder="e.g 'pool', 'jacuzzi'"
+                helperText="e.g 'pool', 'jacuzzi'"
+                fullWidth
+                margin="normal"
+                variant="outlined"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                id="propertyRef"
+                label="Property Ref."
+                style={{ margin: 8 }}
+                placeholder="012345"
+                helperText="Property Ref."
+                fullWidth
+                margin="normal"
+                variant="outlined"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </Grid>
+          </Grid>
+          <Grid item xs={12} style={{ textAlign: "center" }}>
+            <Button className={classes.button}>SEARCH</Button>
+          </Grid>
+        </Grid>
+      </div>
     </div>
   );
 };
