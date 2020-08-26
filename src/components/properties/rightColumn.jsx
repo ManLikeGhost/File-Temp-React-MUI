@@ -16,15 +16,16 @@ const useStyles = makeStyles((theme) => ({
     border: `0.8px solid ${theme.palette.primary.main}`,
     boxSizing: "border-box",
     borderRadius: "2px",
-    padding: theme.spacing(10),
+    padding: theme.spacing(8),
     color: theme.palette.primary.main,
     marginBottom: "20px",
   },
   postARequestText: {
     textAlign: "center",
-    fontWeight: 500,
+    fontWeight: 900,
     fontSize: theme.spacing(3),
     color: theme.palette.secondary.main,
+    marginBottom: theme.spacing(3),
   },
 }));
 
@@ -38,6 +39,7 @@ const PostARequestButton = withStyles({
     textTransform: "none",
     fontSize: 16,
     padding: "6px 12px",
+    height: "50px",
     // border: "1px solid",
     lineHeight: 1.5,
     "&:hover": {
@@ -66,12 +68,10 @@ const RightColumn = () => {
         justify="center"
         alignItems="center"
       >
-        <Grid item xs={12}>
+        <Grid item xs={12} style={{ textAlign: "center" }}>
           <Typography className={classes.postARequestText}>
             Can’t find your ideal property?
           </Typography>
-        </Grid>
-        <Grid item xs={12}>
           <PostARequestButton>POST A REQUEST</PostARequestButton>
         </Grid>
       </Grid>
