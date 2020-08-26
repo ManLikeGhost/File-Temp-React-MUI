@@ -242,7 +242,7 @@ const PropertyDisplay = () => {
           </Grid>
 
           <Grid item container xs={4}>
-          <RightColumn />
+            <RightColumn />
             <Grid item xs={12}>
               <Card className={classes.cardRight} variant="outlined">
                 <CardContent>

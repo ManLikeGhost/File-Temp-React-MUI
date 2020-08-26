@@ -6,17 +6,17 @@ import Grid from "@material-ui/core/Grid";
 
 // import MarbleBackground from "../img/MarbleBackground.png";
 
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
-  backgroundImage: {
-    height: "80vh",
-    // backgroundImage: `url(${MarbleBackground})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    // width: `calc(100vw + 48px)`,
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   backgroundImage: {
+//     height: "80vh",
+//     // backgroundImage: `url(${MarbleBackground})`,
+//     backgroundSize: "cover",
+//     backgroundPosition: "center",
+//     // width: `calc(100vw + 48px)`,
+//   },
+// }));
 
 const CardPropertyList = () => {
   // const classes = useStyles();

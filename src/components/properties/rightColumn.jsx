@@ -8,16 +8,64 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  postARequestContainer: {
+    background: "#F5E9DE",
+    border: `0.8px solid ${theme.palette.primary.main}`,
+    boxSizing: "border-box",
+    borderRadius: "2px",
+    padding: theme.spacing(3),
+    color: theme.palette.primary.main,
+    marginBottom: "20px",
+  },
+}));
+
+const PostARequestButton = withStyles({
+  root: {
+    backgroundColor: " #BF7950",
+    borderColor: "white",
+    borderRadius: "2px",
+    boxShadow: "none",
+    color: "white",
+    textTransform: "none",
+    fontSize: 16,
+    padding: "6px 12px",
+    // border: "1px solid",
+    lineHeight: 1.5,
+    "&:hover": {
+      backgroundColor: "white",
+      borderColor: "white",
+      boxShadow: "none",
+      color: "#BF7950",
+    },
+    "&:active": {
+      boxShadow: "none",
+      backgroundColor: "white",
+      borderColor: "#005cbf",
+    },
+    "&:focus": {
+      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+    },
+  },
+})(Button);
 const RightColumn = () => {
+  const classes = useStyles();
   return (
     <div>
-      <Grid container>
-        <Grid item>
-          <Typography>
-            Can’t find your ideal property?
-          </Typography>
+      <Grid
+        container
+        className={classes.postARequestContainer}
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item xs={12}>
+          <Typography>Can’t find your ideal property?</Typography>
         </Grid>
-        <Button>POST A REQUEST</Button>
+        <Grid item xs={12}>
+          <PostARequestButton>POST A REQUEST</PostARequestButton>
+        </Grid>
       </Grid>
       <Grid item container justify="center" xs={12}>
         <form action="">
