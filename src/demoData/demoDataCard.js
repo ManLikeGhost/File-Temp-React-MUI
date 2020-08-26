@@ -1,11 +1,6 @@
-import React from "react";
 import PropertyImage1 from "../img/houses/5.png";
 import PropertyImage2 from "../img/houses/6.png";
 import PropertyImage3 from "../img/houses/7.png";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-
-const iconSize = { fontSize: 90 };
-const iconColor = "primary";
 
 export const detailsProperties = [
   {
@@ -13,10 +8,9 @@ export const detailsProperties = [
 
     imagePath: PropertyImage1,
     title: `3 Bedroom flat for rent`,
-    address: `2c Close, Admiralty Way Lekkki`,
+    address: `2c Close, Admiralty Way Lekki`,
     price: `N3 million p.a`,
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. `,
-    // details: <FavoriteIcon style={iconSize} color={iconColor} />,
     type: `flatRent`,
   },
   {

@@ -11,6 +11,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import MoneyIcon from "@material-ui/icons/Money";
 import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
   //   border: "0.8px solid #BF7950",
   //   borderradius: "2px",
   // },
+  media: {
+    height: "100%",
+  },
   card: {
     background: "#F5E9DE",
     border: `0.8px solid ${theme.palette.primary.main}`,
@@ -35,31 +40,28 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
     height: "1px",
   },
-  title: {},
-  // location: {
-  //   display: "flex",
-  // },
-  // locationIcon: {
-  //   alignSelf: "flex-end",
-  // },
-  // cardProperty: {
-  //   padding: "20px 0px 0px 0px",
-  // },
-  // propertyText: {
-  //   fontSize: 15,
-  // },
-  // addressText: {
-  //   fontWeight: "bold",
-  // },
+  propertyDetailsContainer: {
+    marginLeft: theme.spacing(2),
+  },
+  title: {
+    color: theme.palette.primary.main,
+    fontSize: theme.spacing(2),
+  },
+  address: {
+    fontSize: theme.spacing(2),
+    fontWeight: "bold",
+    color: theme.palette.secondary.main,
+  },
+  price: {
+    color: theme.palette.secondary.main,
+    fontSize: "1rem",
+  },
+  margin: {
+    margin: theme.spacing(1),
+  },
 }));
 
-export default function CardProperty({
-  imagePath,
-  address,
-  description,
-  title,
-  price,
-}) {
+const CardProperty = ({ imagePath, address, description, title, price }) => {
   const classes = useStyles();
 
   return (
@@ -72,30 +74,43 @@ export default function CardProperty({
               alt={title}
               title={title}
               image={imagePath || "http://placehold.it/200"}
+              className={classes.media}
             />
           </Grid>
 
           <Grid item xs={6}>
             <CardContent>
-              <Grid container>
-                <Grid item xs={10}>
-                  <Typography className={classes.title}>{title}</Typography>
+              <Grid container className={classes.propertyDetailsContainer}>
+                <Grid item container className={classes.margin}>
+                  <Grid item xs={10}>
+                    <Typography className={classes.title}>{title}</Typography>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <FavoriteIcon color="primary" fontSize="small" />
+                  </Grid>
                 </Grid>
-                <Grid item xs={2}>
-                  <LocationOnIcon fontSize="large" color="primary" />
+                <Grid item container className={classes.margin}>
+                  <Grid item xs={1}>
+                    <LocationOnIcon color="primary" fontSize="small" />
+                  </Grid>
+                  <Grid item xs={11}>
+                    <Typography className={classes.address}>
+                      {address}
+                    </Typography>
+                  </Grid>
                 </Grid>
-                <Grid item xs={2}>
-                  <LocationOnIcon fontSize="large" color="primary" />
+                <Grid item container className={classes.margin}>
+                  <Grid item xs={1}>
+                    <MoneyIcon fontSize="small" color="primary" />
+                  </Grid>
+                  <Grid item xs={11}>
+                    <Typography className={classes.price}>{price}</Typography>
+                  </Grid>
                 </Grid>
-                <Grid item xs={10}>
-                  <Typography className={classes.address}>{address}</Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography className={classes.price}>{price}</Typography>
-                </Grid>
-
-                <Grid item xs={12}>
-                  <Typography>{description}</Typography>
+                <Grid item container className={classes.margin}>
+                  <Grid item xs={12}>
+                    <Typography>{description}</Typography>
+                  </Grid>
                 </Grid>
               </Grid>
 
@@ -107,4 +122,5 @@ export default function CardProperty({
       </Card>
     </div>
   );
-}
+};
+export default CardProperty;

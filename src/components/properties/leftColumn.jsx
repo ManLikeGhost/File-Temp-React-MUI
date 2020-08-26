@@ -9,6 +9,7 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 
+import { detailsProperties } from "../../demoData/demoDataCard";
 import CardPropertyList from "./cardPropertyList";
 
 const useStyles = makeStyles((theme) => ({
@@ -148,7 +149,9 @@ const LeftColumn = () => {
         alignItems="center"
       >
         <Grid item xs={4}>
-          <Typography className={classes.resultOf}>Results 1-4 of 4</Typography>
+          <Typography className={classes.resultOf}>
+            Results 1 - {detailsProperties.length} of {detailsProperties.length}
+          </Typography>
         </Grid>
         <Grid item xs={4}></Grid>
         <Grid item xs={4}>
