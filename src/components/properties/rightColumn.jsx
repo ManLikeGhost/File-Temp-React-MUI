@@ -16,9 +16,15 @@ const useStyles = makeStyles((theme) => ({
     border: `0.8px solid ${theme.palette.primary.main}`,
     boxSizing: "border-box",
     borderRadius: "2px",
-    padding: theme.spacing(3),
+    padding: theme.spacing(10),
     color: theme.palette.primary.main,
     marginBottom: "20px",
+  },
+  postARequestText: {
+    textAlign: "center",
+    fontWeight: 500,
+    fontSize: theme.spacing(3),
+    color: theme.palette.secondary.main,
   },
 }));
 
@@ -61,7 +67,9 @@ const RightColumn = () => {
         alignItems="center"
       >
         <Grid item xs={12}>
-          <Typography>Can’t find your ideal property?</Typography>
+          <Typography className={classes.postARequestText}>
+            Can’t find your ideal property?
+          </Typography>
         </Grid>
         <Grid item xs={12}>
           <PostARequestButton>POST A REQUEST</PostARequestButton>
