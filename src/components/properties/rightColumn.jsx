@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     background: " #FFFFFF",
     border: `0.8px solid ${theme.palette.primary.main}`,
     borderRadius: "2px",
-    padding: theme.spacing(2),
+    // padding: theme.spacing(2),
     // display: "flex",
     // flexDirection:"column",
     // alignItems:"flex-start",
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "50px",
     marginBottom: theme.spacing(5),
-    marginTop: "-16px"
+    // marginTop: "-16px"
   },
   formControl: {
     marginLeft: theme.spacing(1),
