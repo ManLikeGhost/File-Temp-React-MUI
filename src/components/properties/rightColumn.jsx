@@ -62,13 +62,15 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "100%",
   },
   availablePropertyContainer: {
-    padding: "10px",
+    padding: "20px",
   },
   divider: {
-    margin: "40px 0",
+    margin: "15px 0",
     backgroundColor: theme.palette.primary.main,
-    height: "10px",
+    height: "1px",
   },
+  textRight: { textAlign: "right", paddingRight: "10px" },
+
   button: {
     backgroundColor: theme.palette.primary.main,
     borderRadius: "2px",
@@ -361,7 +363,7 @@ const RightColumn = () => {
           // alignItems="center"
           className={classes.availablePropertyContainer}
         >
-          <div style={{width: "100%"}}>
+          <div style={{ width: "100%" }}>
             <Grid item xs={12}>
               <Typography>Currently available for rent in Nigeria</Typography>
             </Grid>
@@ -371,7 +373,7 @@ const RightColumn = () => {
                 <Typography>Property Type</Typography>
               </Grid>
               <Grid item xs={6}>
-                <Typography>Count</Typography>
+                <Typography className={classes.textRight}>Count</Typography>
               </Grid>
             </Grid>
             <Divider className={classes.divider} />
@@ -380,7 +382,7 @@ const RightColumn = () => {
                 <Typography>Flats</Typography>
               </Grid>
               <Grid item xs={6}>
-                <Typography>{145}</Typography>
+                <Typography className={classes.textRight}>{145}</Typography>
               </Grid>
             </Grid>
             <Divider className={classes.divider} />
@@ -389,7 +391,7 @@ const RightColumn = () => {
                 <Typography>House</Typography>
               </Grid>
               <Grid item xs={6}>
-                <Typography>{3442}</Typography>
+                <Typography className={classes.textRight}>{3442}</Typography>
               </Grid>
             </Grid>
             <Divider className={classes.divider} />
@@ -398,7 +400,7 @@ const RightColumn = () => {
                 <Typography>Lands</Typography>
               </Grid>
               <Grid item xs={6}>
-                <Typography>{278}</Typography>
+                <Typography className={classes.textRight}>{278}</Typography>
               </Grid>
             </Grid>
             <Divider className={classes.divider} />
@@ -407,7 +409,7 @@ const RightColumn = () => {
                 <Typography>Commercial Property</Typography>
               </Grid>
               <Grid item xs={6}>
-                <Typography>{56}</Typography>
+                <Typography className={classes.textRight}>{56}</Typography>
               </Grid>
             </Grid>
             <Divider className={classes.divider} />
