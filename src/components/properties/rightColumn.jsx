@@ -61,10 +61,13 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
     minWidth: "100%",
   },
+  availablePropertyContainer: {
+    padding: "10px",
+  },
   divider: {
     margin: "40px 0",
     backgroundColor: theme.palette.primary.main,
-    height: "1px",
+    height: "10px",
   },
   button: {
     backgroundColor: theme.palette.primary.main,
@@ -354,17 +357,61 @@ const RightColumn = () => {
         </div>
         <Grid
           container
-          justify="center"
-          alignItems="center"
-          // className={classes.advacedFilterFormContainer}
+          // justify="center"
+          // alignItems="center"
+          className={classes.availablePropertyContainer}
         >
-          <div>
-            <Typography>Currently available for rent in Nigeria</Typography>
+          <div style={{width: "100%"}}>
+            <Grid item xs={12}>
+              <Typography>Currently available for rent in Nigeria</Typography>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container>
+              <Grid item xs={6}>
+                <Typography>Property Type</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography>Count</Typography>
+              </Grid>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container>
+              <Grid item xs={6}>
+                <Typography>Flats</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography>{145}</Typography>
+              </Grid>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container>
+              <Grid item xs={6}>
+                <Typography>House</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography>{3442}</Typography>
+              </Grid>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container>
+              <Grid item xs={6}>
+                <Typography>Lands</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography>{278}</Typography>
+              </Grid>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container>
+              <Grid item xs={6}>
+                <Typography>Commercial Property</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography>{56}</Typography>
+              </Grid>
+            </Grid>
             <Divider className={classes.divider} />
           </div>
-          <Grid item xs={12} style={{ textAlign: "center" }}>
-            <Button className={classes.button}>SEARCH</Button>
-          </Grid>
         </Grid>
       </div>
     </div>
