@@ -7,6 +7,9 @@ import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import FilterListIcon from "@material-ui/icons/FilterList";
+import InsertChartIcon from "@material-ui/icons/InsertChart";
+import Divider from "@material-ui/core/Divider";
 
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
@@ -31,26 +34,37 @@ const useStyles = makeStyles((theme) => ({
     background: " #FFFFFF",
     border: `0.8px solid ${theme.palette.primary.main}`,
     borderRadius: "2px",
-    // padding: theme.spacing(2),
-    // display: "flex",
-    // flexDirection:"column",
-    // alignItems:"flex-start",
+    marginBottom: theme.spacing(3),
+  },
+  advacedFilterFormContainer: {
+    padding: theme.spacing(2),
+    paddingRight: theme.spacing(4),
   },
   advancedFilterTitleContainer: {
     background: "#F5E9DE",
-    border: `0.8px solid ${theme.palette.primary.main}`,
-    borderTop:"0px",
+    borderBottom: `0.8px solid ${theme.palette.primary.main}`,
+    // borderTop: "0px",
     borderRadius: "0px 2px 0px 0px",
     boxSizing: "border-box",
     width: "100%",
     height: "50px",
     marginBottom: theme.spacing(5),
-    // marginTop: "-16px"
+    // marginTop: "-16px",
+  },
+  advancedFilterTitleText: {
+    fontWeight: "bold",
+    fontSize: "1.2rem",
+    color: theme.palette.secondary.main,
   },
   formControl: {
     marginLeft: theme.spacing(1),
     marginBottom: theme.spacing(2),
     minWidth: "100%",
+  },
+  divider: {
+    margin: "40px 0",
+    backgroundColor: theme.palette.primary.main,
+    height: "1px",
   },
   button: {
     backgroundColor: theme.palette.primary.main,
@@ -117,9 +131,23 @@ const RightColumn = () => {
       </Grid>
       <div className={classes.advancedFilter}>
         <div className={classes.advancedFilterTitleContainer}>
-          <Typography>Advanced Filter Options</Typography>
+          <Grid container justify="center" alignItems="center">
+            <Grid item xs={2}>
+              <FilterListIcon color="secondary" fontSize="large" />
+            </Grid>
+            <Grid item xs={10}>
+              <Typography className={classes.advancedFilterTitleText}>
+                Advanced Filter Options
+              </Typography>
+            </Grid>
+          </Grid>
         </div>
-        <Grid container justify="center" alignItems="center">
+        <Grid
+          container
+          justify="center"
+          alignItems="center"
+          className={classes.advacedFilterFormContainer}
+        >
           <Grid item xs={12}>
             <TextField
               id="location"
@@ -306,6 +334,34 @@ const RightColumn = () => {
               />
             </Grid>
           </Grid>
+          <Grid item xs={12} style={{ textAlign: "center" }}>
+            <Button className={classes.button}>SEARCH</Button>
+          </Grid>
+        </Grid>
+      </div>
+      <div className={classes.advancedFilter}>
+        <div className={classes.advancedFilterTitleContainer}>
+          <Grid container justify="center" alignItems="center">
+            <Grid item xs={2}>
+              <InsertChartIcon color="secondary" fontSize="large" />
+            </Grid>
+            <Grid item xs={10}>
+              <Typography className={classes.advancedFilterTitleText}>
+                Available Property
+              </Typography>
+            </Grid>
+          </Grid>
+        </div>
+        <Grid
+          container
+          justify="center"
+          alignItems="center"
+          // className={classes.advacedFilterFormContainer}
+        >
+          <div>
+            <Typography>Currently available for rent in Nigeria</Typography>
+            <Divider className={classes.divider} />
+          </div>
           <Grid item xs={12} style={{ textAlign: "center" }}>
             <Button className={classes.button}>SEARCH</Button>
           </Grid>
