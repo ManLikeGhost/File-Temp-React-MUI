@@ -413,9 +413,148 @@ const RightColumn = () => {
               </Grid>
             </Grid>
             <Divider className={classes.divider} />
+            <Grid item container>
+              <Grid item xs={2}>
+                <Typography>Type</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>1 Bed</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>2 Bed</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>3 Bed</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>4 Bed</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>+5 Bed</Typography>
+              </Grid>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container>
+              <Grid item xs={2}>
+                <Typography>Flats</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>14</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>37</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>24</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>35</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>30</Typography>
+              </Grid>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container>
+              <Grid item xs={2}>
+                <Typography>Houses</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>256</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>698</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>900</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>765</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>823</Typography>
+              </Grid>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container>
+              <Grid item xs={6}>
+                <Typography>Land Type</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography className={classes.textRight}>Count</Typography>
+              </Grid>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container>
+              <Grid item xs={6}>
+                <Typography>Residential Land</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography className={classes.textRight}>{74}</Typography>
+              </Grid>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container>
+              <Grid item xs={6}>
+                <Typography>Commercial Land</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography className={classes.textRight}>{26}</Typography>
+              </Grid>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container>
+              <Grid item xs={6}>
+                <Typography>Industrial Land</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography className={classes.textRight}>{17}</Typography>
+              </Grid>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container>
+              <Grid item xs={6}>
+                <Typography>Mixed-use Land</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography className={classes.textRight}>{92}</Typography>
+              </Grid>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container>
+              <Grid item xs={6}>
+                <Typography>Other Land</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography className={classes.textRight}>{86}</Typography>
+              </Grid>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container>
+              <Grid item xs={6}>
+                <Typography>All Land</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography className={classes.textRight}>{278}</Typography>
+              </Grid>
+            </Grid>
+            <Divider className={classes.divider} />
           </div>
         </Grid>
       </div>
+      <Grid
+        container
+        className={classes.postARequestContainer}
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item xs={12} style={{ textAlign: "center" }}>
+          <Typography className={classes.postARequestText}>
+            Can’t find your ideal property?
+          </Typography>
+          <PostARequestButton>POST A REQUEST</PostARequestButton>
+        </Grid>
+      </Grid>
     </div>
   );
 };
