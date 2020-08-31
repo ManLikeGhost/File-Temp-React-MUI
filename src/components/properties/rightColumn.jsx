@@ -550,7 +550,11 @@ const RightColumn = () => {
       >
         <Grid item xs={12} style={{ textAlign: "center" }}>
           <Typography className={classes.postARequestText}>
-            Can’t find your ideal property?
+            Subscribe to our Weekly Newsletter
+          </Typography>
+          <Typography>
+            Get weekly updates on the best deal on property {"&"} developments
+            in Nigeria.
           </Typography>
           <PostARequestButton>POST A REQUEST</PostARequestButton>
         </Grid>

@@ -254,7 +254,6 @@ const PostProperty = () => {
                   // onChange={handleChange("accountType")}
                 >
                   <MenuItem value={"propertyShopper"}>
-                    {" "}
                     Property Shopper
                   </MenuItem>
                   <MenuItem value={"realEstateAgent"}>
