@@ -6,7 +6,6 @@ import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import InsertChartIcon from "@material-ui/icons/InsertChart";
 import Divider from "@material-ui/core/Divider";
@@ -85,6 +84,18 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: "2px",
       border: `0.8px solid ${theme.palette.primary.main}`,
     },
+  },
+  newsletterTitle: {
+    textAlign: "left",
+    fontWeight: "bold",
+    color: theme.palette.secondary.main,
+    fontSize: "30px",
+    // lineHeight: "21px",
+  },
+  newsletterDesc: {
+    fontSize: "18px",
+    color: "rgba(0, 0, 0, 0.51)",
+    margin: "30px 0",
   },
 }));
 
@@ -549,14 +560,14 @@ const RightColumn = () => {
         alignItems="center"
       >
         <Grid item xs={12} style={{ textAlign: "center" }}>
-          <Typography className={classes.postARequestText}>
+          <Typography className={classes.newsletterTitle}>
             Subscribe to our Weekly Newsletter
           </Typography>
-          <Typography>
+          <Typography className={classes.newsletterDesc}>
             Get weekly updates on the best deal on property {"&"} developments
             in Nigeria.
           </Typography>
-          <PostARequestButton>POST A REQUEST</PostARequestButton>
+          <PostARequestButton>SUBSCRIBE</PostARequestButton>
         </Grid>
       </Grid>
     </div>
