@@ -8,10 +8,10 @@ const useStyles = makeStyles((theme) => ({
     margin: "20px 0",
     padding: theme.spacing(2),
     textAlign: "center",
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
     fontStyle: "normal",
     fontWeight: "bold",
-    fontSize: "41px",
+    fontSize: "49px",
     lineHeight: "55px",
   },
 }));
@@ -19,15 +19,13 @@ const useStyles = makeStyles((theme) => ({
 const PropertyTitle = (props) => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <Grid container>
-        <Grid item xs={12}>
-          <Typography className={classes.title} variant="h3">
-            {props.children}
-          </Typography>
-        </Grid>
+    <Grid container>
+      <Grid item xs={12}>
+        <Typography className={classes.title} variant="h3">
+          {props.children}
+        </Typography>
       </Grid>
-    </div>
+    </Grid>
   );
 };
 

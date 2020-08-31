@@ -89,7 +89,7 @@ const LeftColumn = () => {
 
   return (
     <div>
-      <PropertyTitle>HI</PropertyTitle>
+      <PropertyTitle>Flats for shortlet in Nigeria</PropertyTitle>
       <Grid container className={classes.quickFilterContainer}>
         <Grid item={12}>
           <Typography className={classes.quickFilterTitle}>
