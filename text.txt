@@ -2,3 +2,14 @@ git add . && git commit -m "Added Avatar to Account setting Sidebar menu" && git
 
 Fetch PR, test before merging
 https://gist.github.com/adam-p/15413fabef6cffecd897
+
+For the carosel
+https://www.npmjs.com/package/material-auto-rotating-carousel
+https://codesandbox.io/s/mystifying-varahamihira-dphsr?fontsize=14&file=/src/index.js
+
+
+https://github.com/Learus/react-material-ui-carousel
+https://learus.github.io/react-material-ui-carousel/
+
+
+https://levelup.gitconnected.com/adding-transitions-to-a-react-carousel-with-material-ui-b95825653c1b

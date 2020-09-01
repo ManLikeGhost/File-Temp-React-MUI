@@ -62,4 +62,11 @@ export const portfolios = [
       address:`Skyline Towers, Adeola Odeku Street, V.I.`,
       details: <FavoriteIcon style={iconSize} color={iconColor} />,
     },
+    {
+      id: 3,
+      imagePath: PropertyImage3,
+      saleText:`Office spaces for sale 4`,
+      address:`4 Skyline Towers, Adeola Odeku Street, V.I.`,
+      details: <FavoriteIcon style={iconSize} color={iconColor} />,
+    },
   ];

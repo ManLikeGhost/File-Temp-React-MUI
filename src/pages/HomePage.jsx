@@ -4,6 +4,7 @@ import NavigationHeader from '../components/navigationHeader.jsx'
 import HeroSection from '../components/home/heroSection';
 import PortfoliosList from '../components/home/PortfoliosList';
 import PropertiesList from '../components/home/PropertiesList';
+import PropertyCarousel from '../components/home/propertyCarousel';
 import ContactDetails from '../components/home/contactDetails';
 import HomePageStats from '../components/home/homePageStats.jsx';
 import AboutHome from '../components/home/about';
@@ -39,6 +40,7 @@ const HomePage = () => {
             <ContactDetails/>
             <PortfoliosList/>
             <PropertiesList/>
+            <PropertyCarousel />
             <HomePageStats />
             <AboutHome />
             <AddListingSection/>
