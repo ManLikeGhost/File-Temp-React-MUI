@@ -9,14 +9,14 @@ import SignUpPage from "./pages/SignUpPage";
 import UpgradeSubscriptionPage from "./pages/UpgradeSubscriptionPage";
 import NewUpgradePage from "./pages/NewUpgrade";
 import PaymentPage from "./pages/PaymentPage";
-import PostPropertyPage from "./pages/PostPropertyPage";
+import PostPropertyRequestPage from "./pages/PostPropertyRequestPage";
 
 import ProfileSettings from "./pages/ProfileSettings";
 import "./App.css";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import AboutPage from "./pages/AboutPage";
-import PropertyDisplay from "./pages/PropertyDisplay";
+import FlatsPropertyDisplay from "./pages/FlatsPropertyDisplay";
 
 import Page404 from "./pages/Page404";
 import ProfileImage from "./pages/ProfileImage";
@@ -42,8 +42,8 @@ function App() {
       <CssBaseline />
       <Router>
         <Switch>
-          <Route exact path="/property-display">
-            <PropertyDisplay />
+          <Route exact path="/flats-property-display">
+            <FlatsPropertyDisplay />
           </Route>
           <Route exact path="/about">
             <AboutPage />
@@ -74,8 +74,8 @@ function App() {
             <PaymentPage />
           </Route>
 
-          <Route path="/post-property">
-            <PostPropertyPage />
+          <Route path="/post-property-request">
+            <PostPropertyRequestPage />
           </Route>
           <Route exact path="/">
             <HomePage />

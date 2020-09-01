@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PostPropertyPage = () => {
+const PostPropertyRequestPage = () => {
   const classes = useStyles();
   return (
     <div className="BackgroundImage">
@@ -24,4 +24,4 @@ const PostPropertyPage = () => {
   );
 };
 
-export default PostPropertyPage;
+export default PostPropertyRequestPage;

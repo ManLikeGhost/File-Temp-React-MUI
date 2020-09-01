@@ -18,7 +18,7 @@ import Grid from "@material-ui/core/Grid";
 //   },
 // }));
 
-const CardPropertyList = () => {
+const FlatPropertyList = () => {
   // const classes = useStyles();
   return (
     <div>
@@ -39,4 +39,4 @@ const CardPropertyList = () => {
     </div>
   );
 };
-export default CardPropertyList;
+export default FlatPropertyList;

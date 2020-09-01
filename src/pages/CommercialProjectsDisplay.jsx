@@ -4,7 +4,7 @@ import MarbleBackground from "../img/MarbleBackground.png";
 import Footer from "../components/footer";
 import SaleRentShortlet from "../components/home/saleRentShortlet";
 
-import CardPropertyList from "../components/properties/cardPropertyList";
+import FlatPropertyList from "../components/properties/flatPropertyList";
 import LeftColumn from "../components/properties/leftColumn";
 import RightColumn from "../components/properties/rightColumn";
 
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PropertyDisplay = () => {
+const CommercialProjectsDisplay = () => {
   const classes = useStyles();
   return (
     <div className={classes.backgroundImage}>
@@ -32,9 +32,8 @@ const PropertyDisplay = () => {
         <Grid container spacing={6}>
           <Grid item container xs={8}>
             <LeftColumn />
-            <CardPropertyList />
+            <FlatPropertyList />
           </Grid>
-
           <Grid item container xs={4}>
             <RightColumn />
           </Grid>
@@ -46,4 +45,4 @@ const PropertyDisplay = () => {
     </div>
   );
 };
-export default PropertyDisplay;
+export default CommercialProjectsDisplay;

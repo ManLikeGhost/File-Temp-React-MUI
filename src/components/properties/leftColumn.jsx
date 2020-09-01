@@ -10,7 +10,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 
 import { detailsProperties } from "../../demoData/demoDataCard";
-import CardPropertyList from "./cardPropertyList";
+import FlatPropertyList from "./flatPropertyList";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -178,7 +178,7 @@ const LeftColumn = () => {
           </FormControl>
         </Grid>
       </Grid>
-      <CardPropertyList />
+      <FlatPropertyList />
     </div>
   );
 };
