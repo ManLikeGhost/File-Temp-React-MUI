@@ -39,10 +39,11 @@ const useStyles = makeStyles((theme) => ({
   paperContainer: {
     padding: 50,
     border: `1px solid ${theme.palette.primary.main}`,
-    transition: "all 1s linear",
     // boxShadow: '5px 10px 5px 1px'
     "&:hover": {
-     marginTop: "150px"
+     marginTop: "100px",
+     transition: "all 1s ease-in-out",
+    //  transition: "marginTop 2s ease-out",
     },
   },
 }));
