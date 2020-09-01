@@ -79,7 +79,7 @@ const QuickFilterButton = withStyles({
   },
 })(Button);
 
-const LeftColumn = () => {
+const LeftColumn = ({title}) => {
   const classes = useStyles();
   const [filterByType, setFilterByType] = React.useState("");
 
@@ -89,7 +89,7 @@ const LeftColumn = () => {
 
   return (
     <div>
-      <PropertyTitle>Flats for shortlet in Nigeria</PropertyTitle>
+      <PropertyTitle>{title}</PropertyTitle>
       <Grid container className={classes.quickFilterContainer}>
         <Grid item={12}>
           <Typography className={classes.quickFilterTitle}>

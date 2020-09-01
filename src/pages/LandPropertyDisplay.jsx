@@ -31,7 +31,7 @@ const LandPropertyDisplay = () => {
       <div className={classes.holder}>
         <Grid container spacing={6}>
           <Grid item container xs={8}>
-            <LeftColumn />
+            <LeftColumn title="Land for rent in Nigeria"/>
             <LandPropertyList />
           </Grid>
           <Grid item container xs={4}>
