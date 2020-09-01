@@ -4,7 +4,7 @@ import MarbleBackground from "../img/MarbleBackground.png";
 import Footer from "../components/footer";
 import SaleRentShortlet from "../components/home/saleRentShortlet";
 
-import FlatPropertyList from "../components/properties/flatPropertyList";
+import CommercialProjectsList from "../components/properties/commercialProjectsList";
 import LeftColumn from "../components/properties/leftColumn";
 import RightColumn from "../components/properties/rightColumn";
 
@@ -32,7 +32,7 @@ const CommercialProjectsDisplay = () => {
         <Grid container spacing={6}>
           <Grid item container xs={8}>
             <LeftColumn />
-            <FlatPropertyList />
+            <CommercialProjectsList />
           </Grid>
           <Grid item container xs={4}>
             <RightColumn />
