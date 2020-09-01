@@ -16,21 +16,25 @@ export const portfolios = [
       id: 0,
       title: "Flats",
       icon: FlatIcon,
+      link:"/flats-property-display",
     },
     {
       id: 1,
       title: "Houses",
       icon: HouseIcon,
+      link:"/houses-property-display",
     },
     {
       id: 2,
       title: "Commercial Properties",
       icon: CommercialProjectsIcon,
+      link:"/commercial-projects-display",
     },
     {
       id: 3,
       title: "Land",
       icon: LandIcon,
+      link:"/land-property-display",
     },
   ];
 

@@ -16,7 +16,7 @@ function PortfoliosList() {
         <Grid container justify="center" alignItems="center" spacing={2}>
           {portfolios.map((property) => (
             <Grid key={property.id} item xs={3}>
-              <Portfolio title={property.title} icon={property.icon} />
+              <Portfolio title={property.title} icon={property.icon} link={property.link} />
             </Grid>
           ))}
         </Grid>
