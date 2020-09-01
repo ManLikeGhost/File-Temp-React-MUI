@@ -17,6 +17,10 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import AboutPage from "./pages/AboutPage";
 import FlatsPropertyDisplay from "./pages/FlatsPropertyDisplay";
+import CommercialProjectsDisplay from "./pages/CommercialProjectsDisplay";
+import HousesPropertyDisplay from "./pages/HousesPropertyDisplay";
+import LandPropertyDisplay from "./pages/LandPropertyDisplay";
+
 
 import Page404 from "./pages/Page404";
 import ProfileImage from "./pages/ProfileImage";
@@ -44,6 +48,15 @@ function App() {
         <Switch>
           <Route exact path="/flats-property-display">
             <FlatsPropertyDisplay />
+          </Route>
+          <Route exact path="/houses-property-display">
+            <HousesPropertyDisplay />
+          </Route>
+          <Route exact path="/land-property-display">
+            <LandPropertyDisplay />
+          </Route>
+          <Route exact path="/commercial-projects-display">
+            <CommercialProjectsDisplay />
           </Route>
           <Route exact path="/about">
             <AboutPage />

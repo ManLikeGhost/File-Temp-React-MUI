@@ -5,6 +5,7 @@ import Footer from "../components/footer";
 import SaleRentShortlet from "../components/home/saleRentShortlet";
 
 import CommercialProjectsList from "../components/properties/commercialProjectsList";
+
 import LeftColumn from "../components/properties/leftColumn";
 import RightColumn from "../components/properties/rightColumn";
 
