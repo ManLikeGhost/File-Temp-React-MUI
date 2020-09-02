@@ -199,7 +199,7 @@ const NavigationHeader = () => {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Button variant="outlined" className={classes.button}>
-              ADD LISTING
+              <Link href="/contact">ADD LISTING</Link>
             </Button>
             <IconButton
               edge="end"
@@ -209,7 +209,8 @@ const NavigationHeader = () => {
               // onClick={handleMenuOpen}
               color="inherit"
             >
-              <AccountCircle fontSize="large" color="primary" />
+              <Link href="/signin"><AccountCircle fontSize="large" color="primary" /></Link>
+              
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>

@@ -10,6 +10,7 @@ import UpgradeSubscriptionPage from "./pages/UpgradeSubscriptionPage";
 import NewUpgradePage from "./pages/NewUpgrade";
 import PaymentPage from "./pages/PaymentPage";
 import PostPropertyRequestPage from "./pages/PostPropertyRequestPage";
+import AddListingPage from "./pages/AddListingPage";
 
 import ProfileSettings from "./pages/ProfileSettings";
 import "./App.css";
@@ -90,6 +91,10 @@ function App() {
           <Route path="/post-property-request">
             <PostPropertyRequestPage />
           </Route>
+          <Route path="/add-listing">
+            <AddListingPage />
+          </Route>
+          
           <Route exact path="/">
             <HomePage />
           </Route>
