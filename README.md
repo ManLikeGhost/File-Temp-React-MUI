@@ -49,4 +49,7 @@ http://localhost:3000/profile-settings/subscriptions
 
 http://localhost:3000/about
 
+http://localhost:3000/add-listing
+
+
 

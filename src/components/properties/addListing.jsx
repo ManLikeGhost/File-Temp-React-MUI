@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
@@ -11,7 +11,6 @@ import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormLabel from "@material-ui/core/FormLabel";
 import { makeStyles } from "@material-ui/core/styles";
 
 import SectionTitle from "../sectionTitle";
@@ -81,6 +80,11 @@ const useStyles = makeStyles((theme) => ({
 
 const AddListing = () => {
   const classes = useStyles();
+  const [publishValue, setPublishValue] = React.useState('unpublish');
+
+  const handlePublishChange = (event) => {
+    setPublishValue(event.target.value);
+  };
   return (
     <div>
       <SectionTitle>Add Listing</SectionTitle>
@@ -97,8 +101,8 @@ const AddListing = () => {
             <RadioGroup
               aria-label="gender"
               name="gender1"
-              //   value={value}
-              //   onChange={handleChange}
+                value={publishValue}
+                onChange={handlePublishChange}
             >
               <Grid container>
                 <Grid item xs={6}>
