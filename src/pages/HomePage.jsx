@@ -40,7 +40,7 @@ const HomePage = () => {
             <ContactDetails/>
             <PortfoliosList/>
             <PropertiesList/>
-            <PropertyCarousel />
+            {/* <PropertyCarousel /> */}
             <HomePageStats />
             <AboutHome />
             <AddListingSection/>

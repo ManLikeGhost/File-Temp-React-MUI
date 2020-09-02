@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import FormatAlignRightIcon from '@material-ui/icons/FormatAlignRight';
+import FormatAlignRightIcon from "@material-ui/icons/FormatAlignRight";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-
+import Divider from "@material-ui/core/Divider";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
@@ -65,12 +65,27 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  mainMenu: {},
+  menuItem: {
+    color: "white",
+    "&:focus": {
+      backgroundColor: theme.palette.primary.main,
+      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
+        color: theme.palette.secondary.main,
+      },
+    },
+  },
+  divider: {
+    margin: "15px 15px",
+    backgroundColor: theme.palette.primary.main,
+    height: "1px",
+  },
 }));
 
 const NavigationHeader = () => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -103,12 +118,29 @@ const NavigationHeader = () => {
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMenuOpen}
       onClose={handleMenuClose}
+      className={classes.mainMenu}
     >
-      <MenuItem onClick={handleMenuClose}><Link href="about"> About Terrel Davies</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link href="forRent">Our Portfolio Listings</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}>Pricing</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Blog</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Contact</MenuItem>
+      <MenuItem onClick={handleMenuClose} className={classes.menuItem}>
+        <Link href="/about"> About Terrel Davies</Link>
+      </MenuItem>
+      <Divider className={classes.divider} />
+      <MenuItem onClick={handleMenuClose} className={classes.menuItem}>
+        <Link href="/post-property-request">Post Property Request</Link>
+      </MenuItem>
+      <Divider className={classes.divider} />
+      <MenuItem onClick={handleMenuClose} className={classes.menuItem}>
+        <Link href="/subscription-plans">Subscription Plans</Link>
+      </MenuItem>
+      <Divider className={classes.divider} />
+      <MenuItem onClick={handleMenuClose} className={classes.menuItem}>
+        
+        <Link href="/blog">Blog</Link>
+      </MenuItem>
+      <Divider className={classes.divider} />
+      <MenuItem onClick={handleMenuClose} className={classes.menuItem}>
+        
+        <Link href="/contact">Contact</Link>
+      </MenuItem>
     </Menu>
   );
 
