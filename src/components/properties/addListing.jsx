@@ -31,6 +31,12 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.spacing(3),
     fontWeight: "bold",
   },
+  publishRadioButton:{
+    color: theme.palette.primary.main,
+    '&$checked': {
+        color: theme.palette.primary.main,
+    },
+  },
   formContainer: {
     background: "#FFFFFF",
     border: "0.8px solid #BF7950",
@@ -108,15 +114,17 @@ const AddListing = () => {
                 <Grid item xs={6}>
                   <FormControlLabel
                     value="publish"
-                    control={<Radio />}
+                    control={<Radio color="primary" className={classes.publishRadioButton} />}
                     label="Publish"
+                    
                   />
                 </Grid>
                 <Grid item xs={6}>
                   <FormControlLabel
                     value="unpublish"
-                    control={<Radio />}
+                    control={<Radio color="primary" className={classes.publishRadioButton}/>}
                     label="Unpublish"
+                    // className={classes.publishRadioButton}
                   />
                 </Grid>
               </Grid>
