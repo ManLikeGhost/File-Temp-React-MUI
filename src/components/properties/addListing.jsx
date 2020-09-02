@@ -8,6 +8,10 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormLabel from "@material-ui/core/FormLabel";
 import { makeStyles } from "@material-ui/core/styles";
 
 import SectionTitle from "../sectionTitle";
@@ -79,16 +83,41 @@ const AddListing = () => {
   const classes = useStyles();
   return (
     <div>
-      <SectionTitle>Post a Property Request</SectionTitle>
+      <SectionTitle>Add Listing</SectionTitle>
       <Grid container className={classes.detailsContainer}>
         <Grid item>
           <Typography className={classes.detailsText}>
-            Property Details
+            Add property details
           </Typography>
         </Grid>
       </Grid>
       <div className={classes.formContainer}>
         <form className={classes.form}>
+          <FormControl component="fieldset">
+            <RadioGroup
+              aria-label="gender"
+              name="gender1"
+              //   value={value}
+              //   onChange={handleChange}
+            >
+              <Grid container>
+                <Grid item xs={6}>
+                  <FormControlLabel
+                    value="publish"
+                    control={<Radio />}
+                    label="Publish"
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <FormControlLabel
+                    value="unpublish"
+                    control={<Radio />}
+                    label="Unpublish"
+                  />
+                </Grid>
+              </Grid>
+            </RadioGroup>
+          </FormControl>
           <Grid container spacing={5}>
             <Grid item xs={8}>
               <TextField
