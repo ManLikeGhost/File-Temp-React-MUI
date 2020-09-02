@@ -11,6 +11,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
+import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 
 import Logo from "../img/logo.png";
 
@@ -65,15 +66,32 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
-  mainMenu: {},
+  mainMenu: {
+    textAlign:"center",
+    "& .MuiPaper-root": {
+      color: theme.palette.secondary.main,
+    },
+  },
   menuItem: {
     color: "white",
+    margin: theme.spacing(2),
+    textAlign:"center",
     "&:focus": {
       backgroundColor: theme.palette.primary.main,
       "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
         color: theme.palette.secondary.main,
       },
     },
+  },
+  MenuOpenIcon: {
+    marginLeft: "auto",
+    textAlign:"right",
+    transform: "rotate(90deg)",
+  },
+  linkText: {
+    color: theme.palette.secondary.main,
+    textDecoration: "none",
+    "&:hover": {textDecoration: "none",},
   },
   divider: {
     margin: "15px 15px",
@@ -120,26 +138,39 @@ const NavigationHeader = () => {
       onClose={handleMenuClose}
       className={classes.mainMenu}
     >
+      <div style={{textAlign: "right", paddingRight: "50px"}}>
+      <FormatAlignRightIcon fontSize="large" color="primary" className={classes.MenuOpenIcon} onClick={handleMenuClose} />
+      </div>
+      
       <MenuItem onClick={handleMenuClose} className={classes.menuItem}>
-        <Link href="/about"> About Terrel Davies</Link>
+        <Link href="/about" className={classes.linkText}>
+          
+          About Terrel Davies
+        </Link>
       </MenuItem>
       <Divider className={classes.divider} />
       <MenuItem onClick={handleMenuClose} className={classes.menuItem}>
-        <Link href="/post-property-request">Post Property Request</Link>
+        <Link href="/post-property-request" className={classes.linkText}>
+          Post Property Request
+        </Link>
       </MenuItem>
       <Divider className={classes.divider} />
       <MenuItem onClick={handleMenuClose} className={classes.menuItem}>
-        <Link href="/subscription-plans">Subscription Plans</Link>
+        <Link href="/subscription-plans" className={classes.linkText}>
+          Subscription Plans
+        </Link>
       </MenuItem>
       <Divider className={classes.divider} />
       <MenuItem onClick={handleMenuClose} className={classes.menuItem}>
-        
-        <Link href="/blog">Blog</Link>
+        <Link href="/blog" className={classes.linkText}>
+          Blog
+        </Link>
       </MenuItem>
       <Divider className={classes.divider} />
       <MenuItem onClick={handleMenuClose} className={classes.menuItem}>
-        
-        <Link href="/contact">Contact</Link>
+        <Link href="/contact" className={classes.linkText}>
+          Contact
+        </Link>
       </MenuItem>
     </Menu>
   );
