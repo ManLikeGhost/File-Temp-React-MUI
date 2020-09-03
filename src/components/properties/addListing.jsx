@@ -142,13 +142,14 @@ const AddListing = () => {
     furnished: false,
     description: " ",
   });
+
   const handleChange = (prop) => (event) => {
-    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    const value =
+      event.target.type === "checkbox"
+        ? event.target.checked
+        : event.target.value;
     setValues({ ...values, [prop]: value });
-    console.log(values)
   };
-
-
 
   return (
     <div>
@@ -486,7 +487,12 @@ const AddListing = () => {
             <Grid item xs={2}>
               <FormControlLabel
                 control={
-                  <Checkbox checked={values.serviced} color="primary" name="Serviced" onChange={handleChange("serviced")} />
+                  <Checkbox
+                    checked={values.serviced}
+                    color="primary"
+                    name="Serviced"
+                    onChange={handleChange("serviced")}
+                  />
                 }
                 label="Serviced"
               />
@@ -516,7 +522,7 @@ const AddListing = () => {
               }}
             >
               <InputLabel id="comment" style={{ paddingBottom: "10px" }}>
-                Comments
+                Description
               </InputLabel>
               <TextareaAutosize
                 rowsMax={20}
@@ -532,15 +538,22 @@ const AddListing = () => {
               />
             </Grid>
           </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
+          <Grid container>
+            <Grid item xs={3}></Grid>
+            <Grid item xs={3}></Grid>
+            <Grid item xs={3}></Grid>
+            <Grid item xs={3}>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Add Listing
+              </Button>
+            </Grid>
+          </Grid>
         </form>
       </div>
     </div>
