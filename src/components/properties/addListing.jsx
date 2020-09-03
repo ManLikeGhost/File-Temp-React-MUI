@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Button from "@material-ui/core/Button";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -370,7 +371,7 @@ const AddListing = () => {
             </Grid>
             <Grid item xs={6}>
               <FormLabel component="legend">Budget</FormLabel>
-              <TextField
+              <OutlinedInput
                 required
                 id="budget"
                 name="budget"
@@ -378,9 +379,7 @@ const AddListing = () => {
                 autoComplete="budget"
                 className={classes.label}
                 variant="outlined"
-                startAdornment={
-                  <InputAdornment position="start">$</InputAdornment>
-                }
+                startAdornment={<InputAdornment position="start">₦</InputAdornment>}
                 value={values.budget}
                 onChange={handleChange("budget")}
               />
