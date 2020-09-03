@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import OutlinedInput from '@material-ui/core/OutlinedInput';
+import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
@@ -14,7 +16,10 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
+import FormGroup from "@material-ui/core/FormGroup";
+import Checkbox from "@material-ui/core/Checkbox";
 import { makeStyles } from "@material-ui/core/styles";
+import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 
 import SectionTitle from "../sectionTitle";
 
@@ -86,7 +91,22 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     // minWidth: 120,
   },
-
+  uploadPhotoContainer: {
+    border: `0.8px solid ${theme.palette.primary.main}`,
+    boxSizing: "border-box",
+    borderRadius: "2px",
+    borderStyle: "dashed",
+    textAlign: "center",
+    marginTop: theme.spacing(3),
+  },
+  uploadPhotoIcon: {
+    fontSize: theme.spacing(9),
+    margin: theme.spacing(9),
+    // marginRight:theme.spacing(20),
+  },
+  hideInputField: {
+    display: "none",
+  },
   submit: {
     margin: theme.spacing(3, 0, 2),
     borderRadius: "2px",
@@ -101,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
 
 const AddListing = () => {
   const classes = useStyles();
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
     publishStatus: "unpublish",
     title: "",
     marketStatus: "",
@@ -123,8 +143,12 @@ const AddListing = () => {
     description: " ",
   });
   const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    setValues({ ...values, [prop]: value });
+    console.log(values)
   };
+
+
 
   return (
     <div>
@@ -366,7 +390,7 @@ const AddListing = () => {
                 className={classes.label}
                 variant="outlined"
                 value={values.location}
-                  onChange={handleChange("location")}
+                onChange={handleChange("location")}
               />
             </Grid>
             <Grid item xs={6}>
@@ -379,11 +403,111 @@ const AddListing = () => {
                 autoComplete="budget"
                 className={classes.label}
                 variant="outlined"
-                startAdornment={<InputAdornment position="start">₦</InputAdornment>}
+                startAdornment={
+                  <InputAdornment position="start">₦</InputAdornment>
+                }
                 value={values.budget}
                 onChange={handleChange("budget")}
               />
             </Grid>
+          </Grid>
+          <Grid container spacing={5}>
+            <Grid item xs={4}>
+              <FormLabel component="legend">Bedrooms</FormLabel>
+              <TextField
+                required
+                id="bedrooms"
+                name="bedrooms"
+                // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
+                fullWidth
+                autoComplete="bedrooms"
+                className={classes.label}
+                variant="outlined"
+                value={values.bedrooms}
+                onChange={handleChange("bedrooms")}
+              />
+            </Grid>
+            <Grid item xs={4}>
+              <FormLabel component="legend">Toilets</FormLabel>
+              <TextField
+                required
+                id="toilets"
+                name="toilets"
+                // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
+                fullWidth
+                autoComplete="toilets"
+                className={classes.label}
+                variant="outlined"
+                value={values.toilets}
+                onChange={handleChange("toilets")}
+              />
+            </Grid>
+            <Grid item xs={4}>
+              <FormLabel component="legend">Bathrooms</FormLabel>
+              <TextField
+                required
+                id="bathrooms"
+                name="bathrooms"
+                // placeholder="Example: 3 bathroom flat in Lekki, with standard facilities"
+                fullWidth
+                autoComplete="bathrooms"
+                className={classes.label}
+                variant="outlined"
+                value={values.bathrooms}
+                onChange={handleChange("bathrooms")}
+              />
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item xs={4}>
+              <div className={classes.uploadPhotoContainer}>
+                <input
+                  accept="image/*"
+                  className={classes.hideInputField}
+                  id="icon-button-file"
+                  type="file"
+                />
+                <label htmlFor="icon-button-file">
+                  <IconButton
+                    color="primary"
+                    aria-label="upload picture"
+                    component="span"
+                    size="medium"
+                  >
+                    <AddAPhotoIcon className={classes.uploadPhotoIcon} />
+                  </IconButton>
+                </label>
+              </div>
+            </Grid>
+            <Grid item xs={4}></Grid>
+            <Grid item xs={4}></Grid>
+          </Grid>
+          <Grid container>
+            <Grid item xs={2}>
+              <FormControlLabel
+                control={
+                  <Checkbox checked={values.serviced} color="primary" name="Serviced" onChange={handleChange("serviced")} />
+                }
+                label="Serviced"
+              />
+            </Grid>
+            <Grid item xs={2}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={values.furnished}
+                    onChange={handleChange("furnished")}
+                    name="Furnished"
+                    color="primary"
+                  />
+                }
+                label="Furnished"
+              />
+            </Grid>
+            <Grid item xs={2}></Grid>
+            <Grid item xs={2}></Grid>
+            <Grid item xs={2}></Grid>
+            <Grid item xs={2}></Grid>
           </Grid>
           <Grid container>
             <Grid
