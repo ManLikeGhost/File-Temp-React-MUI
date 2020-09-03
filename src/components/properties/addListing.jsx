@@ -7,7 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
-import InputAdornment from '@material-ui/core/InputAdornment';
+import InputAdornment from "@material-ui/core/InputAdornment";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -101,33 +101,30 @@ const useStyles = makeStyles((theme) => ({
 const AddListing = () => {
   const classes = useStyles();
   const [values, setValues] = React.useState({
-    publish: 'unpublish',
-    title: '',
-    marketStatus: '',
-    category: '',
-    type: '',
-    state: '',
-    locality: '',
-    area: '',
-    location: '',
-    budget: '',
-    bedrooms: '',
-    toilets: '',
-    bathrooms: '',
-    parking: '',
-    totalArea: '',
-    videoLink: '',
+    publishStatus: "unpublish",
+    title: "",
+    marketStatus: "",
+    category: "",
+    type: "",
+    state: "",
+    locality: "",
+    area: "",
+    location: "",
+    budget: "",
+    bedrooms: "",
+    toilets: "",
+    bathrooms: "",
+    parking: "",
+    totalArea: "",
+    videoLink: "",
     serviced: false,
     furnished: false,
-    description:" "
+    description: " ",
   });
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
-  const handlePublishChange = (event) => {
-    setPublishValue(event.target.value);
-  };
   return (
     <div>
       <SectionTitle>Add Listing</SectionTitle>
@@ -145,8 +142,8 @@ const AddListing = () => {
               <RadioGroup
                 aria-label="publishStatus"
                 name="publishStatus"
-                value={publishValue}
-                onChange={handlePublishChange}
+                value={values.publishStatus}
+                onChange={handleChange("publishStatus")}
               >
                 <Grid container>
                   <Grid item xs={6}>
@@ -190,23 +187,22 @@ const AddListing = () => {
                 autoComplete="title"
                 className={classes.label}
                 variant="outlined"
-                //   value={state.name}
-                //   onChange={handleChange("name")}
+                value={values.title}
+                onChange={handleChange("title")}
               />
             </Grid>
             <Grid item xs={4}>
               <FormLabel component="legend">Market Status</FormLabel>
               <FormControl className={classes.accountFormControl}>
-                <InputLabel id="accountType">Any</InputLabel>
+                <InputLabel id="marketStatus">Any</InputLabel>
                 <Select
                   required
                   fullWidth
-                  labelId="accountType"
-                  id="accountType"
+                  labelId="marketStatus"
+                  id="marketStatus"
                   variant="outlined"
-
-                  // value={state.accountType}
-                  // onChange={handleChange("accountType")}
+                  value={values.marketStatus}
+                  onChange={handleChange("marketStatus")}
                 >
                   <MenuItem value={"propertyShopper"}>
                     Property Shopper
@@ -226,16 +222,15 @@ const AddListing = () => {
             <Grid item xs={6}>
               <FormLabel component="legend">Category</FormLabel>
               <FormControl className={classes.accountFormControl}>
-                <InputLabel id="accountType">Select Category</InputLabel>
+                <InputLabel id="category">Select Category</InputLabel>
                 <Select
                   required
                   fullWidth
-                  labelId="accountType"
-                  id="accountType"
+                  labelId="category"
+                  id="category"
                   variant="outlined"
-
-                  // value={state.accountType}
-                  // onChange={handleChange("accountType")}
+                  value={values.category}
+                  onChange={handleChange("category")}
                 >
                   <MenuItem value={"propertyShopper"}>
                     Property Shopper
@@ -253,16 +248,15 @@ const AddListing = () => {
             <Grid item xs={6}>
               <FormLabel component="legend">Type</FormLabel>
               <FormControl className={classes.accountFormControl}>
-                <InputLabel id="accountType">Select Type</InputLabel>
+                <InputLabel id="type">Select Type</InputLabel>
                 <Select
                   required
                   fullWidth
-                  labelId="accountType"
-                  id="accountType"
+                  labelId="type"
+                  id="type"
                   variant="outlined"
-
-                  // value={state.accountType}
-                  // onChange={handleChange("accountType")}
+                  value={values.type}
+                  onChange={handleChange("type")}
                 >
                   <MenuItem value={"propertyShopper"}>
                     Property Shopper
@@ -282,15 +276,15 @@ const AddListing = () => {
             <Grid item xs={4}>
               <FormLabel component="legend">State</FormLabel>
               <FormControl className={classes.accountFormControl}>
-                <InputLabel id="accountType">Select State</InputLabel>
+                <InputLabel id="state">Select State</InputLabel>
                 <Select
                   required
                   fullWidth
-                  labelId="accountType"
-                  id="accountType"
+                  labelId="state"
+                  id="state"
                   variant="outlined"
-                  // value={state.accountType}
-                  // onChange={handleChange("accountType")}
+                  value={values.state}
+                  onChange={handleChange("state")}
                 >
                   <MenuItem value={"propertyShopper"}>
                     Property Shopper
@@ -308,15 +302,15 @@ const AddListing = () => {
             <Grid item xs={4}>
               <FormLabel component="legend">Locality</FormLabel>
               <FormControl className={classes.accountFormControl}>
-                <InputLabel id="accountType">Select Locality</InputLabel>
+                <InputLabel id="locality">Select Locality</InputLabel>
                 <Select
                   required
                   fullWidth
-                  labelId="accountType"
-                  id="accountType"
+                  labelId="locality"
+                  id="locality"
                   variant="outlined"
-                  // value={state.accountType}
-                  // onChange={handleChange("accountType")}
+                  value={values.locality}
+                  onChange={handleChange("locality")}
                 >
                   <MenuItem value={"propertyShopper"}>
                     Property Shopper
@@ -334,15 +328,15 @@ const AddListing = () => {
             <Grid item xs={4}>
               <FormLabel component="legend">Area</FormLabel>
               <FormControl className={classes.accountFormControl}>
-                <InputLabel id="accountType">Select Area</InputLabel>
+                <InputLabel id="area">Select Area</InputLabel>
                 <Select
                   required
                   fullWidth
-                  labelId="accountType"
-                  id="accountType"
+                  labelId="area"
+                  id="area"
                   variant="outlined"
-                  // value={state.accountType}
-                  // onChange={handleChange("accountType")}
+                  value={values.area}
+                  onChange={handleChange("area")}
                 >
                   <MenuItem value={"propertyShopper"}>
                     Property Shopper
@@ -360,7 +354,7 @@ const AddListing = () => {
           </Grid>
           <Grid container spacing={5}>
             <Grid item xs={12}>
-            <FormLabel component="legend">Location</FormLabel>
+              <FormLabel component="legend">Location</FormLabel>
               <TextField
                 required
                 id="location"
@@ -370,12 +364,12 @@ const AddListing = () => {
                 autoComplete="location"
                 className={classes.label}
                 variant="outlined"
-                //   value={state.name}
-                //   onChange={handleChange("name")}
+                value={values.location}
+                  onChange={handleChange("location")}
               />
-             </Grid>
+            </Grid>
             <Grid item xs={6}>
-            <FormLabel component="legend">Budget</FormLabel>
+              <FormLabel component="legend">Budget</FormLabel>
               <TextField
                 required
                 id="budget"
@@ -384,23 +378,12 @@ const AddListing = () => {
                 autoComplete="budget"
                 className={classes.label}
                 variant="outlined"
-                startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                
+                startAdornment={
+                  <InputAdornment position="start">$</InputAdornment>
+                }
                 value={values.budget}
-            onChange={handleChange('budget')}
+                onChange={handleChange("budget")}
               />
-              {/* <TextField
-                required
-                id="budget"
-                name="budget"
-                label="Budget"
-                fullWidth
-                autoComplete="budget"
-                className={classes.label}
-                variant="outlined"
-                //   value={state.name}
-                //   onChange={handleChange("name")}
-              /> */}
             </Grid>
           </Grid>
           <Grid container>
