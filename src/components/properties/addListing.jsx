@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
@@ -7,10 +7,12 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
+import InputAdornment from '@material-ui/core/InputAdornment';
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormLabel from "@material-ui/core/FormLabel";
 import { makeStyles } from "@material-ui/core/styles";
 
 import SectionTitle from "../sectionTitle";
@@ -31,12 +33,24 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.spacing(3),
     fontWeight: "bold",
   },
-  publishRadioButton:{
+  publishRadioButton: {
     color: theme.palette.primary.main,
-    '&$checked': {
-        color: theme.palette.primary.main,
+    "&$checked": {
+      color: theme.palette.primary.main,
     },
   },
+  publishContainer: {
+    // background: "#F5E9DE",
+    borderBottom: `0.8px solid ${theme.palette.primary.main}`,
+    // borderTop: "0px",
+    borderRadius: "0px 2px 0px 0px",
+    boxSizing: "border-box",
+    width: "100%",
+    // height: "50px",
+    marginBottom: theme.spacing(5),
+    // marginTop: "-16px",
+  },
+
   formContainer: {
     background: "#FFFFFF",
     border: "0.8px solid #BF7950",
@@ -86,7 +100,30 @@ const useStyles = makeStyles((theme) => ({
 
 const AddListing = () => {
   const classes = useStyles();
-  const [publishValue, setPublishValue] = React.useState('unpublish');
+  const [values, setValues] = React.useState({
+    publish: 'unpublish',
+    title: '',
+    marketStatus: '',
+    category: '',
+    type: '',
+    state: '',
+    locality: '',
+    area: '',
+    location: '',
+    budget: '',
+    bedrooms: '',
+    toilets: '',
+    bathrooms: '',
+    parking: '',
+    totalArea: '',
+    videoLink: '',
+    serviced: false,
+    furnished: false,
+    description:" "
+  });
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
 
   const handlePublishChange = (event) => {
     setPublishValue(event.target.value);
@@ -103,42 +140,54 @@ const AddListing = () => {
       </Grid>
       <div className={classes.formContainer}>
         <form className={classes.form}>
-          <FormControl component="fieldset">
-            <RadioGroup
-              aria-label="gender"
-              name="gender1"
+          <div className={classes.publishContainer}>
+            <FormControl component="fieldset">
+              <RadioGroup
+                aria-label="publishStatus"
+                name="publishStatus"
                 value={publishValue}
                 onChange={handlePublishChange}
-            >
-              <Grid container>
-                <Grid item xs={6}>
-                  <FormControlLabel
-                    value="publish"
-                    control={<Radio color="primary" className={classes.publishRadioButton} />}
-                    label="Publish"
-                    
-                  />
+              >
+                <Grid container>
+                  <Grid item xs={6}>
+                    <FormControlLabel
+                      value="publish"
+                      control={
+                        <Radio
+                          color="primary"
+                          className={classes.publishRadioButton}
+                        />
+                      }
+                      label="Publish"
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <FormControlLabel
+                      value="unpublish"
+                      control={
+                        <Radio
+                          color="primary"
+                          className={classes.publishRadioButton}
+                        />
+                      }
+                      label="Unpublish"
+                      // className={classes.publishRadioButton}
+                    />
+                  </Grid>
                 </Grid>
-                <Grid item xs={6}>
-                  <FormControlLabel
-                    value="unpublish"
-                    control={<Radio color="primary" className={classes.publishRadioButton}/>}
-                    label="Unpublish"
-                    // className={classes.publishRadioButton}
-                  />
-                </Grid>
-              </Grid>
-            </RadioGroup>
-          </FormControl>
+              </RadioGroup>
+            </FormControl>
+          </div>
           <Grid container spacing={5}>
             <Grid item xs={8}>
+              <FormLabel component="legend">Title</FormLabel>
               <TextField
                 required
-                id="fullName"
-                name="fullName"
-                label="Full name"
+                id="title"
+                name="title"
+                placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
                 fullWidth
-                autoComplete="full-name"
+                autoComplete="title"
                 className={classes.label}
                 variant="outlined"
                 //   value={state.name}
@@ -146,8 +195,9 @@ const AddListing = () => {
               />
             </Grid>
             <Grid item xs={4}>
+              <FormLabel component="legend">Market Status</FormLabel>
               <FormControl className={classes.accountFormControl}>
-                <InputLabel id="accountType">I’m a/an...</InputLabel>
+                <InputLabel id="accountType">Any</InputLabel>
                 <Select
                   required
                   fullWidth
@@ -174,35 +224,7 @@ const AddListing = () => {
           </Grid>
           <Grid container spacing={5}>
             <Grid item xs={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                autoComplete="email"
-
-                //   value={state.email}
-                //   onChange={handleChange("email")}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="phone"
-                label="Phone Number"
-                name="phone"
-                autoComplete="phone"
-                //   value={state.email}
-                //   onChange={handleChange("email")}
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={6}>
-            <Grid item xs={6}>
+              <FormLabel component="legend">Category</FormLabel>
               <FormControl className={classes.accountFormControl}>
                 <InputLabel id="accountType">Select Category</InputLabel>
                 <Select
@@ -211,11 +233,11 @@ const AddListing = () => {
                   labelId="accountType"
                   id="accountType"
                   variant="outlined"
+
                   // value={state.accountType}
                   // onChange={handleChange("accountType")}
                 >
                   <MenuItem value={"propertyShopper"}>
-                    {" "}
                     Property Shopper
                   </MenuItem>
                   <MenuItem value={"realEstateAgent"}>
@@ -229,6 +251,7 @@ const AddListing = () => {
               </FormControl>
             </Grid>
             <Grid item xs={6}>
+              <FormLabel component="legend">Type</FormLabel>
               <FormControl className={classes.accountFormControl}>
                 <InputLabel id="accountType">Select Type</InputLabel>
                 <Select
@@ -237,11 +260,11 @@ const AddListing = () => {
                   labelId="accountType"
                   id="accountType"
                   variant="outlined"
+
                   // value={state.accountType}
                   // onChange={handleChange("accountType")}
                 >
                   <MenuItem value={"propertyShopper"}>
-                    {" "}
                     Property Shopper
                   </MenuItem>
                   <MenuItem value={"realEstateAgent"}>
@@ -257,6 +280,7 @@ const AddListing = () => {
           </Grid>
           <Grid container spacing={6}>
             <Grid item xs={4}>
+              <FormLabel component="legend">State</FormLabel>
               <FormControl className={classes.accountFormControl}>
                 <InputLabel id="accountType">Select State</InputLabel>
                 <Select
@@ -269,7 +293,6 @@ const AddListing = () => {
                   // onChange={handleChange("accountType")}
                 >
                   <MenuItem value={"propertyShopper"}>
-                    {" "}
                     Property Shopper
                   </MenuItem>
                   <MenuItem value={"realEstateAgent"}>
@@ -283,6 +306,7 @@ const AddListing = () => {
               </FormControl>
             </Grid>
             <Grid item xs={4}>
+              <FormLabel component="legend">Locality</FormLabel>
               <FormControl className={classes.accountFormControl}>
                 <InputLabel id="accountType">Select Locality</InputLabel>
                 <Select
@@ -308,6 +332,7 @@ const AddListing = () => {
               </FormControl>
             </Grid>
             <Grid item xs={4}>
+              <FormLabel component="legend">Area</FormLabel>
               <FormControl className={classes.accountFormControl}>
                 <InputLabel id="accountType">Select Area</InputLabel>
                 <Select
@@ -320,7 +345,6 @@ const AddListing = () => {
                   // onChange={handleChange("accountType")}
                 >
                   <MenuItem value={"propertyShopper"}>
-                    {" "}
                     Property Shopper
                   </MenuItem>
                   <MenuItem value={"realEstateAgent"}>
@@ -335,34 +359,37 @@ const AddListing = () => {
             </Grid>
           </Grid>
           <Grid container spacing={5}>
-            <Grid item xs={6}>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="accountType">Select No. of bedrooms</InputLabel>
-                <Select
-                  required
-                  fullWidth
-                  labelId="accountType"
-                  id="accountType"
-                  variant="outlined"
-                  // value={state.accountType}
-                  // onChange={handleChange("accountType")}
-                >
-                  <MenuItem value={"propertyShopper"}>
-                    {" "}
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12}>
+            <FormLabel component="legend">Location</FormLabel>
               <TextField
+                required
+                id="location"
+                name="location"
+                placeholder="Example: 123, Doe Street, Acme Estate..."
+                fullWidth
+                autoComplete="location"
+                className={classes.label}
+                variant="outlined"
+                //   value={state.name}
+                //   onChange={handleChange("name")}
+              />
+             </Grid>
+            <Grid item xs={6}>
+            <FormLabel component="legend">Budget</FormLabel>
+              <TextField
+                required
+                id="budget"
+                name="budget"
+                fullWidth
+                autoComplete="budget"
+                className={classes.label}
+                variant="outlined"
+                startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                
+                value={values.budget}
+            onChange={handleChange('budget')}
+              />
+              {/* <TextField
                 required
                 id="budget"
                 name="budget"
@@ -373,7 +400,7 @@ const AddListing = () => {
                 variant="outlined"
                 //   value={state.name}
                 //   onChange={handleChange("name")}
-              />
+              /> */}
             </Grid>
           </Grid>
           <Grid container>
