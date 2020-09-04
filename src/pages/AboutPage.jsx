@@ -5,12 +5,8 @@ import SectionTitle from "../components/sectionTitle.jsx";
 import MarbleBackground from "../img/MarbleBackground.png";
 import Footer from "../components/footer";
 import Grid from "@material-ui/core/Grid";
-import CardMedia from "@material-ui/core/CardMedia";
-import Card from "@material-ui/core/Card";
 import Box from "@material-ui/core/Box";
 
-import Marble from "../img/AboutPageMarble8.png";
-import PropertyImage3 from "../img/houses/7.png";
 import AboutPagePhone from "../img/AboutPagePhone.png";
 import AboutPageMarble8 from "../img/AboutPageMarble8.png";
 import AboutPageMarble2 from "../img/AboutPageMarble2.png";
@@ -86,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   marble: {
-    backgroundImage: `url(${Marble})`,
+    backgroundImage: `url(${AboutPageMarble8})`,
   },
 
   holder: {
