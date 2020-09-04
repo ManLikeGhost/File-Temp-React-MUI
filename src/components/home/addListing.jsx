@@ -1,5 +1,6 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
+import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
@@ -44,14 +45,16 @@ const AddListingSection = () => {
           </Typography>
         </Grid>
         <Grid item xs={12} className={classes.buttonContainer}>
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            className={classes.button}
-          >
-            ADD LISTINGS
-          </Button>
+          <Link href="/add-listing">
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              className={classes.button}
+            >
+              ADD LISTINGS
+            </Button>
+          </Link>
         </Grid>
       </Grid>
     </div>

@@ -1,16 +1,16 @@
-import React from 'react'
+import React from "react";
 // import NavigationHeader from '../components/home/navigationHeader';
-import NavigationHeader from '../components/navigationHeader.jsx'
-import HeroSection from '../components/home/heroSection';
-import PortfoliosList from '../components/home/PortfoliosList';
-import PropertiesList from '../components/home/PropertiesList';
-import PropertyCarousel from '../components/home/propertyCarousel';
-import ContactDetails from '../components/home/contactDetails';
-import HomePageStats from '../components/home/homePageStats.jsx';
-import AboutHome from '../components/home/about';
-import AddListingSection from '../components/home/addListing';
-import SaleRentShortlet from '../components/home/saleRentShortlet';
-import Footer from '../components/footer';
+import NavigationHeader from "../components/navigationHeader.jsx";
+import HeroSection from "../components/home/heroSection";
+import PortfoliosList from "../components/home/PortfoliosList";
+import PropertiesList from "../components/home/PropertiesList";
+// import PropertyCarousel from '../components/home/propertyCarousel';
+import ContactDetails from "../components/home/contactDetails";
+import HomePageStats from "../components/home/homePageStats.jsx";
+import AboutHome from "../components/home/about";
+import AddListingSection from "../components/home/addListing";
+import SaleRentShortlet from "../components/home/saleRentShortlet";
+import Footer from "../components/footer";
 //MUI
 import { makeStyles } from "@material-ui/core/styles";
 import MarbleBackground from "../img/MarbleBackground.png";
@@ -24,30 +24,28 @@ const useStyles = makeStyles((theme) => ({
   paperContainer: {
     height: "100%",
     backgroundImage: `url(${MarbleBackground})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    
+    backgroundSize: "cover",
+    backgroundPosition: "center",
   },
-  
 }));
 
 const HomePage = () => {
-    const classes = useStyles();
-    return (
-        <div className={classes.paperContainer}>
-            <NavigationHeader />
-            <HeroSection/>
-            <ContactDetails/>
-            <PortfoliosList/>
-            <PropertiesList/>
-            {/* <PropertyCarousel /> */}
-            <HomePageStats />
-            <AboutHome />
-            <AddListingSection/>
-            <SaleRentShortlet />
-            <Footer />
-        </div>
-    )
-}
+  const classes = useStyles();
+  return (
+    <div className={classes.paperContainer}>
+      <NavigationHeader />
+      <HeroSection />
+      <ContactDetails />
+      <PortfoliosList />
+      <PropertiesList />
+      {/* <PropertyCarousel /> */}
+      <HomePageStats />
+      <AboutHome />
+      <AddListingSection />
+      <SaleRentShortlet />
+      <Footer />
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;

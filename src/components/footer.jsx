@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     // width: "80%",
     maxWidth: "100%",
     maxHeight: "100%",
-    objectFit: "contain"
+    objectFit: "contain",
   },
   title: {
     textAlign: "left",
@@ -70,22 +70,27 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 70,
   },
   text: {
-    textAlign: 'left'
-  }
+    textAlign: "left",
+  },
 }));
 
 const footers = [
   {
     title: "Properties",
     description: [
-      "Property for Sale ",
-      "Property for Rent",
-      "Development Estate Agents",
+      { name: "Property for Sale ", link: "/" },
+      { name: "Property for Rent", link: "/" },
+      { name: "Development Estate Agents", link: "/" },
     ],
   },
   {
     title: "Terrel Davies Enterprise",
-    description: ["About Us", "Contact Us", "Add Listings", "Terms & Privacy"],
+    description: [
+      { name: "About Us", link: "/about" },
+      { name: "Contact Us", link: "/contact" },
+      { name: "Add Listings", link: "/add-listing" },
+      { name: "Terms & Privacy", link: "/terms-privacy" },
+    ],
   },
 ];
 
@@ -96,12 +101,19 @@ const Footer = () => {
     <div>
       <CssBaseline />
       <Container maxWidth="lg" component="footer" className={classes.footer}>
-        <Grid container spacing={4} justify="center" alignItems="center" align='center'>
+        <Grid
+          container
+          spacing={4}
+          justify="center"
+          alignItems="center"
+          align="center"
+        >
           <Grid item xs={4}>
-            <div className={classes.logoContainer}>
-              <img src={FooterLogo} alt="" className={classes.footerLogo} />
-            </div>
-
+            <Link href="/">
+              <div className={classes.logoContainer}>
+                <img src={FooterLogo} alt="" className={classes.footerLogo} />
+              </div>
+            </Link>
           </Grid>
           {footers.map((footer) => (
             <Grid item xs={8} sm={3} key={footer.title}>
@@ -121,51 +133,55 @@ const Footer = () => {
                 className={classes.text}
               >
                 {footer.description.map((item) => (
-                  <ListItem button  key={item}>
-                    <ListItemText primary={item} />
-                  </ListItem>
+                  <Link href={`${item.link}`}>
+                    <ListItem button key={item.name}>
+                      <ListItemText primary={item.name} />
+                    </ListItem>
+                  </Link>
                 ))}
               </List>
             </Grid>
           ))}
         </Grid>
-        <Grid container className={classes.footerContactDetails} justify="center" alignItems="center">
+        <Grid
+          container
+          className={classes.footerContactDetails}
+          justify="center"
+          alignItems="center"
+        >
           <Grid item xs={4}>
-            <Typography align='center'>
+            <Typography align="center">
               Office 3, First Floor, <br />
-            Office Suite, 4 Sandpit Road, <br />
-            Dartford, Kent DA1 5BU
+              Office Suite, 4 Sandpit Road, <br />
+              Dartford, Kent DA1 5BU
             </Typography>
-
           </Grid>
           <Grid item xs={4}>
-            <Typography align='left'>
+            <Typography align="left">
               +01322 628780, <br />
-            +013226 86765, <br />
-            +2348121412045
+              +013226 86765, <br />
+              +2348121412045
             </Typography>
-
           </Grid>
           <Grid item xs={4}>
             <Grid item xs={12}>
-              <Typography align='left'>
-                info@terrelldavies.co.uk
-            </Typography>
+              <Typography align="left">info@terrelldavies.co.uk</Typography>
             </Grid>
             <Grid item xs={12}>
-
               <Link color="inherit" href="#">
                 <FacebookIcon color="primary" fontSize="small" />
               </Link>
 
-              <Link href="#"><InstagramIcon color="primary" fontSize="small" /></Link>
-              <Link href="#"><LinkedInIcon color="primary" fontSize="small" /></Link>
-              <Link href="#"><TwitterIcon color="primary" fontSize="small" /></Link>
-
-
+              <Link href="#">
+                <InstagramIcon color="primary" fontSize="small" />
+              </Link>
+              <Link href="#">
+                <LinkedInIcon color="primary" fontSize="small" />
+              </Link>
+              <Link href="#">
+                <TwitterIcon color="primary" fontSize="small" />
+              </Link>
             </Grid>
-
-
           </Grid>
         </Grid>
         <Box mt={5} textAlign="center">
@@ -179,14 +195,12 @@ const Footer = () => {
 
 const Copyright = () => {
   return (
-
     <Typography variant="body1" color="primary">
       {new Date().getFullYear()} {"Copyright © "}
       <Link color="inherit" href="https://pbgdigital.co.uk">
         Terrell Davies Enterprise. All rights reserved.
-          </Link>{" "}
+      </Link>{" "}
     </Typography>
-
   );
 };
 

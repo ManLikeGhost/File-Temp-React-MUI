@@ -2,6 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import Link from "@material-ui/core/Link";
 import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -142,7 +143,9 @@ const RightColumn = () => {
           <Typography className={classes.postARequestText}>
             Can’t find your ideal property?
           </Typography>
-          <PostARequestButton>POST A REQUEST</PostARequestButton>
+          <Link href="/post-property-request">
+            <PostARequestButton>POST A REQUEST</PostARequestButton>
+          </Link>
         </Grid>
       </Grid>
       <div className={classes.advancedFilter}>

@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(6),
     color: theme.palette.primary.main,
   },
+  link: {
+    underline: "none",
+    textDecoration: "none",
+  },
   bigText: {
     fontWeight: 600,
     fontSize: "1rem",
@@ -53,37 +57,37 @@ const SideMenu = () => {
           />
 
           <Typography className={classes.bigText}>John Doe</Typography>
-          <Link href="/profileImage">
+          <Link href="/profileImage" className={classes.link}>
             <Typography>Click to change photo</Typography>
           </Link>
         </Grid>
         <Grid item>
           <List>
-            <Link to="/profile-settings/account">
+            <Link to="/profile-settings/account" className={classes.link}>
               <Typography className={classes.bigText}>Account</Typography>
             </Link>
-            <Link to="/profile-settings/listings">
+            <Link to="/profile-settings/listings" className={classes.link}>
               <Typography className={classes.bigText}>Listings</Typography>
             </Link>
-            <Link to="/profile-settings/subscriptions">
+            <Link to="/profile-settings/subscriptions" className={classes.link}>
               <Typography className={classes.bigText}>Subscriptions</Typography>
             </Link>
-            <Link to="/profile-settings/savedProperty">
+            <Link to="/profile-settings/savedProperty" className={classes.link}>
               <Typography className={classes.bigText}>
                 Saved Property
               </Typography>
             </Link>
-            <Link to="/profile-settings/security">
+            <Link to="/profile-settings/security" className={classes.link}>
               <Typography className={classes.bigText}>Security</Typography>
             </Link>
           </List>
         </Grid>
         <Grid>
           <List>
-            <Link color="inherit" to="/login">
+            <Link color="inherit" to="/login" className={classes.link}>
               <Typography className={classes.bigText}>
                 Logout
-                <ExitToAppIcon />
+                <ExitToAppIcon color="primary" />
               </Typography>
             </Link>
           </List>

@@ -39,9 +39,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 21,
     borderRadius: 1,
     border: "2px solid",
+    textDecoration: "none",
     "&:hover": {
-      background: theme.palette.primary.main,
-      color: theme.palette.primary.contrastText,
+      background: theme.palette.secondary.main,
+      color: "white !important",
+      textDecoration: "none",
     },
   },
 
@@ -67,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   mainMenu: {
-    textAlign:"center",
+    textAlign: "center",
     "& .MuiPaper-root": {
       color: theme.palette.secondary.main,
     },
@@ -75,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
   menuItem: {
     color: "white",
     margin: theme.spacing(2),
-    textAlign:"center",
+    textAlign: "center",
     "&:focus": {
       backgroundColor: theme.palette.primary.main,
       "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
@@ -85,13 +87,13 @@ const useStyles = makeStyles((theme) => ({
   },
   MenuOpenIcon: {
     marginLeft: "auto",
-    textAlign:"right",
+    textAlign: "right",
     transform: "rotate(90deg)",
   },
   linkText: {
     color: theme.palette.secondary.main,
     textDecoration: "none",
-    "&:hover": {textDecoration: "none",},
+    "&:hover": { textDecoration: "none" },
   },
   divider: {
     margin: "15px 15px",
@@ -138,13 +140,17 @@ const NavigationHeader = () => {
       onClose={handleMenuClose}
       className={classes.mainMenu}
     >
-      <div style={{textAlign: "right", paddingRight: "50px"}}>
-      <FormatAlignRightIcon fontSize="large" color="primary" className={classes.MenuOpenIcon} onClick={handleMenuClose} />
+      <div style={{ textAlign: "right", paddingRight: "50px" }}>
+        <FormatAlignRightIcon
+          fontSize="large"
+          color="primary"
+          className={classes.MenuOpenIcon}
+          onClick={handleMenuClose}
+        />
       </div>
-      
+
       <MenuItem onClick={handleMenuClose} className={classes.menuItem}>
         <Link href="/about" className={classes.linkText}>
-          
           About Terrel Davies
         </Link>
       </MenuItem>
@@ -199,7 +205,7 @@ const NavigationHeader = () => {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Button variant="outlined" className={classes.button}>
-              <Link href="/contact">ADD LISTING</Link>
+              <Link href="/add-listing">ADD LISTING</Link>
             </Button>
             <IconButton
               edge="end"
@@ -209,8 +215,9 @@ const NavigationHeader = () => {
               // onClick={handleMenuOpen}
               color="inherit"
             >
-              <Link href="/signin"><AccountCircle fontSize="large" color="primary" /></Link>
-              
+              <Link href="/signin">
+                <AccountCircle fontSize="large" color="primary" />
+              </Link>
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
