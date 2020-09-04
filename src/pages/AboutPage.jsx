@@ -7,7 +7,10 @@ import Footer from '../components/footer';
 import Grid from '@material-ui/core/Grid';
 import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card';
+import Box from "@material-ui/core/Box";
 
+import Marble from "../img/Marble8.png"
+import PropertyImage3 from "../img/houses/7.png";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -18,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${MarbleBackground})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    margin: "0px 5px 0px 50px"
     // width: `calc(100vw + 48px)`,
     
   },
@@ -43,6 +47,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "25px",
   },
 
+  imgBox: {
+    width: "563px",
+    height: "733px",
+  },
+
   imgBox1: {
     width: "563px",
     height: "733px",
@@ -59,8 +68,25 @@ const useStyles = makeStyles((theme) => ({
 
   },
 
-  marble: {
+  keep: {
+    padding: "0px 0px 200px 0px"
+  },
 
+  space: {
+    padding: "0px 0px 100px 0px"
+  },
+
+  box: {
+    width: "294px",
+    height: "374px",
+    border: "0.8px solid #BF7950",
+    boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.1)",
+    background: "#FFFFFF",
+    boxSizing: "border-box",
+  },
+
+  marble: {
+    backgroundImage: `url(${Marble})`,
   },
 
   holder: {
@@ -82,61 +108,97 @@ const AboutPage = () => {
   return (
     <div className={classes.backgroundImage}>
       <NavigationHeader />
+      <SectionTitle>About Terrell Davies</SectionTitle>
       <div>
-        <Grid container spacing={1}>
+        <Grid container spacing={1} className={classes.space}>
           <Grid item xs={6}>
-            <Typography variant="h2" className={classes.head}>More than just about property, it's about legacy.</Typography>
-            <Typography variant="h6" className={classes.sub}>Mission statement</Typography>
-            <Typography className={classes.text}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. 
-              Quis ipsum suspendisse ultrices gravida. 
-              Risus commodo viverra maecenas accumsan lacus vel facilisis ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            <Typography variant="h2" className={classes.head}>
+              At Terrell Davies, it is our mission to inspire a positive & lasting change.
             </Typography>
           </Grid>
 
           <Grid item xs={6}>
             <div className={classes.imgBox1}>
-            <Card className={classes.cardImg}>
-              <CardMedia
-              className={classes.marble}
-              image = "src/img/Marble 8.png"
-              title= "marble image"
-              />
-            </Card>
+              <Card className={classes.cardImg}>
+                <CardMedia
+                className={classes.marble}
+                imagePath = {PropertyImage3}
+                title= "marble image"
+                />
+              </Card>
             </div>
           </Grid>
         </Grid>
 
-        <Grid container spacing={1}>
+        <Grid className={classes.space} container spacing={1}>
         <Grid item xs={6}>
             <div className={classes.imgBox2}>
-            <Card className={classes.cardImg}>
-              <CardMedia
-              className={classes.marble}
-              image = "src/img/Marble 8.png"
-              title= "marble image"
-              />
-            </Card>
+              <Card className={classes.cardImg}>
+                <CardMedia
+                className={classes.marble}
+                image = {PropertyImage3}
+                title= "marble image"
+                />
+              </Card>
             </div>
           </Grid>
 
 
           <Grid item xs={6}>
-            <Typography variant="h2" className={classes.head}>More than just about property, it's about legacy.</Typography>
-            <Typography className={classes.text}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. 
-              Quis ipsum suspendisse ultrices gravida. 
-              Risus commodo viverra maecenas accumsan lacus vel facilisis ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            </Typography>
+            <Typography variant="h2" className={classes.head}> We have a vision be an excellent & true real estate marketing agency providing quality & consistent customer experience at all times</Typography>
           </Grid>
 
         </Grid>  
       </div>
       
          
-      <SectionTitle>Why Terrell Davies</SectionTitle>
-      <SectionTitle>Testimonials</SectionTitle>
-      <SectionTitle>Strategic Partners</SectionTitle>  
+      <SectionTitle>Our Core Values</SectionTitle>
+      <Box className={classes.keep}>
+        <Grid container justify="center" alignItems="center" spacing={2} xs={12}>
+          <Grid item xs={3}>
+            <div className={classes.box}>
+
+            </div>
+          </Grid>
+
+          <Grid item xs={3}>
+            <div className={classes.box}>
+
+            </div>
+          </Grid>
+
+          <Grid item xs={3}>
+            <div className={classes.box}>
+
+            </div>
+          </Grid>
+
+          <Grid item xs={3}>
+            <div className={classes.box}>
+
+            </div>
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Grid container justify="center" alignItems="center" spacing={2} xs={12}>
+        <Grid item xs={6}>
+          <Typography variant="h2" className={classes.head}>Sell, lease, buy... On the go.</Typography>
+          <Typography className={classes.text}>
+            Download our mobile app and conduct your housing transactions online, real time, anywhere, anytime, as we are committed to delivering you quality service on the go.
+          </Typography>
+        </Grid>
+
+        <Grid item xs={6}>
+          <div className={classes.imgBox2}>
+            <img 
+              src="img/Marble 8.png"                  
+              className={classes.icon} 
+            />
+          </div>
+        </Grid>
+
+      </Grid>  
       <Footer />
 
 
