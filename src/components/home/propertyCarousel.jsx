@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Button } from "@material-ui/core";
-import PropertiesList from './PropertiesList';
+import PropertiesList from "./PropertiesList";
 
 function PropertyCarousel(props) {
   var items = [
@@ -17,13 +17,13 @@ function PropertyCarousel(props) {
 
   return (
     <Carousel
-        // next={ (next, active) => console.log(`we left ${active}, and are now at ${next}`); }
-        // prev={ (prev, active) => console.log(`we left ${active}, and are now at ${prev}`); }
+    // next={ (next, active) => console.log(`we left ${active}, and are now at ${next}`); }
+    // prev={ (prev, active) => console.log(`we left ${active}, and are now at ${prev}`); }
     >
-      {/* {items.map((item, i) => (
+      {items.map((item, i) => (
         <Item key={i} item={item} />
-      ))} */}
-      <PropertiesList />
+      ))}
+      {/* <PropertiesList /> */}
     </Carousel>
   );
 }
