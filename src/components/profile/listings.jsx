@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Link from "@material-ui/core/Link";
 import ButtonAccount from "./miniComponents/button";
 import MessageAccount from "./miniComponents/message";
 import ProfileSectionTitle from "./miniComponents/profilesectionTitle";
@@ -26,7 +27,9 @@ const Listings = (props) => {
           You have <span className={classes.number}>{properties}</span> property
           listings on your page.
         </MessageAccount>
-        <ButtonAccount>ADD LISTINGS</ButtonAccount>
+        <Link href="/add-listing">
+          <ButtonAccount>ADD LISTINGS</ButtonAccount>
+        </Link>
       </div>
     </div>
   );
