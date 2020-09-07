@@ -11,6 +11,13 @@ import AboutPagePhone from "../img/AboutPagePhone.png";
 import AboutPageMarble8 from "../img/AboutPageMarble8.png";
 import AboutPageMarble2 from "../img/AboutPageMarble2.png";
 
+
+import AboutPageHumility from "../img/AboutPageHumility.jpg";
+import AboutPageIntegrity from "../img/AboutPageIntegrity.png";
+import AboutPageAccountability from "../img/AboutPageAccountability.jpg";
+import AboutPageGrit from "../img/AboutPageGrit.png";
+import AboutGooglePlay from "../img/AboutGooglePlay.png";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -44,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "25px",
   },
 
+  
   imgBox: {
     width: "563px",
     height: "733px",
@@ -54,6 +62,8 @@ const useStyles = makeStyles((theme) => ({
     height: "733px",
     border: "1px solid #BF7950",
     boxSizing: "border-box",
+    objectFit: "contain",
+    padding: "20px 0px 20px 20px",
   },
 
   imgBox2: {
@@ -61,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     height: "733px",
     border: "1px solid #BF7950",
     boxSizing: "border-box",
-    padding: "20px 0px 0px 250px",
+    padding: "20px 0px 20px 20px",
   },
 
   keep: {
@@ -79,6 +89,12 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.1)",
     background: "#FFFFFF",
     boxSizing: "border-box",
+    alignItems: "50px",
+    padding: "20px 50px 50px 50px ",
+  },
+
+  phone: {
+    padding: "20px",
   },
 
   marble: {
@@ -115,7 +131,7 @@ const AboutPage = () => {
 
           <Grid item xs={6}>
             <div className={classes.imgBox1}>
-              <img alt="marble" src={AboutPageMarble8} />
+              <img className={classes.pic} alt="marble" src={AboutPageMarble8} />
             </div>
           </Grid>
         </Grid>
@@ -123,7 +139,7 @@ const AboutPage = () => {
         <Grid className={classes.space} container spacing={1}>
           <Grid item xs={6}>
             <div className={classes.imgBox2}>
-              <img alt="marble" src={AboutPageMarble2} />
+              <img className={classes.pic} alt="marble" src={AboutPageMarble2} />
             </div>
           </Grid>
 
@@ -147,19 +163,28 @@ const AboutPage = () => {
           xs={12}
         >
           <Grid item xs={3}>
-            <div className={classes.box}></div>
+            <div className={classes.pic}>
+              <img alt="marble" src={AboutPageHumility} />  
+            </div>
+            
           </Grid>
 
           <Grid item xs={3}>
-            <div className={classes.box}></div>
+            <div className={classes.pic}>
+              <img alt="marble" src={AboutPageAccountability} />
+            </div>
           </Grid>
 
           <Grid item xs={3}>
-            <div className={classes.box}></div>
+            <div className={classes.pic}>
+              <img alt="marble" src={AboutPageIntegrity} />
+            </div>
           </Grid>
 
           <Grid item xs={3}>
-            <div className={classes.box}></div>
+            <div className={classes.pic}>
+              <img alt="marble" src={AboutPageGrit} />
+            </div>
           </Grid>
         </Grid>
       </Box>
@@ -174,10 +199,14 @@ const AboutPage = () => {
             online, real time, anywhere, anytime, as we are committed to
             delivering you quality service on the go.
           </Typography>
+          <div className={classes.phone}>
+            <img src={AboutGooglePlay} />
+          </div>
+          
         </Grid>
 
         <Grid item xs={6}>
-          <div className={classes.imgBox2}>
+          <div className={classes.phone}>
             <img alt=" " src={AboutPagePhone} className={classes.icon} />
           </div>
         </Grid>
