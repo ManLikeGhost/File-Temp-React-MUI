@@ -72,6 +72,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     // width: "440.54px",
     height: "59.53px",
+    /* Rectangle 88 */
+    width: "257px",
+    height: "62px",
+    float: "right",
   },
 }));
 
@@ -88,286 +92,288 @@ const PostProperty = () => {
         </Grid>
       </Grid>
       <div className={classes.formContainer}>
-        <form className={classes.form}>
-          <Grid container spacing={5}>
-            <Grid item xs={8}>
-              <TextField
-                required
-                id="fullName"
-                name="fullName"
-                label="Full name"
-                fullWidth
-                autoComplete="full-name"
-                className={classes.label}
-                variant="outlined"
-                //   value={state.name}
-                //   onChange={handleChange("name")}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="accountType">I’m a/an...</InputLabel>
-                <Select
+        <Grid container>
+          <form className={classes.form}>
+            <Grid container spacing={5}>
+              <Grid item xs={8}>
+                <TextField
                   required
+                  id="fullName"
+                  name="fullName"
+                  label="Full name"
                   fullWidth
-                  labelId="accountType"
-                  id="accountType"
+                  autoComplete="full-name"
+                  className={classes.label}
                   variant="outlined"
+                  //   value={state.name}
+                  //   onChange={handleChange("name")}
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <FormControl className={classes.accountFormControl}>
+                  <InputLabel id="accountType">I’m a/an...</InputLabel>
+                  <Select
+                    required
+                    fullWidth
+                    labelId="accountType"
+                    id="accountType"
+                    variant="outlined"
 
-                  // value={state.accountType}
-                  // onChange={handleChange("accountType")}
-                >
-                  <MenuItem value={"propertyShopper"}>
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                </Select>
-              </FormControl>
+                    // value={state.accountType}
+                    // onChange={handleChange("accountType")}
+                  >
+                    <MenuItem value={"propertyShopper"}>
+                      Property Shopper
+                    </MenuItem>
+                    <MenuItem value={"realEstateAgent"}>
+                      Real Estate Agent
+                    </MenuItem>
+                    <MenuItem value={"propertyDeveloper"}>
+                      Property Developer
+                    </MenuItem>
+                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid container spacing={5}>
-            <Grid item xs={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                autoComplete="email"
+            <Grid container spacing={5}>
+              <Grid item xs={6}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email"
+                  name="email"
+                  autoComplete="email"
 
-                //   value={state.email}
-                //   onChange={handleChange("email")}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="phone"
-                label="Phone Number"
-                name="phone"
-                autoComplete="phone"
-                //   value={state.email}
-                //   onChange={handleChange("email")}
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={6}>
-            <Grid item xs={6}>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="accountType">Select Category</InputLabel>
-                <Select
+                  //   value={state.email}
+                  //   onChange={handleChange("email")}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  variant="outlined"
                   required
                   fullWidth
-                  labelId="accountType"
-                  id="accountType"
-                  variant="outlined"
-                  // value={state.accountType}
-                  // onChange={handleChange("accountType")}
-                >
-                  <MenuItem value={"propertyShopper"}>
-                    {" "}
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                </Select>
-              </FormControl>
+                  id="phone"
+                  label="Phone Number"
+                  name="phone"
+                  autoComplete="phone"
+                  //   value={state.email}
+                  //   onChange={handleChange("email")}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="accountType">Select Type</InputLabel>
-                <Select
+            <Grid container spacing={6}>
+              <Grid item xs={6}>
+                <FormControl className={classes.accountFormControl}>
+                  <InputLabel id="accountType">Select Category</InputLabel>
+                  <Select
+                    required
+                    fullWidth
+                    labelId="accountType"
+                    id="accountType"
+                    variant="outlined"
+                    // value={state.accountType}
+                    // onChange={handleChange("accountType")}
+                  >
+                    <MenuItem value={"propertyShopper"}>
+                      {" "}
+                      Property Shopper
+                    </MenuItem>
+                    <MenuItem value={"realEstateAgent"}>
+                      Real Estate Agent
+                    </MenuItem>
+                    <MenuItem value={"propertyDeveloper"}>
+                      Property Developer
+                    </MenuItem>
+                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={6}>
+                <FormControl className={classes.accountFormControl}>
+                  <InputLabel id="accountType">Select Type</InputLabel>
+                  <Select
+                    required
+                    fullWidth
+                    labelId="accountType"
+                    id="accountType"
+                    variant="outlined"
+                    // value={state.accountType}
+                    // onChange={handleChange("accountType")}
+                  >
+                    <MenuItem value={"propertyShopper"}>
+                      {" "}
+                      Property Shopper
+                    </MenuItem>
+                    <MenuItem value={"realEstateAgent"}>
+                      Real Estate Agent
+                    </MenuItem>
+                    <MenuItem value={"propertyDeveloper"}>
+                      Property Developer
+                    </MenuItem>
+                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+            <Grid container spacing={6}>
+              <Grid item xs={4}>
+                <FormControl className={classes.accountFormControl}>
+                  <InputLabel id="accountType">Select State</InputLabel>
+                  <Select
+                    required
+                    fullWidth
+                    labelId="accountType"
+                    id="accountType"
+                    variant="outlined"
+                    // value={state.accountType}
+                    // onChange={handleChange("accountType")}
+                  >
+                    <MenuItem value={"propertyShopper"}>
+                      {" "}
+                      Property Shopper
+                    </MenuItem>
+                    <MenuItem value={"realEstateAgent"}>
+                      Real Estate Agent
+                    </MenuItem>
+                    <MenuItem value={"propertyDeveloper"}>
+                      Property Developer
+                    </MenuItem>
+                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={4}>
+                <FormControl className={classes.accountFormControl}>
+                  <InputLabel id="accountType">Select Locality</InputLabel>
+                  <Select
+                    required
+                    fullWidth
+                    labelId="accountType"
+                    id="accountType"
+                    variant="outlined"
+                    // value={state.accountType}
+                    // onChange={handleChange("accountType")}
+                  >
+                    <MenuItem value={"propertyShopper"}>
+                      Property Shopper
+                    </MenuItem>
+                    <MenuItem value={"realEstateAgent"}>
+                      Real Estate Agent
+                    </MenuItem>
+                    <MenuItem value={"propertyDeveloper"}>
+                      Property Developer
+                    </MenuItem>
+                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={4}>
+                <FormControl className={classes.accountFormControl}>
+                  <InputLabel id="accountType">Select Area</InputLabel>
+                  <Select
+                    required
+                    fullWidth
+                    labelId="accountType"
+                    id="accountType"
+                    variant="outlined"
+                    // value={state.accountType}
+                    // onChange={handleChange("accountType")}
+                  >
+                    <MenuItem value={"propertyShopper"}>
+                      {" "}
+                      Property Shopper
+                    </MenuItem>
+                    <MenuItem value={"realEstateAgent"}>
+                      Real Estate Agent
+                    </MenuItem>
+                    <MenuItem value={"propertyDeveloper"}>
+                      Property Developer
+                    </MenuItem>
+                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+            <Grid container spacing={5}>
+              <Grid item xs={6}>
+                <FormControl className={classes.accountFormControl}>
+                  <InputLabel id="accountType">Select No. of bedrooms</InputLabel>
+                  <Select
+                    required
+                    fullWidth
+                    labelId="accountType"
+                    id="accountType"
+                    variant="outlined"
+                    // value={state.accountType}
+                    // onChange={handleChange("accountType")}
+                  >
+                    <MenuItem value={"propertyShopper"}>
+                      {" "}
+                      Property Shopper
+                    </MenuItem>
+                    <MenuItem value={"realEstateAgent"}>
+                      Real Estate Agent
+                    </MenuItem>
+                    <MenuItem value={"propertyDeveloper"}>
+                      Property Developer
+                    </MenuItem>
+                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
                   required
+                  id="budget"
+                  name="budget"
+                  label="Budget"
                   fullWidth
-                  labelId="accountType"
-                  id="accountType"
+                  autoComplete="budget"
+                  className={classes.label}
                   variant="outlined"
-                  // value={state.accountType}
-                  // onChange={handleChange("accountType")}
-                >
-                  <MenuItem value={"propertyShopper"}>
-                    {" "}
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                </Select>
-              </FormControl>
+                  //   value={state.name}
+                  //   onChange={handleChange("name")}
+                />
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid container spacing={6}>
-            <Grid item xs={4}>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="accountType">Select State</InputLabel>
-                <Select
-                  required
-                  fullWidth
-                  labelId="accountType"
-                  id="accountType"
-                  variant="outlined"
-                  // value={state.accountType}
-                  // onChange={handleChange("accountType")}
-                >
-                  <MenuItem value={"propertyShopper"}>
-                    {" "}
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={4}>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="accountType">Select Locality</InputLabel>
-                <Select
-                  required
-                  fullWidth
-                  labelId="accountType"
-                  id="accountType"
-                  variant="outlined"
-                  // value={state.accountType}
-                  // onChange={handleChange("accountType")}
-                >
-                  <MenuItem value={"propertyShopper"}>
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={4}>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="accountType">Select Area</InputLabel>
-                <Select
-                  required
-                  fullWidth
-                  labelId="accountType"
-                  id="accountType"
-                  variant="outlined"
-                  // value={state.accountType}
-                  // onChange={handleChange("accountType")}
-                >
-                  <MenuItem value={"propertyShopper"}>
-                    {" "}
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-          </Grid>
-          <Grid container spacing={5}>
-            <Grid item xs={6}>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="accountType">Select No. of bedrooms</InputLabel>
-                <Select
-                  required
-                  fullWidth
-                  labelId="accountType"
-                  id="accountType"
-                  variant="outlined"
-                  // value={state.accountType}
-                  // onChange={handleChange("accountType")}
-                >
-                  <MenuItem value={"propertyShopper"}>
-                    {" "}
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                required
-                id="budget"
-                name="budget"
-                label="Budget"
-                fullWidth
-                autoComplete="budget"
-                className={classes.label}
-                variant="outlined"
-                //   value={state.name}
-                //   onChange={handleChange("name")}
-              />
-            </Grid>
-          </Grid>
-          <Grid container>
-            <Grid
-              style={{
-                marginTop: "2rem",
-              }}
-            >
-              <InputLabel id="comment" style={{ paddingBottom: "10px" }}>
-                Comments
-              </InputLabel>
-              <TextareaAutosize
-                rowsMax={20}
-                aria-label="maximum height"
+            <Grid container>
+              <Grid
                 style={{
-                  width: "39rem",
-                  height: "10rem",
+                  marginTop: "2rem",
                 }}
+              >
+                <InputLabel id="comment" style={{ paddingBottom: "10px" }}>
+                  Comments
+                </InputLabel>
+                <TextareaAutosize
+                  rowsMax={20}
+                  aria-label="maximum height"
+                  style={{
+                    width: "39rem",
+                    height: "10rem",
+                  }}
 
-                //   placeholder=""
-                //       defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                //   ut labore et dolore magna aliqua."
-              />
+                  //   placeholder=""
+                  //       defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                  //   ut labore et dolore magna aliqua."
+                />
+              </Grid>
             </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-        </form>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              POST REQUEST
+            </Button>
+          </form>
+        </Grid>  
       </div>
     </div>
   );

@@ -1,11 +1,12 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import List from "@material-ui/core/List";
-// import Link from "@material-ui/core/Link";
+import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
+import ProfileImage from "../../pages/ProfileImage";
 
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
@@ -57,8 +58,8 @@ const SideMenu = () => {
           />
 
           <Typography className={classes.bigText}>John Doe</Typography>
-          <Link href="/profileImage" className={classes.link}>
-            <Typography>Click to change photo</Typography>
+          <Link href="/profile-image"  className={classes.link}>
+            Click to change photo
           </Link>
         </Grid>
         <Grid item>
