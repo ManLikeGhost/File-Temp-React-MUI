@@ -6,7 +6,7 @@ import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
-import ProfileImage from "../../pages/ProfileImage";
+//import ProfileImage from "../../pages/ProfileImage";
 
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 

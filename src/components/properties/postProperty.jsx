@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "20px",
     textAlign: "center",
     // width: "440.54px",
-    height: "59.53px",
+    //height: "59.53px",
     /* Rectangle 88 */
     width: "257px",
     height: "62px",
