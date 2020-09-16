@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Property from "./Property";
 import SectionTitle from "../sectionTitle";
-import {properties} from '../../demoData/demoData'
+import {properties} from '../../demoData/demoData';
 
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
