@@ -6,16 +6,12 @@ import MarbleBackground from "../img/MarbleBackground.png";
 import Footer from "../components/footer";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { Pagination } from '@material-ui/lab';
-
 
 import BlogPageImage1 from "../img/BlogPageImage1.png";
+
 import blogPostImage1 from "../img/blogPostImage1.png";
 import blogPostImage2 from "../img/blogPostImage2.png";
 import blogPostImage3 from "../img/blogPostImage3.png";
-import blogPostImage4 from "../img/blogPostImage4.png";
-import blogPostImage5 from "../img/blogPostImage5.png";
-import blogPostImage6 from "../img/blogPostImage6.png";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -67,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     imgHeadadjust: {
-      padding: "0px 0px 0px 50px",
+      padding: "0px 0px 0px 120px",
     },
 
     headertext: {
@@ -107,10 +103,35 @@ const useStyles = makeStyles((theme) => ({
       float: "right",
     },
 
+    articleHead: {
+        width: "393px",
+        height: "40px",
+        fontFamily: "Playfair Display",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: "30px",
+        color: "#BF7950",
+        padding: "10px 0px 0px 0px"
+    },
+
+    articlebody: {
+        width: "1064px",
+        height: "884px",
+        fontFamily: "Metropolis",
+        fontStyle: "normal",
+        fontWeight: "300",
+        fontSize: "25px",
+        lineHeight: "25px",
+        color: "rgba(0, 0, 0, 0.51)",
+        padding: "10px 0px 0px 0px "
+    },
+
+
+
 }));
 
 
-const BlogPage = () => {
+const BlogPageArticle = () => {
   const classes = useStyles();
   return (
     <div className={classes.backgroundImage}>
@@ -126,7 +147,52 @@ const BlogPage = () => {
             </Grid>
           </Grid>
           </div> 
-          <SectionTitle>Latest Articles</SectionTitle>
+          <div >
+            <Grid container>
+              <Grid item xs={12}>
+                <Typography className={classes.articleHead}>
+                  Millions in real estate
+                </Typography>
+              </Grid>
+
+              <Grid item xs={12}>
+                <Typography className={classes.articlebody} variant="p">
+                  Real estate can make you a millionaire.
+
+                  Sure, this might sound like the promise of a late-night television salesperson trying to get you to attend the latest "free seminar," but the reality exists: real estate is a powerful wealth building tool that has made millions of individuals millionaires.
+
+                  Could you be next?
+
+                  Maybe - but here's the catch: not everyone who buys a piece of property becomes rich. In fact-  many people buy real estate only to find stress and empty bank accounts. They struggle for years and years but never build the kind of wealth they've dreamed of (or the riches promised by the late night TV guru.)
+
+                  So - how does someone use real estate to truly become a millionaire?
+
+                  As I discussed recently in the longest article I've ever written, How to Become a Millionaire, there are four primary “wealth generators” at play when you invest in real estate, depending on the strategy you get into:
+
+                  Cash Flow. This is the extra income you’ll get to keep each month (or year) that you own the property. Cash flow can be deceptive because it fluctuates when certain repairs are higher or lower in different months, so it’s important to factor in non-monthly costs like vacancy (the amount of time the property sits vacant), repairs, capital expenditures (expensive projects that need to be replaced on a home every so often, like appliances, roofs, windows, plumbing, etc.), along with the regular expenses (utilities, management, etc.).
+
+                  Appreciation. When the value of a property increases, we call this “appreciation.” While appreciation is not always guaranteed (just ask people who bought in 2006 and sold in 2010!), over time, historically, real estate has always increased in America, averaging 3% per year over the past century. Another type of appreciation that can come into play is known as “forced appreciation,” the concept of increasing the value by physically improving the property.
+                </Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography>
+                  Real Estate
+                </Typography>
+              </Grid>
+
+              <Grid item xs={6}>
+                <Typography>
+                  09 september 2020
+                </Typography>
+              </Grid>
+
+              <Grid item xs={12}>
+                
+              </Grid>
+
+            </Grid>
+          </div>
+          <SectionTitle>Related Articles</SectionTitle>
           <Grid container spacing={3} className={classes.blogArtHold}> 
             <Grid item xs={4}>
               <div className={classes.blogCard}>
@@ -163,46 +229,7 @@ const BlogPage = () => {
                 </Grid>
               </div>
             </Grid>
-
-            <Grid item xs={4}>
-              <div className={classes.blogCard}>
-                <img className={classes.blogpic}  alt="House with bule background" src={blogPostImage4}/>
-                <Grid container>
-                  <Grid item xs={12}><Typography className={classes.headertext}>Morale Makeover</Typography></Grid>
-                  <Grid item xs={12}><Typography className={classes.ptext}>Eating fruits every morning can change your system....</Typography></Grid>
-                  <Grid item xs={4}><Typography className={classes.category}>Real Estate</Typography></Grid>
-                  <Grid item xs={6}><Typography className={classes.date}>09 september, 2020</Typography></Grid>
-                </Grid>
-              </div>
-            </Grid>
-
-            <Grid item xs={4}>
-              <div className={classes.blogCard}>
-                <img className={classes.blogpic}  alt="House with bule background" src={blogPostImage5}/>
-                <Grid container>
-                  <Grid item xs={12}><Typography className={classes.headertext}>Outdoors at Home</Typography></Grid>
-                  <Grid item xs={12}><Typography className={classes.ptext}>There are tips to take note of when travelling now...</Typography></Grid>
-                  <Grid item xs={4}><Typography className={classes.category}>Real Estate</Typography></Grid>
-                  <Grid item xs={6}><Typography className={classes.date}>09 september, 2020</Typography></Grid>
-                </Grid>
-              </div>
-            </Grid>
-
-            <Grid item xs={4}>
-              <div className={classes.blogCard}>
-                <img className={classes.blogpic}  alt="House with bule background" src={blogPostImage6}/>
-                <Grid container>
-                  <Grid item xs={12}><Typography className={classes.headertext}>Need a New Place?</Typography></Grid>
-                  <Grid item xs={12}><Typography className={classes.ptext}>Home-made pizza like never before with these ....</Typography></Grid>
-                  <Grid item xs={4}><Typography className={classes.category}>Real Estate</Typography></Grid>
-                  <Grid item xs={6}><Typography className={classes.date}>09 september, 2020</Typography></Grid>
-                </Grid>
-              </div>
-            </Grid>
-
-
           </Grid>
-          <div><Pagination count={3} variant="outlined" shape="rounded" /></div>
           <Footer />
       </div>
     </div>        
@@ -211,4 +238,4 @@ const BlogPage = () => {
 );
 };
 
-export default BlogPage;
+export default BlogPageArticle;
