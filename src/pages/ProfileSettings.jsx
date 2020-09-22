@@ -12,6 +12,8 @@ import SideMenu from "../components/profile/sideMenu";
 import Marble from "../img/MarbleBackground.png";
 import NavigationHeader from "../components/navigationHeader";
 import ProfileTitle from "../components/profile/profileTitle"
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "500px",
@@ -66,6 +68,7 @@ const routes = [
     main: () => <Subscriptions />,
     title: "Subscriptions",
   },
+  
 ];
 
 const ProfileSettings = () => {

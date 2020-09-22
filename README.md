@@ -51,5 +51,9 @@ http://localhost:3000/about
 
 http://localhost:3000/add-listing
 
+http://localhost:3000/blog-page
+
+http://localhost:3000/blog-page-article
+
 
 
