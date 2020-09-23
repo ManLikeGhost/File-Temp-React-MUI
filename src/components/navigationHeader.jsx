@@ -11,7 +11,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
-import MenuOpenIcon from "@material-ui/icons/MenuOpen";
+// import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 
 import Logo from "../img/logo.png";
 
