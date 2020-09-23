@@ -132,16 +132,16 @@ const SignUpPage = () => {
       return setError("*Please select account type");
     }
 
-    const user = {
+    const newUser = {
       name,
       email,
       password,
       accountType,
     };
     // this.props.setCurrentUser(user);
-    console.log({ user });
+    console.log( "to be sent to server", {newUser });
     axios
-      .post("https://admin.terrelldavies.com/api/register", user)
+      .post("https://admin.terrelldavies.com/api/register", newUser)
       .then((response) => {
         console.log("Response from server", response);
       })
