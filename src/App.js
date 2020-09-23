@@ -23,6 +23,7 @@ import HousesPropertyDisplay from "./pages/HousesPropertyDisplay";
 import LandPropertyDisplay from "./pages/LandPropertyDisplay";
 import BlogPage from "./pages/BlogPage";
 import BlogPageArticle from "./pages/BlogPageArticle";
+import ContactUsPage from "./pages/ContactUsPage";
 
 import Page404 from "./pages/Page404";
 import ProfileImage from "./pages/ProfileImage";
@@ -100,6 +101,9 @@ function App() {
           </Route>
           <Route exact path="/blog-page-article">
             <BlogPageArticle />
+          </Route>
+          <Route exact path="/contact-us">
+            <ContactUsPage />
           </Route>
           <Route exact path="/">
             <HomePage />
