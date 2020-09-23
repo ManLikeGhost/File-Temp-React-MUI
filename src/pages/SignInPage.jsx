@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import axios from "axios"
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -115,9 +115,15 @@ const SignInPage = () => {
       password,
     };
     // this.props.setCurrentUser(user);
-    console.log({ user });
+    console.log("To be sent",{ user });
+    axios.post("https://admin.terrelldavies.com/api/login", user).then((response)=> {
+    console.log("Response from server", response)
+  }).catch((err)=>{
+    console.log(err)
+  })
   };
-
+  
+ 
   // const handleAccountTypeChange = (event) => {
   //   setAccountType(event.target.value);
   // };
