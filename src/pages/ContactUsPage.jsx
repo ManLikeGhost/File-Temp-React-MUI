@@ -71,14 +71,6 @@ const useStyles = makeStyles((theme) => ({
         padding: "20px 0px 0px 0px"
     },
 
-    //message: {
-        //width: "950px",
-        //height: "466px",
-        //background: "#FFFFFF",
-        //border: "0.5px solid #BF7950",
-        //boxSizing: "border-box",
-        //borderRadius: "2px",
-    //},
     
 }));
 
