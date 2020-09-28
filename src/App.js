@@ -49,6 +49,15 @@ function App() {
       <CssBaseline />
       <Router>
         <Switch>
+          <Route exact path="/contact-us">
+            <ContactUsPage />
+          </Route>
+          <Route exact path="/blog-page">
+            <BlogPage />
+          </Route>
+          <Route exact path="/blog-page-article">
+            <BlogPageArticle />
+          </Route>
           <Route exact path="/flats-property-display">
             <FlatsPropertyDisplay />
           </Route>
@@ -95,15 +104,6 @@ function App() {
           </Route>
           <Route path="/add-listing">
             <AddListingPage />
-          </Route>
-          <Route exact path="/blog-page">
-            <BlogPage />
-          </Route>
-          <Route exact path="/blog-page-article">
-            <BlogPageArticle />
-          </Route>
-          <Route exact path="/contact-us">
-            <ContactUsPage />
           </Route>
           <Route exact path="/">
             <HomePage />
