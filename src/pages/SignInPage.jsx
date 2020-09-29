@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios"
+import axios from "axios";
+import history from "../history";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -43,6 +44,11 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
     marginLeft: 130,
     // marginBottom: "-500",
+  },
+  error: {
+    textAlign: "center",
+    fontSize: "30px",
+    color: "red",
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -91,14 +97,12 @@ const useStyles = makeStyles((theme) => ({
 
 const SignInPage = () => {
   const classes = useStyles();
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [accountType, setAccountType] = useState("");
+
   const [state, setState] = useState({
     email: "",
     password: "",
   });
+  const [error, setError] = useState(null);
   const handleChange = (name) => (event) => {
     setState({
       ...state,
@@ -108,22 +112,34 @@ const SignInPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { email, password} = state;
-    
+    const { email, password } = state;
+
     const user = {
       email,
       password,
     };
     // this.props.setCurrentUser(user);
-    console.log("To be sent",{ user });
-    axios.post("https://admin.terrelldavies.com/api/login", user).then((response)=> {
-    console.log("Response from server", response)
-  }).catch((err)=>{
-    console.log(err)
-  })
+    console.log("To be sent", { user });
+    axios
+      .post("https://admin.terrelldavies.com/api/login", user)
+      .then((response) => {
+        console.log("Response from server", response);
+        if (response.status === 200) {
+          history.push('/signin')
+        } 
+        else if(response.data.code === 204){
+          setError("Username and password do not match");
+      }else if(response.data.code === 404){
+        setError("Email does not exist");
+    }else {
+          setError("Some errors ocurred while registering your account");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-  
- 
+
   // const handleAccountTypeChange = (event) => {
   //   setAccountType(event.target.value);
   // };
@@ -153,6 +169,15 @@ const SignInPage = () => {
           <Typography component="h1" variant="h5" className={classes.subtitle}>
             Log into your account
           </Typography>
+          {error ? (
+            <Typography
+              component="h1"
+              variant="h5"
+              className={classes.error}
+            >
+              {error}
+            </Typography>
+          ) : null}
           <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12}>

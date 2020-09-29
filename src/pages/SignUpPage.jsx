@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "../axios/index";
+import history from "../history";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -119,6 +120,7 @@ console.log(error)
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    history.push('/signin')
     const { name, email, password, confirmPassword, userType } = state;
     if (!name) {
       return setError("*Full name is required");
@@ -150,15 +152,9 @@ console.log(error)
         .then((response) => {
           console.log("Response from server", response);
           if (response.status === 200) {
-            setState((prevState) => ({
-              ...prevState,
-              successMessage:
-                "Registration successful. Redirecting to home page..",
-            }));
-            // redirectToHome();
-            // props.showError(null)
+            history.push('/signin')
           } else {
-            setError("Some error ocurred");
+            setError("Some errors ocurred while registering your account");
           }
         })
         .catch((err) => {
