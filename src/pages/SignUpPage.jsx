@@ -101,7 +101,7 @@ const SignUpPage = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    accountType: "",
+    userType: "",
   });
   const [error, setError] = useState(null);
 
@@ -114,7 +114,7 @@ const SignUpPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { name, email, password, confirmPassword, accountType } = state;
+    const { name, email, password, confirmPassword, userType } = state;
     if (!name) {
       return setError("*Name is required");
     }
@@ -125,7 +125,7 @@ const SignUpPage = () => {
     if (!password) {
       return setError("*Password is required");
     }
-    if (!accountType) {
+    if (!userType) {
       return setError("*Please select account type");
     }
 
@@ -134,7 +134,7 @@ const SignUpPage = () => {
         name,
         email,
         confirmPassword,
-        accountType,
+        userType,
       };
       // this.props.setCurrentUser(user);
       console.log( "to be sent to server", {newUser });
@@ -153,8 +153,8 @@ const SignUpPage = () => {
     
   };
 
-  // const handleAccountTypeChange = (event) => {
-  //   setAccountType(event.target.value);
+  // const handleuserTypeChange = (event) => {
+  //   setuserType(event.target.value);
   // };
 
   return (
@@ -252,14 +252,14 @@ const SignUpPage = () => {
               </Grid>
               <Grid item xs={12}>
                 <FormControl className={classes.accountFormControl}>
-                  <InputLabel id="accountType">Account Type</InputLabel>
+                  <InputLabel id="userType">Account Type</InputLabel>
                   <Select
                     required
                     fullWidth
-                    labelId="accountType"
-                    id="accountType"
-                    value={state.accountType}
-                    onChange={handleChange("accountType")}
+                    labelId="userType"
+                    id="userType"
+                    value={state.userType}
+                    onChange={handleChange("userType")}
                   >
                      <MenuItem value={"individual"}>
                      Individual
