@@ -96,14 +96,11 @@ const useStyles = makeStyles((theme) => ({
 
 const SignUpPage = () => {
   const classes = useStyles();
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [accountType, setAccountType] = useState("");
   const [state, setState] = useState({
     name: "",
     email: "",
     password: "",
+    confirmPassword: "",
     accountType: "",
   });
   const [error, setError] = useState(null);
@@ -117,7 +114,7 @@ const SignUpPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { name, email, password, accountType } = state;
+    const { name, email, password, confirmPassword, accountType } = state;
     if (!name) {
       return setError("*Name is required");
     }
@@ -132,22 +129,28 @@ const SignUpPage = () => {
       return setError("*Please select account type");
     }
 
-    const newUser = {
-      name,
-      email,
-      password,
-      accountType,
-    };
-    // this.props.setCurrentUser(user);
-    console.log( "to be sent to server", {newUser });
-    axios
-      .post("https://admin.terrelldavies.com/api/register", newUser)
-      .then((response) => {
-        console.log("Response from server", response);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if(state.password === state.confirmPassword){
+      const newUser = {
+        name,
+        email,
+        confirmPassword,
+        accountType,
+      };
+      // this.props.setCurrentUser(user);
+      console.log( "to be sent to server", {newUser });
+      axios
+        .post("https://admin.terrelldavies.com/api/register", newUser)
+        .then((response) => {
+          console.log("Response from server", response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }else{
+      setError('Passwords do not match');
+      
+    }
+    
   };
 
   // const handleAccountTypeChange = (event) => {
@@ -234,6 +237,20 @@ const SignUpPage = () => {
                 />
               </Grid>
               <Grid item xs={12}>
+                <TextField
+                  // variant="outlined"
+                  required
+                  fullWidth
+                  name="confirmPassword"
+                  label="Confirm Password"
+                  type="password"
+                  id="confirmPassword"
+                  autoComplete="current-password"
+                  value={state.confirmPassword}
+                  onChange={handleChange("confirmPassword")}
+                />
+              </Grid>
+              <Grid item xs={12}>
                 <FormControl className={classes.accountFormControl}>
                   <InputLabel id="accountType">Account Type</InputLabel>
                   <Select
@@ -244,17 +261,19 @@ const SignUpPage = () => {
                     value={state.accountType}
                     onChange={handleChange("accountType")}
                   >
-                    <MenuItem value={"propertyShopper"}>
-                      {" "}
-                      Property Shopper
+                     <MenuItem value={"individual"}>
+                     Individual
                     </MenuItem>
-                    <MenuItem value={"realEstateAgent"}>
+                    <MenuItem value={"property_owner"}>
+                    Property Owner
+                    </MenuItem>
+                    <MenuItem value={"real_estate_agent"}>
                       Real Estate Agent
                     </MenuItem>
-                    <MenuItem value={"propertyDeveloper"}>
+                    <MenuItem value={"property_developer"}>
                       Property Developer
                     </MenuItem>
-                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                   
                   </Select>
                 </FormControl>
               </Grid>
