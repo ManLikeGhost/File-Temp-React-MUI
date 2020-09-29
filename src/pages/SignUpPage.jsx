@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../axios/index";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -82,6 +82,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "20px",
     color: theme.palette.secondary.main,
   },
+  error: {
+    textAlign: "center",
+    fontSize: "30px",
+    color: "red",
+  },
   submit: {
     margin: theme.spacing(3, 0, 2),
     borderRadius: "2px",
@@ -104,7 +109,7 @@ const SignUpPage = () => {
     userType: "",
   });
   const [error, setError] = useState(null);
-
+console.log(error)
   const handleChange = (name) => (event) => {
     setState({
       ...state,
@@ -116,7 +121,7 @@ const SignUpPage = () => {
     event.preventDefault();
     const { name, email, password, confirmPassword, userType } = state;
     if (!name) {
-      return setError("*Name is required");
+      return setError("*Full name is required");
     }
     if (!email) {
       return setError("*Email is required");
@@ -125,11 +130,13 @@ const SignUpPage = () => {
     if (!password) {
       return setError("*Password is required");
     }
+    if (!confirmPassword) {
+      return setError("*Confirm Password is required");
+    }
     if (!userType) {
       return setError("*Please select account type");
     }
-
-    if(state.password === state.confirmPassword){
+    if (state.password === state.confirmPassword) {
       const newUser = {
         name,
         email,
@@ -137,20 +144,29 @@ const SignUpPage = () => {
         userType,
       };
       // this.props.setCurrentUser(user);
-      console.log( "to be sent to server", {newUser });
+      console.log("to be sent to server", { newUser });
       axios
         .post("https://admin.terrelldavies.com/api/register", newUser)
         .then((response) => {
           console.log("Response from server", response);
+          if (response.status === 200) {
+            setState((prevState) => ({
+              ...prevState,
+              successMessage:
+                "Registration successful. Redirecting to home page..",
+            }));
+            // redirectToHome();
+            // props.showError(null)
+          } else {
+            setError("Some error ocurred");
+          }
         })
         .catch((err) => {
           console.log(err);
         });
-    }else{
-      setError('Passwords do not match');
-      
+    } else {
+      setError("Passwords do not match");
     }
-    
   };
 
   // const handleuserTypeChange = (event) => {
@@ -187,7 +203,7 @@ const SignUpPage = () => {
             <Typography
               component="h1"
               variant="h5"
-              className={classes.subtitle}
+              className={classes.error}
             >
               {error}
             </Typography>
@@ -261,19 +277,14 @@ const SignUpPage = () => {
                     value={state.userType}
                     onChange={handleChange("userType")}
                   >
-                     <MenuItem value={"individual"}>
-                     Individual
-                    </MenuItem>
-                    <MenuItem value={"property_owner"}>
-                    Property Owner
-                    </MenuItem>
+                    <MenuItem value={"individual"}>Individual</MenuItem>
+                    <MenuItem value={"property_owner"}>Property Owner</MenuItem>
                     <MenuItem value={"real_estate_agent"}>
                       Real Estate Agent
                     </MenuItem>
                     <MenuItem value={"property_developer"}>
                       Property Developer
                     </MenuItem>
-                   
                   </Select>
                 </FormControl>
               </Grid>
@@ -287,6 +298,7 @@ const SignUpPage = () => {
             >
               Sign Up
             </Button>
+         
             <Grid item xs={12}>
               <FormControlLabel
                 className={classes.text}
