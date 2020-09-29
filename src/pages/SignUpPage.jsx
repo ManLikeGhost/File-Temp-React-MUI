@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "../axios/index";
 import history from "../history";
-import {API_BASE_URL, ACCESS_TOKEN_NAME} from '../constants/apiConstants';
+import { API_BASE_URL, ACCESS_TOKEN_NAME } from "../constants/apiConstants";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -110,7 +110,7 @@ const SignUpPage = () => {
     confirmPassword: "",
     userType: "",
   });
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const handleChange = (name) => (event) => {
     setState({
@@ -121,7 +121,7 @@ const SignUpPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setLoading(true)
+    setLoading(true);
     const { name, email, password, confirmPassword, userType } = state;
     if (!name) {
       return setError("*Full name is required");
@@ -149,20 +149,27 @@ const SignUpPage = () => {
       // this.props.setCurrentUser(user);
       console.log("to be sent to server", { newUser });
       axios
-        .post(API_BASE_URL+"/register", newUser)
+        .post(API_BASE_URL + "/register", newUser)
         .then((response) => {
           console.log("Response from server", response);
-          setLoading(false)
-          if (response.status === 200) {
-            localStorage.setItem(ACCESS_TOKEN_NAME,response.data.token);
-            history.push('/')
-          } else {
-            setError("Some errors ocurred while registering your account");
-          }
+
+          localStorage.setItem(
+            "login_access_token",
+            `Bearer ${response.data.token}`
+          );
+          setLoading(false);
+          history.push("/");
+          // if (response.status === 200) {
+          //   // localStorage.setItem(ACCESS_TOKEN_NAME,response.data.token);
+          //   localStorage.setItem('login_access_token',`Bearer ${response.data.token}`);
+          //   history.push('/')
+          // } else {
+          //   setError("Some errors ocurred while registering your account");
+          // }
         })
         .catch((err) => {
           console.log(err);
-          setLoading(false)
+          setLoading(false);
         });
     } else {
       setError("Passwords do not match");
@@ -200,11 +207,7 @@ const SignUpPage = () => {
           </Typography>
 
           {error ? (
-            <Typography
-              component="h1"
-              variant="h5"
-              className={classes.error}
-            >
+            <Typography component="h1" variant="h5" className={classes.error}>
               {error}
             </Typography>
           ) : null}
@@ -300,7 +303,7 @@ const SignUpPage = () => {
               Sign Up
               {loading && <CircularProgress />}
             </Button>
-         
+
             <Grid item xs={12}>
               <FormControlLabel
                 className={classes.text}
