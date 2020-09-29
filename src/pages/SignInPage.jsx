@@ -7,6 +7,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Typography from "@material-ui/core/Typography";
@@ -103,6 +104,7 @@ const SignInPage = () => {
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null);
   const handleChange = (name) => (event) => {
     setState({
@@ -113,7 +115,15 @@ const SignInPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setLoading(true)
     const { email, password } = state;
+    if (!email) {
+      return setError("*Email is required");
+    }
+
+    if (!password) {
+      return setError("*Password is required");
+    }
 
     const user = {
       email,
@@ -125,6 +135,7 @@ const SignInPage = () => {
       .post(API_BASE_URL+"/login", user)
       .then((response) => {
         console.log("Response from server", response);
+        setLoading(false)
         if (response.status === 200) {
           localStorage.setItem(ACCESS_TOKEN_NAME,response.data.token);
           history.push('/')
@@ -138,7 +149,9 @@ const SignInPage = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err.message);
+        setError(err.message);
+        setLoading(false)
       });
   };
 
@@ -193,6 +206,8 @@ const SignInPage = () => {
                   autoComplete="email"
                   value={state.email}
                   onChange={handleChange("email")}
+                  // helperText={error.email}
+                  // error={error.email ? true:false}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -207,6 +222,8 @@ const SignInPage = () => {
                   autoComplete="current-password"
                   value={state.password}
                   onChange={handleChange("password")}
+                  // helperText={error.password}
+                  // error={error.password ? true:false}
                 />
               </Grid>
             </Grid>
@@ -216,8 +233,10 @@ const SignInPage = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              disabled={loading}
             >
               LOGIN
+              {loading && <CircularProgress />}
             </Button>
           </form>
           <Grid container>

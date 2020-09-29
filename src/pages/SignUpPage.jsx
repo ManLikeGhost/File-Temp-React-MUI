@@ -9,7 +9,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-
+import CircularProgress from "@material-ui/core/CircularProgress";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -110,6 +110,7 @@ const SignUpPage = () => {
     confirmPassword: "",
     userType: "",
   });
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null);
   const handleChange = (name) => (event) => {
     setState({
@@ -120,7 +121,7 @@ const SignUpPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+    setLoading(true)
     const { name, email, password, confirmPassword, userType } = state;
     if (!name) {
       return setError("*Full name is required");
@@ -151,6 +152,7 @@ const SignUpPage = () => {
         .post(API_BASE_URL+"/register", newUser)
         .then((response) => {
           console.log("Response from server", response);
+          setLoading(false)
           if (response.status === 200) {
             localStorage.setItem(ACCESS_TOKEN_NAME,response.data.token);
             history.push('/')
@@ -160,6 +162,7 @@ const SignUpPage = () => {
         })
         .catch((err) => {
           console.log(err);
+          setLoading(false)
         });
     } else {
       setError("Passwords do not match");
@@ -292,8 +295,10 @@ const SignUpPage = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              disabled={loading}
             >
               Sign Up
+              {loading && <CircularProgress />}
             </Button>
          
             <Grid item xs={12}>
