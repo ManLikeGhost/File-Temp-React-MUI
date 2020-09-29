@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "../axios/index";
 import history from "../history";
+import {API_BASE_URL, ACCESS_TOKEN_NAME} from '../constants/apiConstants';
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -110,7 +111,6 @@ const SignUpPage = () => {
     userType: "",
   });
   const [error, setError] = useState(null);
-console.log(error)
   const handleChange = (name) => (event) => {
     setState({
       ...state,
@@ -120,7 +120,7 @@ console.log(error)
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    history.push('/signin')
+    
     const { name, email, password, confirmPassword, userType } = state;
     if (!name) {
       return setError("*Full name is required");
@@ -148,11 +148,12 @@ console.log(error)
       // this.props.setCurrentUser(user);
       console.log("to be sent to server", { newUser });
       axios
-        .post("https://admin.terrelldavies.com/api/register", newUser)
+        .post(API_BASE_URL+"/register", newUser)
         .then((response) => {
           console.log("Response from server", response);
           if (response.status === 200) {
-            history.push('/signin')
+            localStorage.setItem(ACCESS_TOKEN_NAME,response.data.token);
+            history.push('/')
           } else {
             setError("Some errors ocurred while registering your account");
           }
