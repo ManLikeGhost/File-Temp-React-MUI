@@ -38,7 +38,6 @@ const HomePage = () => {
       <ContactDetails />
       <PortfoliosList />
       <PropertiesList />
-      {/* <PropertyCarousel /> */}
       <HomePageStats />
       <AboutHome />
       <AddListingSection />
