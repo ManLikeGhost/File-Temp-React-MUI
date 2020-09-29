@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../axios/index";
+import history from "../history";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -82,6 +83,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "20px",
     color: theme.palette.secondary.main,
   },
+  error: {
+    textAlign: "center",
+    fontSize: "30px",
+    color: "red",
+  },
   submit: {
     margin: theme.spacing(3, 0, 2),
     borderRadius: "2px",
@@ -96,18 +102,15 @@ const useStyles = makeStyles((theme) => ({
 
 const SignUpPage = () => {
   const classes = useStyles();
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [accountType, setAccountType] = useState("");
   const [state, setState] = useState({
     name: "",
     email: "",
     password: "",
-    accountType: "",
+    confirmPassword: "",
+    userType: "",
   });
   const [error, setError] = useState(null);
-
+console.log(error)
   const handleChange = (name) => (event) => {
     setState({
       ...state,
@@ -117,9 +120,10 @@ const SignUpPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { name, email, password, accountType } = state;
+    history.push('/signin')
+    const { name, email, password, confirmPassword, userType } = state;
     if (!name) {
-      return setError("*Name is required");
+      return setError("*Full name is required");
     }
     if (!email) {
       return setError("*Email is required");
@@ -128,30 +132,41 @@ const SignUpPage = () => {
     if (!password) {
       return setError("*Password is required");
     }
-    if (!accountType) {
+    if (!confirmPassword) {
+      return setError("*Confirm Password is required");
+    }
+    if (!userType) {
       return setError("*Please select account type");
     }
-
-    const newUser = {
-      name,
-      email,
-      password,
-      accountType,
-    };
-    // this.props.setCurrentUser(user);
-    console.log( "to be sent to server", {newUser });
-    axios
-      .post("https://admin.terrelldavies.com/api/register", newUser)
-      .then((response) => {
-        console.log("Response from server", response);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (state.password === state.confirmPassword) {
+      const newUser = {
+        name,
+        email,
+        confirmPassword,
+        userType,
+      };
+      // this.props.setCurrentUser(user);
+      console.log("to be sent to server", { newUser });
+      axios
+        .post("https://admin.terrelldavies.com/api/register", newUser)
+        .then((response) => {
+          console.log("Response from server", response);
+          if (response.status === 200) {
+            history.push('/signin')
+          } else {
+            setError("Some errors ocurred while registering your account");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      setError("Passwords do not match");
+    }
   };
 
-  // const handleAccountTypeChange = (event) => {
-  //   setAccountType(event.target.value);
+  // const handleuserTypeChange = (event) => {
+  //   setuserType(event.target.value);
   // };
 
   return (
@@ -184,7 +199,7 @@ const SignUpPage = () => {
             <Typography
               component="h1"
               variant="h5"
-              className={classes.subtitle}
+              className={classes.error}
             >
               {error}
             </Typography>
@@ -234,27 +249,38 @@ const SignUpPage = () => {
                 />
               </Grid>
               <Grid item xs={12}>
+                <TextField
+                  // variant="outlined"
+                  required
+                  fullWidth
+                  name="confirmPassword"
+                  label="Confirm Password"
+                  type="password"
+                  id="confirmPassword"
+                  autoComplete="current-password"
+                  value={state.confirmPassword}
+                  onChange={handleChange("confirmPassword")}
+                />
+              </Grid>
+              <Grid item xs={12}>
                 <FormControl className={classes.accountFormControl}>
-                  <InputLabel id="accountType">Account Type</InputLabel>
+                  <InputLabel id="userType">Account Type</InputLabel>
                   <Select
                     required
                     fullWidth
-                    labelId="accountType"
-                    id="accountType"
-                    value={state.accountType}
-                    onChange={handleChange("accountType")}
+                    labelId="userType"
+                    id="userType"
+                    value={state.userType}
+                    onChange={handleChange("userType")}
                   >
-                    <MenuItem value={"propertyShopper"}>
-                      {" "}
-                      Property Shopper
-                    </MenuItem>
-                    <MenuItem value={"realEstateAgent"}>
+                    <MenuItem value={"individual"}>Individual</MenuItem>
+                    <MenuItem value={"property_owner"}>Property Owner</MenuItem>
+                    <MenuItem value={"real_estate_agent"}>
                       Real Estate Agent
                     </MenuItem>
-                    <MenuItem value={"propertyDeveloper"}>
+                    <MenuItem value={"property_developer"}>
                       Property Developer
                     </MenuItem>
-                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -268,6 +294,7 @@ const SignUpPage = () => {
             >
               Sign Up
             </Button>
+         
             <Grid item xs={12}>
               <FormControlLabel
                 className={classes.text}

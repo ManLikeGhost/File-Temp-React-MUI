@@ -2,6 +2,7 @@ import React from "react";
 //Router
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import history from './history';
 
 import HomePage from "./pages/HomePage.jsx";
 import SignInPage from "./pages/SignInPage";
@@ -47,7 +48,7 @@ function App() {
   return (
     <div className={classes.paperContainer}>
       <CssBaseline />
-      <Router>
+      <Router history={history}>
         <Switch>
           <Route exact path="/contact-us">
             <ContactUsPage />
