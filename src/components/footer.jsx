@@ -133,7 +133,7 @@ const Footer = () => {
                 className={classes.text}
               >
                 {footer.description.map((item) => (
-                  <Link href={`${item.link}`}>
+                  <Link href={`${item.link}`} key={item.name}>
                     <ListItem button key={item.name}>
                       <ListItemText primary={item.name} />
                     </ListItem>

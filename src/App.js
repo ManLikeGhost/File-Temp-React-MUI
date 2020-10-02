@@ -1,7 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
 //Router
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import history from './history';
+import AuthRoute from "./util/AuthRoute"
+
 
 import HomePage from "./pages/HomePage.jsx";
 import SignInPage from "./pages/SignInPage";
@@ -42,12 +45,28 @@ const useStyles = makeStyles((theme) => ({
   // },
 }));
 
+let authenticated;
+const token = localStorage.login_access_token;
+// if(token){
+//   const decodedToken = jwtDecode(token);
+//   if(decodedToken.exp *1000 < Date.now()){
+//     window.location.href = "/login"
+//     authenticated =false;
+//   }else{
+//     authenticated =false;
+//   }
+// }
+token? authenticated =true : authenticated = false
+
 function App() {
   const classes = useStyles();
+  // const [authenticated, setAuthenticated] = useState(false)
+  // const token = localStorage.login_access_token;
+  // token ? setAuthenticated(true) : setAuthenticated
   return (
     <div className={classes.paperContainer}>
       <CssBaseline />
-      <Router>
+      <Router history={history}>
         <Switch>
           <Route exact path="/contact-us">
             <ContactUsPage />
@@ -73,12 +92,11 @@ function App() {
           <Route exact path="/about">
             <AboutPage />
           </Route>
-          <Route exact path="/signin">
-            <SignInPage />
-          </Route>
-          <Route exact path="/signup">
+          <AuthRoute exact path="/signin" component={SignInPage} authenticated={authenticated}/>
+          <AuthRoute exact path="/signup" component={SignUpPage} authenticated={authenticated}/>
+          {/* <Route exact path="/signup">
             <SignUpPage />
-          </Route>
+          </Route> */}
           <Route path="/profile-settings">
             <ProfileSettings />
           </Route>
