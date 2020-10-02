@@ -200,7 +200,7 @@ const AboutPage = () => {
             delivering you quality service on the go.
           </Typography>
           <div className={classes.phone}>
-            <img src={AboutGooglePlay} />
+            <img alt="" src={AboutGooglePlay} />
           </div>
           
         </Grid>
