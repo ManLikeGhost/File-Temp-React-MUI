@@ -19,7 +19,7 @@ const displayProperties = newProperties.slice(0, currentProperties);
       const result = await axios(
         'https://api.terrelldavies.com/api/properties');
         console.log(result.data.data)
-        // setNewProperties(result.data.data)
+        setNewProperties(result.data.data)
     }
     fetchData();
   }, []);
@@ -30,7 +30,7 @@ const displayProperties = newProperties.slice(0, currentProperties);
         <Grid container justify="center" alignItems="center">
           {displayProperties.map((property) => (
             <Grid key={property.id} item xs={4}>
-              <Property imagePath={property.galleryImage} title={property.title} address={property.address} {...property}/>
+              <Property imagePath={property.galleryImage} title={property.title} address={property.metaDescription} {...property}/>
             </Grid>
           ))}
         </Grid>
