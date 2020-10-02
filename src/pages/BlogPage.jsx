@@ -8,7 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import { Pagination } from '@material-ui/lab';
 
 
-import BlogArticleList from "../components/blog/BlogArticleList";
+import BlogArticleList from "../components/blog/blogArticleList";
 import BlogPageImage1 from "../img/BlogPageImage1.png";
 
 

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import history from "../history";
+import AuthService from "../services/auth.service"
+
 import {API_BASE_URL, ACCESS_TOKEN_NAME} from '../constants/apiConstants';
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -137,8 +139,9 @@ const SignInPage = () => {
         console.log("Response from server", response);
         setLoading(false)
         if (response.status === 200) {
-          localStorage.setItem(ACCESS_TOKEN_NAME,response.data.token);
-          history.push('/')
+          localStorage.setItem(ACCESS_TOKEN_NAME,JSON.stringify(response.data));
+          history.push('/subscription-plans')
+          window.location.reload();
         } 
         else if(response.data.code === 204){
           setError("Username and password do not match");

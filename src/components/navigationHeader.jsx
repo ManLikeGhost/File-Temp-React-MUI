@@ -102,7 +102,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 const NavigationHeader = (props) => {
+  const [currentUser, setCurrentUser] = useState(null)
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -110,6 +112,9 @@ const NavigationHeader = (props) => {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  let user = localStorage.getItem("user")
+  setCurrentUser(user)
+  console.log(currentUser)
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };

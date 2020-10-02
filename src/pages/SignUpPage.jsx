@@ -154,11 +154,12 @@ const SignUpPage = () => {
           console.log("Response from server", response);
 
           localStorage.setItem(
-            "login_access_token",
+            ACCESS_TOKEN_NAME,
             `Bearer ${response.data.token}`
           );
           setLoading(false);
-          history.push("/");
+          history.push('/subscription-plans')
+          window.location.reload();
           // if (response.status === 200) {
           //   // localStorage.setItem(ACCESS_TOKEN_NAME,response.data.token);
           //   localStorage.setItem('login_access_token',`Bearer ${response.data.token}`);
