@@ -1,4 +1,7 @@
-import React from "react";
+import React,{ useState, useEffect } from "react";
+// import { API_BASE_URL} from "../constants/apiConstants";
+import axios from "axios";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -61,6 +64,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 const HeroSection = () => {
   const classes = useStyles();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      // You can await here
+      const result = await axios(
+        'https://api.terrelldavies.com/api/search');
+        // console.log(result.data.data)
+        setData(result.data.data)
+    }
+    fetchData();
+  }, []);
+//   useEffect(async () => {
+//     const result = await axios(
+//       'https://api.terrelldavies.com/api/search',
+//     );
+//  console.log(result.data)
+//     // setData(result.data);
+//   });
   return (
     <Paper elevation={0} className={classes.heroImage}>
       {/* Increase the priority of the hero background image */}

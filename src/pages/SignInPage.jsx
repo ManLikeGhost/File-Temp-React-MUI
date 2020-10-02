@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import history from "../history";
-import AuthService from "../services/auth.service"
 
 import {API_BASE_URL, ACCESS_TOKEN_NAME} from '../constants/apiConstants';
 import Button from "@material-ui/core/Button";

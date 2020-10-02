@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+// let currentUser = localStorage.getItem(ACCESS_TOKEN_NAME);
+
 const AddListingPage = () => {
   const classes = useStyles();
   return (
