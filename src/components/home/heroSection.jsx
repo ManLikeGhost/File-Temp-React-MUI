@@ -76,13 +76,7 @@ const HeroSection = () => {
     }
     fetchData();
   }, []);
-//   useEffect(async () => {
-//     const result = await axios(
-//       'https://api.terrelldavies.com/api/search',
-//     );
-//  console.log(result.data)
-//     // setData(result.data);
-//   });
+
   return (
     <Paper elevation={0} className={classes.heroImage}>
       {/* Increase the priority of the hero background image */}

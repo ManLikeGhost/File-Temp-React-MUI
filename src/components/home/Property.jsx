@@ -39,17 +39,17 @@ fontSize: 15
   }
 }));
 
-export default function Property({ imagePath, saleText, address, details }) {
+export default function Property({ imagePath, title, address, details, ...property }) {
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
       <CardMedia
         component="img"
-        alt={saleText}
+        alt={title}
         height="200"
         image={imagePath || 'http://placehold.it/200'}
-        title={saleText}
+        title={title}
       />
 
       <CardContent className={classes.cardColor}>
@@ -73,7 +73,7 @@ export default function Property({ imagePath, saleText, address, details }) {
                 color="primary"
                 className={classes.propertyText}
               >
-                {saleText}
+                {title}
               </Typography>
             </Grid>
             <Grid item xs={12}>
