@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const contactDeatils = () => {
+const ContactDetails = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -78,4 +78,4 @@ const contactDeatils = () => {
   );
 };
 
-export default contactDeatils;
+export default ContactDetails;

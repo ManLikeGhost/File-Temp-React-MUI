@@ -15,6 +15,7 @@ export const detailsBlogPost = [
     type: `Real Estate`,
     date: `9 september 2020`,
   },
+  
   {
     id: 1,
     title: `Estate housing`,

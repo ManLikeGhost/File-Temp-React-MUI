@@ -1,30 +1,41 @@
-import React, {useState} from "react";
+import React from "react";
+import { detailsBlogPost } from "../../demoData/demoDataBlog";
 
-import Blog from "./blogArticle"; 
-//import Property from "./Property";
-
-import {detailsBlogPost} from '../../demoData/demoDataBlog'; //import {properties} from '../../demoData/demoData'
-
+import BlogProperty from "./BlogProperty";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 
-function blogArticleList() {
-const [currentdetailsBlogPost, setCurrentdetailsBlogPost] = useState(3)
-const displaydetailsBlogPost = detailsBlogPost.slice(0, currentdetailsBlogPost);
+// import MarbleBackground from "../img/MarbleBackground.png";
+
+// import { makeStyles } from "@material-ui/core/styles";
+
+// const useStyles = makeStyles((theme) => ({
+//   backgroundImage: {
+//     height: "80vh",
+//     // backgroundImage: `url(${MarbleBackground})`,
+//     backgroundSize: "cover",
+//     backgroundPosition: "center",
+//     // width: `calc(100vw + 48px)`,
+//   },
+// }));
+
+const BlogArticleList = () => {
+  // const classes = useStyles();
   return (
     <div>
-      
-      <Box p={(2, 4)}>
-        <Grid container justify="center" alignItems="center">
-          {displaydetailsBlogPost.map((Blog) => (
-            <Grid key={Blog.id} item xs={4}>
-              <Blog imagePath={Blog.imagePath} text={Blog.text} title={Blog.title} />
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+      <Grid container justify="center" alignItems="center">
+        {detailsBlogPost.map((blogProperty) => (
+          <Grid key={blogProperty.id} item xs={4}>
+            <BlogProperty
+              title={blogProperty.title}
+              imagePath={blogProperty.imagePath}
+              text={blogProperty.text}
+              type={blogProperty.type}
+              date={blogProperty.date}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
-}
-
-export default blogArticleList;
+};
+export default BlogArticleList;

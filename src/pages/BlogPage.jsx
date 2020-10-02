@@ -1,21 +1,16 @@
 import React from "react";
 import NavigationHeader from "../components/navigationHeader.jsx";
-//import blogArticleList from "../components/blog/blogArticleList";
 import SectionTitle from "../components/sectionTitle.jsx";
 import MarbleBackground from "../img/MarbleBackground.png";
 import Footer from "../components/footer";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
+
 import { Pagination } from '@material-ui/lab';
 
 
+import BlogArticleList from "../components/blog/BlogArticleList";
 import BlogPageImage1 from "../img/BlogPageImage1.png";
-import blogPostImage1 from "../img/blogPostImage1.png";
-import blogPostImage2 from "../img/blogPostImage2.png";
-import blogPostImage3 from "../img/blogPostImage3.png";
-import blogPostImage4 from "../img/blogPostImage4.png";
-import blogPostImage5 from "../img/blogPostImage5.png";
-import blogPostImage6 from "../img/blogPostImage6.png";
+
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -46,22 +41,7 @@ const useStyles = makeStyles((theme) => ({
       border: "2px solid #BF7950",
       padding: "10px 10px 10px 10px"
     },
-
-    blogpic: {
-      width: "100%",
-      height: "50%",
-    },
-
-    blogCard: {
-      width: "311px",
-      height: "352px",
-      border: "2px solid #BF7950",
-    },
-
-    blogArtHold: {
-      padding: "0px 0px 20px 0px",
-    },
-
+    
     adjust: {
       padding: "0px 0px 0px 50px"
     },
@@ -70,43 +50,7 @@ const useStyles = makeStyles((theme) => ({
       padding: "0px 0px 0px 50px",
     },
 
-    headertext: {
-      width: "260px",
-      height: "25px",
-      fontFamily: "Metropolis",
-      fontStyle: "normal",
-      fontSize: "25px",
-      color: "#BF7950",
-      padding: "0px 0px 10px 20px",
-    },
-
-    ptext: {
-      width: "269px",
-      height: "40px",
-      fontFamily: "Metropolis",
-      fontStyle: "normal",
-      fontSize: "20px",
-      color: "rgba(0, 0, 0, 0.51)",
-      padding: "10px 0px 10px 20px"
-    },
-
     
-    category: {
-      width: "86px",
-      height: "16px",
-      fontFamily: "Metropolis",
-      fontStyle: "normal",
-      fontWeight: "300",
-      fontSize: "16px",
-      color: "#04403A",
-      padding: "60px 0px 0px 10px  ",
-    },
-
-    date: {
-      padding: "60px 0px 0px 20px  ",
-      float: "right",
-    },
-
 }));
 
 
@@ -127,81 +71,7 @@ const BlogPage = () => {
           </Grid>
           </div> 
           <SectionTitle>Latest Articles</SectionTitle>
-          <Grid container spacing={3} className={classes.blogArtHold}> 
-            <Grid item xs={4}>
-              <div className={classes.blogCard}>
-                <img className={classes.blogpic}  alt="House with bule background" src={blogPostImage1}/>
-                <Grid container>
-                  <Grid item xs={12}><Typography className={classes.headertext}>Millions in real Estate</Typography></Grid>
-                  <Grid item xs={12}><Typography className={classes.ptext}>Real estate can make you a millionaire.</Typography></Grid>
-                  <Grid item xs={4}><Typography className={classes.category}>Real Estate</Typography></Grid>
-                  <Grid item xs={6}><Typography className={classes.date}>09 september, 2020</Typography></Grid>
-                </Grid>
-              </div>
-            </Grid>
-
-            <Grid item xs={4}>
-              <div className={classes.blogCard}>
-                <img className={classes.blogpic}  alt="House with bule background" src={blogPostImage2}/>
-                <Grid container>
-                  <Grid item xs={12}><Typography className={classes.headertext}>Estate housing</Typography></Grid>
-                  <Grid item xs={12}><Typography className={classes.ptext}>Get the best estate housing at a very affordable price.</Typography></Grid>
-                  <Grid item xs={4}><Typography className={classes.category}>Real Estate</Typography></Grid>
-                  <Grid item xs={6}><Typography className={classes.date}>09 september, 2020</Typography></Grid>
-                </Grid>
-              </div>
-            </Grid>
-
-            <Grid item xs={4}>
-              <div className={classes.blogCard}>
-                <img className={classes.blogpic}  alt="House with bule background" src={blogPostImage3}/>
-                <Grid container>
-                  <Grid item xs={12}><Typography className={classes.headertext}>Houses on island</Typography></Grid>
-                  <Grid item xs={12}><Typography className={classes.ptext}>There are some things youneed to know about....</Typography></Grid>
-                  <Grid item xs={4}><Typography className={classes.category}>Real Estate</Typography></Grid>
-                  <Grid item xs={6}><Typography className={classes.date}>09 september, 2020</Typography></Grid>
-                </Grid>
-              </div>
-            </Grid>
-
-            <Grid item xs={4}>
-              <div className={classes.blogCard}>
-                <img className={classes.blogpic}  alt="House with bule background" src={blogPostImage4}/>
-                <Grid container>
-                  <Grid item xs={12}><Typography className={classes.headertext}>Morale Makeover</Typography></Grid>
-                  <Grid item xs={12}><Typography className={classes.ptext}>Eating fruits every morning can change your system....</Typography></Grid>
-                  <Grid item xs={4}><Typography className={classes.category}>Real Estate</Typography></Grid>
-                  <Grid item xs={6}><Typography className={classes.date}>09 september, 2020</Typography></Grid>
-                </Grid>
-              </div>
-            </Grid>
-
-            <Grid item xs={4}>
-              <div className={classes.blogCard}>
-                <img className={classes.blogpic}  alt="House with bule background" src={blogPostImage5}/>
-                <Grid container>
-                  <Grid item xs={12}><Typography className={classes.headertext}>Outdoors at Home</Typography></Grid>
-                  <Grid item xs={12}><Typography className={classes.ptext}>There are tips to take note of when travelling now...</Typography></Grid>
-                  <Grid item xs={4}><Typography className={classes.category}>Real Estate</Typography></Grid>
-                  <Grid item xs={6}><Typography className={classes.date}>09 september, 2020</Typography></Grid>
-                </Grid>
-              </div>
-            </Grid>
-
-            <Grid item xs={4}>
-              <div className={classes.blogCard}>
-                <img className={classes.blogpic}  alt="House with bule background" src={blogPostImage6}/>
-                <Grid container>
-                  <Grid item xs={12}><Typography className={classes.headertext}>Need a New Place?</Typography></Grid>
-                  <Grid item xs={12}><Typography className={classes.ptext}>Home-made pizza like never before with these ....</Typography></Grid>
-                  <Grid item xs={4}><Typography className={classes.category}>Real Estate</Typography></Grid>
-                  <Grid item xs={6}><Typography className={classes.date}>09 september, 2020</Typography></Grid>
-                </Grid>
-              </div>
-            </Grid>
-
-
-          </Grid>
+          <BlogArticleList />
           <div><Pagination count={3} variant="outlined" shape="rounded" /></div>
           <Footer />
       </div>

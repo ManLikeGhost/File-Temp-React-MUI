@@ -11,12 +11,10 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <React.StrictMode>
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <App />
-    </MuiThemeProvider>
-  </React.StrictMode>,
+    </MuiThemeProvider>,
   document.getElementById("root")
 );
 

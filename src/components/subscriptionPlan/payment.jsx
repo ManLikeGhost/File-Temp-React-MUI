@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const payment = () => {
+const Payment = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -118,4 +118,4 @@ const payment = () => {
   );
 };
 
-export default payment;
+export default Payment;

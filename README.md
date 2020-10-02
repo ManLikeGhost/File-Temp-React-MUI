@@ -55,5 +55,7 @@ http://localhost:3000/blog-page
 
 http://localhost:3000/blog-page-article
 
+http://localhost:3000/contact-us
+
 
 
