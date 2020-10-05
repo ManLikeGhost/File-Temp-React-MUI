@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProfileSectionTitle = (props) => {
-  console.log()
+  
   const classes = useStyles();
   return (
     <div className={classes.root}>

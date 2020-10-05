@@ -131,11 +131,11 @@ const SignInPage = () => {
       password,
     };
     // this.props.setCurrentUser(user);
-    console.log("To be sent", { user });
+    // console.log("To be sent", { user });
     axios
       .post(API_BASE_URL+"/login", user)
       .then((response) => {
-        console.log("Response from server", response);
+        // console.log("Response from server", response);
         setLoading(false)
         if (response.status === 200) {
           localStorage.setItem(ACCESS_TOKEN_NAME,JSON.stringify(response.data));

@@ -1,4 +1,6 @@
 import React from "react";
+
+// import AuthService from "./services/auth.service";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
@@ -41,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.primary.main,
   },
 }));
+// let currentUser = AuthService.getCurrentUser()
 
 const routes = [
   {
@@ -71,7 +74,8 @@ const routes = [
   
 ];
 
-const ProfileSettings = () => {
+const ProfileSettings = ({user}) => {
+  
   const classes = useStyles();
   // const pathName = window.location.pathname.split("/")[1];
 
@@ -86,7 +90,7 @@ const ProfileSettings = () => {
         <div className={classes.profileContainer}>
           <Grid container>
             <Grid item xs={3}>
-              <SideMenu />
+              <SideMenu user={user}/>
             </Grid>
             <Divider
               variant="middle"

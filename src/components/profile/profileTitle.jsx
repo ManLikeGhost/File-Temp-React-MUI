@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ProfileTitle = (props) => {
   const classes = useStyles();
-  console.log(props);
+  // console.log(props);
   return (
     <div className={classes.root}>
       <Grid container>

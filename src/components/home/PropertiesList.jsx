@@ -18,7 +18,7 @@ const displayProperties = newProperties.slice(0, currentProperties);
       // You can await here
       const result = await axios(
         'https://api.terrelldavies.com/api/properties');
-        console.log(result.data.data)
+        // console.log(result.data.data)
         setNewProperties(result.data.data)
     }
     fetchData();

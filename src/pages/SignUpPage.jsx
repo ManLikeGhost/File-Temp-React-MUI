@@ -146,12 +146,10 @@ const SignUpPage = () => {
         confirmPassword,
         userType,
       };
-      // this.props.setCurrentUser(user);
-      console.log("to be sent to server", { newUser });
       axios
         .post(API_BASE_URL + "/register", newUser)
         .then((response) => {
-          console.log("Response from server", response);
+          // console.log("Response from server", response);
 
           localStorage.setItem(
             ACCESS_TOKEN_NAME,
@@ -169,7 +167,7 @@ const SignUpPage = () => {
           // }
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           setLoading(false);
         });
     } else {

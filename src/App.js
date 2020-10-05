@@ -1,5 +1,4 @@
 import React from "react";
-//Router
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import history from "./history";
@@ -33,16 +32,16 @@ import ProfileImage from "./pages/ProfileImage";
 import SubscriptionPlans from "./pages/SubscriptionPlans";
 
 const useStyles = makeStyles((theme) => ({
-    "@global": {
-        body: {
-            backgroundColor: theme.palette.common.white,
-            maxWidth: "1980px",
-        },
+  "@global": {
+    body: {
+      backgroundColor: theme.palette.common.white,
+      maxWidth: "1980px",
     },
-    // paperContainer: {
-    //   height: "100vh",
-    //   backgroundImage: `url(${MarbleBackground})`,
-    // },
+  },
+  // paperContainer: {
+  //   height: "100vh",
+  //   backgroundImage: `url(${MarbleBackground})`,
+  // },
 }));
 
 let authenticated;
@@ -50,118 +49,83 @@ let currentUser = localStorage.getItem(ACCESS_TOKEN_NAME);
 currentUser ? (authenticated = true) : (authenticated = false);
 
 function App() {
-    const classes = useStyles();
-    return ( < div className = { classes.paperContainer } >
-            <
-            CssBaseline / >
-            <
-            Router history = { history } >
-            <
-            Switch >
-            <
-            Route exact path = "/contact-us" >
-            <
-            ContactUsPage / >
-            <
-            /Route> <
-            Route exact path = "/blog-page" >
-            <
-            BlogPage / >
-            <
-            /Route> <
-            Route exact path = "/blog-page-article" >
-            <
-            BlogPageArticle / >
-            <
-            /Route> <
-            Route exact path = "/flats-property-display" >
-            <
-            FlatsPropertyDisplay / >
-            <
-            /Route> <
-            Route exact path = "/houses-property-display" >
-            <
-            HousesPropertyDisplay / >
-            <
-            /Route> <
-            Route exact path = "/land-property-display" >
-            <
-            LandPropertyDisplay / >
-            <
-            /Route> <
-            Route exact path = "/commercial-projects-display" >
-            <
-            CommercialProjectsDisplay / >
-            <
-            /Route> <
-            Route exact path = "/about" >
-            <
-            AboutPage / >
-            <
-            /Route> <
-            AuthRoute exact path = "/signin"
-            component = { SignInPage }
-            authenticated = { authenticated }
-            /> <
-            AuthRoute exact path = "/signup"
-            component = { SignUpPage }
-            authenticated = { authenticated }
-            /> {
-            /* <Route exact path="/signup">
+  const classes = useStyles();
+  return (
+    <div className={classes.paperContainer}>
+      <CssBaseline />
+      <Router history={history}>
+        <Switch>
+          <Route exact path="/contact-us">
+            <ContactUsPage />
+          </Route>
+          <Route exact path="/blog-page">
+            <BlogPage />
+          </Route>
+          <Route exact path="/blog-page-article">
+            <BlogPageArticle />
+          </Route>
+          <Route exact path="/flats-property-display">
+            <FlatsPropertyDisplay />
+          </Route>
+          <Route exact path="/houses-property-display">
+            <HousesPropertyDisplay />
+          </Route>
+          <Route exact path="/land-property-display">
+            <LandPropertyDisplay />
+          </Route>
+          <Route exact path="/commercial-projects-display">
+            <CommercialProjectsDisplay />
+          </Route>
+          <Route exact path="/about">
+            <AboutPage />
+          </Route>
+          <AuthRoute
+            exact
+            path="/signin"
+            component={SignInPage}
+            authenticated={authenticated}
+          />
+          <AuthRoute
+            exact
+            path="/signup"
+            component={SignUpPage}
+            authenticated={authenticated}
+          />
+          {/* <Route exact path="/signup">
                                     <SignUpPage />
-                                  </Route> */
-        } <
-        Route path = "/profile-settings" >
-        <
-        ProfileSettings / >
-        <
-        /Route> <
-    Route path = "/profile-image" >
-        <
-        ProfileImage / >
-        <
-        /Route> <
-    Route path = "/subscription-plans" >
-        <
-        SubscriptionPlans / >
-        <
-        /Route> <
-    Route path = "/upgrade-subscription" >
-        <
-        UpgradeSubscriptionPage / >
-        <
-        /Route> <
-    Route path = "/new-upgrade" >
-        <
-        NewUpgradePage / >
-        <
-        /Route> <
-    Route path = "/payment" >
-        <
-        PaymentPage / >
-        <
-        /Route> <
-    Route path = "/post-property-request" >
-        <
-        PostPropertyRequestPage / >
-        <
-        /Route> <
-    Route path = "/add-listing" >
-        <
-        AddListingPage / >
-        <
-        /Route> <
-    Route exact path = "/" >
-        <
-        HomePage / >
-        <
-        /Route> <
-    Route component = { Page404 }
-    /> < /
-    Switch > <
-        /Router> < /
-    div >
-);
+                        /Route> */}
+          <Route path="/profile-settings">
+            <ProfileSettings user={currentUser}/>
+          </Route>
+          <Route path="/profile-image">
+            <ProfileImage />
+          </Route>
+          <Route path="/subscription-plans">
+            <SubscriptionPlans />
+          </Route>
+          <Route path="/upgrade-subscription">
+            <UpgradeSubscriptionPage />
+          </Route>
+          <Route path="/new-upgrade">
+            <NewUpgradePage />
+          </Route>
+          <Route path="/payment">
+            <PaymentPage />
+          </Route>
+          <Route path="/post-property-request">
+            <PostPropertyRequestPage />
+          </Route>
+          <Route path="/add-listing">
+            <AddListingPage />
+          </Route>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route component={Page404} />
+        </Switch>
+      </Router>
+    </div>
+  );
 }
 
 export default App;

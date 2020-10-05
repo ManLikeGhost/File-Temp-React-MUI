@@ -151,7 +151,7 @@ const AccountSettings = () => {
       linkedin,
     };
     // this.props.setCurrentAccount(newAccount);
-    console.log({ newAccount });
+    // console.log({ newAccount });
   };
 
   // const handleAccountTypeChange = (event) => {

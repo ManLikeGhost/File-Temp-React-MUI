@@ -36,9 +36,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SideMenu = () => {
+const SideMenu = (props) => {
   const classes = useStyles();
 
+console.table(props)
   return (
     <div className={classes.root}>
       <Grid
@@ -57,7 +58,7 @@ const SideMenu = () => {
             color="primary"
           />
 
-          <Typography className={classes.bigText}>John Doe</Typography>
+  <Typography className={classes.bigText}>Name</Typography>
           <Link href="/profile-image"  className={classes.link}>
             Click to change photo
           </Link>
