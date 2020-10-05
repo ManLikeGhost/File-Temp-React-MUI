@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
+import axios from "axios";
 import NavigationHeader from "../components/navigationHeader.jsx";
 import MarbleBackground from "../img/MarbleBackground.png";
 import Footer from "../components/footer";
@@ -24,6 +25,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HousesPropertyDisplay = () => {
+  const [properties, setProperties] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await axios("https://api.terrelldavies.com/api/properties");
+      setProperties(result.data.data);
+    }
+    fetchData();
+  }, []);
   const classes = useStyles();
   return (
     <div className={classes.backgroundImage}>
@@ -32,7 +42,7 @@ const HousesPropertyDisplay = () => {
         <Grid container spacing={6}>
           <Grid item container xs={8}>
             <LeftColumn title="Houses for rent in Nigeria" />
-            <HousesPropertyList />
+            <HousesPropertyList properties={properties}/>
           </Grid>
           <Grid item container xs={4}>
             <RightColumn />
@@ -40,7 +50,7 @@ const HousesPropertyDisplay = () => {
         </Grid>
       </div>
 
-      <SaleRentShortlet />
+      {/* <SaleRentShortlet /> */}
       <Footer />
     </div>
   );
