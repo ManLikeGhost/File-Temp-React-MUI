@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "../axios/index";
 import history from "../history";
+import { API_BASE_URL, ACCESS_TOKEN_NAME } from "../constants/apiConstants";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -8,7 +9,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-
+import CircularProgress from "@material-ui/core/CircularProgress";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -109,8 +110,8 @@ const SignUpPage = () => {
     confirmPassword: "",
     userType: "",
   });
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-console.log(error)
   const handleChange = (name) => (event) => {
     setState({
       ...state,
@@ -120,7 +121,7 @@ console.log(error)
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    history.push('/signin')
+    setLoading(true);
     const { name, email, password, confirmPassword, userType } = state;
     if (!name) {
       return setError("*Full name is required");
@@ -148,17 +149,27 @@ console.log(error)
       // this.props.setCurrentUser(user);
       console.log("to be sent to server", { newUser });
       axios
-        .post("https://admin.terrelldavies.com/api/register", newUser)
+        .post(API_BASE_URL + "/register", newUser)
         .then((response) => {
           console.log("Response from server", response);
-          if (response.status === 200) {
-            history.push('/signin')
-          } else {
-            setError("Some errors ocurred while registering your account");
-          }
+
+          localStorage.setItem(
+            "login_access_token",
+            `Bearer ${response.data.token}`
+          );
+          setLoading(false);
+          history.push("/");
+          // if (response.status === 200) {
+          //   // localStorage.setItem(ACCESS_TOKEN_NAME,response.data.token);
+          //   localStorage.setItem('login_access_token',`Bearer ${response.data.token}`);
+          //   history.push('/')
+          // } else {
+          //   setError("Some errors ocurred while registering your account");
+          // }
         })
         .catch((err) => {
           console.log(err);
+          setLoading(false);
         });
     } else {
       setError("Passwords do not match");
@@ -196,11 +207,7 @@ console.log(error)
           </Typography>
 
           {error ? (
-            <Typography
-              component="h1"
-              variant="h5"
-              className={classes.error}
-            >
+            <Typography component="h1" variant="h5" className={classes.error}>
               {error}
             </Typography>
           ) : null}
@@ -291,10 +298,12 @@ console.log(error)
               variant="contained"
               color="primary"
               className={classes.submit}
+              disabled={loading}
             >
               Sign Up
+              {loading && <CircularProgress />}
             </Button>
-         
+
             <Grid item xs={12}>
               <FormControlLabel
                 className={classes.text}
