@@ -18,16 +18,16 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 40,
     color: theme.palette.primary.main,
   },
-  text:{
-      fontSize: 13,
-      color: theme.palette.secondary.main
-  }
+  text: {
+    fontSize: 13,
+    color: theme.palette.secondary.main,
+  },
 }));
 
-const CardPropertyFeatures = () => {
+const CardPropertyFeatures = ({ bedroom, bathroom, toilet, garage }) => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>  
+    <div className={classes.root}>
       <Grid
         container
         direction="row"
@@ -37,19 +37,21 @@ const CardPropertyFeatures = () => {
       >
         <Grid item xs={3}>
           <HotelOutlinedIcon className={classes.icon} />
-          <Typography  className={classes.text}>4 Bedrooms</Typography>
+          <Typography className={classes.text}>{bedroom} Bedrooms</Typography>
         </Grid>
         <Grid item xs={3}>
           <BathtubOutlinedIcon className={classes.icon} />
-          <Typography className={classes.text}>4 Baths</Typography>
+          <Typography className={classes.text}>{bathroom} Baths</Typography>
         </Grid>
         <Grid item xs={3}>
           <WcIcon className={classes.icon} />
-          <Typography  className={classes.text}>5 Toilets</Typography>
+          <Typography className={classes.text}>{toilet} Toilets</Typography>
         </Grid>
         <Grid item xs={3}>
           <DirectionsCarOutlinedIcon className={classes.icon} />
-          <Typography className={classes.text}>5 Parking Space</Typography>
+          <Typography className={classes.text}>
+            {garage} Parking Space
+          </Typography>
         </Grid>
       </Grid>
     </div>
