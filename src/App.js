@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import history from "./history";
 import AuthRoute from "./util/AuthRoute";
 import { ACCESS_TOKEN_NAME } from "./constants/apiConstants";
+import AuthService from "./services/auth.service";
+
+
 
 import HomePage from "./pages/HomePage.jsx";
 import SignInPage from "./pages/SignInPage";
@@ -45,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 let authenticated;
-let currentUser = localStorage.getItem(ACCESS_TOKEN_NAME);
+let currentUser = AuthService.getCurrentUser();
 currentUser ? (authenticated = true) : (authenticated = false);
 
 function App() {

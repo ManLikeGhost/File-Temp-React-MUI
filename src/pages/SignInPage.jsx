@@ -139,7 +139,7 @@ const SignInPage = () => {
         setLoading(false)
         if (response.status === 200) {
           localStorage.setItem(ACCESS_TOKEN_NAME,JSON.stringify(response.data));
-          history.push('/subscription-plans')
+          history.push('/profile-settings/account')
           window.location.reload();
         } 
         else if(response.data.code === 204){

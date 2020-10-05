@@ -75,7 +75,6 @@ const routes = [
 ];
 
 const ProfileSettings = ({user}) => {
-  
   const classes = useStyles();
   // const pathName = window.location.pathname.split("/")[1];
 
