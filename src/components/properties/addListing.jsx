@@ -136,7 +136,7 @@ function submitForm(contentType, data, setResponse) {
 
 const AddListing = () => {
   const classes = useStyles();
-  const [values, setValues] = useState({
+  const [property, setProperty] = useState({
     publishStatus: "unpublish",
     title: "",
     marketStatus: "",
@@ -156,34 +156,18 @@ const AddListing = () => {
     serviced: false,
     furnished: false,
     description: " ",
+    featuredImage: null,
+    galleryImage: null
   });
   const [error, setError] = useState(null);
-  const [title, setTitle] = useState("");
-  const [file, setFile] = useState(null);
-  const [desc, setDesc] = useState("");
-  //  async function uploadWithJSON(){
-  //   const toBase64 = file => new Promise((resolve, reject) => {
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   reader.onload = () => resolve(reader.result);
-  //   reader.onerror = error => reject(error);
-  //   });
-
-  //   const data = {
-  //   title: title,
-  //   file: await toBase64(file),
-  //   desc: desc
-  //   }
-  //  console.log(data)
-  //   submitForm("application/json", data, (msg) => console.log(msg));
-  //   }
+  const [image, setImage] = useState(null);
 
   const handleChange = (prop) => (event) => {
     const value =
       event.target.type === "checkbox"
         ? event.target.checked
         : event.target.value;
-    setValues({ ...values, [prop]: value });
+    setProperty({ ...property, [prop]: value });
   };
   const tokenStr = localStorage.getItem(ACCESS_TOKEN_NAME);
 
@@ -197,14 +181,16 @@ const AddListing = () => {
         reader.onerror = (error) => reject(error);
       });
 
-    const data = {
-      values: values,
-      file: toBase64(file),
-      desc: desc,
-    };
-    console.log(data);
+
+  const convertedImage = toBase64(image).then(result => result);
+    const newProperty = {
+      ...property,
+      galleryImage: convertedImage,
+      featuredImage: convertedImage
+    }
+    console.log(newProperty)
     axios
-      .post("https://api.terrelldavies.com/api/property/create", data, {
+      .post("https://api.terrelldavies.com/api/property/create", newProperty, {
         headers: {
           Authorization: `Bearer ${tokenStr}`,
         },
@@ -233,7 +219,7 @@ const AddListing = () => {
               <RadioGroup
                 aria-label="publishStatus"
                 name="publishStatus"
-                value={values.publishStatus}
+                value={property.publishStatus}
                 onChange={handleChange("publishStatus")}
               >
                 <Grid container>
@@ -278,7 +264,7 @@ const AddListing = () => {
                 autoComplete="title"
                 className={classes.label}
                 variant="outlined"
-                value={values.title}
+                value={property.title}
                 onChange={handleChange("title")}
               />
             </Grid>
@@ -292,7 +278,7 @@ const AddListing = () => {
                   labelId="marketStatus"
                   id="marketStatus"
                   variant="outlined"
-                  value={values.marketStatus}
+                  value={property.marketStatus}
                   onChange={handleChange("marketStatus")}
                 >
                   <MenuItem value={"available"}>Available</MenuItem>
@@ -312,7 +298,7 @@ const AddListing = () => {
                   labelId="category"
                   id="category"
                   variant="outlined"
-                  value={values.category}
+                  value={property.category}
                   onChange={handleChange("category")}
                 >
                   <MenuItem value={"flat"}>Flat</MenuItem>
@@ -334,7 +320,7 @@ const AddListing = () => {
                   labelId="type"
                   id="type"
                   variant="outlined"
-                  value={values.type}
+                  value={property.type}
                   onChange={handleChange("type")}
                 >
                   <MenuItem value={"rent"}>Rent</MenuItem>
@@ -356,7 +342,7 @@ const AddListing = () => {
                 autoComplete="area"
                 className={classes.label}
                 variant="outlined"
-                value={values.area}
+                value={property.area}
                 onChange={handleChange("area")}
               />
             </Grid>
@@ -371,7 +357,7 @@ const AddListing = () => {
                 autoComplete="locality"
                 className={classes.label}
                 variant="outlined"
-                value={values.locality}
+                value={property.locality}
                 onChange={handleChange("locality")}
               />
             </Grid>
@@ -386,7 +372,7 @@ const AddListing = () => {
                 autoComplete="state"
                 className={classes.label}
                 variant="outlined"
-                value={values.state}
+                value={property.state}
                 onChange={handleChange("state")}
               />
             </Grid>
@@ -403,7 +389,7 @@ const AddListing = () => {
                 autoComplete="location"
                 className={classes.label}
                 variant="outlined"
-                value={values.location}
+                value={property.location}
                 onChange={handleChange("location")}
               />
             </Grid>
@@ -420,7 +406,7 @@ const AddListing = () => {
                 startAdornment={
                   <InputAdornment position="start">₦</InputAdornment>
                 }
-                value={values.budget}
+                value={property.budget}
                 onChange={handleChange("budget")}
               />
             </Grid>
@@ -437,7 +423,7 @@ const AddListing = () => {
                 autoComplete="bedrooms"
                 className={classes.label}
                 variant="outlined"
-                value={values.bedrooms}
+                value={property.bedrooms}
                 onChange={handleChange("bedrooms")}
               />
             </Grid>
@@ -452,7 +438,7 @@ const AddListing = () => {
                 autoComplete="toilets"
                 className={classes.label}
                 variant="outlined"
-                value={values.toilets}
+                value={property.toilets}
                 onChange={handleChange("toilets")}
               />
             </Grid>
@@ -467,7 +453,7 @@ const AddListing = () => {
                 autoComplete="bathrooms"
                 className={classes.label}
                 variant="outlined"
-                value={values.bathrooms}
+                value={property.bathrooms}
                 onChange={handleChange("bathrooms")}
               />
             </Grid>
@@ -480,10 +466,10 @@ const AddListing = () => {
                   className={classes.hideInputField}
                   id="file"
                   type="file"
-                  onChange={(e) => setFile(e.target.files[0])}
+                  onChange={(e) => setImage(e.target.files[0])}
                 />
                 <label htmlFor="file">
-                  {file? (<img src={URL.createObjectURL(file)} alt="" width="100%" />):(<IconButton
+                  {image? (<img src={URL.createObjectURL(image)} alt="" width="100%" />):(<IconButton
                     color="primary"
                     aria-label="upload picture"
                     component="span"
@@ -503,7 +489,7 @@ const AddListing = () => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={values.serviced}
+                    checked={property.serviced}
                     color="primary"
                     name="Serviced"
                     onChange={handleChange("serviced")}
@@ -516,7 +502,7 @@ const AddListing = () => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={values.furnished}
+                    checked={property.furnished}
                     onChange={handleChange("furnished")}
                     name="Furnished"
                     color="primary"
