@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { ACCESS_TOKEN_NAME } from "../../constants/apiConstants";
+
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
@@ -79,16 +82,10 @@ const useStyles = makeStyles((theme) => ({
       borderColor: theme.palette.primary.main,
       borderWidth: 1,
     },
-    //   '& input:valid:focus + fieldset': {
-    //     borderLeftWidth: 6,
-    //     padding: '4px !important', // override inline-style
-    //   },
   },
 
   accountFormControl: {
-    // margin: theme.spacing(1),
     width: "100%",
-    // minWidth: 120,
   },
   uploadPhotoContainer: {
     border: `0.8px solid ${theme.palette.primary.main}`,
@@ -150,62 +147,44 @@ const AddListing = () => {
         : event.target.value;
     setValues({ ...values, [prop]: value });
   };
-  
+  const tokenStr = localStorage.getItem(ACCESS_TOKEN_NAME);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    setLoading(true);
-    const { 
-    title,
-    marketStatus,
-    category,
-    type,
-    state,
-    locality,
-    area,
-    location,
-    budget,
-    bedrooms,
-    toilets,
-    bathrooms,
-    parking,
-    totalArea,
-    videoLink,
-    description} = state;
+    const {
+      title,
+      marketStatus,
+      category,
+      type,
+      state,
+      locality,
+      area,
+      location,
+      budget,
+      bedrooms,
+      toilets,
+      bathrooms,
+      parking,
+      totalArea,
+      videoLink,
+      description,
+    } = values;
     if (!title) {
       return setError("*Title is required");
     }
-const tokenStr= localStorage.getItem("user")
-    const res = await axios.post('https://api.terrelldavies.com/api/create-properties', values, {
-      headers: {
-        'Authorization': `Bearer ${tokenStr}`
-      }
-    });
-      axios
-        .post(API_BASE_URL + "/register", newUser)
-        .then((response) => {
-          // console.log("Response from server", response);
-
-          localStorage.setItem(
-            ACCESS_TOKEN_NAME,
-            `Bearer ${response.data.token}`
-          );
-          setLoading(false);
-          history.push("/subscription-plans");
-          window.location.reload();
-          // if (response.status === 200) {
-          //   // localStorage.setItem(ACCESS_TOKEN_NAME,response.data.token);
-          //   localStorage.setItem('login_access_token',`Bearer ${response.data.token}`);
-          //   history.push('/')
-          // } else {
-          //   setError("Some errors ocurred while registering your account");
-          // }
-        })
-        .catch((err) => {
-          // console.log(err);
-          setLoading(false);
-        });
+    axios
+      .post("https://api.terrelldavies.com/api/property/create", values, {
+        headers: {
+          Authorization: `Bearer ${tokenStr}`,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-
   return (
     <div>
       <SectionTitle>Add Listing</SectionTitle>
@@ -217,7 +196,7 @@ const tokenStr= localStorage.getItem("user")
         </Grid>
       </Grid>
       <div className={classes.formContainer}>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}> 
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <div className={classes.publishContainer}>
             <FormControl component="fieldset">
               <RadioGroup
@@ -583,13 +562,9 @@ const tokenStr= localStorage.getItem("user")
                 rowsMax={20}
                 aria-label="maximum height"
                 style={{
-                  width: "39rem",
+                  width: "45vw",
                   height: "10rem",
                 }}
-
-                //   placeholder=""
-                //       defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                //   ut labore et dolore magna aliqua."
               />
             </Grid>
           </Grid>

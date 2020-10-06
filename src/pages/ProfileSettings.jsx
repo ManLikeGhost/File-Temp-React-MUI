@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 const routes = [
   {
     path: "/profile-settings/account",
-    main: () => <AccountSettings />,
+    main: (user) => <AccountSettings user={user}/>,
     title: "Profile Settings",
   },
   {
@@ -82,9 +82,7 @@ const ProfileSettings = ({user}) => {
     <Router>
       <div className={classes.root}>
         <NavigationHeader />
-        {/* {routes.map((route, index) => (
-          <ProfileTitle>{route.title}</ProfileTitle>
-        ))} */}
+
         <ProfileTitle>Dashboard</ProfileTitle>
         <div className={classes.profileContainer}>
           <Grid container>
@@ -106,7 +104,7 @@ const ProfileSettings = ({user}) => {
                     key={index}
                     path={route.path}
                     exact={route.exact}
-                    children={<route.main />}
+                    children={<route.main user={user}/>}
                   />
                 ))}
               </Switch>
