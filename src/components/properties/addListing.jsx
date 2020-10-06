@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { ACCESS_TOKEN_NAME } from "../../constants/apiConstants";
+import { ACCESS_TOKEN_NAME, API_BASE_URL } from "../../constants/apiConstants";
 
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -140,16 +140,16 @@ const AddListing = () => {
     publishStatus: "unpublish",
     title: "",
     marketStatus: "",
-    category: "",
-    type: "",
+    cat_id: "",
+    type_id: "",
     state: "",
     locality: "",
     area: "",
     location: "",
     budget: "",
-    bedrooms: "",
-    toilets: "",
-    bathrooms: "",
+    bedroom: "",
+    toilet: "",
+    bathroom: "",
     parking: "",
     totalArea: "",
     videoLink: "",
@@ -157,7 +157,9 @@ const AddListing = () => {
     furnished: false,
     description: " ",
     featuredImage: null,
-    galleryImage: null
+    galleryImage: null,
+    garage:"",
+    totalarea: ""
   });
   const [error, setError] = useState(null);
   const [image, setImage] = useState(null);
@@ -181,16 +183,16 @@ const AddListing = () => {
         reader.onerror = (error) => reject(error);
       });
 
+    const convertedImage = toBase64(image).then((result) => result);
 
-  const convertedImage = toBase64(image).then(result => result);
     const newProperty = {
       ...property,
       galleryImage: convertedImage,
-      featuredImage: convertedImage
-    }
-    console.log(newProperty)
+      featuredImage: convertedImage,
+    };
+console.log("to be sent to server", newProperty)
     axios
-      .post("https://api.terrelldavies.com/api/property/create", newProperty, {
+      .post(API_BASE_URL+"/property/create", newProperty, {
         headers: {
           Authorization: `Bearer ${tokenStr}`,
         },
@@ -281,7 +283,7 @@ const AddListing = () => {
                   value={property.marketStatus}
                   onChange={handleChange("marketStatus")}
                 >
-                  <MenuItem value={"available"}>Available</MenuItem>
+                  <MenuItem value={"active"}>Available</MenuItem>
                   <MenuItem value={"sold"}>Sold</MenuItem>
                 </Select>
               </FormControl>
@@ -298,15 +300,15 @@ const AddListing = () => {
                   labelId="category"
                   id="category"
                   variant="outlined"
-                  value={property.category}
+                  value={property.cat_id}
                   onChange={handleChange("category")}
                 >
-                  <MenuItem value={"flat"}>Flat</MenuItem>
-                  <MenuItem value={"houses"}>Houses</MenuItem>
-                  <MenuItem value={"commercialprojects"}>
+                  <MenuItem value={"1"}>Flat</MenuItem>
+                  <MenuItem value={"2"}>Houses</MenuItem>
+                  <MenuItem value={"3"}>
                     Commercial Projects
                   </MenuItem>
-                  <MenuItem value={"lands"}>Lands</MenuItem>
+                  <MenuItem value={"4"}>Lands</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -320,12 +322,12 @@ const AddListing = () => {
                   labelId="type"
                   id="type"
                   variant="outlined"
-                  value={property.type}
+                  value={property.type_id}
                   onChange={handleChange("type")}
                 >
-                  <MenuItem value={"rent"}>Rent</MenuItem>
-                  <MenuItem value={"sale"}>Sale</MenuItem>
-                  <MenuItem value={"shortlet"}>Shortlet</MenuItem>
+                  <MenuItem value={"1"}>Rent</MenuItem>
+                  <MenuItem value={"2"}>Sale</MenuItem>
+                  <MenuItem value={"3"}>Shortlet</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -423,7 +425,7 @@ const AddListing = () => {
                 autoComplete="bedrooms"
                 className={classes.label}
                 variant="outlined"
-                value={property.bedrooms}
+                value={property.bedroom}
                 onChange={handleChange("bedrooms")}
               />
             </Grid>
@@ -438,7 +440,7 @@ const AddListing = () => {
                 autoComplete="toilets"
                 className={classes.label}
                 variant="outlined"
-                value={property.toilets}
+                value={property.toilet}
                 onChange={handleChange("toilets")}
               />
             </Grid>
@@ -453,11 +455,63 @@ const AddListing = () => {
                 autoComplete="bathrooms"
                 className={classes.label}
                 variant="outlined"
-                value={property.bathrooms}
+                value={property.bathroom}
                 onChange={handleChange("bathrooms")}
               />
             </Grid>
           </Grid>
+          <Grid container spacing={5}> 
+            <Grid item xs={6}>
+              <FormLabel component="legend">Parking</FormLabel>
+              <TextField
+                required
+                id="parking"
+                name="parking"
+                // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
+                fullWidth
+                autoComplete="parking"
+                className={classes.label}
+                variant="outlined"
+                value={property.garage}
+                onChange={handleChange("parking")}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <FormLabel component="legend">Total Area</FormLabel>
+              <TextField
+                required
+                id="totalarea"
+                name="totalarea"
+                // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
+                fullWidth
+                autoComplete="totalarea"
+                className={classes.label}
+                variant="outlined"
+                value={property.totalarea}
+                onChange={handleChange("totalarea")}
+              />
+            </Grid>
+            
+          </Grid>
+          <Grid container spacing={5}> 
+            <Grid item xs={12}>
+              <FormLabel component="legend">Video Link (YouTube/Facebook)</FormLabel>
+              <TextField
+                required
+                id="videoLink"
+                name="videoLink"
+                // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
+                fullWidth
+                autoComplete="videoLink"
+                className={classes.label}
+                variant="outlined"
+                value={property.videoLink}
+                onChange={handleChange("videoLink")}
+              />
+            </Grid>
+            
+          </Grid>
+          
           <Grid container>
             <Grid item xs={4}>
               <div className={classes.uploadPhotoContainer}>
@@ -469,15 +523,18 @@ const AddListing = () => {
                   onChange={(e) => setImage(e.target.files[0])}
                 />
                 <label htmlFor="file">
-                  {image? (<img src={URL.createObjectURL(image)} alt="" width="100%" />):(<IconButton
-                    color="primary"
-                    aria-label="upload picture"
-                    component="span"
-                    size="medium"
-                  >
-                    <AddAPhotoIcon className={classes.uploadPhotoIcon} />
-                  </IconButton>)}
-                  
+                  {image ? (
+                    <img src={URL.createObjectURL(image)} alt="" width="100%" />
+                  ) : (
+                    <IconButton
+                      color="primary"
+                      aria-label="upload picture"
+                      component="span"
+                      size="medium"
+                    >
+                      <AddAPhotoIcon className={classes.uploadPhotoIcon} />
+                    </IconButton>
+                  )}
                 </label>
               </div>
             </Grid>
