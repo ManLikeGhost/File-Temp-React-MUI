@@ -3,7 +3,7 @@ import axios from "axios";
 import Property from "./Property";
 import SectionTitle from "../sectionTitle";
 import {properties} from '../../demoData/demoData';
-
+import { ACCESS_TOKEN_NAME, API_BASE_URL } from "../../constants/apiConstants";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 
@@ -16,8 +16,7 @@ const displayProperties = newProperties.slice(0, currentProperties);
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      const result = await axios(
-        'https://api.terrelldavies.com/api/properties');
+      const result = await axios(API_BASE_URL + "/properties");
         // console.log(result.data.data)
         setNewProperties(result.data.data)
     }

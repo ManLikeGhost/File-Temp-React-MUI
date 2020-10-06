@@ -69,15 +69,12 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: "100%", // Fix IE 11 issue.
-    // margin: theme.spacing(3, 1, 100, 1),
+
     background: "white",
   },
   label: {
     fontSize: "15px",
-    // '& input:valid + fieldset': {
-    //     borderColor: 'green',
-    //     borderWidth: 2,
-    //   },
+
     "& input:invalid + fieldset": {
       borderColor: theme.palette.primary.main,
       borderWidth: 1,
@@ -115,25 +112,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const API_BASE = "https://api.terrelldavies.com/api/property/create";
-
-function submitForm(contentType, data, setResponse) {
-  axios({
-    url: `${API_BASE}/upload`,
-    method: "POST",
-    data: data,
-    headers: {
-      "Content-Type": contentType,
-    },
-  })
-    .then((response) => {
-      setResponse(response.data);
-    })
-    .catch((error) => {
-      setResponse("error");
-    });
-}
-
 const AddListing = () => {
   const classes = useStyles();
   const [property, setProperty] = useState({
@@ -158,8 +136,8 @@ const AddListing = () => {
     description: " ",
     featuredImage: null,
     galleryImage: null,
-    garage:"",
-    totalarea: ""
+    garage: "",
+    totalarea: "",
   });
   const [error, setError] = useState(null);
   const [image, setImage] = useState(null);
@@ -190,9 +168,9 @@ const AddListing = () => {
       galleryImage: convertedImage,
       featuredImage: convertedImage,
     };
-console.log("to be sent to server", newProperty)
+    console.log("to be sent to server", newProperty);
     axios
-      .post(API_BASE_URL+"/property/create", newProperty, {
+      .post(API_BASE_URL + "/property/create", newProperty, {
         headers: {
           Authorization: `Bearer ${tokenStr}`,
         },
@@ -305,9 +283,7 @@ console.log("to be sent to server", newProperty)
                 >
                   <MenuItem value={"1"}>Flat</MenuItem>
                   <MenuItem value={"2"}>Houses</MenuItem>
-                  <MenuItem value={"3"}>
-                    Commercial Projects
-                  </MenuItem>
+                  <MenuItem value={"3"}>Commercial Projects</MenuItem>
                   <MenuItem value={"4"}>Lands</MenuItem>
                 </Select>
               </FormControl>
@@ -460,7 +436,7 @@ console.log("to be sent to server", newProperty)
               />
             </Grid>
           </Grid>
-          <Grid container spacing={5}> 
+          <Grid container spacing={5}>
             <Grid item xs={6}>
               <FormLabel component="legend">Parking</FormLabel>
               <TextField
@@ -491,11 +467,12 @@ console.log("to be sent to server", newProperty)
                 onChange={handleChange("totalarea")}
               />
             </Grid>
-            
           </Grid>
-          <Grid container spacing={5}> 
+          <Grid container spacing={5}>
             <Grid item xs={12}>
-              <FormLabel component="legend">Video Link (YouTube/Facebook)</FormLabel>
+              <FormLabel component="legend">
+                Video Link (YouTube/Facebook)
+              </FormLabel>
               <TextField
                 required
                 id="videoLink"
@@ -509,9 +486,8 @@ console.log("to be sent to server", newProperty)
                 onChange={handleChange("videoLink")}
               />
             </Grid>
-            
           </Grid>
-          
+
           <Grid container>
             <Grid item xs={4}>
               <div className={classes.uploadPhotoContainer}>
