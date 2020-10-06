@@ -115,6 +115,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const API_BASE = "https://api.terrelldavies.com/api/property/create";
+
+function submitForm(contentType, data, setResponse) {
+  axios({
+    url: `${API_BASE}/upload`,
+    method: "POST",
+    data: data,
+    headers: {
+      "Content-Type": contentType,
+    },
+  })
+    .then((response) => {
+      setResponse(response.data);
+    })
+    .catch((error) => {
+      setResponse("error");
+    });
+}
+
 const AddListing = () => {
   const classes = useStyles();
   const [values, setValues] = useState({
@@ -139,6 +158,25 @@ const AddListing = () => {
     description: " ",
   });
   const [error, setError] = useState(null);
+  const [title, setTitle] = useState("");
+  const [file, setFile] = useState(null);
+  const [desc, setDesc] = useState("");
+  //  async function uploadWithJSON(){
+  //   const toBase64 = file => new Promise((resolve, reject) => {
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onload = () => resolve(reader.result);
+  //   reader.onerror = error => reject(error);
+  //   });
+
+  //   const data = {
+  //   title: title,
+  //   file: await toBase64(file),
+  //   desc: desc
+  //   }
+  //  console.log(data)
+  //   submitForm("application/json", data, (msg) => console.log(msg));
+  //   }
 
   const handleChange = (prop) => (event) => {
     const value =
@@ -151,29 +189,22 @@ const AddListing = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const {
-      title,
-      marketStatus,
-      category,
-      type,
-      state,
-      locality,
-      area,
-      location,
-      budget,
-      bedrooms,
-      toilets,
-      bathrooms,
-      parking,
-      totalArea,
-      videoLink,
-      description,
-    } = values;
-    if (!title) {
-      return setError("*Title is required");
-    }
+    const toBase64 = (file) =>
+      new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+      });
+
+    const data = {
+      values: values,
+      file: toBase64(file),
+      desc: desc,
+    };
+    console.log(data);
     axios
-      .post("https://api.terrelldavies.com/api/property/create", values, {
+      .post("https://api.terrelldavies.com/api/property/create", data, {
         headers: {
           Authorization: `Bearer ${tokenStr}`,
         },
@@ -264,16 +295,8 @@ const AddListing = () => {
                   value={values.marketStatus}
                   onChange={handleChange("marketStatus")}
                 >
-                  <MenuItem value={"propertyShopper"}>
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                  <MenuItem value={"available"}>Available</MenuItem>
+                  <MenuItem value={"sold"}>Sold</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -292,16 +315,12 @@ const AddListing = () => {
                   value={values.category}
                   onChange={handleChange("category")}
                 >
-                  <MenuItem value={"propertyShopper"}>
-                    Property Shopper
+                  <MenuItem value={"flat"}>Flat</MenuItem>
+                  <MenuItem value={"houses"}>Houses</MenuItem>
+                  <MenuItem value={"commercialprojects"}>
+                    Commercial Projects
                   </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                  <MenuItem value={"lands"}>Lands</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -318,98 +337,58 @@ const AddListing = () => {
                   value={values.type}
                   onChange={handleChange("type")}
                 >
-                  <MenuItem value={"propertyShopper"}>
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                  <MenuItem value={"rent"}>Rent</MenuItem>
+                  <MenuItem value={"sale"}>Sale</MenuItem>
+                  <MenuItem value={"shortlet"}>Shortlet</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
           </Grid>
           <Grid container spacing={6}>
             <Grid item xs={4}>
-              <FormLabel component="legend">State</FormLabel>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="state">Select State</InputLabel>
-                <Select
-                  required
-                  fullWidth
-                  labelId="state"
-                  id="state"
-                  variant="outlined"
-                  value={values.state}
-                  onChange={handleChange("state")}
-                >
-                  <MenuItem value={"propertyShopper"}>
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                </Select>
-              </FormControl>
+              <FormLabel component="legend">Area</FormLabel>
+              <TextField
+                required
+                id="area"
+                name="area"
+                placeholder="Your area"
+                fullWidth
+                autoComplete="area"
+                className={classes.label}
+                variant="outlined"
+                value={values.area}
+                onChange={handleChange("area")}
+              />
             </Grid>
             <Grid item xs={4}>
               <FormLabel component="legend">Locality</FormLabel>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="locality">Select Locality</InputLabel>
-                <Select
-                  required
-                  fullWidth
-                  labelId="locality"
-                  id="locality"
-                  variant="outlined"
-                  value={values.locality}
-                  onChange={handleChange("locality")}
-                >
-                  <MenuItem value={"propertyShopper"}>
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                </Select>
-              </FormControl>
+              <TextField
+                required
+                id="locality"
+                name="locality"
+                placeholder="Your locality"
+                fullWidth
+                autoComplete="locality"
+                className={classes.label}
+                variant="outlined"
+                value={values.locality}
+                onChange={handleChange("locality")}
+              />
             </Grid>
             <Grid item xs={4}>
-              <FormLabel component="legend">Area</FormLabel>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="area">Select Area</InputLabel>
-                <Select
-                  required
-                  fullWidth
-                  labelId="area"
-                  id="area"
-                  variant="outlined"
-                  value={values.area}
-                  onChange={handleChange("area")}
-                >
-                  <MenuItem value={"propertyShopper"}>
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                </Select>
-              </FormControl>
+              <FormLabel component="legend">State</FormLabel>
+              <TextField
+                required
+                id="state"
+                name="state"
+                placeholder="Your state"
+                fullWidth
+                autoComplete="state"
+                className={classes.label}
+                variant="outlined"
+                value={values.state}
+                onChange={handleChange("state")}
+              />
             </Grid>
           </Grid>
           <Grid container spacing={5}>
@@ -499,18 +478,20 @@ const AddListing = () => {
                 <input
                   accept="image/*"
                   className={classes.hideInputField}
-                  id="icon-button-file"
+                  id="file"
                   type="file"
+                  onChange={(e) => setFile(e.target.files[0])}
                 />
-                <label htmlFor="icon-button-file">
-                  <IconButton
+                <label htmlFor="file">
+                  {file? (<img src={URL.createObjectURL(file)} alt="" width="100%" />):(<IconButton
                     color="primary"
                     aria-label="upload picture"
                     component="span"
                     size="medium"
                   >
                     <AddAPhotoIcon className={classes.uploadPhotoIcon} />
-                  </IconButton>
+                  </IconButton>)}
+                  
                 </label>
               </div>
             </Grid>
@@ -579,6 +560,7 @@ const AddListing = () => {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
+                // onClick={uploadWithJSON}
               >
                 Add Listing
               </Button>
