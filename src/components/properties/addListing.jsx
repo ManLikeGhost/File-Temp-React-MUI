@@ -141,6 +141,7 @@ const AddListing = () => {
     furnished: false,
     description: " ",
   });
+  const [error, setError] = useState(null);
 
   const handleChange = (prop) => (event) => {
     const value =
@@ -148,6 +149,61 @@ const AddListing = () => {
         ? event.target.checked
         : event.target.value;
     setValues({ ...values, [prop]: value });
+  };
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setLoading(true);
+    const { 
+    title,
+    marketStatus,
+    category,
+    type,
+    state,
+    locality,
+    area,
+    location,
+    budget,
+    bedrooms,
+    toilets,
+    bathrooms,
+    parking,
+    totalArea,
+    videoLink,
+    description} = state;
+    if (!title) {
+      return setError("*Title is required");
+    }
+const tokenStr= localStorage.getItem("user")
+    const res = await axios.post('https://api.terrelldavies.com/api/create-properties', values, {
+      headers: {
+        'Authorization': `Bearer ${tokenStr}`
+      }
+    });
+      axios
+        .post(API_BASE_URL + "/register", newUser)
+        .then((response) => {
+          // console.log("Response from server", response);
+
+          localStorage.setItem(
+            ACCESS_TOKEN_NAME,
+            `Bearer ${response.data.token}`
+          );
+          setLoading(false);
+          history.push("/subscription-plans");
+          window.location.reload();
+          // if (response.status === 200) {
+          //   // localStorage.setItem(ACCESS_TOKEN_NAME,response.data.token);
+          //   localStorage.setItem('login_access_token',`Bearer ${response.data.token}`);
+          //   history.push('/')
+          // } else {
+          //   setError("Some errors ocurred while registering your account");
+          // }
+        })
+        .catch((err) => {
+          // console.log(err);
+          setLoading(false);
+        });
   };
 
   return (
@@ -161,7 +217,7 @@ const AddListing = () => {
         </Grid>
       </Grid>
       <div className={classes.formContainer}>
-        <form className={classes.form}>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}> 
           <div className={classes.publishContainer}>
             <FormControl component="fieldset">
               <RadioGroup
