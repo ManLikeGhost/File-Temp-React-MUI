@@ -90,7 +90,11 @@ const SubscriptionPlan = ({
   listings3,
 }) => {
   const classes = useStyles();
-
+  const discount = (percentage) => {
+    
+    let salePrice = ((100-percentage)/100) * price
+    return salePrice;
+  };
   return (
     <div key={id}>
       <Grid item xs={12} sm={12} md={4}>
@@ -133,14 +137,14 @@ const SubscriptionPlan = ({
                         color="textSecondary"
                         className={classes.discount}
                       >
-                        ₦{} for 6 months (5% discount)
+                        ₦{discount(5)} for 6 months (5% discount)
                       </Typography>
                       <Typography
                         variant="h6"
                         color="textSecondary"
                         className={classes.discount}
                       >
-                        ₦{} for 12 months (10% discount)
+                        ₦{discount(10)} for 12 months (10% discount)
                       </Typography>
                     </div>
                   )}

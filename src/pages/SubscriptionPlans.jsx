@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import CssBaseline from "@material-ui/core/CssBaseline";
+import { API_BASE_URL} from "../constants/apiConstants";
 import Grid from "@material-ui/core/Grid";
 
 import Container from "@material-ui/core/Container";
@@ -78,8 +79,7 @@ export default function SubscriptionPlans() {
 
   useEffect(() => {
     async function fetchData() {
-      // You can await here
-      const result = await axios("https://api.terrelldavies.com/api/plans");
+      const result = await axios(API_BASE_URL+"/plans");
       setPlans(result.data.plans);
     }
     fetchData();
