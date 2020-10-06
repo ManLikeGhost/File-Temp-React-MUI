@@ -1,24 +1,22 @@
-import React, { useState, useEffect }  from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Property from "./Property";
 import SectionTitle from "../sectionTitle";
-import {properties} from '../../demoData/demoData';
-import { ACCESS_TOKEN_NAME, API_BASE_URL } from "../../constants/apiConstants";
+import { properties } from "../../demoData/demoData";
+import { API_BASE_URL } from "../../constants/apiConstants";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 
 function PropertiesList() {
   const [newProperties, setNewProperties] = useState(properties);
-const [currentProperties, setCurrentProperties] = useState(3)
-const displayProperties = newProperties.slice(0, currentProperties);
-
+  const [currentProperties, setCurrentProperties] = useState(3);
+  const displayProperties = newProperties.slice(0, currentProperties);
 
   useEffect(() => {
     async function fetchData() {
-      // You can await here
       const result = await axios(API_BASE_URL + "/properties");
-        // console.log(result.data.data)
-        setNewProperties(result.data.data)
+      // console.log(result.data.data)
+      setNewProperties(result.data.data);
     }
     fetchData();
   }, []);
@@ -29,7 +27,12 @@ const displayProperties = newProperties.slice(0, currentProperties);
         <Grid container justify="center" alignItems="center">
           {displayProperties.map((property) => (
             <Grid key={property.id} item xs={4}>
-              <Property imagePath={property.galleryImage} title={property.title} address={property.metaDescription} {...property}/>
+              <Property
+                imagePath={property.galleryImage}
+                title={property.title}
+                address={property.metaDescription}
+                {...property}
+              />
             </Grid>
           ))}
         </Grid>
