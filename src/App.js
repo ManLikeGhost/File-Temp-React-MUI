@@ -1,9 +1,11 @@
-import React,{useState} from "react";
-//Router
+import React from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import history from './history';
-import AuthRoute from "./util/AuthRoute"
+import history from "./history";
+import AuthRoute from "./util/AuthRoute";
+import { ACCESS_TOKEN_NAME } from "./constants/apiConstants";
+import AuthService from "./services/auth.service";
+
 
 
 import HomePage from "./pages/HomePage.jsx";
@@ -26,6 +28,7 @@ import HousesPropertyDisplay from "./pages/HousesPropertyDisplay";
 import LandPropertyDisplay from "./pages/LandPropertyDisplay";
 import BlogPage from "./pages/BlogPage";
 import BlogPageArticle from "./pages/BlogPageArticle";
+import ContactUsPage from "./pages/ContactUsPage";
 
 import Page404 from "./pages/Page404";
 import ProfileImage from "./pages/ProfileImage";
@@ -45,28 +48,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 let authenticated;
-const token = localStorage.login_access_token;
-// if(token){
-//   const decodedToken = jwtDecode(token);
-//   if(decodedToken.exp *1000 < Date.now()){
-//     window.location.href = "/login"
-//     authenticated =false;
-//   }else{
-//     authenticated =false;
-//   }
-// }
-token? authenticated =true : authenticated = false
+let currentUser = AuthService.getCurrentUser();
+currentUser ? (authenticated = true) : (authenticated = false);
 
 function App() {
   const classes = useStyles();
-  // const [authenticated, setAuthenticated] = useState(false)
-  // const token = localStorage.login_access_token;
-  // token ? setAuthenticated(true) : setAuthenticated
   return (
     <div className={classes.paperContainer}>
       <CssBaseline />
       <Router history={history}>
         <Switch>
+          <Route exact path="/contact-us">
+            <ContactUsPage />
+          </Route>
+          <Route exact path="/blog-page">
+            <BlogPage />
+          </Route>
+          <Route exact path="/blog-page-article">
+            <BlogPageArticle />
+          </Route>
           <Route exact path="/flats-property-display">
             <FlatsPropertyDisplay />
           </Route>
@@ -82,18 +82,27 @@ function App() {
           <Route exact path="/about">
             <AboutPage />
           </Route>
-          <AuthRoute exact path="/signin" component={SignInPage} authenticated={authenticated}/>
-          <AuthRoute exact path="/signup" component={SignUpPage} authenticated={authenticated}/>
+          <AuthRoute
+            exact
+            path="/signin"
+            component={SignInPage}
+            authenticated={authenticated}
+          />
+          <AuthRoute
+            exact
+            path="/signup"
+            component={SignUpPage}
+            authenticated={authenticated}
+          />
           {/* <Route exact path="/signup">
-            <SignUpPage />
-          </Route> */}
+                                    <SignUpPage />
+                        /Route> */}
           <Route path="/profile-settings">
-            <ProfileSettings />
+            <ProfileSettings user={currentUser}/>
           </Route>
           <Route path="/profile-image">
             <ProfileImage />
           </Route>
-
           <Route path="/subscription-plans">
             <SubscriptionPlans />
           </Route>
@@ -106,18 +115,11 @@ function App() {
           <Route path="/payment">
             <PaymentPage />
           </Route>
-
           <Route path="/post-property-request">
             <PostPropertyRequestPage />
           </Route>
           <Route path="/add-listing">
             <AddListingPage />
-          </Route>
-          <Route exact path="/blog-page">
-            <BlogPage />
-          </Route>
-          <Route exact path="/blog-page-article">
-            <BlogPageArticle />
           </Route>
           <Route exact path="/">
             <HomePage />

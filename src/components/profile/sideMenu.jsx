@@ -36,9 +36,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SideMenu = () => {
+const SideMenu = ({user}) => {
   const classes = useStyles();
 
+// console.table(props)
   return (
     <div className={classes.root}>
       <Grid
@@ -57,35 +58,35 @@ const SideMenu = () => {
             color="primary"
           />
 
-          <Typography className={classes.bigText}>John Doe</Typography>
+  <Typography className={classes.bigText}>{user.name}</Typography>
           <Link href="/profile-image"  className={classes.link}>
             Click to change photo
           </Link>
         </Grid>
         <Grid item>
           <List>
-            <Link to="/profile-settings/account" className={classes.link}>
-              <Typography className={classes.bigText}>Account</Typography>
+            <Link href="/profile-settings/account" className={classes.link}>
+              <Typography className={classes.bigText}>Edit Account</Typography>
             </Link>
-            <Link to="/profile-settings/listings" className={classes.link}>
+            <Link href="/profile-settings/listings" className={classes.link}>
               <Typography className={classes.bigText}>Listings</Typography>
             </Link>
-            <Link to="/profile-settings/subscriptions" className={classes.link}>
+            <Link href="/profile-settings/subscriptions" className={classes.link}>
               <Typography className={classes.bigText}>Subscriptions</Typography>
             </Link>
-            <Link to="/profile-settings/savedProperty" className={classes.link}>
+            <Link href="/profile-settings/savedProperty" className={classes.link}>
               <Typography className={classes.bigText}>
                 Saved Property
               </Typography>
             </Link>
-            <Link to="/profile-settings/security" className={classes.link}>
+            <Link href="/profile-settings/security" className={classes.link}>
               <Typography className={classes.bigText}>Security</Typography>
             </Link>
           </List>
         </Grid>
         <Grid>
           <List>
-            <Link color="inherit" to="/login" className={classes.link}>
+            <Link color="inherit" href="/login" className={classes.link}>
               <Typography className={classes.bigText}>
                 Logout
                 <ExitToAppIcon color="primary" />

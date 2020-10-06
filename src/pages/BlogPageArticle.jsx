@@ -185,7 +185,9 @@ const BlogPageArticle = () => {
                   09 september 2020
                 </Typography>
               </Grid>
-
+              
+              {//profile picture. about author
+              }
               <Grid item xs={12}>
                 
               </Grid>

@@ -104,7 +104,7 @@ const Security = () => {
       confirmNewPassword,
     };
     // this.props.setCurrentAccount(newAccount);
-    console.log({ changedPassword });
+    // console.log({ changedPassword });
   };
 
   return (
