@@ -41,10 +41,6 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "1980px",
     },
   },
-  // paperContainer: {
-  //   height: "100vh",
-  //   backgroundImage: `url(${MarbleBackground})`,
-  // },
 }));
 
 let authenticated;

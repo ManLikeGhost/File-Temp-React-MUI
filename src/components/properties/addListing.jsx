@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { ACCESS_TOKEN_NAME, API_BASE_URL } from "../../constants/apiConstants";
+
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
@@ -66,29 +69,20 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: "100%", // Fix IE 11 issue.
-    // margin: theme.spacing(3, 1, 100, 1),
+
     background: "white",
   },
   label: {
     fontSize: "15px",
-    // '& input:valid + fieldset': {
-    //     borderColor: 'green',
-    //     borderWidth: 2,
-    //   },
+
     "& input:invalid + fieldset": {
       borderColor: theme.palette.primary.main,
       borderWidth: 1,
     },
-    //   '& input:valid:focus + fieldset': {
-    //     borderLeftWidth: 6,
-    //     padding: '4px !important', // override inline-style
-    //   },
   },
 
   accountFormControl: {
-    // margin: theme.spacing(1),
     width: "100%",
-    // minWidth: 120,
   },
   uploadPhotoContainer: {
     border: `0.8px solid ${theme.palette.primary.main}`,
@@ -120,36 +114,74 @@ const useStyles = makeStyles((theme) => ({
 
 const AddListing = () => {
   const classes = useStyles();
-  const [values, setValues] = useState({
+  const [property, setProperty] = useState({
     publishStatus: "unpublish",
     title: "",
     marketStatus: "",
-    category: "",
-    type: "",
+    cat_id: "",
+    type_id: "",
     state: "",
     locality: "",
     area: "",
     location: "",
     budget: "",
-    bedrooms: "",
-    toilets: "",
-    bathrooms: "",
+    bedroom: "",
+    toilet: "",
+    bathroom: "",
     parking: "",
     totalArea: "",
     videoLink: "",
     serviced: false,
     furnished: false,
     description: " ",
+    featuredImage: null,
+    galleryImage: null,
+    garage: "",
+    totalarea: "",
   });
+  const [error, setError] = useState(null);
+  const [image, setImage] = useState(null);
 
   const handleChange = (prop) => (event) => {
     const value =
       event.target.type === "checkbox"
         ? event.target.checked
         : event.target.value;
-    setValues({ ...values, [prop]: value });
+    setProperty({ ...property, [prop]: value });
   };
+  const tokenStr = localStorage.getItem(ACCESS_TOKEN_NAME);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const toBase64 = (file) =>
+      new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+      });
+
+    const convertedImage = toBase64(image).then((result) => result);
+
+    const newProperty = {
+      ...property,
+      galleryImage: convertedImage,
+      featuredImage: convertedImage,
+    };
+    console.log("to be sent to server", newProperty);
+    axios
+      .post(API_BASE_URL + "/property/create", newProperty, {
+        headers: {
+          Authorization: `Bearer ${tokenStr}`,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div>
       <SectionTitle>Add Listing</SectionTitle>
@@ -161,13 +193,13 @@ const AddListing = () => {
         </Grid>
       </Grid>
       <div className={classes.formContainer}>
-        <form className={classes.form}>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <div className={classes.publishContainer}>
             <FormControl component="fieldset">
               <RadioGroup
                 aria-label="publishStatus"
                 name="publishStatus"
-                value={values.publishStatus}
+                value={property.publishStatus}
                 onChange={handleChange("publishStatus")}
               >
                 <Grid container>
@@ -212,7 +244,7 @@ const AddListing = () => {
                 autoComplete="title"
                 className={classes.label}
                 variant="outlined"
-                value={values.title}
+                value={property.title}
                 onChange={handleChange("title")}
               />
             </Grid>
@@ -226,19 +258,11 @@ const AddListing = () => {
                   labelId="marketStatus"
                   id="marketStatus"
                   variant="outlined"
-                  value={values.marketStatus}
+                  value={property.marketStatus}
                   onChange={handleChange("marketStatus")}
                 >
-                  <MenuItem value={"propertyShopper"}>
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                  <MenuItem value={"active"}>Available</MenuItem>
+                  <MenuItem value={"sold"}>Sold</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -254,19 +278,13 @@ const AddListing = () => {
                   labelId="category"
                   id="category"
                   variant="outlined"
-                  value={values.category}
+                  value={property.cat_id}
                   onChange={handleChange("category")}
                 >
-                  <MenuItem value={"propertyShopper"}>
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                  <MenuItem value={"1"}>Flat</MenuItem>
+                  <MenuItem value={"2"}>Houses</MenuItem>
+                  <MenuItem value={"3"}>Commercial Projects</MenuItem>
+                  <MenuItem value={"4"}>Lands</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -280,101 +298,61 @@ const AddListing = () => {
                   labelId="type"
                   id="type"
                   variant="outlined"
-                  value={values.type}
+                  value={property.type_id}
                   onChange={handleChange("type")}
                 >
-                  <MenuItem value={"propertyShopper"}>
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                  <MenuItem value={"1"}>Rent</MenuItem>
+                  <MenuItem value={"2"}>Sale</MenuItem>
+                  <MenuItem value={"3"}>Shortlet</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
           </Grid>
           <Grid container spacing={6}>
             <Grid item xs={4}>
-              <FormLabel component="legend">State</FormLabel>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="state">Select State</InputLabel>
-                <Select
-                  required
-                  fullWidth
-                  labelId="state"
-                  id="state"
-                  variant="outlined"
-                  value={values.state}
-                  onChange={handleChange("state")}
-                >
-                  <MenuItem value={"propertyShopper"}>
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                </Select>
-              </FormControl>
+              <FormLabel component="legend">Area</FormLabel>
+              <TextField
+                required
+                id="area"
+                name="area"
+                placeholder="Your area"
+                fullWidth
+                autoComplete="area"
+                className={classes.label}
+                variant="outlined"
+                value={property.area}
+                onChange={handleChange("area")}
+              />
             </Grid>
             <Grid item xs={4}>
               <FormLabel component="legend">Locality</FormLabel>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="locality">Select Locality</InputLabel>
-                <Select
-                  required
-                  fullWidth
-                  labelId="locality"
-                  id="locality"
-                  variant="outlined"
-                  value={values.locality}
-                  onChange={handleChange("locality")}
-                >
-                  <MenuItem value={"propertyShopper"}>
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                </Select>
-              </FormControl>
+              <TextField
+                required
+                id="locality"
+                name="locality"
+                placeholder="Your locality"
+                fullWidth
+                autoComplete="locality"
+                className={classes.label}
+                variant="outlined"
+                value={property.locality}
+                onChange={handleChange("locality")}
+              />
             </Grid>
             <Grid item xs={4}>
-              <FormLabel component="legend">Area</FormLabel>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="area">Select Area</InputLabel>
-                <Select
-                  required
-                  fullWidth
-                  labelId="area"
-                  id="area"
-                  variant="outlined"
-                  value={values.area}
-                  onChange={handleChange("area")}
-                >
-                  <MenuItem value={"propertyShopper"}>
-                    Property Shopper
-                  </MenuItem>
-                  <MenuItem value={"realEstateAgent"}>
-                    Real Estate Agent
-                  </MenuItem>
-                  <MenuItem value={"propertyDeveloper"}>
-                    Property Developer
-                  </MenuItem>
-                  <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                </Select>
-              </FormControl>
+              <FormLabel component="legend">State</FormLabel>
+              <TextField
+                required
+                id="state"
+                name="state"
+                placeholder="Your state"
+                fullWidth
+                autoComplete="state"
+                className={classes.label}
+                variant="outlined"
+                value={property.state}
+                onChange={handleChange("state")}
+              />
             </Grid>
           </Grid>
           <Grid container spacing={5}>
@@ -389,7 +367,7 @@ const AddListing = () => {
                 autoComplete="location"
                 className={classes.label}
                 variant="outlined"
-                value={values.location}
+                value={property.location}
                 onChange={handleChange("location")}
               />
             </Grid>
@@ -406,7 +384,7 @@ const AddListing = () => {
                 startAdornment={
                   <InputAdornment position="start">₦</InputAdornment>
                 }
-                value={values.budget}
+                value={property.budget}
                 onChange={handleChange("budget")}
               />
             </Grid>
@@ -423,7 +401,7 @@ const AddListing = () => {
                 autoComplete="bedrooms"
                 className={classes.label}
                 variant="outlined"
-                value={values.bedrooms}
+                value={property.bedroom}
                 onChange={handleChange("bedrooms")}
               />
             </Grid>
@@ -438,7 +416,7 @@ const AddListing = () => {
                 autoComplete="toilets"
                 className={classes.label}
                 variant="outlined"
-                value={values.toilets}
+                value={property.toilet}
                 onChange={handleChange("toilets")}
               />
             </Grid>
@@ -453,29 +431,86 @@ const AddListing = () => {
                 autoComplete="bathrooms"
                 className={classes.label}
                 variant="outlined"
-                value={values.bathrooms}
+                value={property.bathroom}
                 onChange={handleChange("bathrooms")}
               />
             </Grid>
           </Grid>
+          <Grid container spacing={5}>
+            <Grid item xs={6}>
+              <FormLabel component="legend">Parking</FormLabel>
+              <TextField
+                required
+                id="parking"
+                name="parking"
+                // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
+                fullWidth
+                autoComplete="parking"
+                className={classes.label}
+                variant="outlined"
+                value={property.garage}
+                onChange={handleChange("parking")}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <FormLabel component="legend">Total Area</FormLabel>
+              <TextField
+                required
+                id="totalarea"
+                name="totalarea"
+                // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
+                fullWidth
+                autoComplete="totalarea"
+                className={classes.label}
+                variant="outlined"
+                value={property.totalarea}
+                onChange={handleChange("totalarea")}
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={5}>
+            <Grid item xs={12}>
+              <FormLabel component="legend">
+                Video Link (YouTube/Facebook)
+              </FormLabel>
+              <TextField
+                required
+                id="videoLink"
+                name="videoLink"
+                // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
+                fullWidth
+                autoComplete="videoLink"
+                className={classes.label}
+                variant="outlined"
+                value={property.videoLink}
+                onChange={handleChange("videoLink")}
+              />
+            </Grid>
+          </Grid>
+
           <Grid container>
             <Grid item xs={4}>
               <div className={classes.uploadPhotoContainer}>
                 <input
                   accept="image/*"
                   className={classes.hideInputField}
-                  id="icon-button-file"
+                  id="file"
                   type="file"
+                  onChange={(e) => setImage(e.target.files[0])}
                 />
-                <label htmlFor="icon-button-file">
-                  <IconButton
-                    color="primary"
-                    aria-label="upload picture"
-                    component="span"
-                    size="medium"
-                  >
-                    <AddAPhotoIcon className={classes.uploadPhotoIcon} />
-                  </IconButton>
+                <label htmlFor="file">
+                  {image ? (
+                    <img src={URL.createObjectURL(image)} alt="" width="100%" />
+                  ) : (
+                    <IconButton
+                      color="primary"
+                      aria-label="upload picture"
+                      component="span"
+                      size="medium"
+                    >
+                      <AddAPhotoIcon className={classes.uploadPhotoIcon} />
+                    </IconButton>
+                  )}
                 </label>
               </div>
             </Grid>
@@ -487,7 +522,7 @@ const AddListing = () => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={values.serviced}
+                    checked={property.serviced}
                     color="primary"
                     name="Serviced"
                     onChange={handleChange("serviced")}
@@ -500,7 +535,7 @@ const AddListing = () => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={values.furnished}
+                    checked={property.furnished}
                     onChange={handleChange("furnished")}
                     name="Furnished"
                     color="primary"
@@ -527,13 +562,9 @@ const AddListing = () => {
                 rowsMax={20}
                 aria-label="maximum height"
                 style={{
-                  width: "39rem",
+                  width: "45vw",
                   height: "10rem",
                 }}
-
-                //   placeholder=""
-                //       defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                //   ut labore et dolore magna aliqua."
               />
             </Grid>
           </Grid>
@@ -548,6 +579,7 @@ const AddListing = () => {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
+                // onClick={uploadWithJSON}
               >
                 Add Listing
               </Button>
