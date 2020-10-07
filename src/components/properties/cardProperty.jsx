@@ -57,7 +57,7 @@ const CardProperty = ({ ...property }) => {
   return (
     <div className={classes.cardProperty}>
       <Card className={classes.card}>
-        <Grid container xs={12}>
+        <Grid container >
           <Grid item xs={6}>
             <CardMedia
               component="img"
