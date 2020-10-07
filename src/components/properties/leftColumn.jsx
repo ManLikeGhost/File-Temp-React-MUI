@@ -47,22 +47,9 @@ const QuickFilterButton = withStyles({
     textTransform: "none",
     fontSize: 16,
     padding: "6px 12px",
-    // border: "1px solid",
+
     lineHeight: 1.5,
-    // backgroundColor: "#0063cc",
-    // borderColor: "#0063cc",
-    // fontFamily: [
-    //   "-apple-system",
-    //   "BlinkMacSystemFont",
-    //   '"Segoe UI"',
-    //   "Roboto",
-    //   '"Helvetica Neue"',
-    //   "Arial",
-    //   "sans-serif",
-    //   '"Apple Color Emoji"',
-    //   '"Segoe UI Emoji"',
-    //   '"Segoe UI Symbol"',
-    // ].join(","),
+
     "&:hover": {
       backgroundColor: " #BF7950",
       borderColor: "white",
@@ -99,7 +86,7 @@ const LeftColumn = ({ title, propertyType }) => {
     fetchData();
   }, []);
   let filteredProperties = properties;
-  console.log(properties);
+ 
   return (
     <div>
       <PropertyTitle>{title}</PropertyTitle>

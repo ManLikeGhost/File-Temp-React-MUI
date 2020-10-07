@@ -193,6 +193,7 @@ const SubscriptionPlan = ({
               variant="contained"
               color="primary"
               className={classes.subscriptionButton}
+              href="/upgrade-subscription"
             >
               SUBSCRIBE
             </Button>

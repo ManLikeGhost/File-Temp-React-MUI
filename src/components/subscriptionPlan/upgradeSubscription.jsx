@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import authHeader from "../../services/auth-header";
+import history from "../../history";
+import { API_BASE_URL} from "../../constants/apiConstants";
+
+import { Link } from "react-router-dom";
+import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
+// import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
@@ -15,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "2px",
     paddingBottom: "50px",
     marginTop: theme.spacing(2),
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+
   },
   title: {
     background: theme.palette.primary.main,
@@ -62,6 +72,48 @@ const useStyles = makeStyles((theme) => ({
 
 const UpgradeSubscription = () => {
   const classes = useStyles();
+  const [subscription, setSubscription] = useState({
+    plan: "",
+    duration: "",
+    paymentMethod: "",
+  });
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await axios.get(
+        "https://api.terrelldavies.com/api/subscription",
+        {
+          headers: authHeader(),
+        }
+      );
+      console.log(result);
+      // setPlan(result.data.data);
+    }
+    fetchData();
+  }, []);
+
+  const handleChange = (name) => (event) => {
+    setSubscription({
+      ...subscription,
+      [name]: event.target.value,
+    });
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+      axios
+        .post(API_BASE_URL + "/subscribe",subscription)
+        .then((response) => {
+          history.push('/new-upgrade')
+          window.location.reload();
+         console.log(response)
+        })
+        .catch((err) => {
+          console.log(err);
+          // setLoading(false);
+        });
+    }
+
   return (
     <div>
       <Grid
@@ -96,7 +148,7 @@ const UpgradeSubscription = () => {
           </Grid>
           <Grid item xs={4}>
             <Typography className={classes.text}>
-              Featured Ad Listings:{" "}
+              Featured Ad Listings:
               <span className={classes.textValue}>{0}</span>
             </Typography>
           </Grid>
@@ -134,27 +186,15 @@ const UpgradeSubscription = () => {
           alignItems="center"
           style={{ paddingRight: "30px" }}
         >
-          <Link href="/subscription-plans"  style={{marginLeft: "auto"}}>
+          <Link to="/subscription-plans" style={{ marginLeft: "auto" }}>
             <Typography>See Plans</Typography>
           </Link>
-
-          <Grid item xs={12}>
-            <TextField
-              id="select-subscription"
-              select
-              label="New Subscription Plan"
-              variant="outlined"
-              fullWidth="true"
-            >
-              <MenuItem value={"realEstateAgent"}>Real Estate Agent</MenuItem>
-              <MenuItem value={"propertyDeveloper"}>
-                Property Developer
-              </MenuItem>
-              <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-            </TextField>
-          </Grid>
         </Grid>
-
+        <form
+            className={classes.form}
+            noValidate
+            onSubmit={handleSubmit}
+          >
         <Grid
           container
           direction="row"
@@ -164,6 +204,26 @@ const UpgradeSubscription = () => {
           spacing={3}
           style={{ marginTop: "10px", paddingRight: "30px" }}
         >
+           
+            <Grid item xs={12}>
+            <TextField
+              id="select-subscription"
+              select
+              label="New Subscription Plan"
+              variant="outlined"
+              fullWidth="true"
+              value={subscription.plan}
+              onChange={handleChange("plan")}
+            >
+              <MenuItem value={"standard"}>Standard ₦0</MenuItem>
+              <MenuItem value={"bronze"}>Bronze ₦10,000</MenuItem>
+              <MenuItem value={"Silver"}>Silver ₦15,000</MenuItem>
+              <MenuItem value={"Gold"}>Gold ₦20,000</MenuItem>
+              <MenuItem value={"Platinum"}>Platinum ₦25,000</MenuItem>
+              <MenuItem value={"Platinum+"}>Platinum+ ₦35,000</MenuItem>
+            </TextField>
+          </Grid>
+          
           <Grid item xs={6}>
             <TextField
               id="select-subscription"
@@ -171,12 +231,21 @@ const UpgradeSubscription = () => {
               label=" Duration"
               variant="outlined"
               fullWidth="true"
+              value={subscription.duration}
+              onChange={handleChange("duration")}
             >
-              <MenuItem value={"realEstateAgent"}>Real Estate Agent</MenuItem>
-              <MenuItem value={"propertyDeveloper"}>
-                Property Developer
-              </MenuItem>
-              <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+              <MenuItem value={"1"}>1 Month</MenuItem>
+              <MenuItem value={"2"}>2 Months</MenuItem>
+              <MenuItem value={"3"}>3 Months</MenuItem>
+              <MenuItem value={"4"}>4 Months</MenuItem>
+              <MenuItem value={"57"}>5 Months</MenuItem>
+              <MenuItem value={"6"}>6 Months</MenuItem>
+              <MenuItem value={"7"}>7 Months</MenuItem>
+              <MenuItem value={"8"}>8 Months</MenuItem>
+              <MenuItem value={"9"}>9 Months</MenuItem>
+              <MenuItem value={"10"}>10 Months</MenuItem>
+              <MenuItem value={"11"}>11 Months</MenuItem>
+              <MenuItem value={"12"}>12 Months</MenuItem>
             </TextField>
           </Grid>
           <Grid item xs={6}>
@@ -186,20 +255,20 @@ const UpgradeSubscription = () => {
               label="Payment Method"
               variant="outlined"
               fullWidth="true"
+              value={subscription.paymentMethod}
+              onChange={handleChange("paymentMethod")}
             >
-              <MenuItem value={"realEstateAgent"}>Real Estate Agent</MenuItem>
-              <MenuItem value={"propertyDeveloper"}>
-                Property Developer
-              </MenuItem>
-              <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+              <MenuItem value={"realEstateAgent"}>Online Payment</MenuItem>
+              <MenuItem value={"propertyDeveloper"}>Alternate Payment</MenuItem>
             </TextField>
           </Grid>
           <Grid container justify="flex-end">
             <Grid item style={{ paddingRight: "10px", marginTop: "10px" }}>
-              <Button href="/new-upgrade" className={classes.button}>PROCEED</Button>
+              <Button className={classes.button}>PROCEED</Button>
             </Grid>
           </Grid>
         </Grid>
+        </form>
       </Grid>
     </div>
   );

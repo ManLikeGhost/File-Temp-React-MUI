@@ -105,9 +105,8 @@ function App() {
           <Route path="/upgrade-subscription">
             <UpgradeSubscriptionPage />
           </Route>
-          <Route path="/new-upgrade">
-            <NewUpgradePage />
-          </Route>
+          <Route path="/new-upgrade" component={NewUpgradePage} />
+          
           <Route path="/payment">
             <PaymentPage />
           </Route>
