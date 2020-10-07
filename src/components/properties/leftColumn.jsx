@@ -89,7 +89,7 @@ const LeftColumn = ({ title, propertyType }) => {
   let filteredProperties = properties;
 
   // const filteredProperties = properties.filter(property => property.cat_id === propertyType)
-
+console.log(properties)
   return (
     <div>
       <PropertyTitle>{title}</PropertyTitle>
