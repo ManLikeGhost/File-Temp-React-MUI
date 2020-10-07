@@ -27,6 +27,7 @@ import LandPropertyDisplay from "./pages/LandPropertyDisplay";
 import BlogPage from "./pages/BlogPage";
 import BlogPageArticle from "./pages/BlogPageArticle";
 import ContactUsPage from "./pages/ContactUsPage";
+import SinglePropertyPage from "./pages/SinglePropertyPage";
 
 import Page404 from "./pages/Page404";
 import ProfileImage from "./pages/ProfileImage";
@@ -68,6 +69,9 @@ function App() {
       <CssBaseline />
       <Router history={history}>
         <Switch>
+        <Route exact path="/single-property-page">
+            <SinglePropertyPage />
+          </Route>
           <Route exact path="/contact-us">
             <ContactUsPage />
           </Route>
