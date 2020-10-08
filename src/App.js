@@ -6,8 +6,6 @@ import AuthRoute from "./util/AuthRoute";
 import { ACCESS_TOKEN_NAME } from "./constants/apiConstants";
 import AuthService from "./services/auth.service";
 
-
-
 import HomePage from "./pages/HomePage.jsx";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -55,9 +53,11 @@ function App() {
       <CssBaseline />
       <Router history={history}>
         <Switch>
-        <Route exact path="/single-property-page">
-            <SinglePropertyPage />
-          </Route>
+          <Route
+            path="/properties/:propertyId"
+            component={SinglePropertyPage}
+          />
+
           <Route exact path="/contact-us">
             <ContactUsPage />
           </Route>
@@ -98,7 +98,7 @@ function App() {
                                     <SignUpPage />
                         /Route> */}
           <Route path="/profile-settings">
-            <ProfileSettings user={currentUser}/>
+            <ProfileSettings user={currentUser} />
           </Route>
           <Route path="/profile-image">
             <ProfileImage />
@@ -110,7 +110,7 @@ function App() {
             <UpgradeSubscriptionPage />
           </Route>
           <Route path="/new-upgrade" component={NewUpgradePage} />
-          
+
           <Route path="/payment">
             <PaymentPage />
           </Route>

@@ -81,7 +81,7 @@ const LeftColumn = ({ title, propertyType }) => {
       const result = await axios(
         "https://api.terrelldavies.com/api/properties"
       );
-      console.log(result.data.data);
+      // console.log(result.data.data);
       setProperties(result.data.data);
     }
     fetchData();
@@ -89,7 +89,6 @@ const LeftColumn = ({ title, propertyType }) => {
   let filteredProperties = properties;
 
   // const filteredProperties = properties.filter(property => property.cat_id === propertyType)
-console.log(properties)
   return (
     <div>
       <PropertyTitle>{title}</PropertyTitle>

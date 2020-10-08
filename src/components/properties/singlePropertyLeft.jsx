@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const SinglePropertyLeft = () => {
+const SinglePropertyLeft = ({property}) => {
     const classes = useStyles();
     return (
         <div className={classes.BackgroundImage}>

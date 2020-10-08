@@ -3,6 +3,12 @@
 /* * {
     outline: 1px solid rgb(128, 0, 0);
 } */
+a {
+  text-decoration: none;
+}
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
 
 .BackgroundImage {
   height: "1000px";

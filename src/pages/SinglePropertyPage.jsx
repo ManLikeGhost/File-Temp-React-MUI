@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect }  from "react";
+import axios from "axios";
 import NavigationHeader from "../components/navigationHeader.jsx";
 import MarbleBackground from "../img/MarbleBackground.png";
 import Footer from "../components/footer";
@@ -23,7 +24,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SinglePropertyPage = () => {
+const SinglePropertyPage = ({match, location}) => {
+  const {
+    params: { propertyId },
+  } = match;
+  console.log("Dynamic routing single property location", location)
+  const [isLoading, setIsLoading] = useState(true);
+  const [property, setProperty] = useState();
+  useEffect(() => {
+    async function fetchData() {
+      const result = await axios(
+        `https://api.terrelldavies.com/api/properties/${propertyId}`
+      );
+      console.log(result.data.data);
+      setProperty(result.data.data);
+      setIsLoading(false);
+      console.log(`https://api.terrelldavies.com/api/properties/${propertyId}`)
+    }
+    fetchData();
+  }, [propertyId]);
+
   const classes = useStyles();
   return (
     <div className={classes.backgroundImage}>
@@ -31,12 +51,11 @@ const SinglePropertyPage = () => {
       <div className={classes.holder}>
         <Grid container spacing={6}>
         
-          <Grid key={SinglePropertyTitle.id} item container xs={8}>
-              <SinglePropertyTitle 
-              />
+          <Grid item container xs={8}>
+              <SinglePropertyTitle />
           </Grid> 
           <Grid item container xs={8}>
-            <SinglePropertyLeft />
+            <SinglePropertyLeft property={property}/>
           </Grid>
 
           <Grid item container xs={4}>
