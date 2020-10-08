@@ -4,13 +4,13 @@ import MarbleBackground from "../img/MarbleBackground.png";
 import Footer from "../components/footer";
 import SaleRentShortlet from "../components/home/saleRentShortlet";
 
-import LeftColumn from "../components/properties/leftColumn";
-import RightColumn from "../components/properties/rightColumn";
-
-
+import SinglePropertyLeft from "../components/properties/singlePropertyLeft";
+import SinglePropertyRight from "../components/properties/singlePropertyRight";
+import { detailsProperties } from "../demoData/demoDataCard";
 import Grid from "@material-ui/core/Grid";
 
 import { makeStyles } from "@material-ui/core/styles";
+import SinglePropertyTitle from "../components/properties/singlePropertyTitle.jsx";
 
 const useStyles = makeStyles((theme) => ({
   backgroundImage: {
@@ -23,22 +23,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FlatsPropertyDisplay = () => {
+const SinglePropertyPage = () => {
   const classes = useStyles();
   return (
     <div className={classes.backgroundImage}>
       <NavigationHeader />
       <div className={classes.holder}>
         <Grid container spacing={6}>
+        
+          <Grid key={SinglePropertyTitle.id} item container xs={8}>
+              <SinglePropertyTitle 
+              />
+          </Grid> 
           <Grid item container xs={8}>
-            <LeftColumn title="Flats for rent in Nigeria"/>
-            <LeftColumn
-              title="Flats for rent in Nigeria"
-              propertytype={"flat"}
-            />
+            <SinglePropertyLeft />
           </Grid>
+
           <Grid item container xs={4}>
-            <RightColumn />
+            <SinglePropertyRight />
           </Grid>
         </Grid>
       </div>
@@ -48,4 +50,4 @@ const FlatsPropertyDisplay = () => {
     </div>
   );
 };
-export default FlatsPropertyDisplay;
+export default SinglePropertyPage;

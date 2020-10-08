@@ -5,12 +5,12 @@ import MarbleBackground from "../img/MarbleBackground.png";
 import Footer from "../components/footer";
 import Grid from "@material-ui/core/Grid";
 
-import { Pagination } from '@material-ui/lab';
+
 
 
 import BlogArticleList from "../components/blog/blogArticleList";
 import BlogPageImage1 from "../img/BlogPageImage1.png";
-
+import BlogPagination from "../components/blog/BlogPagination";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -72,7 +72,7 @@ const BlogPage = () => {
           </div> 
           <SectionTitle>Latest Articles</SectionTitle>
           <BlogArticleList />
-          <div><Pagination count={3} variant="outlined" shape="rounded" /></div>
+          <BlogPagination />
           <Footer />
       </div>
     </div>        
