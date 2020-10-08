@@ -195,9 +195,9 @@ const RightColumn = () => {
                 }}
               >
                 <option aria-label="None" value="" />
-                <option value="rent">For Rent</option>
-                <option value="sale">For Sale</option>
-                <option value={30}>For something else</option>
+                <option value="rent">Rent</option>
+                <option value="sale">Sale</option>
+                <option value="shortlet">Shortlet</option>
               </Select>
             </FormControl>
           </Grid>
@@ -215,9 +215,10 @@ const RightColumn = () => {
                   }}
                 >
                   <option aria-label="None" value="" />
-                  <option value="rent">All types</option>
-                  <option value="sale">For Sale</option>
-                  <option value={30}>For something else</option>
+                  <option value="rent">Flats</option>
+                  <option value="sale">Houses</option>
+                  <option value="commercial">Commercial Projects</option>
+                  <option value="land">Lands</option>
                 </Select>
               </FormControl>
             </Grid>
@@ -234,9 +235,12 @@ const RightColumn = () => {
                   }}
                 >
                   <option aria-label="None" value="" />
-                  <option value="rent">Any</option>
-                  <option value="sale">For Sale</option>
-                  <option value={30}>For something else</option>
+                  <option value="1">1 Bedrrom</option>
+                  <option value="2">2 Bedrroms</option>
+                  <option value="3">3 Bedrroms</option>
+                  <option value="4">4 Bedrroms</option>
+                  <option value="5">5 Bedrroms</option>
+                  <option value="+5">+5 Bedrroms</option>
                 </Select>
               </FormControl>
             </Grid>
@@ -255,9 +259,12 @@ const RightColumn = () => {
                   }}
                 >
                   <option aria-label="None" value="" />
-                  <option value="rent">No Min</option>
-                  <option value="sale">For Sale</option>
-                  <option value={30}>For something else</option>
+                  <option value="1">NGN 350,000 p/a</option>
+                  <option value="2">NGN 550,000 p/a</option>
+                  <option value="3">NGN 750,000 p/a</option>
+                  <option value="4">NGN 950,000 p/a</option>
+                  <option value="5">NGN 1,000, 000 p/a</option>
+                  <option value="6">NGN 1,350,000 p/a</option>
                 </Select>
               </FormControl>
             </Grid>
@@ -274,9 +281,12 @@ const RightColumn = () => {
                   }}
                 >
                   <option aria-label="None" value="" />
-                  <option value="rent">No Max</option>
-                  <option value="sale">For Sale</option>
-                  <option value={30}>For something else</option>
+                  <option value="1">NGN 350,000 p/a</option>
+                  <option value="2">NGN 550,000 p/a</option>
+                  <option value="3">NGN 750,000 p/a</option>
+                  <option value="4">NGN 950,000 p/a</option>
+                  <option value="5">NGN 1,000, 000 p/a</option>
+                  <option value="6">NGN 1,350,000 p/a</option>
                 </Select>
               </FormControl>
             </Grid>
@@ -295,9 +305,8 @@ const RightColumn = () => {
                   }}
                 >
                   <option aria-label="None" value="" />
-                  <option value="rent">Any</option>
-                  <option value="sale">For Sale</option>
-                  <option value={30}>For something else</option>
+                  <option value="furnished">Furnished</option>
+                  <option value="unfurished">Unfurnished</option>
                 </Select>
               </FormControl>
             </Grid>
@@ -314,9 +323,11 @@ const RightColumn = () => {
                   }}
                 >
                   <option aria-label="None" value="" />
-                  <option value="rent">Any Time</option>
-                  <option value="sale">For Sale</option>
-                  <option value={30}>For something else</option>
+                  <option value="24">Last 24 hours</option>
+                  <option value="sale">Last 3 days</option>
+                  <option value={30}>Last 7 days</option>
+                  <option value={30}>Last 14 days</option>
+                  <option value={30}>Last 30 days</option>
                 </Select>
               </FormControl>
             </Grid>
