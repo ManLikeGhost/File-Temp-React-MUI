@@ -19,7 +19,7 @@ import {
 } from '@material-ui/core';
 
 function Banner(props) {
-    if (props.newProp) console.log(props.newProp)
+    // if (props.newProp) console.log(props.newProp)
     const contentPosition = props.contentPosition ? props.contentPosition : "left"
     const totalItems = props.length ? props.length : 3;
     const mediaLength = totalItems - 1;

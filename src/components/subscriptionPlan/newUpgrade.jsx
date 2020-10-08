@@ -1,4 +1,5 @@
 import React from "react";
+import {useLocation} from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
@@ -137,6 +138,9 @@ const details = [
 ];
 
 const NewUpgrade = () => {
+  // const {foo} = props.location.state
+  let data = useLocation();
+console.log(data.subscription)
   const classes = useStyles();
   return (
     <div>

@@ -24,10 +24,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const PropertyFeatures = () => {
+const PropertyFeatures = ({bedroom, bathroom, toilet, parkingSpace}) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
+      {/* <div></div> */}
       <Grid
         container
         direction="row"
@@ -37,19 +38,19 @@ const PropertyFeatures = () => {
       >
         <Grid item xs={3}>
           <HotelOutlinedIcon className={classes.icon} />
-          <Typography  className={classes.text}>4 Bedrooms</Typography>
+          <Typography  className={classes.text}>{bedroom} Bedrooms</Typography>
         </Grid>
         <Grid item xs={2}>
           <BathtubOutlinedIcon className={classes.icon} />
-          <Typography className={classes.text}>4 Baths</Typography>
+          <Typography className={classes.text}>{bathroom} Baths</Typography>
         </Grid>
         <Grid item xs={3}>
           <WcIcon className={classes.icon} />
-          <Typography  className={classes.text}>5 Toilets</Typography>
+          <Typography  className={classes.text}>{toilet} Toilets</Typography>
         </Grid>
         <Grid item xs={4}>
           <DirectionsCarOutlinedIcon className={classes.icon} />
-          <Typography className={classes.text}>5 Parking Space</Typography>
+          <Typography className={classes.text}>{parkingSpace} Parking Space</Typography>
         </Grid>
       </Grid>
     </div>

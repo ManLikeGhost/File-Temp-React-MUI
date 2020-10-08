@@ -16,16 +16,6 @@ import MoneyIcon from "@material-ui/icons/Money";
 import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles((theme) => ({
-  // root: {
-  //   //maxWidth: 345,
-  //   width: "629.34px",
-  //   height: "261.67px",
-  //   left: "108px",
-  //   top: "694px",
-  //   background: "#F5E9DE",
-  //   border: "0.8px solid #BF7950",
-  //   borderradius: "2px",
-  // },
   media: {
     height: "100%",
   },
@@ -61,19 +51,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CardProperty = ({ imagePath, address, description, title, price }) => {
+const CardProperty = ({ ...property }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.cardProperty}>
       <Card className={classes.card}>
-        <Grid container xs={12}>
+        <Grid container >
           <Grid item xs={6}>
             <CardMedia
               component="img"
-              alt={title}
-              title={title}
-              image={imagePath || "http://placehold.it/200"}
+              alt={property.title}
+              title={property.title}
+              image={property.featuredImage || "http://placehold.it/200"}
               className={classes.media}
             />
           </Grid>
@@ -83,7 +73,9 @@ const CardProperty = ({ imagePath, address, description, title, price }) => {
               <Grid container className={classes.propertyDetailsContainer}>
                 <Grid item container className={classes.margin}>
                   <Grid item xs={10}>
-                    <Typography className={classes.title}>{title}</Typography>
+                    <Typography className={classes.title}>
+                      {property.title}
+                    </Typography>
                   </Grid>
                   <Grid item xs={2}>
                     <FavoriteIcon color="primary" fontSize="small" />
@@ -95,7 +87,7 @@ const CardProperty = ({ imagePath, address, description, title, price }) => {
                   </Grid>
                   <Grid item xs={11}>
                     <Typography className={classes.address}>
-                      {address}
+                      {property.metaDescription}
                     </Typography>
                   </Grid>
                 </Grid>
@@ -104,18 +96,25 @@ const CardProperty = ({ imagePath, address, description, title, price }) => {
                     <MoneyIcon fontSize="small" color="primary" />
                   </Grid>
                   <Grid item xs={11}>
-                    <Typography className={classes.price}>{price}</Typography>
+                    <Typography className={classes.price}>
+                      {property.budget}
+                    </Typography>
                   </Grid>
                 </Grid>
                 <Grid item container className={classes.margin}>
                   <Grid item xs={12}>
-                    <Typography>{description}</Typography>
+                    <Typography>{property.description}</Typography>
                   </Grid>
                 </Grid>
               </Grid>
 
               <Divider variant="middle" className={classes.divider} />
-              <CardPropertyFeatures />
+              <CardPropertyFeatures
+                bedroom={property.bedroom}
+                bathroom={property.bathroom}
+                toilet={property.toilet}
+                garage={property.garage}
+              />
             </CardContent>
           </Grid>
         </Grid>

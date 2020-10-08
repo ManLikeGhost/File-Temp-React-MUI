@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import PropertyTitle from "./propertyTitle";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -9,8 +10,8 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 
-import { detailsProperties } from "../../demoData/demoDataCard";
-import FlatPropertyList from "./flatPropertyList";
+// import { detailsProperties } from "../../demoData/demoDataCard";
+import PropertiesList from "./propertiesList";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,22 +47,9 @@ const QuickFilterButton = withStyles({
     textTransform: "none",
     fontSize: 16,
     padding: "6px 12px",
-    // border: "1px solid",
+
     lineHeight: 1.5,
-    // backgroundColor: "#0063cc",
-    // borderColor: "#0063cc",
-    // fontFamily: [
-    //   "-apple-system",
-    //   "BlinkMacSystemFont",
-    //   '"Segoe UI"',
-    //   "Roboto",
-    //   '"Helvetica Neue"',
-    //   "Arial",
-    //   "sans-serif",
-    //   '"Apple Color Emoji"',
-    //   '"Segoe UI Emoji"',
-    //   '"Segoe UI Symbol"',
-    // ].join(","),
+
     "&:hover": {
       backgroundColor: " #BF7950",
       borderColor: "white",
@@ -79,19 +67,33 @@ const QuickFilterButton = withStyles({
   },
 })(Button);
 
-const LeftColumn = ({title}) => {
+const LeftColumn = ({ title, propertyType }) => {
   const classes = useStyles();
   const [filterByType, setFilterByType] = React.useState("");
 
   const handleFilterByTypeChange = (event) => {
     setFilterByType(event.target.value);
   };
+  const [properties, setProperties] = useState([]);
 
+  useEffect(() => {
+    async function fetchData() {
+      const result = await axios(
+        "https://api.terrelldavies.com/api/properties"
+      );
+      // console.log(result.data.data);
+      setProperties(result.data.data);
+    }
+    fetchData();
+  }, []);
+  let filteredProperties = properties;
+
+  // const filteredProperties = properties.filter(property => property.cat_id === propertyType)
   return (
     <div>
       <PropertyTitle>{title}</PropertyTitle>
       <Grid container className={classes.quickFilterContainer}>
-        <Grid item={12}>
+        <Grid item xs={12}>
           <Typography className={classes.quickFilterTitle}>
             Quick Filters
           </Typography>
@@ -150,7 +152,8 @@ const LeftColumn = ({title}) => {
       >
         <Grid item xs={4}>
           <Typography className={classes.resultOf}>
-            Results 1 - {detailsProperties.length} of {detailsProperties.length}
+            Results 1 - {filteredProperties.length} of{" "}
+            {filteredProperties.length}
           </Typography>
         </Grid>
         <Grid item xs={4}></Grid>
@@ -159,15 +162,13 @@ const LeftColumn = ({title}) => {
             variant="outlined"
             className={classes.resultDropdownFilter}
           >
-            <InputLabel id="demo-simple-select-helper-label">
-              Filter By Type
-            </InputLabel>
+            <InputLabel id="helperLabel">Filter By Type</InputLabel>
             <Select
               required
               fullWidth
               labelId="accountType"
               id="accountType"
-              MenuItem
+              // MenuItem
               value={filterByType}
               onChange={handleFilterByTypeChange}
             >
@@ -178,7 +179,10 @@ const LeftColumn = ({title}) => {
           </FormControl>
         </Grid>
       </Grid>
-      <FlatPropertyList />
+      <PropertiesList
+        propertyType={propertyType}
+        properties={filteredProperties}
+      />
     </div>
   );
 };

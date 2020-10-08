@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import history from "../history";
+
 import {API_BASE_URL, ACCESS_TOKEN_NAME} from '../constants/apiConstants';
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -130,15 +131,16 @@ const SignInPage = () => {
       password,
     };
     // this.props.setCurrentUser(user);
-    console.log("To be sent", { user });
+    // console.log("To be sent", { user });
     axios
       .post(API_BASE_URL+"/login", user)
       .then((response) => {
-        console.log("Response from server", response);
+        // console.log("Response from server", response);
         setLoading(false)
         if (response.status === 200) {
-          localStorage.setItem(ACCESS_TOKEN_NAME,response.data.token);
-          history.push('/')
+          localStorage.setItem(ACCESS_TOKEN_NAME,JSON.stringify(response.data));
+          history.push('/profile-settings/account')
+          window.location.reload();
         } 
         else if(response.data.code === 204){
           setError("Username and password do not match");

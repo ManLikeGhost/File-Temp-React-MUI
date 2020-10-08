@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "../../axios/index";
+import { API_BASE_URL } from "../../constants/apiConstants";
+
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
@@ -81,6 +84,39 @@ const useStyles = makeStyles((theme) => ({
 
 const PostProperty = () => {
   const classes = useStyles();
+  const [newPropertyRequest, setNewPropertyRequest] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    category: "",
+    type: "",
+    user_type: "",
+    state: "",
+    locality: "",
+    area: "",
+    bedrooms: "",
+    budget: "",
+    comment: "",
+  });
+  const handleChange = (name) => (event) => {
+    setNewPropertyRequest({
+      ...newPropertyRequest,
+      [name]: event.target.value,
+    });
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+console.log(newPropertyRequest)
+    axios
+      .post(API_BASE_URL + "/submit-request", newPropertyRequest)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <SectionTitle>Post a Property Request</SectionTitle>
@@ -93,7 +129,7 @@ const PostProperty = () => {
       </Grid>
       <div className={classes.formContainer}>
         <Grid container>
-          <form className={classes.form}>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <Grid container spacing={5}>
               <Grid item xs={8}>
                 <TextField
@@ -105,22 +141,22 @@ const PostProperty = () => {
                   autoComplete="full-name"
                   className={classes.label}
                   variant="outlined"
-                  //   value={state.name}
-                  //   onChange={handleChange("name")}
+                  value={newPropertyRequest.name}
+                  onChange={handleChange("name")}
                 />
               </Grid>
               <Grid item xs={4}>
                 <FormControl className={classes.accountFormControl}>
-                  <InputLabel id="accountType">I’m a/an...</InputLabel>
+                  <InputLabel id="user_type">I’m a/an...</InputLabel>
                   <Select
                     required
                     fullWidth
-                    labelId="accountType"
-                    id="accountType"
+                    labelId="user_type"
+                    id="user_type"
                     variant="outlined"
 
-                    // value={state.accountType}
-                    // onChange={handleChange("accountType")}
+                    value={newPropertyRequest.user_type}
+                    onChange={handleChange("user_type")}
                   >
                     <MenuItem value={"propertyShopper"}>
                       Property Shopper
@@ -147,8 +183,8 @@ const PostProperty = () => {
                   name="email"
                   autoComplete="email"
 
-                  //   value={state.email}
-                  //   onChange={handleChange("email")}
+                    value={newPropertyRequest.email}
+                    onChange={handleChange("email")}
                 />
               </Grid>
               <Grid item xs={6}>
@@ -160,23 +196,23 @@ const PostProperty = () => {
                   label="Phone Number"
                   name="phone"
                   autoComplete="phone"
-                  //   value={state.email}
-                  //   onChange={handleChange("email")}
+                    value={newPropertyRequest.phone}
+                    onChange={handleChange("phone")}
                 />
               </Grid>
             </Grid>
             <Grid container spacing={6}>
               <Grid item xs={6}>
                 <FormControl className={classes.accountFormControl}>
-                  <InputLabel id="accountType">Select Category</InputLabel>
+                  <InputLabel id="category">Select Category</InputLabel>
                   <Select
                     required
                     fullWidth
-                    labelId="accountType"
-                    id="accountType"
+                    labelId="category"
+                    id="category"
                     variant="outlined"
-                    // value={state.accountType}
-                    // onChange={handleChange("accountType")}
+                    value={newPropertyRequest.category}
+                    onChange={handleChange("category")}
                   >
                     <MenuItem value={"propertyShopper"}>
                       {" "}
@@ -194,15 +230,15 @@ const PostProperty = () => {
               </Grid>
               <Grid item xs={6}>
                 <FormControl className={classes.accountFormControl}>
-                  <InputLabel id="accountType">Select Type</InputLabel>
+                  <InputLabel id="type">Select Type</InputLabel>
                   <Select
                     required
                     fullWidth
-                    labelId="accountType"
-                    id="accountType"
+                    labelId="type"
+                    id="type"
                     variant="outlined"
-                    // value={state.accountType}
-                    // onChange={handleChange("accountType")}
+                    value={newPropertyRequest.type}
+                    onChange={handleChange("type")}
                   >
                     <MenuItem value={"propertyShopper"}>
                       {" "}
@@ -222,15 +258,15 @@ const PostProperty = () => {
             <Grid container spacing={6}>
               <Grid item xs={4}>
                 <FormControl className={classes.accountFormControl}>
-                  <InputLabel id="accountType">Select State</InputLabel>
+                  <InputLabel id="state">Select State</InputLabel>
                   <Select
                     required
                     fullWidth
-                    labelId="accountType"
-                    id="accountType"
+                    labelId="state"
+                    id="state"
                     variant="outlined"
-                    // value={state.accountType}
-                    // onChange={handleChange("accountType")}
+                    value={newPropertyRequest.state}
+                    onChange={handleChange("state")}
                   >
                     <MenuItem value={"propertyShopper"}>
                       {" "}
@@ -248,15 +284,15 @@ const PostProperty = () => {
               </Grid>
               <Grid item xs={4}>
                 <FormControl className={classes.accountFormControl}>
-                  <InputLabel id="accountType">Select Locality</InputLabel>
+                  <InputLabel id="locality">Select Locality</InputLabel>
                   <Select
                     required
                     fullWidth
-                    labelId="accountType"
-                    id="accountType"
+                    labelId="locality"
+                    id="locality"
                     variant="outlined"
-                    // value={state.accountType}
-                    // onChange={handleChange("accountType")}
+                    value={newPropertyRequest.locality}
+                    onChange={handleChange("locality")}
                   >
                     <MenuItem value={"propertyShopper"}>
                       Property Shopper
@@ -273,15 +309,15 @@ const PostProperty = () => {
               </Grid>
               <Grid item xs={4}>
                 <FormControl className={classes.accountFormControl}>
-                  <InputLabel id="accountType">Select Area</InputLabel>
+                  <InputLabel id="area">Select Area</InputLabel>
                   <Select
                     required
                     fullWidth
-                    labelId="accountType"
-                    id="accountType"
+                    labelId="area"
+                    id="area"
                     variant="outlined"
-                    // value={state.accountType}
-                    // onChange={handleChange("accountType")}
+                    value={newPropertyRequest.area}
+                    onChange={handleChange("area")}
                   >
                     <MenuItem value={"propertyShopper"}>
                       {" "}
@@ -301,15 +337,17 @@ const PostProperty = () => {
             <Grid container spacing={5}>
               <Grid item xs={6}>
                 <FormControl className={classes.accountFormControl}>
-                  <InputLabel id="accountType">Select No. of bedrooms</InputLabel>
+                  <InputLabel id="bedrooms">
+                    Select No. of bedrooms
+                  </InputLabel>
                   <Select
                     required
                     fullWidth
-                    labelId="accountType"
-                    id="accountType"
+                    labelId="bedrooms"
+                    id="bedrooms"
                     variant="outlined"
-                    // value={state.accountType}
-                    // onChange={handleChange("accountType")}
+                    value={newPropertyRequest.bedrooms}
+                    onChange={handleChange("bedrooms")}
                   >
                     <MenuItem value={"propertyShopper"}>
                       {" "}
@@ -335,8 +373,8 @@ const PostProperty = () => {
                   autoComplete="budget"
                   className={classes.label}
                   variant="outlined"
-                  //   value={state.name}
-                  //   onChange={handleChange("name")}
+                    value={newPropertyRequest.budget}
+                    onChange={handleChange("budget")}
                 />
               </Grid>
             </Grid>
@@ -357,9 +395,10 @@ const PostProperty = () => {
                     height: "10rem",
                   }}
 
-                  //   placeholder=""
-                  //       defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                  //   ut labore et dolore magna aliqua."
+                    placeholder="Add additional comment here"
+                    value={newPropertyRequest.comment}
+                    onChange={handleChange("comment")}
+                        
                 />
               </Grid>
             </Grid>
@@ -373,7 +412,7 @@ const PostProperty = () => {
               POST REQUEST
             </Button>
           </form>
-        </Grid>  
+        </Grid>
       </div>
     </div>
   );

@@ -79,16 +79,29 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "30%",
   },
 }));
-const SubscriptionPlan = (props) => {
+const SubscriptionPlan = ({
+  id,
+  name,
+  price,
+  duration,
+  maxAdListing,
+  listings1,
+  listings2,
+  listings3,
+}) => {
   const classes = useStyles();
-  const { plan } = props;
+  const discount = (percentage) => {
+    
+    let salePrice = ((100-percentage)/100) * price
+    return salePrice;
+  };
   return (
-    <div>
-      <Grid item key={plan.title} xs={12} sm={12} md={4}>
+    <div key={id}>
+      <Grid item xs={12} sm={12} md={4}>
         <Card className={classes.cardContainer}>
           <CardHeader
-            title={plan.title}
-            titleTypographyProps={{ align: "center" }}
+            name={name}
+            style={{ align: "center" }}
             className={classes.cardHeader}
           />
           <CardContent>
@@ -97,12 +110,12 @@ const SubscriptionPlan = (props) => {
                 <Grid item xs={12}>
                   <Typography
                     component="h2"
-                    variant="p"
+                    variant="body1"
                     color="secondary"
                     className={classes.price}
                   >
                     <span className={classes.naira}>₦</span>
-                    {plan.price}
+                    {price}
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
@@ -115,7 +128,7 @@ const SubscriptionPlan = (props) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  {plan.title === "Free" ? (
+                  {name === "Free" ? (
                     <div className={classes.freePlan}></div>
                   ) : (
                     <div>
@@ -124,14 +137,14 @@ const SubscriptionPlan = (props) => {
                         color="textSecondary"
                         className={classes.discount}
                       >
-                        ₦{plan.discount1} for 6 months (5% discount)
+                        ₦{discount(5)} for 6 months (5% discount)
                       </Typography>
                       <Typography
                         variant="h6"
                         color="textSecondary"
                         className={classes.discount}
                       >
-                        ₦{plan.discount2} for 12 months (10% discount)
+                        ₦{discount(10)} for 12 months (10% discount)
                       </Typography>
                     </div>
                   )}
@@ -146,10 +159,10 @@ const SubscriptionPlan = (props) => {
                 align="center"
                 className={classes.listings}
               >
-                Up to {plan.listings1} Listings
+                Up to {listings1} Listings
               </Typography>
               <Divider variant="middle" className={classes.divider} />
-              {plan.title === "Free" ? (
+              {name === "Free" ? (
                 <div className={classes.freePlan}></div>
               ) : (
                 <div>
@@ -159,7 +172,7 @@ const SubscriptionPlan = (props) => {
                     align="center"
                     className={classes.listings}
                   >
-                    Up to {plan.listings2} Premium Listings
+                    Up to {listings2} Premium Listings
                   </Typography>
                   <Divider variant="middle" className={classes.divider} />
                   <Typography
@@ -168,7 +181,7 @@ const SubscriptionPlan = (props) => {
                     align="center"
                     className={classes.listings}
                   >
-                    Up to {plan.listings3} Featured Ad Listings
+                    Up to {listings3} Featured Ad Listings
                   </Typography>
                   <Divider variant="middle" className={classes.divider} />
                 </div>
@@ -180,6 +193,7 @@ const SubscriptionPlan = (props) => {
               variant="contained"
               color="primary"
               className={classes.subscriptionButton}
+              href="/upgrade-subscription"
             >
               SUBSCRIBE
             </Button>

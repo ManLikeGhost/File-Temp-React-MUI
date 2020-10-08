@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ProfileSectionTitle from "./miniComponents/profilesectionTitle";
-
+import axios from "../../axios/index";
+import history from "../../history";
+import { API_BASE_URL, ACCESS_TOKEN_NAME } from "../../constants/apiConstants";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -12,9 +14,6 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import { makeStyles } from "@material-ui/core/styles";
-
-
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -90,23 +89,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AccountSettings = () => {
+const AccountSettings = ({ user }) => {
+  const {
+    userType,
+    name,
+    company_name,
+    address,
+    locality,
+    state,
+    country,
+    phone,
+    mobile,
+    email,
+    services,
+    facebook_profile,
+    twitter_profile,
+    linkedin_profile,
+  } = user.user;
   const classes = useStyles();
   const [account, setAccount] = useState({
-    accountType: "",
-    name: "",
-    companyName: "",
-    address: "",
-    locality: "",
-    state: "",
-    country: "",
-    phone: "",
-    mobile: "",
-    email: "",
-    services: "",
-    facebook: "",
-    twitter: "",
-    linkedin: "",
+    accountType: `${userType}`,
+    name: `${name}`,
+    companyName: `${company_name}`,
+    address: `${address}`,
+    locality: `${locality}`,
+    state: `${state}`,
+    country: `${country}`,
+    phone: `${phone}`,
+    mobile: `${mobile}`,
+    email: `${email}`,
+    services: `${services}`,
+    facebook: `${facebook_profile}`,
+    twitter: `${twitter_profile}`,
+    linkedin: `${linkedin_profile}`,
   });
 
   const handleChange = (name) => (event) => {
@@ -118,46 +133,20 @@ const AccountSettings = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const {
-      accountType,
-      name,
-      companyName,
-      address,
-      locality,
-      state,
-      country,
-      phone,
-      mobile,
-      email,
-      services,
-      facebook,
-      twitter,
-      linkedin,
-    } = account;
-    const newAccount = {
-      accountType,
-      name,
-      companyName,
-      address,
-      locality,
-      state,
-      country,
-      phone,
-      mobile,
-      email,
-      services,
-      facebook,
-      twitter,
-      linkedin,
-    };
-    // this.props.setCurrentAccount(newAccount);
-    console.log({ newAccount });
+    console.log(account);
+    axios
+      .post(API_BASE_URL + "/profile-update", account,{
+        headers: {
+          'Authorization': `Bearer ${user.user.token}`
+        }})
+      .then((response) => {
+        console.log(response);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-
-  // const handleAccountTypeChange = (event) => {
-  //   setAccountType(event.target.value);
-  // };
-
   return (
     <div>
       <div>
@@ -202,10 +191,11 @@ const AccountSettings = () => {
                   id="name"
                   name="name"
                   label="Name"
+                  value={account.name}
                   fullWidth
                   autoComplete="name"
                   className={classes.label}
-                  value={account.name}
+                  // value={account.name}
                   onChange={handleChange("name")}
                 />
               </Grid>
