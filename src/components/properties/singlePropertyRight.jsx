@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
+//import Link from "@material-ui/core/Link";
 import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -10,7 +10,17 @@ import Select from "@material-ui/core/Select";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import InsertChartIcon from "@material-ui/icons/InsertChart";
 import Divider from "@material-ui/core/Divider";
-
+import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
+import PhoneInTalkOutlinedIcon from '@material-ui/icons/PhoneInTalkOutlined';
+import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
+import LanguageOutlinedIcon from '@material-ui/icons/LanguageOutlined';
+import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
+import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
+import MarketedBY from "../../img/MarketedBY.png";
+import FacebookIcon from "../../img/facebookIcon.png";
+import TwitterIcon from "../../img/twitterIcon.png";
+import LinkedInIcon from "../../img/linkedInIcon.png";
+import InstagramIcon from "../../img/instagramIcon.png";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -30,6 +40,55 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.main,
     marginBottom: theme.spacing(3),
   },
+
+  //marketedBYFeature
+  marketedBy: {
+    width: "360px",
+    height: "364px",
+    background: "#FFFFFF",
+    border: "1px solid #BF7950",
+    boxSizing: "border-box",
+    boxShadow: "0px 4px 13px rgba(0, 0, 0, 0.1)",
+    borderRadius: "2px",
+    margin: "0px 0px 20px 0px",
+  },
+
+  marketedByimg: {
+    padding: "0px 0px 0px 50px",
+  },
+
+  marketedBytext: {
+    padding: "0px 0px 0px 20px",
+    color: "#BF7950",
+    fontFamily: "Metropolis",
+    //fontStyle: normal;
+    fontWeight: "bold",
+    //fontSize: 26px;
+    //width: "191px",
+    //height: "26px",
+  },
+
+  marketedByNumber: {
+    color: "#04403A",
+    fontFamily: "Metropolis",
+    padding: "0px 0px 20px 20px",
+  },
+
+  markettedByContainer: {
+    background: "#F5E9DE",
+    borderBottom: `0.8px solid ${theme.palette.primary.main}`,
+    margin: "0px 0px 10px 0px",
+  },
+
+  marketedByItems: {
+    padding: "0px 0px 0px 20px",
+    fontFamily: "Gilroy-Light",
+    color: "#04403A"
+  },
+
+  //marketedBYFeature
+
+
   advancedFilter: {
     background: " #FFFFFF",
     border: `0.8px solid ${theme.palette.primary.main}`,
@@ -98,6 +157,15 @@ const useStyles = makeStyles((theme) => ({
     color: "rgba(0, 0, 0, 0.51)",
     margin: "30px 0",
   },
+
+  socialMedia: {
+    width: "360px",
+    height: "47px",
+    border: `0.8px solid ${theme.palette.primary.main}`,
+    margin: "0px 0px 20px 0px",
+    padding: "10px 0px 0px 0px",
+    backgroundColor: "#F5E9DE",
+  },
 }));
 
 const PostARequestButton = withStyles({
@@ -129,25 +197,82 @@ const PostARequestButton = withStyles({
     },
   },
 })(Button);
-const RightColumn = () => {
+const SinglePropertyRight = () => {
   const classes = useStyles();
   return (
     <div>
-      <Grid
-        container
-        className={classes.postARequestContainer}
-        justify="center"
-        alignItems="center"
-      >
-        <Grid item xs={12} style={{ textAlign: "center" }}>
-          <Typography className={classes.postARequestText}>
-            Can’t find your ideal property?
-          </Typography>
-          <Link href="/post-property-request">
-            <PostARequestButton>POST A REQUEST</PostARequestButton>
-          </Link>
-        </Grid>
-      </Grid>
+      <div className={classes.marketedBy}>
+        <div className={classes.markettedByContainer}>
+          <Grid container justify="center" alignItems="center">
+            <Grid item xs={2}>
+              <PermContactCalendarIcon color="secondary" fontSize="large" />
+            </Grid>
+            <Grid item xs={10}>
+              <Typography className={classes.advancedFilterTitleText}>
+                Marketed by
+              </Typography>
+            </Grid>
+          </Grid>
+        </div>
+        <div>
+          <Grid container >
+            <Grid item xs={12}>
+              <div className={classes.marketedByimg}>
+                <img src={MarketedBY} alt=""/>
+              </div>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography className={classes.marketedBytext} variant="h5">
+                Acme Property
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography className={classes.marketedByNumber} variant="h5">
+                080 XXX 
+              </Typography>
+            </Grid>
+            <Grid item container >
+              <Grid item container xs={12} className={classes.marketedByItems}>
+                  <Grid item xs={2}>
+                    <RoomOutlinedIcon />
+                  </Grid>
+                  <Grid item xs={10}>
+                    25 Maloney Street, Lagos Island, Lagos State.
+                  </Grid>
+              </Grid>
+
+              <Grid item container xs={12} className={classes.marketedByItems}>
+                  <Grid item xs={2}>
+                    <PhoneInTalkOutlinedIcon />
+                  </Grid>
+                  <Grid item xs={10}>
+                    08 123 456 789, 07 123 456 789
+                  </Grid>
+              </Grid>
+
+              <Grid item container xs={12} className={classes.marketedByItems}>
+                <Grid item xs={2}>
+                  <ChatBubbleOutlineOutlinedIcon />
+                </Grid>
+                <Grid item xs={10}>
+                  + 234 8 987 654 321
+                </Grid>
+              </Grid>
+
+              <Grid item  container xs={12} className={classes.marketedByItems}>
+                <Grid item xs={2}>
+                  <LanguageOutlinedIcon />
+                </Grid>
+                <Grid item xs={10}>
+                  www.acmepropertyltd.com
+                </Grid>
+                
+              </Grid>
+            </Grid>
+          </Grid>
+          
+        </div>
+      </div>
       <div className={classes.advancedFilter}>
         <div className={classes.advancedFilterTitleContainer}>
           <Grid container justify="center" alignItems="center">
@@ -195,9 +320,9 @@ const RightColumn = () => {
                 }}
               >
                 <option aria-label="None" value="" />
-                <option value="rent">Rent</option>
-                <option value="sale">Sale</option>
-                <option value="shortlet">Shortlet</option>
+                <option value="rent">For Rent</option>
+                <option value="sale">For Sale</option>
+                <option value={30}>For something else</option>
               </Select>
             </FormControl>
           </Grid>
@@ -215,10 +340,9 @@ const RightColumn = () => {
                   }}
                 >
                   <option aria-label="None" value="" />
-                  <option value="rent">Flats</option>
-                  <option value="sale">Houses</option>
-                  <option value="commercial">Commercial Projects</option>
-                  <option value="land">Lands</option>
+                  <option value="rent">All types</option>
+                  <option value="sale">For Sale</option>
+                  <option value={30}>For something else</option>
                 </Select>
               </FormControl>
             </Grid>
@@ -235,12 +359,9 @@ const RightColumn = () => {
                   }}
                 >
                   <option aria-label="None" value="" />
-                  <option value="1">1 Bedrrom</option>
-                  <option value="2">2 Bedrroms</option>
-                  <option value="3">3 Bedrroms</option>
-                  <option value="4">4 Bedrroms</option>
-                  <option value="5">5 Bedrroms</option>
-                  <option value="+5">+5 Bedrroms</option>
+                  <option value="rent">Any</option>
+                  <option value="sale">For Sale</option>
+                  <option value={30}>For something else</option>
                 </Select>
               </FormControl>
             </Grid>
@@ -259,12 +380,9 @@ const RightColumn = () => {
                   }}
                 >
                   <option aria-label="None" value="" />
-                  <option value="1">NGN 350,000 p/a</option>
-                  <option value="2">NGN 550,000 p/a</option>
-                  <option value="3">NGN 750,000 p/a</option>
-                  <option value="4">NGN 950,000 p/a</option>
-                  <option value="5">NGN 1,000, 000 p/a</option>
-                  <option value="6">NGN 1,350,000 p/a</option>
+                  <option value="rent">No Min</option>
+                  <option value="sale">For Sale</option>
+                  <option value={30}>For something else</option>
                 </Select>
               </FormControl>
             </Grid>
@@ -281,12 +399,9 @@ const RightColumn = () => {
                   }}
                 >
                   <option aria-label="None" value="" />
-                  <option value="1">NGN 350,000 p/a</option>
-                  <option value="2">NGN 550,000 p/a</option>
-                  <option value="3">NGN 750,000 p/a</option>
-                  <option value="4">NGN 950,000 p/a</option>
-                  <option value="5">NGN 1,000, 000 p/a</option>
-                  <option value="6">NGN 1,350,000 p/a</option>
+                  <option value="rent">No Max</option>
+                  <option value="sale">For Sale</option>
+                  <option value={30}>For something else</option>
                 </Select>
               </FormControl>
             </Grid>
@@ -305,8 +420,9 @@ const RightColumn = () => {
                   }}
                 >
                   <option aria-label="None" value="" />
-                  <option value="furnished">Furnished</option>
-                  <option value="unfurished">Unfurnished</option>
+                  <option value="rent">Any</option>
+                  <option value="sale">For Sale</option>
+                  <option value={30}>For something else</option>
                 </Select>
               </FormControl>
             </Grid>
@@ -323,11 +439,9 @@ const RightColumn = () => {
                   }}
                 >
                   <option aria-label="None" value="" />
-                  <option value="24">Last 24 hours</option>
-                  <option value="sale">Last 3 days</option>
-                  <option value={7}>Last 7 days</option>
-                  <option value={30}>Last 14 days</option>
-                  <option value={30}>Last 30 days</option>
+                  <option value="rent">Any Time</option>
+                  <option value="sale">For Sale</option>
+                  <option value={30}>For something else</option>
                 </Select>
               </FormControl>
             </Grid>
@@ -567,6 +681,39 @@ const RightColumn = () => {
           </div>
         </Grid>
       </div>
+      <div className={classes.socialMedia}>
+        <Grid 
+          container
+          justify="center"
+          alignItems="center"
+        >
+          <Grid item xs={1}>
+            <ShareOutlinedIcon /> 
+          </Grid>
+
+          <Grid item xs={6}>
+            Share this Property
+          </Grid>
+
+          <Grid item xs={1}>
+            <img src={FacebookIcon} alt=""/>
+          </Grid>
+          
+          <Grid item xs={1}>
+            <img src={TwitterIcon} alt=""/>
+          </Grid>
+          
+          <Grid item xs={1}>
+            <img src={LinkedInIcon} alt=""/>
+          </Grid>
+          
+          <Grid item xs={1}>
+            <img src={InstagramIcon} alt=""/>
+          </Grid>
+
+
+        </Grid>
+      </div>  
       <Grid
         container
         className={classes.postARequestContainer}
@@ -588,4 +735,4 @@ const RightColumn = () => {
   );
 };
 
-export default RightColumn;
+export default SinglePropertyRight;

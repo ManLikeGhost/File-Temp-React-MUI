@@ -6,8 +6,6 @@ import AuthRoute from "./util/AuthRoute";
 import { ACCESS_TOKEN_NAME } from "./constants/apiConstants";
 import AuthService from "./services/auth.service";
 
-
-
 import HomePage from "./pages/HomePage.jsx";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -29,6 +27,7 @@ import LandPropertyDisplay from "./pages/LandPropertyDisplay";
 import BlogPage from "./pages/BlogPage";
 import BlogPageArticle from "./pages/BlogPageArticle";
 import ContactUsPage from "./pages/ContactUsPage";
+import SinglePropertyPage from "./pages/SinglePropertyPage";
 
 import Page404 from "./pages/Page404";
 import ProfileImage from "./pages/ProfileImage";
@@ -54,6 +53,11 @@ function App() {
       <CssBaseline />
       <Router history={history}>
         <Switch>
+          <Route
+            path="/properties/:propertyId"
+            component={SinglePropertyPage}
+          />
+
           <Route exact path="/contact-us">
             <ContactUsPage />
           </Route>
@@ -94,7 +98,7 @@ function App() {
                                     <SignUpPage />
                         /Route> */}
           <Route path="/profile-settings">
-            <ProfileSettings user={currentUser}/>
+            <ProfileSettings user={currentUser} />
           </Route>
           <Route path="/profile-image">
             <ProfileImage />
@@ -106,7 +110,7 @@ function App() {
             <UpgradeSubscriptionPage />
           </Route>
           <Route path="/new-upgrade" component={NewUpgradePage} />
-          
+
           <Route path="/payment">
             <PaymentPage />
           </Route>
