@@ -325,7 +325,7 @@ const RightColumn = () => {
                   <option aria-label="None" value="" />
                   <option value="24">Last 24 hours</option>
                   <option value="sale">Last 3 days</option>
-                  <option value={30}>Last 7 days</option>
+                  <option value={7}>Last 7 days</option>
                   <option value={30}>Last 14 days</option>
                   <option value={30}>Last 30 days</option>
                 </Select>
