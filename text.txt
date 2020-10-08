@@ -67,7 +67,7 @@ component A
 
 
     Component B
-
+// use location hooks
     import {useLocation} from "react-router-dom"; 
 
     let data = useLocation();
