@@ -1,4 +1,5 @@
 import React, { useState, useEffect }  from "react";
+import { useParams} from 'react-router-dom';
 import axios from "axios";
 import NavigationHeader from "../components/navigationHeader.jsx";
 import MarbleBackground from "../img/MarbleBackground.png";
@@ -24,11 +25,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SinglePropertyPage = ({match, location}) => {
-  const {
-    params: { propertyId },
-  } = match;
-  console.log("Dynamic routing single property location", location)
+const SinglePropertyPage = () => {
+  const { propertyId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [property, setProperty] = useState();
   useEffect(() => {
