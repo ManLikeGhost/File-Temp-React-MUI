@@ -31,7 +31,8 @@ const FlatsPropertyDisplay = () => {
       <div className={classes.holder}>
         <Grid container spacing={6}>
           <Grid item container xs={8}>
-            <LeftColumn title="Flats for rent in Nigeria"/>
+            {//<LeftColumn title="Flats for rent in Nigeria"/>
+            }
             <LeftColumn
               title="Flats for rent in Nigeria"
               propertytype={"flat"}

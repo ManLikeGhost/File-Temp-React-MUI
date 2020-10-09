@@ -7,14 +7,10 @@ import Grid from "@material-ui/core/Grid";
 
 
 
-<<<<<<< HEAD
-import BlogArticleList from "../components/blog/blogArticleList";
+import BlogArticleList from "../components/blog/BlogArticleList";
 import BlogPageImage1 from "../img/BlogPageImage1.png";
-=======
->>>>>>> origin/master
 
-import BlogArticleList from "../components/blog/blogArticleList";
-import BlogPageImage1 from "../img/BlogPageImage1.png";
+
 import BlogPagination from "../components/blog/BlogPagination";
 
 import { makeStyles } from "@material-ui/core/styles";
