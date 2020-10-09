@@ -15,8 +15,7 @@ import Marble from "../img/MarbleBackground.png";
 import NavigationHeader from "../components/navigationHeader";
 import ProfileTitle from "../components/profile/profileTitle"
 
-let height = "666px"
-console.log(window.location)
+let height = "666px";
 
 if(window.location.pathname === "/profile-settings/account"){
   height = "930px";

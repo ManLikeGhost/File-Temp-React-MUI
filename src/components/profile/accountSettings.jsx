@@ -142,7 +142,7 @@ const AccountSettings = ({ user }) => {
           'Authorization': `Bearer ${user.user.token}`
         }})
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         window.location.reload();
       })
       .catch((err) => {
@@ -170,7 +170,7 @@ const AccountSettings = ({ user }) => {
                     fullWidth
                     labelId="accountType"
                     id="accountType"
-                    value={account.accountType}
+                    value={account.accountType || null}
                     onChange={handleChange("accountType")}
                   >
                     <MenuItem value={"propertyShopper"}>
