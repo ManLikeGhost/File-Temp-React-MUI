@@ -271,15 +271,15 @@ const AddListing = () => {
             <Grid item xs={6}>
               <FormLabel component="legend">Category</FormLabel>
               <FormControl className={classes.accountFormControl}>
-                <InputLabel id="category">Select Category</InputLabel>
+                <InputLabel id="cat_id">Select Category</InputLabel>
                 <Select
                   required
                   fullWidth
-                  labelId="category"
-                  id="category"
+                  labelId="cat_id"
+                  id="cat_id"
                   variant="outlined"
                   value={property.cat_id}
-                  onChange={handleChange("category")}
+                  onChange={handleChange("cat_id")}
                 >
                   <MenuItem value={"1"}>Flat</MenuItem>
                   <MenuItem value={"2"}>Houses</MenuItem>
@@ -291,15 +291,15 @@ const AddListing = () => {
             <Grid item xs={6}>
               <FormLabel component="legend">Type</FormLabel>
               <FormControl className={classes.accountFormControl}>
-                <InputLabel id="type">Select Type</InputLabel>
+                <InputLabel id="type_id">Select Type</InputLabel>
                 <Select
                   required
                   fullWidth
-                  labelId="type"
-                  id="type"
+                  labelId="type_id"
+                  id="type_id"
                   variant="outlined"
                   value={property.type_id}
-                  onChange={handleChange("type")}
+                  onChange={handleChange("type_id")}
                 >
                   <MenuItem value={"1"}>Rent</MenuItem>
                   <MenuItem value={"2"}>Sale</MenuItem>
@@ -489,7 +489,7 @@ const AddListing = () => {
           </Grid>
 
           <Grid container>
-            <Grid item xs={4}>
+            <Grid item xs={6}>
               <div className={classes.uploadPhotoContainer}>
                 <input
                   accept="image/*"
@@ -569,10 +569,10 @@ const AddListing = () => {
             </Grid>
           </Grid>
           <Grid container>
-            <Grid item xs={3}></Grid>
-            <Grid item xs={3}></Grid>
-            <Grid item xs={3}></Grid>
-            <Grid item xs={3}>
+            <Grid item xs={4}></Grid>
+            <Grid item xs={4}></Grid>
+            {/* <Grid item xs={4}></Grid> */}
+            <Grid item xs={4}>
               <Button
                 type="submit"
                 fullWidth
