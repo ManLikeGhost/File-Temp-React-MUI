@@ -36,10 +36,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SideMenu = ({user}) => {
+const SideMenu = ({ user }) => {
   const classes = useStyles();
 
-// console.table(props)
+  // console.table(props)
   return (
     <div className={classes.root}>
       <Grid
@@ -58,8 +58,8 @@ const SideMenu = ({user}) => {
             color="primary"
           />
 
-  <Typography className={classes.bigText}>{user.name}</Typography>
-          <Link href="/profile-image"  className={classes.link}>
+          <Typography className={classes.bigText}>{user.name}</Typography>
+          <Link href="/profile-image" className={classes.link}>
             Click to change photo
           </Link>
         </Grid>
@@ -71,10 +71,16 @@ const SideMenu = ({user}) => {
             <Link href="/profile-settings/listings" className={classes.link}>
               <Typography className={classes.bigText}>Listings</Typography>
             </Link>
-            <Link href="/profile-settings/subscriptions" className={classes.link}>
+            <Link
+              href="/profile-settings/subscriptions"
+              className={classes.link}
+            >
               <Typography className={classes.bigText}>Subscriptions</Typography>
             </Link>
-            <Link href="/profile-settings/savedProperty" className={classes.link}>
+            <Link
+              href="/profile-settings/savedProperty"
+              className={classes.link}
+            >
               <Typography className={classes.bigText}>
                 Saved Property
               </Typography>

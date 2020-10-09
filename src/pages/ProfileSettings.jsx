@@ -18,7 +18,7 @@ import ProfileTitle from "../components/profile/profileTitle"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "500px",
+    height: "1000px",
     backgroundRepeat: "no-repeat",
     background: `url(${Marble}) no-repeat center center fixed`,
     backgroundSize: "cover",
@@ -28,13 +28,14 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     // width: `calc(100vw - 100px)`,
     // width: theme.spacing(20),
-    margin: theme.spacing(10),
+    margin: theme.spacing(5),
     marginLeft: theme.spacing(40),
     border: "0.8px solid #BF7950",
     boxShadow: "0px 4px 25px rgba(0, 0, 0, 0.25)",
     borderRadius: " 4px",
-    height: "666px",
+    height: "800px",
     width: "666px",
+    
   },
   divider: {
     margin: theme.spacing(6, 0),
