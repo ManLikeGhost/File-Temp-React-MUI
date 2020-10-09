@@ -15,6 +15,12 @@ import Marble from "../img/MarbleBackground.png";
 import NavigationHeader from "../components/navigationHeader";
 import ProfileTitle from "../components/profile/profileTitle"
 
+let height = "666px"
+console.log(window.location)
+
+if(window.location.pathname === "/profile-settings/account"){
+  height = "930px";
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     border: "0.8px solid #BF7950",
     boxShadow: "0px 4px 25px rgba(0, 0, 0, 0.25)",
     borderRadius: " 4px",
-    height: "800px",
+    height,
     width: "666px",
     
   },
