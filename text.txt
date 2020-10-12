@@ -55,3 +55,20 @@ const res = await axios.post('https://httpbin.org/post', body, {
     'Authorization': 'my secret token'
   }
 });
+
+
+send props via link
+component A
+
+<Link to={{ pathname: '/new-upgrade', subscription: subscription }}>
+               <Button className={classes.button}>
+                  PROCEED
+               </Button>
+
+
+    Component B
+// use location hooks
+    import {useLocation} from "react-router-dom"; 
+
+    let data = useLocation();
+// console.log(data.subscription)          
