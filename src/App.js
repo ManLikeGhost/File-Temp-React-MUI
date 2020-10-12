@@ -100,7 +100,6 @@ function App() {
           </Route>
 
           <ProtectedRoute
-            exact
             path="/profile-settings"
             component={ProfileSettings}
             isAuthenticated={isAuthenticated}
