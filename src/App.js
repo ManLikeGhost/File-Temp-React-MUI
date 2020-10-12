@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import history from "./history";
-import AuthRoute from "./util/AuthRoute";
+import ProtectedRoute from "./util/ProtectedRoute";
 import { ACCESS_TOKEN_NAME } from "./constants/apiConstants";
 import AuthService from "./services/auth.service";
 
@@ -42,11 +42,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-let authenticated;
-let currentUser = AuthService.getCurrentUser();
-currentUser ? (authenticated = true) : (authenticated = false);
-
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+  useEffect(() => {
+    async function fetchData() {
+      let user = AuthService.getCurrentUser();
+      if (user) {
+        setCurrentUser(user);
+        // setIsAuthenticated(true);
+      }
+    }
+    fetchData();
+  }, []);
+
   const classes = useStyles();
   return (
     <div className={classes.paperContainer}>
@@ -82,24 +91,22 @@ function App() {
           <Route exact path="/about">
             <AboutPage />
           </Route>
-          <AuthRoute
-            exact
-            path="/signin"
-            component={SignInPage}
-            authenticated={authenticated}
-          />
-          <AuthRoute
-            exact
-            path="/signup"
-            component={SignUpPage}
-            authenticated={authenticated}
-          />
-          {/* <Route exact path="/signup">
-                                    <SignUpPage />
-                        /Route> */}
-          <Route path="/profile-settings">
-            <ProfileSettings user={currentUser} />
+
+          <Route exact path="/signin">
+            <SignInPage />
           </Route>
+          <Route exact path="/signup">
+            <SignUpPage />
+          </Route>
+
+          <ProtectedRoute
+            exact
+            path="/profile-settings"
+            component={ProfileSettings}
+            isAuthenticated={isAuthenticated}
+            user={currentUser}
+          />
+
           <Route path="/profile-image">
             <ProfileImage />
           </Route>

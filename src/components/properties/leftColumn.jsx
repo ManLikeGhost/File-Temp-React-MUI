@@ -10,7 +10,7 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 
-// import { detailsProperties } from "../../demoData/demoDataCard";
+import { detailsProperties } from "../../demoData/demoDataCard";
 import PropertiesList from "./propertiesList";
 
 const useStyles = makeStyles((theme) => ({
@@ -181,7 +181,8 @@ const LeftColumn = ({ title, propertyType }) => {
       </Grid>
       <PropertiesList
         propertyType={propertyType}
-        properties={filteredProperties}
+        // properties={filteredProperties}
+        properties={detailsProperties}
       />
     </div>
   );

@@ -1,7 +1,12 @@
 import React from "react";
 
 // import AuthService from "./services/auth.service";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  withRouter,
+} from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
@@ -13,11 +18,11 @@ import Subscriptions from "../components/profile/subscriptions";
 import SideMenu from "../components/profile/sideMenu";
 import Marble from "../img/MarbleBackground.png";
 import NavigationHeader from "../components/navigationHeader";
-import ProfileTitle from "../components/profile/profileTitle"
+import ProfileTitle from "../components/profile/profileTitle";
 
 let height = "666px";
 
-if(window.location.pathname === "/profile-settings/account"){
+if (window.location.pathname === "/profile-settings/account") {
   height = "930px";
 }
 
@@ -40,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: " 4px",
     height,
     width: "666px",
-    
   },
   divider: {
     margin: theme.spacing(6, 0),
@@ -54,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 const routes = [
   {
     path: "/profile-settings/account",
-    main: (user) => <AccountSettings user={user}/>,
+    main: (user) => <AccountSettings user={user} />,
     title: "Profile Settings",
   },
   {
@@ -77,10 +81,9 @@ const routes = [
     main: () => <Subscriptions />,
     title: "Subscriptions",
   },
-  
 ];
 
-const ProfileSettings = ({user}) => {
+const ProfileSettings = ({ user }) => {
   const classes = useStyles();
   // const pathName = window.location.pathname.split("/")[1];
 
@@ -93,7 +96,7 @@ const ProfileSettings = ({user}) => {
         <div className={classes.profileContainer}>
           <Grid container>
             <Grid item xs={3}>
-              <SideMenu user={user}/>
+              <SideMenu user={user} />
             </Grid>
             <Divider
               variant="middle"
@@ -110,7 +113,7 @@ const ProfileSettings = ({user}) => {
                     key={index}
                     path={route.path}
                     exact={route.exact}
-                    children={<route.main user={user}/>}
+                    children={<route.main user={user} />}
                   />
                 ))}
               </Switch>
@@ -122,4 +125,4 @@ const ProfileSettings = ({user}) => {
   );
 };
 
-export default ProfileSettings;
+export default withRouter(ProfileSettings);

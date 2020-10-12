@@ -41,9 +41,9 @@ const SideMenu = ({ user }) => {
   const classes = useStyles();
 
   const handleLogout = () => {
-    localStorage.removeItem("user")
-    console.log("Logged out user")
-    history.push('/signin');
+    localStorage.removeItem("user");
+    console.log("Logged out user");
+    history.push("/signin");
     window.location.reload();
   };
   // console.table(props)
@@ -99,7 +99,11 @@ const SideMenu = ({ user }) => {
         </Grid>
         <Grid>
           <List>
-            <Link color="inherit" className={classes.link} onClick={handleLogout}>
+            <Link
+              color="inherit"
+              className={classes.link}
+              onClick={handleLogout}
+            >
               <Typography className={classes.bigText}>
                 Logout
                 <ExitToAppIcon color="primary" />
