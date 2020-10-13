@@ -1,5 +1,11 @@
 import React from "react";
 
+import FeatureBedroom from "../../img/Feature/FeatureBedroom.png";
+import FeatureBath from "../../img/Feature/FeatureBath.png";
+import FeatureToilet from "../../img/Feature/FeatureToilet.png";
+import FeatureCar from "../../img/Feature/FeatureCar.png";
+
+
 //MUI
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -37,19 +43,19 @@ const PropertyFeatures = ({bedroom, bathroom, toilet, parkingSpace}) => {
         spacing={1}
       >
         <Grid item xs={3}>
-          <HotelOutlinedIcon className={classes.icon} />
+          <img src={FeatureBedroom} alt="Bedroom icon"/>
           <Typography  className={classes.text}>{bedroom} Bedrooms</Typography>
         </Grid>
         <Grid item xs={2}>
-          <BathtubOutlinedIcon className={classes.icon} />
+          <img src={FeatureBath} alt="Bathroom icon"/>
           <Typography className={classes.text}>{bathroom} Baths</Typography>
         </Grid>
         <Grid item xs={3}>
-          <WcIcon className={classes.icon} />
+          <img src={FeatureToilet} alt="Toilet icon"/>
           <Typography  className={classes.text}>{toilet} Toilets</Typography>
         </Grid>
         <Grid item xs={4}>
-          <DirectionsCarOutlinedIcon className={classes.icon} />
+          <img src={FeatureCar} alt="Parking-spcae icon"/>
           <Typography className={classes.text}>{parkingSpace} Parking Space</Typography>
         </Grid>
       </Grid>
