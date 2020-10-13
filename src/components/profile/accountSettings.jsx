@@ -48,7 +48,8 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: "100%", // Fix IE 11 issue.
     // margin: theme.spacing(3, 1, 100, 1),
-    padding: theme.spacing(1, 6),
+    padding: theme.spacing(10, 6),
+
   },
   label: {
     fontSize: "15px",
@@ -106,6 +107,7 @@ const AccountSettings = ({ user }) => {
     twitter_profile,
     linkedin_profile,
   } = user.user;
+
   const classes = useStyles();
   const [account, setAccount] = useState({
     accountType: `${userType}`,
@@ -140,13 +142,14 @@ const AccountSettings = ({ user }) => {
           'Authorization': `Bearer ${user.user.token}`
         }})
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         window.location.reload();
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
   return (
     <div>
       <div>
@@ -167,13 +170,13 @@ const AccountSettings = ({ user }) => {
                     fullWidth
                     labelId="accountType"
                     id="accountType"
-                    value={account.accountType}
+                    value={account.accountType || null}
                     onChange={handleChange("accountType")}
                   >
                     <MenuItem value={"propertyShopper"}>
                       Property Shopper
                     </MenuItem>
-                    <MenuItem value={"realEstateAgent"}>
+                    <MenuItem value={"real_estate_agent"}>
                       Real Estate Agent
                     </MenuItem>
                     <MenuItem value={"propertyDeveloper"}>

@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     // marginTop:`calc(100% - 500px)`
   },
   title: {
-    margin: "20px 0",
+    margin: "4rem 0 0 0",
     paddingLeft: theme.spacing(10),
     textAlign: "left",
     color: theme.palette.primary.main,

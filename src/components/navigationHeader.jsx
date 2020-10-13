@@ -22,14 +22,17 @@ const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
-  menuButton: {
+  menuIcon: {
     marginRight: theme.spacing(2),
     marginLeft: theme.spacing(2),
   },
   logo: {
     marginLeft: 20,
   },
+  iconButton: {
+    marginRight: theme.spacing(2),
 
+  },
   title: {
     display: "none",
     [theme.breakpoints.up("sm")]: {
@@ -38,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(1),
+    marginRight: theme.spacing(10),
     color: theme.palette.primary.dark,
     fontSize: 21,
     borderRadius: 1,
@@ -54,10 +58,11 @@ const useStyles = makeStyles((theme) => ({
     color: "inherit",
   },
   menuBackground: {
-    marginTop: 20,
+    // marginTop: 20,
     background: "transparent",
     boxShadow: "none",
-    marginBottom: 20,
+    // marginBottom: 20,
+    padding: "2rem 2rem"
   },
   sectionDesktop: {
     display: "none",
@@ -217,8 +222,9 @@ const NavigationHeader = (props) => {
               aria-haspopup="true"
               // onClick={handleMenuOpen}
               color="inherit"
+              className={classes.iconButton}
             >
-              <Link href="/profile-settings">
+              <Link href="profile-settings/listings">
                 <AccountCircle fontSize="large" color="primary" />
               </Link>
             </IconButton>): (<IconButton
@@ -228,6 +234,7 @@ const NavigationHeader = (props) => {
               aria-haspopup="true"
               // onClick={handleMenuOpen}
               color="inherit"
+              className={classes.iconButton}
             >
               <Link href="/signin">
                 <AccountCircle fontSize="large" color="primary" />
@@ -248,7 +255,7 @@ const NavigationHeader = (props) => {
           </div>
           <IconButton
             edge="start"
-            className={classes.menuButton}
+            className={classes.menuIcon}
             aria-label="open drawer"
             onClick={handleMenuOpen}
           >

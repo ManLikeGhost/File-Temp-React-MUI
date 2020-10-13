@@ -149,14 +149,14 @@ const SignUpPage = () => {
       axios
         .post(API_BASE_URL + "/register", newUser)
         .then((response) => {
-          // console.log("Response from server", response);
+          console.log("Response from server", response);
 
           localStorage.setItem(
             ACCESS_TOKEN_NAME,
             `Bearer ${response.data.token}`
           );
           setLoading(false);
-          history.push('/subscription-plans')
+          history.push("/subscription-plans");
           window.location.reload();
           // if (response.status === 200) {
           //   // localStorage.setItem(ACCESS_TOKEN_NAME,response.data.token);

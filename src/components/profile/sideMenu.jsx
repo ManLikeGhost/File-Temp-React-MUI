@@ -1,4 +1,5 @@
 import React from "react";
+import history from "../../history";
 import { makeStyles } from "@material-ui/core/styles";
 //import { Link } from "react-router-dom";
 import List from "@material-ui/core/List";
@@ -36,10 +37,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SideMenu = ({user}) => {
+const SideMenu = ({ user }) => {
   const classes = useStyles();
 
-// console.table(props)
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    console.log("Logged out user");
+    history.push("/signin");
+    window.location.reload();
+  };
+  // console.table(props)
   return (
     <div className={classes.root}>
       <Grid
@@ -58,8 +65,8 @@ const SideMenu = ({user}) => {
             color="primary"
           />
 
-  <Typography className={classes.bigText}>{user.name}</Typography>
-          <Link href="/profile-image"  className={classes.link}>
+          {/* <Typography className={classes.bigText}>{user.name}</Typography> */}
+          <Link href="/profile-image" className={classes.link}>
             Click to change photo
           </Link>
         </Grid>
@@ -71,10 +78,16 @@ const SideMenu = ({user}) => {
             <Link href="/profile-settings/listings" className={classes.link}>
               <Typography className={classes.bigText}>Listings</Typography>
             </Link>
-            <Link href="/profile-settings/subscriptions" className={classes.link}>
+            <Link
+              href="/profile-settings/subscriptions"
+              className={classes.link}
+            >
               <Typography className={classes.bigText}>Subscriptions</Typography>
             </Link>
-            <Link href="/profile-settings/savedProperty" className={classes.link}>
+            <Link
+              href="/profile-settings/savedProperty"
+              className={classes.link}
+            >
               <Typography className={classes.bigText}>
                 Saved Property
               </Typography>
@@ -86,7 +99,11 @@ const SideMenu = ({user}) => {
         </Grid>
         <Grid>
           <List>
-            <Link color="inherit" href="/login" className={classes.link}>
+            <Link
+              color="inherit"
+              className={classes.link}
+              onClick={handleLogout}
+            >
               <Typography className={classes.bigText}>
                 Logout
                 <ExitToAppIcon color="primary" />
