@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     imgHeadadjust: {
-      padding: "0px 0px 0px 50px",
+      padding: "0px 0px 0px 0px",
     },
 
     

@@ -76,14 +76,14 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const BlogProperty = ({ title, imagePath, text, type, date }) => {
+const BlogProperty = ({ title, imagePath, text, type, date, ...BlogProperty }) => {
     const classes = useStyles();
     return (
         <div>
            <Grid container spacing={3} className={classes.blogArtHold}> 
                 <Grid item xs={4}>
                 <div className={classes.blogCard}> 
-                    <img className={classes.blogpic}  alt="House with bule background" src={imagePath}/>
+                    <img className={classes.blogpic}  alt="House with bule background" src={imagePath || 'http://placehold.it/200'}/>
                     <Grid container>
                     <Grid item xs={12}><Typography className={classes.headertext}>{title}</Typography></Grid>
                     <Grid item xs={12}><Typography className={classes.ptext}>{text}</Typography></Grid>
