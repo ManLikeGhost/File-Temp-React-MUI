@@ -76,19 +76,19 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const BlogProperty = ({ title, imagePath, text, type, date, ...BlogProperty }) => {
+const BlogProperty = ({ ...blogProperty }) => {
     const classes = useStyles();
     return (
         <div>
            <Grid container spacing={3} className={classes.blogArtHold}> 
                 <Grid item xs={4}>
                 <div className={classes.blogCard}> 
-                    <img className={classes.blogpic}  alt="House with bule background" src={imagePath || 'http://placehold.it/200'}/>
+                    <img className={classes.blogpic}  alt="House with bule background" src={blogProperty.imagePath || 'http://placehold.it/200'}/>
                     <Grid container>
-                    <Grid item xs={12}><Typography className={classes.headertext}>{title}</Typography></Grid>
-                    <Grid item xs={12}><Typography className={classes.ptext}>{text}</Typography></Grid>
-                    <Grid item xs={4}><Typography className={classes.category}>{type}</Typography></Grid>
-                    <Grid item xs={6}><Typography className={classes.date}>{date}</Typography></Grid>
+                    <Grid item xs={12}><Typography className={classes.headertext}>{blogProperty.title}</Typography></Grid>
+                    <Grid item xs={12}><Typography className={classes.ptext}>{blogProperty.content}</Typography></Grid>
+                    <Grid item xs={4}><Typography className={classes.category}>{blogProperty.type}</Typography></Grid>
+                    <Grid item xs={6}><Typography className={classes.date}>{blogProperty.date}</Typography></Grid>
                     </Grid>
                 </div>
                 </Grid>

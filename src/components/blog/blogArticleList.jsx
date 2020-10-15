@@ -28,7 +28,7 @@ function BlogArticleList() {
   useEffect(() => {
     async function fetchData() {
       const result = await axios(API_BASE_URL + "/blogs");
-      // console.log(result.data.data)
+       console.log(result.data.data)
       setNewDetailsBlogPost(result.data.data);
     }
     fetchData();
@@ -40,9 +40,9 @@ function BlogArticleList() {
         {displayDetailsBlogPost.map((blogProperty) => (
           <Grid key={blogProperty.id} item xs={4}>
             <BlogProperty
-              imagePath={BlogProperty.image}
-              title={BlogProperty.title}
-              content={BlogProperty.content}
+              imagePath={blogProperty.image}
+              title={blogProperty.title}
+              text={blogProperty.text}
               {...BlogProperty}              
             />
           </Grid>
