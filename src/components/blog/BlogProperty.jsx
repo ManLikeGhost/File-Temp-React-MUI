@@ -88,7 +88,7 @@ const BlogProperty = ({ ...blogProperty }) => {
                     <Grid item xs={12}><Typography className={classes.headertext}>{blogProperty.title}</Typography></Grid>
                     <Grid item xs={12}><Typography className={classes.ptext}>{blogProperty.content}</Typography></Grid>
                     <Grid item xs={4}><Typography className={classes.category}>{blogProperty.type}</Typography></Grid>
-                    <Grid item xs={6}><Typography className={classes.date}>{blogProperty.date}</Typography></Grid>
+                    <Grid item xs={6}><Typography className={classes.date}>{blogProperty.created_at}</Typography></Grid>
                     </Grid>
                 </div>
                 </Grid>
