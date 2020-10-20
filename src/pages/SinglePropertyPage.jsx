@@ -1,6 +1,7 @@
-import React, { useState, useEffect }  from "react";
-import { useParams} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import NavigationHeader from "../components/navigationHeader.jsx";
 import MarbleBackground from "../img/MarbleBackground.png";
 import Footer from "../components/footer";
@@ -15,6 +16,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import SinglePropertyTitle from "../components/properties/singlePropertyTitle.jsx";
 
 const useStyles = makeStyles((theme) => ({
+  progress: {
+    textAlign: "center",
+    margin: "5rem auto"
+  },
+
   backgroundImage: {
     background: `url(${MarbleBackground}) no-repeat center center fixed`,
     backgroundSize: "cover",
@@ -32,12 +38,11 @@ const SinglePropertyPage = () => {
   useEffect(() => {
     async function fetchData() {
       const result = await axios(
-        `https://api.terrelldavies.com/api/properties/${propertyId}`
+        `https://api.terrelldavies.com/api/property/${propertyId}`
       );
-      console.log(result.data.data);
-      setProperty(result.data.data);
+      setProperty(result.data[0]);
+      console.log(result.data[0])
       setIsLoading(false);
-      console.log(`https://api.terrelldavies.com/api/properties/${propertyId}`)
     }
     fetchData();
   }, [propertyId]);
@@ -46,21 +51,30 @@ const SinglePropertyPage = () => {
   return (
     <div className={classes.backgroundImage}>
       <NavigationHeader />
-      <div className={classes.holder}>
-        <Grid container spacing={6}>
-        
-          <Grid item container xs={8}>
-              <SinglePropertyTitle />
-          </Grid> 
-          <Grid item container xs={8}>
-            <SinglePropertyLeft property={property}/>
-          </Grid>
+      {isLoading ? (
+        <div className={classes.progress}>
+          <CircularProgress size="10rem"/>
+        </div>
+      ) : (
+        <div className={classes.holder}>
+          <Grid container spacing={6}>
+            <Grid item container xs={8}>
+              <SinglePropertyTitle
+                title={property.title}
+                address={property.location}
+                price={property.budget}
+              />
+            </Grid>
+            <Grid item container xs={8}>
+              <SinglePropertyLeft property={property} />
+            </Grid>
 
-          <Grid item container xs={4}>
-            <SinglePropertyRight />
+            <Grid item container xs={4}>
+              <SinglePropertyRight />
+            </Grid>
           </Grid>
-        </Grid>
-      </div>
+        </div>
+      )}
 
       <SaleRentShortlet />
       <Footer />

@@ -59,7 +59,7 @@ const SinglePropertyTitle = ({ title, address, price }) => {
                 <Grid container>
                     <Grid item xs={12} >
                         <Typography className={classes.title}>
-                            4 Bedroom Apartment for Rent
+                            {title}
                         </Typography>    
                     </Grid>
                     <Grid item container xs={12}>
@@ -68,7 +68,7 @@ const SinglePropertyTitle = ({ title, address, price }) => {
                         </Grid>
                         <Grid item xs={8}>
                             <Typography className={classes.address}>
-                                10, Sangotedo Ajah
+                               {address}
                             </Typography>
                         </Grid>
                         <Grid item xs={1}>
@@ -76,7 +76,7 @@ const SinglePropertyTitle = ({ title, address, price }) => {
                         </Grid>
                         <Grid item xs={2}>
                             <Typography className={classes.price}>
-                                N1.8 Million p.a.
+                                N{price}
                             </Typography>
                         </Grid>
                     </Grid>

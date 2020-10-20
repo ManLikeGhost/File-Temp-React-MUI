@@ -16,7 +16,6 @@ function PropertiesList() {
   useEffect(() => {
     async function fetchData() {
       const result = await axios(API_BASE_URL + "/properties");
-      console.log(result.data.property);
       setNewProperties(result.data.property);
     }
     fetchData();
