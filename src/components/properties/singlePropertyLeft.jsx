@@ -120,6 +120,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const SinglePropertyLeft = ({property}) => {
+    const {description, bathroom, bedroom, parking, toilet,} = property
     const classes = useStyles();
     return (
         <div className={classes.BackgroundImage}>
@@ -184,7 +185,7 @@ const SinglePropertyLeft = ({property}) => {
                                 </div>
                             </Grid>
                             <Grid item xs={12}>
-                                4 Bedrooms
+                                {bedroom}
                             </Grid>
                         </div>
                     </Grid>
@@ -197,7 +198,7 @@ const SinglePropertyLeft = ({property}) => {
                             </div>
                         </Grid>
                         <Grid item xs={12}>    
-                            4 Baths  
+                            {bathroom} 
                         </Grid>
                     </div>  
                     </Grid>
@@ -210,7 +211,7 @@ const SinglePropertyLeft = ({property}) => {
                             </div>
                         </Grid>
                         <Grid item xs={12}>
-                            5 Toilets
+                            {toilet}
                         </Grid>
                     </div>
                     </Grid>
@@ -223,7 +224,7 @@ const SinglePropertyLeft = ({property}) => {
                         </div>
                         </Grid>
                         <Grid item xs={12}>
-                            4 Parking Space
+                            {parking}
                         </Grid>
                     </div>
                     </Grid>
@@ -240,11 +241,7 @@ const SinglePropertyLeft = ({property}) => {
 
                     <Grid item xs={12}>
                         <Typography  className={classes.paratext}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. 
-                            Quis ipsum suspendisse ultrices gravida. 
-                            Risus commodo viverra maecenas accumsan lacus vel facilisis ipsum dolor sit amet, 
-                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                            Quis ipsum suspendisse ultrices gravida. 
+                            {description}
                         </Typography>
                     </Grid>
                 </Grid>
