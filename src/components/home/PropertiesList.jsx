@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Property from "./Property";
 import SectionTitle from "../sectionTitle";
@@ -14,9 +15,8 @@ function PropertiesList() {
 
   useEffect(() => {
     async function fetchData() {
-      
       const result = await axios(API_BASE_URL + "/properties");
-      console.log(result.data.property)
+      console.log(result.data.property);
       setNewProperties(result.data.property);
     }
     fetchData();
@@ -28,12 +28,15 @@ function PropertiesList() {
         <Grid container justify="center" alignItems="center">
           {displayProperties.map((property) => (
             <Grid key={property.id} item xs={4}>
-              <Property
-                imagePath={property.galleryImage}
-                title={property.title}
-                address={property.metaDescription}
-                {...property}
-              />
+              <Link to={`/properties/${property.id}`}>
+                <Property
+                  imagePath={property.galleryImage}
+                  title={property.title}
+                  address={property.metaDescription}
+                  link={property.link}
+                  {...property}
+                />
+              </Link>
             </Grid>
           ))}
         </Grid>
