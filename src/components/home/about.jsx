@@ -36,13 +36,8 @@ const AboutHome = () => {
     <div className={classes.backgroundImage}>
       <SectionTitle>About Terrell Davies Enterprise</SectionTitle>
       <Typography className={classes.text}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididuntut labore et dolore magna aliqua. Quis ipsum
-        suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan
-        lacus vel facilisis ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
-        ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas
-        accumsan lacus vel faca
+      At Terrell Davies, it is our mission to inspire a positive {"&"} lasting change.
+      We have a vision be an excellent {"&"} true real estate marketing agency providing quality {"&"} consistent customer experience at all times
       </Typography>
       <Link href="/about">
         <Button
