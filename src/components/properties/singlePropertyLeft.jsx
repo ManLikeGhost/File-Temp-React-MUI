@@ -17,7 +17,7 @@ import Toilet from "../../img/Toilet.png";
 
 
 import { Grid, Typography } from '@material-ui/core';
-import Divider from '@material-ui/core/Divider';
+
 
 
 

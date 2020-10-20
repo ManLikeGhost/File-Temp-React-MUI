@@ -73,9 +73,9 @@ function App() {
           <Route exact path="/blog-page">
             <BlogPage />
           </Route>
+
           <Route exact path="/blog-page/:articleId"
             component={BlogPageArticle} />
-          
           <Route exact path="/flats-property-display">
             <FlatsPropertyDisplay />
           </Route>
