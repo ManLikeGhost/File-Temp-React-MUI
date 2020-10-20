@@ -86,7 +86,7 @@ export default function Property({ imagePath, title, address, details, ...proper
           </Grid>
         </Grid>
         <Divider variant="middle" className={classes.divider} />
-        <PropertyFeatures bedroom={property.bedroom} bathroom={property.bathroom} toilet={property.toilet} parkingSpace={property.garage}/>
+        <PropertyFeatures bedroom={property.bedroom} bathroom={property.bathroom} toilet={property.toilet} parkingSpace={property.parking}/>
       </CardContent>
     </Card>
   );

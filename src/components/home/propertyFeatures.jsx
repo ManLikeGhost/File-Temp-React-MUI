@@ -44,19 +44,19 @@ const PropertyFeatures = ({bedroom, bathroom, toilet, parkingSpace}) => {
       >
         <Grid item xs={3}>
           <img src={FeatureBedroom} alt="Bedroom icon"/>
-          <Typography  className={classes.text}>{bedroom} Bedrooms</Typography>
+          <Typography  className={classes.text}>{bedroom}</Typography>
         </Grid>
         <Grid item xs={2}>
           <img src={FeatureBath} alt="Bathroom icon"/>
-          <Typography className={classes.text}>{bathroom} Baths</Typography>
+          <Typography className={classes.text}>{bathroom}</Typography>
         </Grid>
         <Grid item xs={3}>
           <img src={FeatureToilet} alt="Toilet icon"/>
-          <Typography  className={classes.text}>{toilet} Toilets</Typography>
+          <Typography  className={classes.text}>{toilet}</Typography>
         </Grid>
         <Grid item xs={4}>
           <img src={FeatureCar} alt="Parking-spcae icon"/>
-          <Typography className={classes.text}>{parkingSpace} Parking Space</Typography>
+          <Typography className={classes.text}>{parkingSpace}</Typography>
         </Grid>
       </Grid>
     </div>
