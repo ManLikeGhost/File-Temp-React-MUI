@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
   },
   iconButton: {
     marginRight: theme.spacing(2),
-
   },
   title: {
     display: "none",

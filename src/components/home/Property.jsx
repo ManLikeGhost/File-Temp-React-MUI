@@ -41,15 +41,17 @@ fontSize: 15
 
 export default function Property({ imagePath, title, address, details, ...property }) {
   const classes = useStyles();
+  let lowerCaseTitle = title.toLowerCase();
+  let formattedTitle = lowerCaseTitle.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
 
   return (
     <Card className={classes.root}>
       <CardMedia
         component="img"
-        alt={title}
+        alt={formattedTitle}
         height="200"
         image={imagePath || 'http://placehold.it/200'}
-        title={title}
+        title={formattedTitle}
       />
 
       <CardContent className={classes.cardColor}>
@@ -73,7 +75,7 @@ export default function Property({ imagePath, title, address, details, ...proper
                 color="primary"
                 className={classes.propertyText}
               >
-                {title}
+                {formattedTitle}
               </Typography>
             </Grid>
             <Grid item xs={12}>
