@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     // width: `calc(100vw + 48px)`,
   },
+ 
   text: {
     padding: "20px 80px",
     color: theme.palette.primary.main,

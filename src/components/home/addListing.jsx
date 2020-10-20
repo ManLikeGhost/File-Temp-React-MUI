@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${ListPropertyBackground})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
-      backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.secondary.main,
     margin: "50px",
     // width: `calc(100vw + 48px)`,
   },
