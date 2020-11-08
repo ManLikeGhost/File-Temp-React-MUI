@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { HashRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import history from "./history";
 import ProtectedRoute from "./util/ProtectedRoute";
 // import { ACCESS_TOKEN_NAME } from "./constants/apiConstants";
@@ -29,7 +29,7 @@ import BlogPageArticle from "./pages/BlogPageArticle";
 import ContactUsPage from "./pages/ContactUsPage";
 import SinglePropertyPage from "./pages/SinglePropertyPage";
 
-// import Page404 from "./pages/Page404";
+import Page404 from "./pages/Page404";
 import ProfileImage from "./pages/ProfileImage";
 import SubscriptionPlans from "./pages/SubscriptionPlans";
 
@@ -60,7 +60,7 @@ function App() {
   return (
     <div className={classes.paperContainer}>
       <CssBaseline />
-      <HashRouter history={history} basename={process.env.PUBLIC_URL}>
+      <Router history={history} basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route
             path="/properties/:propertyId"
@@ -132,9 +132,9 @@ function App() {
           <Route exact path="/">
             <HomePage />
           </Route>
-          {/* <Route component={Page404} /> */}
+          <Route component={Page404} />
         </Switch>
-      </HashRouter>
+      </Router>
     </div>
   );
 }
