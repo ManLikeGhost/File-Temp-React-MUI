@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import history from "./history";
 import ProtectedRoute from "./util/ProtectedRoute";
 // import { ACCESS_TOKEN_NAME } from "./constants/apiConstants";
@@ -60,7 +60,7 @@ function App() {
   return (
     <div className={classes.paperContainer}>
       <CssBaseline />
-      <Router history={history}>
+      <HashRouter history={history} basename={`${process.env.PUBLIC_URL}/`}>
         <Switch>
           <Route
             path="/properties/:propertyId"
@@ -129,9 +129,9 @@ function App() {
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route component={Page404} />
+          {/* <Route component={Page404} /> */}
         </Switch>
-      </Router>
+      </HashRouter>
     </div>
   );
 }
