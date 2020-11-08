@@ -12,7 +12,7 @@ import FormControl from "@material-ui/core/FormControl";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
 
-import contactUs from "../img/ContactUsMap.png";
+// import contactUs from "../img/ContactUsMap.png";
 
 import { makeStyles } from "@material-ui/core/styles";
 

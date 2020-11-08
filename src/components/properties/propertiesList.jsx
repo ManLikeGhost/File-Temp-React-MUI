@@ -1,6 +1,6 @@
 import React from "react";
 // import { detailsProperties } from "../../demoData/demoDataCard";
-import { Link, BrowserRouter as Router, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CardProperty from "./cardProperty";
 import Grid from "@material-ui/core/Grid";
 

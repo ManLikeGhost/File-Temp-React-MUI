@@ -10,8 +10,7 @@ import Box from "@material-ui/core/Box";
 
 function PropertiesList() {
   const [newProperties, setNewProperties] = useState(properties);
-  const [currentProperties, setCurrentProperties] = useState(3);
-  const displayProperties = newProperties.slice(0, currentProperties);
+  const displayProperties = newProperties.slice(0, 3);
 
   useEffect(() => {
     async function fetchData() {

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ProfileSectionTitle from "./miniComponents/profilesectionTitle";
 import axios from "../../axios/index";
-import history from "../../history";
-import { API_BASE_URL, ACCESS_TOKEN_NAME } from "../../constants/apiConstants";
+// import history from "../../history";
+import { API_BASE_URL} from "../../constants/apiConstants";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";

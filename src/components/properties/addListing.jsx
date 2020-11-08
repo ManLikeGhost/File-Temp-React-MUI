@@ -139,7 +139,7 @@ const AddListing = () => {
     garage: "",
     totalarea: "",
   });
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [image, setImage] = useState(null);
 
   const handleChange = (prop) => (event) => {

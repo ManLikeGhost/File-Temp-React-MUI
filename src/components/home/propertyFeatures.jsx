@@ -9,10 +9,7 @@ import FeatureCar from "../../img/Feature/FeatureCar.png";
 //MUI
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import HotelOutlinedIcon from "@material-ui/icons/HotelOutlined";
-import BathtubOutlinedIcon from "@material-ui/icons/BathtubOutlined";
-import WcIcon from "@material-ui/icons/Wc";
-import DirectionsCarOutlinedIcon from "@material-ui/icons/DirectionsCarOutlined";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
