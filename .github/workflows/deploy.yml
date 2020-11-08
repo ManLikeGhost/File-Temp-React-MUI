@@ -15,6 +15,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: repo-sync-to-glitch
+      uses: wei/git-sync@v1
+      with:
+        args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
     - name: Cache dependencies
       uses: actions/cache@v2
       with:
@@ -37,3 +41,7 @@ jobs:
         user_email: 'github-actions[bot]@users.noreply.github.com'
         github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         repository: ${{ github.repository }}
+        SOURCE_REPO: "https://github.com/ridbay/Terrel-Davies-React-MUI.git"
+        SOURCE_BRANCH: "master"
+        DESTINATION_REPO: ${{ secrets.GLITCH_URL }}
+        DESTINATION_BRANCH: "master"
