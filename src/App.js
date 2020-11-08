@@ -29,7 +29,7 @@ import BlogPageArticle from "./pages/BlogPageArticle";
 import ContactUsPage from "./pages/ContactUsPage";
 import SinglePropertyPage from "./pages/SinglePropertyPage";
 
-import Page404 from "./pages/Page404";
+// import Page404 from "./pages/Page404";
 import ProfileImage from "./pages/ProfileImage";
 import SubscriptionPlans from "./pages/SubscriptionPlans";
 
@@ -74,8 +74,11 @@ function App() {
             <BlogPage />
           </Route>
 
-          <Route exact path="/blog-page/:articleId"
-            component={BlogPageArticle} />
+          <Route
+            exact
+            path="/blog-page/:articleId"
+            component={BlogPageArticle}
+          />
           <Route exact path="/flats-property-display">
             <FlatsPropertyDisplay />
           </Route>
