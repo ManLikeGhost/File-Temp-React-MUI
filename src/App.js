@@ -60,7 +60,7 @@ function App() {
   return (
     <div className={classes.paperContainer}>
       <CssBaseline />
-      <HashRouter history={history} basename={`${process.env.PUBLIC_URL}/`}>
+      <HashRouter history={history} basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route
             path="/properties/:propertyId"
