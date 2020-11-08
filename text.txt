@@ -1,6 +1,6 @@
 git add . && git commit -m "Added Avatar to Account setting Sidebar menu" && git push origin master
 
-Fetch PR, test before merging
+Fetch PR, test before merging.
 https://gist.github.com/adam-p/15413fabef6cffecd897
 
 For the carosel

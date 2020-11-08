@@ -1,11 +1,16 @@
-on: 
- pull_request:
-  types: [closed] 
+name: Glitch Deployment
+on:
+  push:
+    branches:
+      - master
 jobs:
-  repo-sync:
-    if: github.event.pull_request.merged == true
+  deploy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
+    - uses: actions/checkout@v1
     - name: repo-sync
       uses: wei/git-sync@v1
       env:
