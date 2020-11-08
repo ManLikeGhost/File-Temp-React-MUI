@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import MapContainer from "../components/contactUs/googleMap"
+// import MapContainer from "../components/contactUs/googleMap"
 import FormControl from "@material-ui/core/FormControl";
 // import InputLabel from "@material-ui/core/InputLabel";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
@@ -170,7 +170,7 @@ const ContactUsPage = () => {
                     <Grid item xs={12}>
                         <div className={classes.map}>
                             {/* <img className={classes.pic} src={contactUs} alt="contactUsMap"/> */}
-                            <MapContainer />
+                            {/* <MapContainer /> */}
                         </div>
                     </Grid>    
 
