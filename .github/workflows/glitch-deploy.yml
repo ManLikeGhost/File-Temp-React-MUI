@@ -1,0 +1,22 @@
+name: Glitch Deployment
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: repo-sync
+      uses: wei/git-sync@v1
+      env:
+        SOURCE_REPO: "https://github.com/ridbay/Terrel-Davies-React-MUI.git"
+        SOURCE_BRANCH: "master"
+        DESTINATION_REPO: ${{ secrets.GLITCH_URL }}
+        DESTINATION_BRANCH: "master"
+      with:
+        args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH

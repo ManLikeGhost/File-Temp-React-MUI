@@ -22,8 +22,7 @@ import Grid from "@material-ui/core/Grid";
 
 function BlogArticleList() {
   const [newDetailsBlogPost, setNewDetailsBlogPost] = useState(detailsBlogPost);
-  const [currentDetailsBlogPost, setCurrentDetailsBlogPost] = useState(10);
-  const displayDetailsBlogPost = newDetailsBlogPost.slice(0, currentDetailsBlogPost);
+  const displayDetailsBlogPost = newDetailsBlogPost.slice(0, 10);
   
   useEffect(() => {
     async function fetchData() {

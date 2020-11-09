@@ -9,7 +9,7 @@ import SaleRentShortlet from "../components/home/saleRentShortlet";
 
 import SinglePropertyLeft from "../components/properties/singlePropertyLeft";
 import SinglePropertyRight from "../components/properties/singlePropertyRight";
-import { detailsProperties } from "../demoData/demoDataCard";
+// import { detailsProperties } from "../demoData/demoDataCard";
 import Grid from "@material-ui/core/Grid";
 
 import { makeStyles } from "@material-ui/core/styles";

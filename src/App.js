@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import history from "./history";
 import ProtectedRoute from "./util/ProtectedRoute";
-import { ACCESS_TOKEN_NAME } from "./constants/apiConstants";
+// import { ACCESS_TOKEN_NAME } from "./constants/apiConstants";
 import AuthService from "./services/auth.service";
 
 import HomePage from "./pages/HomePage.jsx";
@@ -50,7 +50,7 @@ function App() {
       let user = AuthService.getCurrentUser();
       if (user) {
         setCurrentUser(user);
-        // setIsAuthenticated(true);
+        setIsAuthenticated(true);
       }
     }
     fetchData();
@@ -60,7 +60,7 @@ function App() {
   return (
     <div className={classes.paperContainer}>
       <CssBaseline />
-      <Router history={history}>
+      <Router history={history} basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route
             path="/properties/:propertyId"
@@ -74,8 +74,11 @@ function App() {
             <BlogPage />
           </Route>
 
-          <Route exact path="/blog-page/:articleId"
-            component={BlogPageArticle} />
+          <Route
+            exact
+            path="/blog-page/:articleId"
+            component={BlogPageArticle}
+          />
           <Route exact path="/flats-property-display">
             <FlatsPropertyDisplay />
           </Route>

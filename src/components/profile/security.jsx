@@ -96,13 +96,13 @@ const Security = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { oldPassword, newPassword, confirmNewPassword } = passwords;
+    // const { oldPassword, newPassword, confirmNewPassword } = passwords;
 
-    const changedPassword = {
-      oldPassword,
-      newPassword,
-      confirmNewPassword,
-    };
+    // const changedPassword = {
+    //   oldPassword,
+    //   newPassword,
+    //   confirmNewPassword,
+    // };
     // this.props.setCurrentAccount(newAccount);
     // console.log({ changedPassword });
   };
