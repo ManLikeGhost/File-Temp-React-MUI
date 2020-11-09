@@ -181,7 +181,7 @@ const NavigationHeader = (props) => {
       </MenuItem>
       <Divider className={classes.divider} />
       <MenuItem onClick={handleMenuClose} className={classes.menuItem}>
-        <Link href="/contact" className={classes.linkText}>
+        <Link href="/contact-us" className={classes.linkText}>
           Contact
         </Link>
       </MenuItem>
