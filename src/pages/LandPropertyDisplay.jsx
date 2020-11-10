@@ -32,7 +32,7 @@ const LandPropertyDisplay = () => {
           <Grid item container xs={8}>
             <LeftColumn
               title="Land for rent in Nigeria"
-              propertytype={"land"}
+              propertyType={4}
             />
           </Grid>
           <Grid item container xs={4}>

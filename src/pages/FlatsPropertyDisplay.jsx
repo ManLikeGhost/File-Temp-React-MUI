@@ -35,7 +35,7 @@ const FlatsPropertyDisplay = () => {
             }
             <LeftColumn
               title="Flats for rent in Nigeria"
-              propertytype={"flat"}
+              propertyType={1}
             />
           </Grid>
           <Grid item container xs={4}>

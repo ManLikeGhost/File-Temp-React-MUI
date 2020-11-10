@@ -9,8 +9,9 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
+import { API_BASE_URL } from "../../constants/apiConstants";
 
-import { detailsProperties } from "../../demoData/demoDataCard";
+// import { detailsProperties } from "../../demoData/demoDataCard";
 import PropertiesList from "./propertiesList";
 
 const useStyles = makeStyles((theme) => ({
@@ -69,26 +70,25 @@ const QuickFilterButton = withStyles({
 
 const LeftColumn = ({ title, propertyType }) => {
   const classes = useStyles();
+  const [properties, setProperties] = useState([]);
   const [filterByType, setFilterByType] = React.useState("");
 
   const handleFilterByTypeChange = (event) => {
     setFilterByType(event.target.value);
   };
-  const [properties, setProperties] = useState([]);
+ 
 
   useEffect(() => {
     async function fetchData() {
-      const result = await axios(
-        "https://api.terrelldavies.com/api/properties"
-      );
-      console.log(result.data.data);
-      setProperties(result.data.data);
+      const result = await axios(API_BASE_URL + "/properties");
+      setProperties(result.data.property);
     }
     fetchData();
   }, []);
-  let filteredProperties = properties;
+  // let filteredProperties = properties;
 
-  // const filteredProperties = properties.filter(property => property.cat_id === propertyType)
+  const filteredProperties = properties.filter(property => property.category_id === propertyType)
+
   return (
     <div>
       <PropertyTitle>{title}</PropertyTitle>
@@ -152,8 +152,7 @@ const LeftColumn = ({ title, propertyType }) => {
       >
         <Grid item xs={4}>
           <Typography className={classes.resultOf}>
-            Results 1 - {filteredProperties.length} of{" "}
-            {filteredProperties.length}
+            Results 1 - {filteredProperties.length} of  {filteredProperties.length}
           </Typography>
         </Grid>
         <Grid item xs={4}></Grid>
@@ -181,8 +180,8 @@ const LeftColumn = ({ title, propertyType }) => {
       </Grid>
       <PropertiesList
         propertyType={propertyType}
-        // properties={filteredProperties}
-        properties={detailsProperties}
+        properties={filteredProperties}
+        // properties={detailsProperties}
       />
     </div>
   );
