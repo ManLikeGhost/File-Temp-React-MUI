@@ -150,37 +150,77 @@ const AddListing = () => {
     setProperty({ ...property, [prop]: value });
   };
   const tokenStr = localStorage.getItem(ACCESS_TOKEN_NAME);
+  
+//   const handleFileChange=(event)=> {
+//     setImage(event.target.files[0])
+// }
 
-  const handleSubmit = (event) => {
+  // const uploadFile = async (file)=>{
+  //   const formData = new FormData();
+
+  //   formData.append('avatar',image)
+  //   // formData.append("file", file);
+  //   // formData.append("desc", desc);
+  //   const newObject = {...formData, ...property}
+  //   return  await axios.post(API_BASE_URL + "/property/create", formData,{
+  //       headers: {
+  //           'content-type': 'multipart/form-data'
+  //       }
+  //   });
+  // }
+
+  
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const toBase64 = (file) =>
-      new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = (error) => reject(error);
-      });
 
-    const convertedImage = toBase64(image).then((result) => result);
+    const formData = new FormData();
 
-    const newProperty = {
-      ...property,
-      galleryImage: convertedImage,
-      featuredImage: convertedImage,
-    };
-    // console.log("to be sent to server", newProperty);
-    axios
-      .post(API_BASE_URL + "/property/create", newProperty, {
-        headers: {
-          Authorization: `Bearer ${tokenStr}`,
-        },
-      })
-      .then((response) => {
-        // console.log(response);
-      })
-      .catch((err) => {
-        // console.log(err);
-      });
+    formData.append('image',image)
+    publishStatus: "unpublish",
+    title,
+    marketStatus,
+    cat_id,
+    type_id,
+    state,
+    locality,
+    area,
+    location,
+    budget,
+    bedroom,
+    toilet,
+    bathroom,
+    parking,
+    totalArea,
+    videoLink,
+    serviced,
+    furnished,
+    description,
+    featuredImage,
+    galleryImage,
+    garage,
+    totalarea,
+    // const newProperty = {
+    //   ...property,
+    //   galleryImage: formData,
+      
+    // };
+  
+    // const newObject = {...formData, ...property}
+    // console.log(newObject)
+    console.log(newProperty)
+    // await axios
+    //   .post(API_BASE_URL + "/property/create", newProperty, {
+    //     headers: {
+    //       'content-type': 'multipart/form-data',
+    //       Authorization: `Bearer ${tokenStr}`
+    //     },
+    //   })
+    //   .then((response) => {
+    //     // console.log(response);
+    //   })
+    //   .catch((err) => {
+    //     // console.log(err);
+    //   });
   };
   return (
     <div>
