@@ -177,28 +177,28 @@ const AddListing = () => {
 
     formData.append('image',image)
     publishStatus: "unpublish",
-    title,
-    marketStatus,
-    cat_id,
-    type_id,
-    state,
-    locality,
-    area,
-    location,
-    budget,
-    bedroom,
-    toilet,
-    bathroom,
-    parking,
-    totalArea,
-    videoLink,
-    serviced,
-    furnished,
-    description,
-    featuredImage,
-    galleryImage,
-    garage,
-    totalarea,
+    formData.append('title,image)
+    formData.append('marketStatus,image)
+    formData.append('cat_id,image)
+    formData.append('type_id,image)
+    formData.append('state,image)
+    formData.append('locality,image)
+    formData.append('area,image)
+    formData.append('location,image)
+    formData.append('budget,image)
+    formData.append('bedroom,image)
+    formData.append('toilet,image)
+    formData.append('bathroom,
+    formData.append('parking,image)
+    formData.append('totalArea,image)
+    formData.append('videoLink,image)
+    formData.append('serviced,image)
+    formData.append('furnished,image)
+    formData.append('description,image)
+    formData.append('featuredImage,image)
+    formData.append('galleryImage,image)
+    formData.append('garage,image)
+    formData.append('totalarea,image)
     // const newProperty = {
     //   ...property,
     //   galleryImage: formData,
