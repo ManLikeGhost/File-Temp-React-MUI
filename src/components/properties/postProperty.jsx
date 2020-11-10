@@ -106,14 +106,14 @@ const PostProperty = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-console.log(newPropertyRequest)
+// console.log(newPropertyRequest)
     axios
       .post(API_BASE_URL + "/submit-request", newPropertyRequest)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 

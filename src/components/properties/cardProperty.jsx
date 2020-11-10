@@ -63,7 +63,7 @@ const CardProperty = ({ ...property }) => {
               component="img"
               alt={property.title}
               title={property.title}
-              image={property.image || "http://placehold.it/200"}
+              image={`https://api.terrelldavies.com/FeaturedProperty_images/${property.image}` || "http://placehold.it/200"}
               className={classes.media}
             />
           </Grid>

@@ -86,7 +86,7 @@ const UpgradeSubscription = () => {
           headers: authHeader(),
         }
       );
-      console.log(result);
+      // console.log(result);
       // setPlan(result.data.data);
     }
     fetchData();
@@ -106,10 +106,10 @@ const UpgradeSubscription = () => {
         .then((response) => {
           history.push('/new-upgrade')
           window.location.reload();
-         console.log(response)
+        //  console.log(response)
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           // setLoading(false);
         });
     }

@@ -42,7 +42,7 @@ const SideMenu = ({ user }) => {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    console.log("Logged out user");
+    // console.log("Logged out user");
     history.push("/signin");
     window.location.reload();
   };

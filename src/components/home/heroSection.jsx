@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
 const HeroSection = () => {
   const classes = useStyles();
   const [data, setData] = useState([]);
-console.log(data)
+// console.log(data)
   useEffect(() => {
     async function fetchData() {
       // You can await here
