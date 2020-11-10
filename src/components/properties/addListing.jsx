@@ -115,10 +115,10 @@ const useStyles = makeStyles((theme) => ({
 const AddListing = () => {
   const classes = useStyles();
   const [property, setProperty] = useState({
-    publishStatus: "unpublish",
+    status: "unpublish",
     title: "",
-    marketStatus: "",
-    cat_id: "",
+    market_status: "",
+    category_id: "",
     type_id: "",
     state: "",
     locality: "",
@@ -129,15 +129,13 @@ const AddListing = () => {
     toilet: "",
     bathroom: "",
     parking: "",
-    totalArea: "",
+    total_area: "",
     videoLink: "",
     serviced: false,
     furnished: false,
     description: " ",
     featuredImage: null,
     galleryImage: null,
-    garage: "",
-    totalarea: "",
   });
   // const [error, setError] = useState(null);
   const [image, setImage] = useState(null);
@@ -150,77 +148,71 @@ const AddListing = () => {
     setProperty({ ...property, [prop]: value });
   };
   const tokenStr = localStorage.getItem(ACCESS_TOKEN_NAME);
-  
-//   const handleFileChange=(event)=> {
-//     setImage(event.target.files[0])
-// }
 
-  // const uploadFile = async (file)=>{
-  //   const formData = new FormData();
-
-  //   formData.append('avatar',image)
-  //   // formData.append("file", file);
-  //   // formData.append("desc", desc);
-  //   const newObject = {...formData, ...property}
-  //   return  await axios.post(API_BASE_URL + "/property/create", formData,{
-  //       headers: {
-  //           'content-type': 'multipart/form-data'
-  //       }
-  //   });
-  // }
-
-  
   const handleSubmit = async (event) => {
+    const {
+      status,
+      title,
+      market_status,
+      category_id,
+      type_id,
+      state,
+      locality,
+      area,
+      location,
+      budget,
+      bedroom,
+      toilet,
+      bathroom,
+      parking,
+      total_area,
+      videoLink,
+      serviced,
+      furnished,
+      description,
+      featuredImage,
+      galleryImage,
+    } = property;
     event.preventDefault();
 
     const formData = new FormData();
 
-    formData.append('image',image)
-    formData.append('publishStatus', "unpublish")
-    formData.append('title',image)
-    formData.append('marketStatus',image)
-    formData.append('cat_id',image)
-    formData.append('type_id',image)
-    formData.append('state',image)
-    formData.append('locality',image)
-    formData.append('area',image)
-    formData.append('location',image)
-    formData.append('budget',image)
-    formData.append('bedroom',image)
-    formData.append('toilet',image)
-    formData.append('bathroom',image)
-    formData.append('parking',image)
-    formData.append('totalArea',image)
-    formData.append('videoLink',image)
-    formData.append('serviced',image)
-    formData.append('furnished',image)
-    formData.append('description',image)
-    formData.append('featuredImage',image)
-    formData.append('galleryImage',image)
-    formData.append('garage',image)
-    formData.append('totalarea',image)
-    // const newProperty = {
-    //   ...property,
-    //   galleryImage: formData,
-      
-    // };
-  
-    // const newObject = {...formData, ...property}
-    // console.log(newObject)
-    console.log(newProperty)
-    // await axios
-    //   .post(API_BASE_URL + "/property/create", newProperty, {
-    //     headers: {
-    //       'content-type': 'multipart/form-data',
-    //       Authorization: `Bearer ${tokenStr}`
-    //     },
-    //   })
-    //   .then((response) => {
-    //     // console.log(response);
-    //   })
-    //   .catch((err) => {
-    //     // console.log(err);
-    //   });
+    formData.append("featuredImage", image);
+    formData.append("status", status);
+    formData.append("title", title);
+    formData.append("market_status", market_status);
+    formData.append("category_id", category_id);
+    formData.append("type_id", type_id);
+    formData.append("state", state);
+    formData.append("locality", locality);
+    formData.append("area", area);
+    formData.append("location", location);
+    formData.append("budget", budget);
+    formData.append("bedroom", bedroom);
+    formData.append("toilet", toilet);
+    formData.append("bathroom", bathroom);
+    formData.append("parking", parking);
+    formData.append("total_area", total_area);
+    formData.append("videoLink", videoLink);
+    formData.append("serviced", serviced);
+    formData.append("furnished", furnished);
+    formData.append("description", description);
+    formData.append("galleryImage", galleryImage);
+    try {
+      const response = await axios.post(
+        API_BASE_URL + "/property/create",
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: `Bearer ${tokenStr}`,
+          },
+        }
+      );
+      console.log("response from server", response);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div>
@@ -237,10 +229,10 @@ const AddListing = () => {
           <div className={classes.publishContainer}>
             <FormControl component="fieldset">
               <RadioGroup
-                aria-label="publishStatus"
-                name="publishStatus"
-                value={property.publishStatus}
-                onChange={handleChange("publishStatus")}
+                aria-label="status"
+                name="status"
+                value={property.status}
+                onChange={handleChange("status")}
               >
                 <Grid container>
                   <Grid item xs={6}>
@@ -291,15 +283,15 @@ const AddListing = () => {
             <Grid item xs={4}>
               <FormLabel component="legend">Market Status</FormLabel>
               <FormControl className={classes.accountFormControl}>
-                <InputLabel id="marketStatus">Any</InputLabel>
+                <InputLabel id="market_status">Any</InputLabel>
                 <Select
                   required
                   fullWidth
-                  labelId="marketStatus"
-                  id="marketStatus"
+                  labelId="market_status"
+                  id="market_status"
                   variant="outlined"
-                  value={property.marketStatus}
-                  onChange={handleChange("marketStatus")}
+                  value={property.market_status}
+                  onChange={handleChange("market_status")}
                 >
                   <MenuItem value={"active"}>Available</MenuItem>
                   <MenuItem value={"sold"}>Sold</MenuItem>
@@ -311,15 +303,15 @@ const AddListing = () => {
             <Grid item xs={6}>
               <FormLabel component="legend">Category</FormLabel>
               <FormControl className={classes.accountFormControl}>
-                <InputLabel id="cat_id">Select Category</InputLabel>
+                <InputLabel id="category_id">Select Category</InputLabel>
                 <Select
                   required
                   fullWidth
-                  labelId="cat_id"
-                  id="cat_id"
+                  labelId="category_id"
+                  id="category_id"
                   variant="outlined"
-                  value={property.cat_id}
-                  onChange={handleChange("cat_id")}
+                  value={property.category_id}
+                  onChange={handleChange("category_id")}
                 >
                   <MenuItem value={"1"}>Flat</MenuItem>
                   <MenuItem value={"2"}>Houses</MenuItem>
@@ -442,7 +434,7 @@ const AddListing = () => {
                 className={classes.label}
                 variant="outlined"
                 value={property.bedroom}
-                onChange={handleChange("bedrooms")}
+                onChange={handleChange("bedroom")}
               />
             </Grid>
             <Grid item xs={4}>
@@ -457,7 +449,7 @@ const AddListing = () => {
                 className={classes.label}
                 variant="outlined"
                 value={property.toilet}
-                onChange={handleChange("toilets")}
+                onChange={handleChange("toilet")}
               />
             </Grid>
             <Grid item xs={4}>
@@ -472,7 +464,7 @@ const AddListing = () => {
                 className={classes.label}
                 variant="outlined"
                 value={property.bathroom}
-                onChange={handleChange("bathrooms")}
+                onChange={handleChange("bathroom")}
               />
             </Grid>
           </Grid>
@@ -488,7 +480,7 @@ const AddListing = () => {
                 autoComplete="parking"
                 className={classes.label}
                 variant="outlined"
-                value={property.garage}
+                value={property.parking}
                 onChange={handleChange("parking")}
               />
             </Grid>
@@ -496,15 +488,15 @@ const AddListing = () => {
               <FormLabel component="legend">Total Area</FormLabel>
               <TextField
                 required
-                id="totalarea"
-                name="totalarea"
+                id="total_area"
+                name="total_area"
                 // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
                 fullWidth
                 autoComplete="totalarea"
                 className={classes.label}
                 variant="outlined"
-                value={property.totalarea}
-                onChange={handleChange("totalarea")}
+                value={property.total_area}
+                onChange={handleChange("total_area")}
               />
             </Grid>
           </Grid>
