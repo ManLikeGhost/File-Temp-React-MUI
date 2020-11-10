@@ -5,6 +5,7 @@ import CardProperty from "./cardProperty";
 import Grid from "@material-ui/core/Grid";
 
 const PropertiesList = ({ properties }) => {
+  
   return (
     <div>
       <Grid container justify="center" alignItems="center">

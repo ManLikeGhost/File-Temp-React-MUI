@@ -135,7 +135,7 @@ const AccountSettings = ({ user }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(account);
+    // console.log(account);
     axios
       .post(API_BASE_URL + "/profile-update", account,{
         headers: {
@@ -146,7 +146,7 @@ const AccountSettings = ({ user }) => {
         window.location.reload();
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 

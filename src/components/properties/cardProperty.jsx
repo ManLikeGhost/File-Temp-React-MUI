@@ -63,7 +63,7 @@ const CardProperty = ({ ...property }) => {
               component="img"
               alt={property.title}
               title={property.title}
-              image={property.featuredImage || "http://placehold.it/200"}
+              image={`https://api.terrelldavies.com/FeaturedProperty_images/${property.image}` || "http://placehold.it/200"}
               className={classes.media}
             />
           </Grid>
@@ -87,7 +87,7 @@ const CardProperty = ({ ...property }) => {
                   </Grid>
                   <Grid item xs={11}>
                     <Typography className={classes.address}>
-                      {property.metaDescription}
+                      {property.location}
                     </Typography>
                   </Grid>
                 </Grid>
@@ -113,7 +113,7 @@ const CardProperty = ({ ...property }) => {
                 bedroom={property.bedroom}
                 bathroom={property.bathroom}
                 toilet={property.toilet}
-                garage={property.garage}
+                garage={property.parking}
               />
             </CardContent>
           </Grid>

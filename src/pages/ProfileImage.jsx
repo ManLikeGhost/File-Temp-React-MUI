@@ -80,7 +80,7 @@ const ProfileImage = () => {
   };
 
   const uploadHandler = () => {
-    console.log(image);
+    // console.log(image);
     setAvatar(image.name);
     // const formData = new FormData()
     // formData.append(

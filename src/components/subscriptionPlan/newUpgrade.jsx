@@ -140,7 +140,7 @@ const details = [
 const NewUpgrade = () => {
   // const {foo} = props.location.state
   let data = useLocation();
-console.log(data.subscription)
+// console.log(data.subscription)
   const classes = useStyles();
   return (
     <div>

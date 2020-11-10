@@ -168,7 +168,7 @@ const AddListing = () => {
       galleryImage: convertedImage,
       featuredImage: convertedImage,
     };
-    console.log("to be sent to server", newProperty);
+    // console.log("to be sent to server", newProperty);
     axios
       .post(API_BASE_URL + "/property/create", newProperty, {
         headers: {
@@ -176,10 +176,10 @@ const AddListing = () => {
         },
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
   return (
