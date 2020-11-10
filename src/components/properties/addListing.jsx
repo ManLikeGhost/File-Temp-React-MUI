@@ -148,6 +148,7 @@ const AddListing = () => {
     setProperty({ ...property, [prop]: value });
   };
   const tokenStr = localStorage.getItem(ACCESS_TOKEN_NAME);
+  console.log(tokenStr)
 
   const handleSubmit = async (event) => {
     const {
