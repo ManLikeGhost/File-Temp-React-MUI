@@ -147,8 +147,8 @@ const AddListing = () => {
         : event.target.value;
     setProperty({ ...property, [prop]: value });
   };
-  const tokenStr = localStorage.getItem(ACCESS_TOKEN_NAME);
-  console.log(tokenStr)
+  const tokenStr = JSON.parse(localStorage.getItem(ACCESS_TOKEN_NAME));
+  console.log(tokenStr.token)
 
   const handleSubmit = async (event) => {
     const {
@@ -206,7 +206,7 @@ const AddListing = () => {
         {
           headers: {
             "content-type": "multipart/form-data",
-            Authorization: `Bearer ${tokenStr}`,
+            Authorization: `Bearer ${tokenStr.token}`,
           },
         }
       );

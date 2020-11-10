@@ -45,99 +45,104 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+
   useEffect(() => {
-    async function fetchData() {
-      let user = AuthService.getCurrentUser();
+    const fetchData = async () => {
+      let user = await AuthService.getCurrentUser();
+
       if (user) {
         setCurrentUser(user);
         setIsAuthenticated(true);
       }
-    }
+    };
     fetchData();
   }, []);
 
   const classes = useStyles();
+  console.log("Authenticated", isAuthenticated);
   return (
     <div className={classes.paperContainer}>
       <CssBaseline />
       <Router history={history}>
         <div>
-        <Switch>
-          <Route
-            path="/properties/:propertyId"
-            component={SinglePropertyPage}
-          />
+          <Switch>
+            <Route
+              path="/properties/:propertyId"
+              component={SinglePropertyPage}
+            />
 
-          <Route exact path="/contact-us">
-            <ContactUsPage />
-          </Route>
-          <Route exact path="/blog-page">
-            <BlogPage />
-          </Route>
+            <Route exact path="/contact-us">
+              <ContactUsPage />
+            </Route>
+            <Route exact path="/blog-page">
+              <BlogPage />
+            </Route>
 
-          <Route
-            exact
-            path="/blog-page/:articleId"
-            component={BlogPageArticle}
-          />
-          <Route exact path="/flats-property-display">
-            <FlatsPropertyDisplay />
-          </Route>
-          <Route exact path="/houses-property-display">
-            <HousesPropertyDisplay />
-          </Route>
-          <Route exact path="/land-property-display">
-            <LandPropertyDisplay />
-          </Route>
-          <Route exact path="/commercial-projects-display">
-            <CommercialProjectsDisplay />
-          </Route>
-          <Route exact path="/about">
-            <AboutPage />
-          </Route>
+            <Route
+              exact
+              path="/blog-page/:articleId"
+              component={BlogPageArticle}
+            />
+            <Route exact path="/flats-property-display">
+              <FlatsPropertyDisplay />
+            </Route>
+            <Route exact path="/houses-property-display">
+              <HousesPropertyDisplay />
+            </Route>
+            <Route exact path="/land-property-display">
+              <LandPropertyDisplay />
+            </Route>
+            <Route exact path="/commercial-projects-display">
+              <CommercialProjectsDisplay />
+            </Route>
+            <Route exact path="/about">
+              <AboutPage />
+            </Route>
 
-          <Route exact path="/signin">
-            <SignInPage />
-          </Route>
-          <Route exact path="/signup">
-            <SignUpPage />
-          </Route>
+            <Route exact path="/signin">
+              <SignInPage />
+            </Route>
+            <Route exact path="/signup">
+              <SignUpPage />
+            </Route>
+            {/* <Route path="/profile-settings">
+            <ProfileSettings />
+          </Route> */}
 
-          <ProtectedRoute
-            path="/profile-settings"
-            component={ProfileSettings}
-            isAuthenticated={isAuthenticated}
-            user={currentUser}
-          />
+            <ProtectedRoute
+              path="/profile-settings"
+              component={ProfileSettings}
+              isAuthenticated={isAuthenticated}
+              user={currentUser}
+            />
 
-          <Route path="/profile-image">
-            <ProfileImage />
-          </Route>
-          <Route path="/subscription-plans">
-            <SubscriptionPlans />
-          </Route>
-          <Route path="/upgrade-subscription">
-            <UpgradeSubscriptionPage />
-          </Route>
-          <Route path="/new-upgrade" component={NewUpgradePage} />
+            <Route path="/profile-image">
+              <ProfileImage />
+            </Route>
+            <Route path="/subscription-plans">
+              <SubscriptionPlans />
+            </Route>
+            <Route path="/upgrade-subscription">
+              <UpgradeSubscriptionPage />
+            </Route>
+            <Route path="/new-upgrade" component={NewUpgradePage} />
 
-          <Route path="/payment">
-            <PaymentPage />
-          </Route>
-          <Route path="/post-property-request">
-            <PostPropertyRequestPage />
-          </Route>
-          <Route path="/add-listing">
-            <AddListingPage />
-          </Route>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route component={Page404} />
-        </Switch>
-      
+            <Route path="/payment">
+              <PaymentPage />
+            </Route>
+            <Route path="/post-property-request">
+              <PostPropertyRequestPage />
+            </Route>
+            <Route path="/add-listing">
+              <AddListingPage />
+            </Route>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+            <Route component={Page404} />
+          </Switch>
         </div>
-        </Router>
+      </Router>
     </div>
   );
 }
