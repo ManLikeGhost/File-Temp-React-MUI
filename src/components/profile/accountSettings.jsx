@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProfileSectionTitle from "./miniComponents/profilesectionTitle";
 import axios from "../../axios/index";
-import AuthService from "../../services/auth.service";
-// import history from "../../history";
 import { ACCESS_TOKEN_NAME, API_BASE_URL } from "../../constants/apiConstants";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -20,8 +18,6 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "1000px",
-    // background: `url(${BackgroundImage}) no-repeat center center fixed`,
-    // backgroundSize: "cover",
   },
 
   paper: {

@@ -57,7 +57,6 @@ function App() {
   }, []);
 
   const classes = useStyles();
-  console.log("Authenticated", isAuthenticated);
   return (
     <div className={classes.paperContainer}>
       <CssBaseline />
