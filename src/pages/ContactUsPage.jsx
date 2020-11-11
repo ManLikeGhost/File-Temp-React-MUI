@@ -1,4 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+
+import axios from "axios";
+import { API_BASE_URL } from "../constants/apiConstants";
+
+import ContactUsAlert from '../components/contactUsAlert';
+
 import NavigationHeader from "../components/navigationHeader.jsx";
 import MarbleBackground from "../img/MarbleBackground.png";
 import Footer from "../components/footer";
@@ -68,6 +74,34 @@ const useStyles = makeStyles((theme) => ({
 
 const ContactUsPage = () => {
   const classes = useStyles();
+   
+  const [email, setEmail] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+
+  const onInputChange = (name) => (event) => {
+    setEmail({
+      ...email,
+      [name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post( API_BASE_URL + "/sendMail", email )
+      .then((response) => {
+        console.log(response);        
+      })
+      .catch((err) => {
+        console.log(err);
+    });
+  }
+  
+
   return (
     <div className={classes.backgroundImage}>
       <NavigationHeader />
@@ -81,9 +115,10 @@ const ContactUsPage = () => {
 
           <Grid item xs={12}>
             <div className={classes.form}>
-              <form className={classes.root} noValidate autoComplete="off">
+              <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
                 <FormControl>
                   <Grid container>
+                    <ContactUsAlert />
                     <Grid item xs={12}>
                       <div className={classes.nameInput}>
                         <TextField
@@ -92,6 +127,7 @@ const ContactUsPage = () => {
                           label="Name"
                           variant="outlined"
                           color="secondary"
+                          onChange={onInputChange("name")}
                         />
                       </div>
                     </Grid>
@@ -104,6 +140,8 @@ const ContactUsPage = () => {
                           label="Email"
                           variant="outlined"
                           color="secondary"
+                          name="useremail"
+                          onChange={onInputChange("email")}
                         />
                       </div>
                     </Grid>
@@ -116,6 +154,8 @@ const ContactUsPage = () => {
                           label="Subject"
                           variant="outlined"
                           color="secondary"
+                          name="usersubject"
+                          onChange={onInputChange("subject")}
                         />
                       </div>
                     </Grid>
@@ -130,6 +170,8 @@ const ContactUsPage = () => {
                             width: "950px",
                             height: "466px",
                           }}
+                          name="usermessage"
+                          onChange={onInputChange("message")}
                         />
                       </div>
                     </Grid>
@@ -142,6 +184,7 @@ const ContactUsPage = () => {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        onSubmit={handleSubmit}
                       >
                         Send Message
                       </Button>
