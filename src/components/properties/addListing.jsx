@@ -139,7 +139,7 @@ const AddListing = () => {
     garage: "",
     totalarea: "",
   });
-  // const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
   const [image, setImage] = useState(null);
 
   const handleChange = (prop) => (event) => {
@@ -149,78 +149,54 @@ const AddListing = () => {
         : event.target.value;
     setProperty({ ...property, [prop]: value });
   };
+
   const tokenStr = localStorage.getItem(ACCESS_TOKEN_NAME);
-  
-//   const handleFileChange=(event)=> {
-//     setImage(event.target.files[0])
-// }
 
-  // const uploadFile = async (file)=>{
-  //   const formData = new FormData();
-
-  //   formData.append('avatar',image)
-  //   // formData.append("file", file);
-  //   // formData.append("desc", desc);
-  //   const newObject = {...formData, ...property}
-  //   return  await axios.post(API_BASE_URL + "/property/create", formData,{
-  //       headers: {
-  //           'content-type': 'multipart/form-data'
-  //       }
-  //   });
-  // }
-
-  
   const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      const formData = new FormData();
 
-    const formData = new FormData();
+      formData.append("image", image);
+      formData.append("publishStatus", "unpublish");
+      formData.append("title", image);
+      formData.append("marketStatus", image);
+      formData.append("cat_id", image);
+      formData.append("type_id", image);
+      formData.append("state", image);
+      formData.append("locality", image);
+      formData.append("area", image);
+      formData.append("location", image);
+      formData.append("budget", image);
+      formData.append("bedroom", image);
+      formData.append("toilet", image);
+      formData.append("bathroom", image);
+      formData.append("parking", image);
+      formData.append("totalArea", image);
+      formData.append("videoLink", image);
+      formData.append("serviced", image);
+      formData.append("furnished", image);
+      formData.append("description", image);
+      formData.append("featuredImage", image);
+      formData.append("galleryImage", image);
+      formData.append("garage", image);
+      formData.append("totalarea", image);
+      const response = await axios.post(
+        API_BASE_URL + "/property/create",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${tokenStr}`,
+            "content-type": "multipart/form-data",
+          },
+        }
+      );
 
-    formData.append('image',image)
-    formData.append('publishStatus', "unpublish")
-    formData.append('title',image)
-    formData.append('marketStatus',image)
-    formData.append('cat_id',image)
-    formData.append('type_id',image)
-    formData.append('state',image)
-    formData.append('locality',image)
-    formData.append('area',image)
-    formData.append('location',image)
-    formData.append('budget',image)
-    formData.append('bedroom',image)
-    formData.append('toilet',image)
-    formData.append('bathroom',image)
-    formData.append('parking',image)
-    formData.append('totalArea',image)
-    formData.append('videoLink',image)
-    formData.append('serviced',image)
-    formData.append('furnished',image)
-    formData.append('description',image)
-    formData.append('featuredImage',image)
-    formData.append('galleryImage',image)
-    formData.append('garage',image)
-    formData.append('totalarea',image)
-    // const newProperty = {
-    //   ...property,
-    //   galleryImage: formData,
-      
-    // };
-  
-    // const newObject = {...formData, ...property}
-    // console.log(newObject)
-    console.log(newProperty)
-    // await axios
-    //   .post(API_BASE_URL + "/property/create", newProperty, {
-    //     headers: {
-    //       'content-type': 'multipart/form-data',
-    //       Authorization: `Bearer ${tokenStr}`
-    //     },
-    //   })
-    //   .then((response) => {
-    //     // console.log(response);
-    //   })
-    //   .catch((err) => {
-    //     // console.log(err);
-    //   });
+      console.log(response);
+    } catch (error) {
+      setError(error);
+      console.log("There is an error", error);
+    }
   };
   return (
     <div>
