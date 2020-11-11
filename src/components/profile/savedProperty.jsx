@@ -2,6 +2,7 @@ import React from "react";
 import ButtonAccount from "./miniComponents/button";
 import MessageAccount from "./miniComponents/message";
 import ProfileSectionTitle from "./miniComponents/profilesectionTitle";
+import Link from "@material-ui/core/Link";
 
 import "./content.css";
 
@@ -14,7 +15,10 @@ const SavedProperty = () => {
       </ProfileSectionTitle>
       <div className="content">
         <MessageAccount>You have no saved property on this page</MessageAccount>
-        <ButtonAccount>ADD PROPERTY</ButtonAccount>
+
+        <Link href="/add-listing">
+          <ButtonAccount>ADD PROPERTY</ButtonAccount>
+        </Link>
       </div>
     </div>
   );
