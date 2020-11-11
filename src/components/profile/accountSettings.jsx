@@ -95,7 +95,7 @@ const AccountSettings = () => {
   const [account, setAccount] = useState({
     userType: "",
     name: "",
-    companyName: "",
+    company_name: "",
     address: "",
     locality: "",
     state: "",
@@ -104,9 +104,9 @@ const AccountSettings = () => {
     mobile: "",
     email: "",
     services: "",
-    facebook: "",
-    twitter: "",
-    linkedin: "",
+    facebook_profile: "",
+    twitter_profile: "",
+    linkedin_profile: "",
   });
 
   useEffect(() => {
@@ -168,6 +168,7 @@ const AccountSettings = () => {
   };
 
   const handleSubmit = async (event) => {
+    
     event.preventDefault();
     try {
       const response = await axios.post(
@@ -190,7 +191,6 @@ const AccountSettings = () => {
     <div>
       <div>
         <CssBaseline />
-
         <div>
           <ProfileSectionTitle>
             <div>Account</div>
