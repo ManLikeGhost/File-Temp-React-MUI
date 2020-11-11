@@ -94,10 +94,10 @@ const ContactUsPage = () => {
     axios
       .post( API_BASE_URL + "/sendMail", email )
       .then((response) => {
-        console.log(response);        
+        //console.log(response);        
       })
       .catch((err) => {
-        console.log(err);
+        //console.log(err);
     });
   }
   
