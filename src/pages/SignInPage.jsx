@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import history from "../history";
+import { useHistory } from 'react-router-dom'
 
 import {API_BASE_URL, ACCESS_TOKEN_NAME} from '../constants/apiConstants';
 import Button from "@material-ui/core/Button";
@@ -99,6 +99,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SignInPage = () => {
+  const history = useHistory()
   const classes = useStyles();
 
   const [state, setState] = useState({

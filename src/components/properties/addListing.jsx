@@ -137,7 +137,7 @@ const AddListing = () => {
     featuredImage: null,
     galleryImage: null,
   });
-  // const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
   const [image, setImage] = useState(null);
 
   const handleChange = (prop) => (event) => {
@@ -147,8 +147,8 @@ const AddListing = () => {
         : event.target.value;
     setProperty({ ...property, [prop]: value });
   };
-  const tokenStr = JSON.parse(localStorage.getItem(ACCESS_TOKEN_NAME));
-  console.log(tokenStr.token)
+
+  const tokenStr = localStorage.getItem(ACCESS_TOKEN_NAME);
 
   const handleSubmit = async (event) => {
     const {
@@ -175,44 +175,48 @@ const AddListing = () => {
       galleryImage,
     } = property;
     event.preventDefault();
-
-    const formData = new FormData();
-
-    formData.append("featuredImage", image);
-    formData.append("status", status);
-    formData.append("title", title);
-    formData.append("market_status", market_status);
-    formData.append("category_id", category_id);
-    formData.append("type_id", type_id);
-    formData.append("state", state);
-    formData.append("locality", locality);
-    formData.append("area", area);
-    formData.append("location", location);
-    formData.append("budget", budget);
-    formData.append("bedroom", bedroom);
-    formData.append("toilet", toilet);
-    formData.append("bathroom", bathroom);
-    formData.append("parking", parking);
-    formData.append("total_area", total_area);
-    formData.append("videoLink", videoLink);
-    formData.append("serviced", serviced);
-    formData.append("furnished", furnished);
-    formData.append("description", description);
-    formData.append("galleryImage", galleryImage);
     try {
+      const formData = new FormData();
+
+      formData.append("image", image);
+      formData.append("publishStatus", "unpublish");
+      formData.append("title", image);
+      formData.append("marketStatus", image);
+      formData.append("cat_id", image);
+      formData.append("type_id", image);
+      formData.append("state", image);
+      formData.append("locality", image);
+      formData.append("area", image);
+      formData.append("location", image);
+      formData.append("budget", image);
+      formData.append("bedroom", image);
+      formData.append("toilet", image);
+      formData.append("bathroom", image);
+      formData.append("parking", image);
+      formData.append("totalArea", image);
+      formData.append("videoLink", image);
+      formData.append("serviced", image);
+      formData.append("furnished", image);
+      formData.append("description", image);
+      formData.append("featuredImage", image);
+      formData.append("galleryImage", image);
+      formData.append("garage", image);
+      formData.append("totalarea", image);
       const response = await axios.post(
         API_BASE_URL + "/property/create",
         formData,
         {
           headers: {
+            Authorization: `Bearer ${tokenStr}`,
             "content-type": "multipart/form-data",
-            Authorization: `Bearer ${tokenStr.token}`,
           },
         }
       );
-      console.log("response from server", response);
+
+      console.log(response);
     } catch (error) {
-      console.log(error);
+      setError(error);
+      console.log("There is an error", error);
     }
   };
   return (

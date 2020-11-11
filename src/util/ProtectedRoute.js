@@ -1,21 +1,38 @@
+// import React from "react";
+// import { Route, Redirect, useLocation } from "react-router-dom";
+
+// const ProtectedRoute = ({ component: Component, isAuthenticated, ...rest }) => {
+//   const location = useLocation();
+//   return (
+//     <Route
+//       {...rest}
+//       render={(props) =>
+//         isAuthenticated === true ? (
+//           <Component {...props} />
+//         ) : (
+//           <Redirect to={{ pathname: "/signin", state: { from: location } }} />
+//         )
+//       }
+//     />
+//   );
+// };
+
+// export default ProtectedRoute;
+
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Redirect, Route, useLocation } from "react-router-dom";
 
 const ProtectedRoute = ({ component: Component, isAuthenticated, ...rest }) => {
-  console.log(isAuthenticated)
-  return <Route
-    {...rest}
-    render={(props) =>
-      isAuthenticated === true ? (
-        <Component {...props} />
-      ) : (
-        // <Redirect to="/signin" />
-        <Redirect
-          to={{ pathname: "/signin", state: { from: props.location } }}
-        />
-      )
-    }
-  />
-  };
+  const location = useLocation();
+  return (
+    <Route {...rest}>
+      {isAuthenticated === true ?
+        <Component {...rest}/>
+      :
+        <Redirect to={{ pathname: "/signin", state: { from: location } }} />
+      }
+    </Route>
+  );
+};
 
 export default ProtectedRoute;
