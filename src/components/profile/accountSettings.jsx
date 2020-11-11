@@ -112,11 +112,12 @@ const AccountSettings = () => {
     twitter: "",
     linkedin: "",
   });
+  const [token, setToken] = useState('');
 
   useEffect(() => {
     async function fetchData() {
-      let user = await AuthService.getCurrentUser();
-      console.log(user)
+      const result = await axios(API_BASE_URL + "/user-detail");
+      setToken(user.token)
       if (user) {
         const {
           userType,
@@ -137,18 +138,18 @@ const AccountSettings = () => {
 
         setAccount({userType,
           name,
-          company_name: company_name,
-          address: address,
-          locality: locality,
-          state:state,
-          country: country,
-          phone: phone,
-          mobile: mobile,
-          email: email,
-          services: services,
-          facebook_profile: facebook_profile,
-          twitter_profile: twitter_profile,
-          linkedin_profile: linkedin_profile});
+          company_name,
+          address,
+          locality,
+          state,
+          country,
+          phone,
+          mobile,
+          email,
+          services,
+          facebook_profile,
+          twitter_profile,
+          linkedin_profile});
       }
     }
     fetchData();
@@ -161,21 +162,22 @@ const AccountSettings = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // console.log(account);
-    axios
+    try {
+      const response = await axios
       .post(API_BASE_URL + "/profile-update", account,{
         headers: {
-          // 'Authorization': `Bearer ${user.user.token}`
+          'Authorization': `Bearer ${token}`
         }})
-      .then((response) => {
-        // console.log(response);
-        window.location.reload();
-      })
-      .catch((err) => {
-        // console.log(err);
-      });
+        console.log(response.data[0])
+        // window.location.reload();
+        
+    } catch (error) {
+      console.log(error)
+    }
+   
   };
 
   return (
@@ -357,7 +359,7 @@ const AccountSettings = () => {
                   autoComplete="facebook"
                   className={classes.label}
                   value={account.facebook_profile || ''}
-                  onChange={handleChange("facebook")}
+                  onChange={handleChange("facebook_profile")}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -369,7 +371,7 @@ const AccountSettings = () => {
                   autoComplete="twitter"
                   className={classes.label}
                   value={account.twitter_profile || ''}
-                  onChange={handleChange("twitter")}
+                  onChange={handleChange("twitter_profile")}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -381,7 +383,7 @@ const AccountSettings = () => {
                   autoComplete="linkedin"
                   className={classes.label}
                   value={account.linkedin_profile || ''}
-                  onChange={handleChange("linkedin")}
+                  onChange={handleChange("linkedin_profile")}
                 />
               </Grid>
             </Grid>
