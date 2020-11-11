@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import history from "./history";
 import ProtectedRoute from "./util/ProtectedRoute";
 // import { ACCESS_TOKEN_NAME } from "./constants/apiConstants";
 import AuthService from "./services/auth.service";
@@ -47,7 +46,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   useEffect(() => {
     async function fetchData() {
-      let user = AuthService.getCurrentUser();
+      let user = await AuthService.getCurrentUser();
       if (user) {
         setCurrentUser(user);
         setIsAuthenticated(true);
@@ -105,7 +104,7 @@ function App() {
           <ProtectedRoute
             path="/profile-settings"
             component={ProfileSettings}
-            isAuthenticated={isAuthenticated}
+            isAuthenticated={true}
             user={currentUser}
           />
 
@@ -130,7 +129,7 @@ function App() {
           <ProtectedRoute
             path="/add-listing"
             component={AddListingPage}
-            isAuthenticated={isAuthenticated}
+            isAuthenticated={true}
           />
           <Route exact path="/">
             <HomePage />

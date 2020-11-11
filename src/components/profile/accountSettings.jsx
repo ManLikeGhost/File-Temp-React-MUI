@@ -91,6 +91,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AccountSettings = ({ user }) => {
+  console.log(user)
   const {
     userType,
     name,
@@ -106,7 +107,7 @@ const AccountSettings = ({ user }) => {
     facebook_profile,
     twitter_profile,
     linkedin_profile,
-  } = user.user;
+  } = user;
 
   const classes = useStyles();
   const [account, setAccount] = useState({
