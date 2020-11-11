@@ -60,7 +60,7 @@ function App() {
   return (
     <div className={classes.paperContainer}>
       <CssBaseline />
-      <Router history={history} basename={process.env.PUBLIC_URL}>
+      <Router>
         <Switch>
           <Route
             path="/properties/:propertyId"
@@ -126,9 +126,12 @@ function App() {
           <Route path="/post-property-request">
             <PostPropertyRequestPage />
           </Route>
-          <Route path="/add-listing">
-            <AddListingPage />
-          </Route>
+          
+          <ProtectedRoute
+            path="/add-listing"
+            component={AddListingPage}
+            isAuthenticated={isAuthenticated}
+          />
           <Route exact path="/">
             <HomePage />
           </Route>
