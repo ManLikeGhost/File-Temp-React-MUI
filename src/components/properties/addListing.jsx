@@ -148,32 +148,11 @@ const AddListing = () => {
     setProperty({ ...property, [prop]: value });
   };
 
-  const tokenStr = localStorage.getItem(ACCESS_TOKEN_NAME);
+  const { token } = JSON.parse(
+    localStorage.getItem(ACCESS_TOKEN_NAME)
+  );
 
   const handleSubmit = async (event) => {
-    const {
-      status,
-      title,
-      market_status,
-      category_id,
-      type_id,
-      state,
-      locality,
-      area,
-      location,
-      budget,
-      bedroom,
-      toilet,
-      bathroom,
-      parking,
-      total_area,
-      videoLink,
-      serviced,
-      furnished,
-      description,
-      featuredImage,
-      galleryImage,
-    } = property;
     event.preventDefault();
     try {
       const formData = new FormData();
@@ -207,12 +186,11 @@ const AddListing = () => {
         formData,
         {
           headers: {
-            Authorization: `Bearer ${tokenStr}`,
+            Authorization: `Bearer ${token}`,
             "content-type": "multipart/form-data",
           },
         }
       );
-
       console.log(response);
     } catch (error) {
       setError(error);
