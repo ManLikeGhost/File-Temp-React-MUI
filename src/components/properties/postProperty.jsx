@@ -10,7 +10,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
-import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import { makeStyles } from "@material-ui/core/styles";
 
 import SectionTitle from "../sectionTitle";
@@ -386,18 +385,16 @@ const PostProperty = () => {
                 <InputLabel id="comment" style={{ paddingBottom: "10px" }}>
                   Comments
                 </InputLabel>
-                <TextareaAutosize
-                  rowsMax={20}
-                  aria-label="maximum height"
-                  style={{
-                    width: "39rem",
-                    height: "10rem",
-                  }}
-
-                    placeholder="Add additional comment here"
+                
+                <TextField
+                  id="outlined-multiline-static"
+                  // label="Description"
+                  multiline
+                  rows={10}
+                  variant="outlined"
+                  placeholder="Add additional comment here"
                     value={newPropertyRequest.comment}
                     onChange={handleChange("comment")}
-                        
                 />
               </Grid>
             </Grid>
