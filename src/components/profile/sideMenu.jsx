@@ -58,7 +58,7 @@ const SideMenu = ({ user }) => {
         <Grid container direction="column" justify="center" alignItems="center">
           <Avatar
             alt="terrel davies"
-            src=""
+            src={user? user.avatar : ""}
             className={classes.bigAvatar}
             fontSize="large"
             color="primary"
