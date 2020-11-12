@@ -10,6 +10,7 @@ import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import HeroImage from "../../img/heroImage.png";
+// import SearchBarNav from "./searchBar"
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -112,6 +113,7 @@ const HeroSection = () => {
               >
                 <SearchIcon color="primary" />
               </IconButton>
+              {/* <SearchBarNav /> */}
             </Paper>
           </div>
         </Grid>
