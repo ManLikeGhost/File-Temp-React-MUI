@@ -63,7 +63,8 @@ console.log(property)
               component="img"
               alt={property.title}
               title={property.title}
-              image={property.image || "http://placehold.it/200"}
+              // image={property.image || "http://placehold.it/200"}
+              image={`https://api.terrelldavies.com/${property.image}` || 'http://placehold.it/200'}
               className={classes.media}
             />
           </Grid>
