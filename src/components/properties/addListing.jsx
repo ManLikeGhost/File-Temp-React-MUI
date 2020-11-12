@@ -8,7 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-
+import Alert from "@material-ui/lab/Alert";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
@@ -139,6 +139,8 @@ const AddListing = () => {
   });
   const [error, setError] = useState(null);
   const [image, setImage] = useState(null);
+  const [isUploaded, setIsUploaded] = useState(false);
+  const [uploadedMessage, setUploadedMessage] = useState('');
 
   const handleChange = (prop) => (event) => {
     const value =
@@ -158,29 +160,29 @@ const AddListing = () => {
       const formData = new FormData();
 
       formData.append("image", image);
-      formData.append("publishStatus", "unpublish");
-      formData.append("title", image);
-      formData.append("marketStatus", image);
-      formData.append("cat_id", image);
-      formData.append("type_id", image);
-      formData.append("state", image);
-      formData.append("locality", image);
-      formData.append("area", image);
-      formData.append("location", image);
-      formData.append("budget", image);
-      formData.append("bedroom", image);
-      formData.append("toilet", image);
-      formData.append("bathroom", image);
-      formData.append("parking", image);
-      formData.append("totalArea", image);
-      formData.append("videoLink", image);
-      formData.append("serviced", image);
-      formData.append("furnished", image);
-      formData.append("description", image);
-      formData.append("featuredImage", image);
-      formData.append("galleryImage", image);
-      formData.append("garage", image);
-      formData.append("totalarea", image);
+      formData.append("publishStatus", property.status);
+      formData.append("title", property.title);
+      formData.append("marketStatus", property.market_status);
+      formData.append("cat_id", property.category_id);
+      formData.append("type_id", property.type_id);
+      formData.append("state", property.state);
+      formData.append("locality", property.locality);
+      formData.append("area", property.area);
+      formData.append("location", property.location);
+      formData.append("budget", property.budget);
+      formData.append("bedroom", property.bedroom);
+      formData.append("toilet", property.toilet);
+      formData.append("bathroom", property.bathroom);
+      formData.append("parking", property.parking);
+      formData.append("totalArea", property.total_area);
+      formData.append("videoLink", property.videoLink);
+      formData.append("serviced", property.serviced);
+      formData.append("furnished", property.furnished);
+      formData.append("description", property.description);
+      formData.append("featuredImage", property.featuredImage);
+      formData.append("galleryImage", property.galleryImage);
+      formData.append("garage", property.garage);
+      formData.append("totalarea", property.total_area);
       const response = await axios.post(
         API_BASE_URL + "/property/create",
         formData,
@@ -192,6 +194,8 @@ const AddListing = () => {
         }
       );
       console.log(response);
+      setIsUploaded(true)
+      setUploadedMessage(response.data[0].message);
     } catch (error) {
       setError(error);
       console.log("There is an error", error);
@@ -207,7 +211,7 @@ const AddListing = () => {
           </Typography>
         </Grid>
       </Grid>
-      <div className={classes.formContainer}>
+      {isUploaded ? (<Alert severity="success">{uploadedMessage}</Alert>):(<div className={classes.formContainer}>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <div className={classes.publishContainer}>
             <FormControl component="fieldset">
@@ -602,6 +606,8 @@ const AddListing = () => {
           </Grid>
         </form>
       </div>
+    )}
+      
     </div>
   );
 };
