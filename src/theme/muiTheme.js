@@ -7,8 +7,7 @@ const theme = createMuiTheme({
   overrides: {
     MuiOutlinedInput: {
         multiline: {
-            
-            // width: '100%'
+            width: '45vw'
         }
     }
 },

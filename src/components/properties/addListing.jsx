@@ -14,7 +14,6 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -101,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
     display: "none",
   },
   multiline:{
-    width: "10vw"
+    width: "100%"
   },
 
   submit: {
@@ -588,23 +587,16 @@ const AddListing = () => {
                 <InputLabel id="comment" style={{ paddingBottom: "10px" }}>
                   Description
                 </InputLabel>
-                <TextareaAutosize
-                  rowsMax={20}
-                  aria-label="maximum height"
-                  style={{
-                    width: "45vw",
-                    height: "10rem",
-                  }}
-                  value={property.description}
-                  onChange={handleChange("description")}
-                />
+                
                 <TextField
                   id="outlined-multiline-static"
-                  label="Multiline"
+                  // label="Description"
                   multiline
-                  rows={20}
+                  rows={10}
                   variant="outlined"
                   className={classes.multiline}
+                  value={property.description}
+                  onChange={handleChange("description")}
                 />
               </Grid>
             </Grid>
