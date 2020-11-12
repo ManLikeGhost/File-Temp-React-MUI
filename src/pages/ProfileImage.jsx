@@ -3,14 +3,13 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
+import Alert from "@material-ui/lab/Alert";
 import Button from "@material-ui/core/Button";
 import NavigationHeader from "../components/navigationHeader";
 import ProfileTitle from "../components/profile/profileTitle";
 import ProfileFooter from "../components/profile/profileFooter";
-
-
-
-
+import axios from "axios";
+import { ACCESS_TOKEN_NAME, API_BASE_URL } from "../constants/apiConstants";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "18px",
     lineHeight: "18px",
     marginTop: theme.spacing(1),
-    marginLeft: "-30px",
+    marginLeft: "5px",
     color: "rgba(0, 0, 0, 0.51)",
   },
   fileTypeDesc: {
@@ -70,32 +69,36 @@ const useStyles = makeStyles((theme) => ({
 
 const ProfileImage = () => {
   const classes = useStyles();
-  const [image, setImage] = useState(null);
   const [avatar, setAvatar] = useState(null);
-
+  const [isUploaded, setIsUploaded] = useState(false);
+  const [uploadedMessage, setUploadedMessage] = useState('');
   const fileChangedHandler = (event) => {
-    const newImage = event.target.files[0];
-    setImage(newImage);
-    setImage(URL.createObjectURL(newImage));
+    const image = event.target.files[0];
+    setAvatar(image);
   };
+  const { token } = JSON.parse(localStorage.getItem(ACCESS_TOKEN_NAME));
+  const uploadHandler = async (event) => {
+    event.preventDefault();
 
-  const uploadHandler = () => {
-    // console.log(image);
-    setAvatar(image.name);
-    // const formData = new FormData()
-    // formData.append(
-    //   'myFile',
-    //   image,
-    //   image.name
-    // )
-    //Use react-image-uploader
-    // //Upload to server via axios
-    // axios.post('url.com/file-upload', {
-    //   onUploadProgress: progressEvent => {
-    //     //Show Upload progress
-    //     console.log(progressEvent.loaded / progressEvent.total)
-    //   }
-    // })
+    try {
+      const formData = new FormData();
+      formData.append("avatar", avatar);
+      const response = await axios.post(
+        API_BASE_URL + "/profile/image/upload",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "content-type": "multipart/form-data",
+          },
+        }
+      );
+      setIsUploaded(true)
+      setUploadedMessage(response.data[0].message);
+      console.log(response)
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -106,15 +109,25 @@ const ProfileImage = () => {
         <ProfileTitle>Profile Settings</ProfileTitle>
         <Grid container className={classes.container}>
           <Grid item xs={4}>
-            <Avatar
+            {avatar ? (
+              <Avatar
               alt="terrel davies"
-              src={avatar}
+              src={URL.createObjectURL(avatar)}
               className={classes.bigAvatar}
               fontSize="large"
               color="primary"
             />
+            ) : (
+              <Avatar
+                alt="terrel davies"
+                src={avatar}
+                className={classes.bigAvatar}
+                fontSize="large"
+                color="primary"
+              />
+            )}
           </Grid>
-          <Grid item xs={6}>
+          {isUploaded ? (<Alert severity="success">{uploadedMessage}</Alert>):(<Grid item xs={6}>
             <Typography className={classes.uploadImageText}>
               Upload Profile Image
             </Typography>
@@ -137,9 +150,10 @@ const ProfileImage = () => {
                   </Button>
                 </Grid>
                 <Grid item xs={6}>
-                  <Typography className={classes.noFileChosenText}>
+                  {avatar? (null):(<Typography className={classes.noFileChosenText}>
                     No file chosen
-                  </Typography>
+                  </Typography>)}
+                  
                 </Grid>
               </Grid>
             </label>
@@ -149,13 +163,16 @@ const ProfileImage = () => {
               </Typography>
             </Grid>
           </Grid>
+          )}
+          
+          {isUploaded ? (null):(
           <Grid
-            xs={2}
-            container
-            direction="row"
-            justify="center"
-            alignItems="flex-end"
+          container
+          direction="row"
+          justify="flex-end"
+          alignItems="center"
           >
+            <Grid item xs={2}>
             <Button
               variant="contained"
               color="primary"
@@ -164,7 +181,11 @@ const ProfileImage = () => {
             >
               Upload
             </Button>
+            </Grid>
+            
           </Grid>
+        )}
+          
         </Grid>
       </div>
       <ProfileFooter />
