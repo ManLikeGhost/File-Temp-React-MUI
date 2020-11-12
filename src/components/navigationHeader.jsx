@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     background: "transparent",
     boxShadow: "none",
     // marginBottom: 20,
-    padding: "2rem 2rem"
+    padding: "2rem 2rem",
   },
   sectionDesktop: {
     display: "none",
@@ -110,10 +110,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const NavigationHeader = () => {
-  let currentUser = AuthService.getCurrentUser()
-  const {avatar} = currentUser;
+  let currentUser = AuthService.getCurrentUser();
   const classes = useStyles();
   // const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
   const [anchorEl, setAnchorEl] = useState(null);
@@ -217,39 +215,41 @@ const NavigationHeader = () => {
             <Button variant="outlined" className={classes.button}>
               <Link href="/add-listing">ADD LISTING</Link>
             </Button>
-            {currentUser ? (<IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              // onClick={handleMenuOpen}
-              color="inherit"
-              className={classes.iconButton}
-            >
-              <Link href="profile-settings/listings">
-                
-                <Avatar
-            alt="terrel davies"
-            src={avatar}
-            className={classes.bigAvatar}
-            fontSize="large"
-            color="primary"
-          />
-              </Link>
-            </IconButton>): (<IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              // onClick={handleMenuOpen}
-              color="inherit"
-              className={classes.iconButton}
-            >
-              <Link href="/signin">
-                <AccountCircle fontSize="large" color="primary" />
-              </Link>
-            </IconButton>)}
-            
+            {currentUser ? (
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                // onClick={handleMenuOpen}
+                color="inherit"
+                className={classes.iconButton}
+              >
+                <Link href="profile-settings/listings">
+                  <Avatar
+                    alt="terrel davies"
+                    src={currentUser ? currentUser.avatar : ""}
+                    className={classes.bigAvatar}
+                    fontSize="large"
+                    color="primary"
+                  />
+                </Link>
+              </IconButton>
+            ) : (
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                // onClick={handleMenuOpen}
+                color="inherit"
+                className={classes.iconButton}
+              >
+                <Link href="/signin">
+                  <AccountCircle fontSize="large" color="primary" />
+                </Link>
+              </IconButton>
+            )}
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
