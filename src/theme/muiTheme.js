@@ -4,6 +4,14 @@ import createPalette from '@material-ui/core/styles/createPalette';
 import createTypography from '@material-ui/core/styles/createTypography';
 
 const theme = createMuiTheme({
+  overrides: {
+    MuiOutlinedInput: {
+        multiline: {
+            
+            // width: '100%'
+        }
+    }
+},
   typography: createTypography(createPalette({}), {
     fontFamily: '"PlayfairDisplay"'
   }),
