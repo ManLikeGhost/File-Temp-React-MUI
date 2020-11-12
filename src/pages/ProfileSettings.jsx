@@ -91,7 +91,7 @@ const ProfileSettings = ({ user }) => {
   return (
     <Router>
       <div className={classes.root}>
-        <NavigationHeader />
+        <NavigationHeader  user={user}/>
 
         <ProfileTitle>Dashboard</ProfileTitle>
         <div className={classes.profileContainer}>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AuthService from "../services/auth.service";
-
+import { ACCESS_TOKEN_NAME, API_BASE_URL } from "../constants/apiConstants";
 
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -14,6 +14,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
+import Avatar from "@material-ui/core/Avatar";
 // import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 
 import Logo from "../img/logo.png";
@@ -109,8 +110,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-let currentUser = AuthService.getCurrentUser()
-const NavigationHeader = (props) => {
+
+const NavigationHeader = () => {
+  let currentUser = AuthService.getCurrentUser()
+  const {avatar} = currentUser;
   const classes = useStyles();
   // const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
   const [anchorEl, setAnchorEl] = useState(null);
@@ -224,7 +227,14 @@ const NavigationHeader = (props) => {
               className={classes.iconButton}
             >
               <Link href="profile-settings/listings">
-                <AccountCircle fontSize="large" color="primary" />
+                
+                <Avatar
+            alt="terrel davies"
+            src={avatar}
+            className={classes.bigAvatar}
+            fontSize="large"
+            color="primary"
+          />
               </Link>
             </IconButton>): (<IconButton
               edge="end"
