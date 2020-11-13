@@ -13,6 +13,12 @@ import InputLabel from "@material-ui/core/InputLabel";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import FormLabel from "@material-ui/core/FormLabel";
+
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogActions from '@material-ui/core/DialogActions';
+
 import { makeStyles } from "@material-ui/core/styles";
 
 import SectionTitle from "../sectionTitle";
@@ -82,6 +88,33 @@ const useStyles = makeStyles((theme) => ({
     height: "62px",
     float: "right",
   },
+
+  title: {
+    width: "511px",//72px
+    height: "511px",
+    textAlign: "center",
+    fontFamily: "Playfair Display",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: "100px",
+    
+    background: "#F5E9DE",
+},
+
+conText:{
+  color: "#BF7950",
+},
+
+align: {
+  background: "#BF7950",
+  borderRadius: "2px",
+  fontWeight: 500,
+  fontSize: "20px",
+  lineHeight: "20px",
+  textAlign: "center",
+  margin: "0px 150px 0px 0px",
+}
+
 }));
 
 const PostProperty = () => {
@@ -117,6 +150,16 @@ const PostProperty = () => {
       console.error(error);
     }
   };
+
+  const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+      };
 
   return (
     <div>
@@ -365,12 +408,43 @@ const PostProperty = () => {
                 />
               </Grid>
             </Grid>
+
+            <Grid container>
+            <Dialog
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+              //className={classes.alertBox}
+            >
+              <Grid item container className={classes.title} >
+
+                <Grid item xs={12}>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      <Typography variant="h5" className={classes.conText}>Congratulations</Typography>
+                    </DialogContentText>
+                    <DialogContentText id="alert-dialog-description">
+                      <Typography variant="h5" className={classes.message}>You have suceeded in adding a new property to your account.Kindly go to dashboard to review your listings</Typography>
+                    </DialogContentText>
+                    <DialogActions >
+                      <Button onClick={handleClose} color="primary" variant="outlined" className={classes.align}>
+                        Add More
+                      </Button>
+                    </DialogActions>
+                  </DialogContent>
+                </Grid>
+              </Grid>
+            
+            </Dialog>
+            </Grid>
             <Button
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={handleClickOpen}
             >
               POST REQUEST
             </Button>

@@ -22,6 +22,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import MessageSentAnimation from '../img/messageSentAnimation.gif';
 
 import { makeStyles } from "@material-ui/core/styles";
+import { TextareaAutosize } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   backgroundImage: {
@@ -91,6 +92,14 @@ conText:{
   color: "#BF7950",
 },
 
+message: {
+  width: "950px",
+  height: "466px",
+  border: "0.5px solid #BF7950",
+  boxSizing: "border-box",
+  borderRadius: "2px",
+},
+
 }));
 
 const ContactUsPage = () => {
@@ -142,44 +151,44 @@ const ContactUsPage = () => {
             </Typography>
           </Grid>
 
-          <Grid item xs={12}>
-            <div className={classes.form}>
-              <div>
-              <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-        //className={classes.alertBox}
-      >
-        <Grid container className={classes.title} >
+              <Grid item xs={12}>
+                <div className={classes.form}>
+                  <div>
+                  <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+            //className={classes.alertBox}
+          >
+            <Grid container className={classes.title} >
 
-        <Grid item xs={12}>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              <Typography variant="h5" className={classes.conText}>Your message is sent</Typography>
-            </DialogContentText>
-          </DialogContent>
-        </Grid>
+            <Grid item xs={12}>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  <Typography variant="h5" className={classes.conText}>Your message is sent</Typography>
+                </DialogContentText>
+              </DialogContent>
+            </Grid>
 
-        <Grid item xs={12}>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              <img src={MessageSentAnimation} alt="Message Sent Animation Gif"/>
-            </DialogContentText>
-          </DialogContent>
-        </Grid>
+            <Grid item xs={12}>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  <img src={MessageSentAnimation} alt="Message Sent Animation Gif"/>
+                </DialogContentText>
+              </DialogContent>
+            </Grid>
 
-        <Grid item xs={12}>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description" display="block">
-              We appreciate your feedback. We will get intouch with you as soon as possible.
-            </DialogContentText>
-          </DialogContent>
-        </Grid>
+            <Grid item xs={12}>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description" display="block">
+                  We appreciate your feedback. We will get intouch with you as soon as possible.
+                </DialogContentText>
+              </DialogContent>
+            </Grid>
 
-        </Grid>
-      </Dialog>
+            </Grid>
+          </Dialog>
               </div>
               <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
                 <FormControl>
@@ -228,24 +237,9 @@ const ContactUsPage = () => {
 
                     <Grid item xs={12}>
                       <div className={classes.nameInput}>
-                        <TextField
+                        <TextareaAutosize
                           className={classes.message}
-                          rowsMax={20}
-                          aria-label="maximum height"
-                          style={{
-                            width: "950px",
-                            height: "466px",
-                          }}
-                          name="usermessage"
-                          onChange={onInputChange("message")}
-                          id="outlined-multiline-static"
-                          // label="Description"
-                          multiline
-                          rows={10}
-                          variant="outlined"
-                          // className={classes.multiline}
-                          // value={property.description}
-                          // onChange={handleChange("description")}
+                          rowsMin={20}
                         />
                       </div>
                     </Grid>
