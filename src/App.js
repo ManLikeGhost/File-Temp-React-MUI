@@ -101,14 +101,12 @@ function App() {
           <Route exact path="/signup">
             <SignUpPage />
           </Route>
-
           <ProtectedRoute
             path="/profile-settings"
             component={ProfileSettings}
             isAuthenticated={isAuthenticated}
             user={currentUser}
-          />
-
+          />  
           <Route path="/profile-image">
             <ProfileImage />
           </Route>
