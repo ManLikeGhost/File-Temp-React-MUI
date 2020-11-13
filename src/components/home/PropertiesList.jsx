@@ -15,8 +15,8 @@ function PropertiesList() {
   useEffect(() => {
     async function fetchData() {
       const result = await axios(API_BASE_URL + "/properties");
-      
       setNewProperties(result.data.property);
+      console.log(result.data.property)
     }
     fetchData();
   }, []);
@@ -29,7 +29,7 @@ function PropertiesList() {
             <Grid key={property.id} item xs={4}>
               <Link to={`/properties/${property.id}`}>
                 <Property
-                  imagePath={`https://api.terrelldavies.com/FeaturedProperty_images/${property.image}`}
+                  image={property.image}
                   title={property.title}
                   address={property.location}
                   link={property.id}

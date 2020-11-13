@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 
 const CardProperty = ({ ...property }) => {
   const classes = useStyles();
-
+console.log(property)
   return (
     <div className={classes.cardProperty}>
       <Card className={classes.card}>
@@ -63,7 +63,8 @@ const CardProperty = ({ ...property }) => {
               component="img"
               alt={property.title}
               title={property.title}
-              image={`https://api.terrelldavies.com/FeaturedProperty_images/${property.image}` || "http://placehold.it/200"}
+              // image={property.image || "http://placehold.it/200"}
+              image={`https://api.terrelldavies.com/${property.image}` || 'http://placehold.it/200'}
               className={classes.media}
             />
           </Grid>

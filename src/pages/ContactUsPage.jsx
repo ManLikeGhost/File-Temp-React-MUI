@@ -13,7 +13,6 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import MapContainer from "../components/contactUs/googleMap";
 import FormControl from "@material-ui/core/FormControl";
-import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
 
 
@@ -73,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
 
   map: {
     padding: "20px 0px 0px 0px",
-    margin: "50px auto 200px auto"
+    margin: "50px auto 200px auto",
   },
 
   title: {
@@ -229,7 +228,7 @@ const ContactUsPage = () => {
 
                     <Grid item xs={12}>
                       <div className={classes.nameInput}>
-                        <TextareaAutosize
+                        <TextField
                           className={classes.message}
                           rowsMax={20}
                           aria-label="maximum height"
@@ -239,6 +238,14 @@ const ContactUsPage = () => {
                           }}
                           name="usermessage"
                           onChange={onInputChange("message")}
+                          id="outlined-multiline-static"
+                          // label="Description"
+                          multiline
+                          rows={10}
+                          variant="outlined"
+                          // className={classes.multiline}
+                          // value={property.description}
+                          // onChange={handleChange("description")}
                         />
                       </div>
                     </Grid>

@@ -1,5 +1,5 @@
 import React from "react";
-import history from "../../history";
+import { useHistory } from 'react-router-dom'
 import { makeStyles } from "@material-ui/core/styles";
 //import { Link } from "react-router-dom";
 import List from "@material-ui/core/List";
@@ -39,14 +39,13 @@ const useStyles = makeStyles((theme) => ({
 
 const SideMenu = ({ user }) => {
   const classes = useStyles();
+  const history = useHistory()
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    // console.log("Logged out user");
     history.push("/signin");
     window.location.reload();
   };
-  // console.table(props)
   return (
     <div className={classes.root}>
       <Grid
@@ -59,13 +58,11 @@ const SideMenu = ({ user }) => {
         <Grid container direction="column" justify="center" alignItems="center">
           <Avatar
             alt="terrel davies"
-            src=""
+            src={user? user.avatar : ""}
             className={classes.bigAvatar}
             fontSize="large"
             color="primary"
           />
-
-          {/* <Typography className={classes.bigText}>{user.name}</Typography> */}
           <Link href="/profile-image" className={classes.link}>
             Click to change photo
           </Link>

@@ -41,7 +41,6 @@ const SinglePropertyPage = () => {
         `https://api.terrelldavies.com/api/property/${propertyId}`
       );
       setProperty(result.data[0]);
-      // console.log("single",result.data[0]);
       setIsLoading(false);
     }
     fetchData();

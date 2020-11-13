@@ -39,7 +39,7 @@ fontSize: 15
   }
 }));
 
-export default function Property({ imagePath, title, address, details, ...property }) {
+export default function Property({ image, title, address, details, ...property }) {
   const classes = useStyles();
   let lowerCaseTitle = title.toLowerCase();
   let formattedTitle = lowerCaseTitle.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
@@ -50,7 +50,7 @@ export default function Property({ imagePath, title, address, details, ...proper
         component="img"
         alt={formattedTitle}
         height="200"
-        image={imagePath || 'http://placehold.it/200'}
+        image={`https://api.terrelldavies.com/${image}` || 'http://placehold.it/200'}
         title={formattedTitle}
       />
 

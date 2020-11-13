@@ -85,12 +85,13 @@ const routes = [
 
 const ProfileSettings = ({ user }) => {
   const classes = useStyles();
+  
   // const pathName = window.location.pathname.split("/")[1];
 
   return (
     <Router>
       <div className={classes.root}>
-        <NavigationHeader />
+        <NavigationHeader  user={user}/>
 
         <ProfileTitle>Dashboard</ProfileTitle>
         <div className={classes.profileContainer}>

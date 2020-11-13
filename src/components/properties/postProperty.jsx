@@ -10,7 +10,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
-import TextareaAutosize from "@material-ui/core/TextareaAutosize";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import FormLabel from "@material-ui/core/FormLabel";
 import { makeStyles } from "@material-ui/core/styles";
 
 import SectionTitle from "../sectionTitle";
@@ -104,17 +106,16 @@ const PostProperty = () => {
       [name]: event.target.value,
     });
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-// console.log(newPropertyRequest)
-    axios
-      .post(API_BASE_URL + "/submit-request", newPropertyRequest)
-      .then((response) => {
-        // console.log(response);
-      })
-      .catch((err) => {
-        // console.log(err);
-      });
+    try {
+      const response = await axios.post(
+        API_BASE_URL + "/submit-request",
+        newPropertyRequest);
+      console.log(response)
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -214,17 +215,16 @@ const PostProperty = () => {
                     value={newPropertyRequest.category}
                     onChange={handleChange("category")}
                   >
-                    <MenuItem value={"propertyShopper"}>
-                      {" "}
-                      Property Shopper
+                    <MenuItem value={"rent"}>
+                     Rent
                     </MenuItem>
-                    <MenuItem value={"realEstateAgent"}>
-                      Real Estate Agent
+                    <MenuItem value={"sale"}>
+                      Sale
                     </MenuItem>
-                    <MenuItem value={"propertyDeveloper"}>
-                      Property Developer
+                    <MenuItem value={"shortlet"}>
+                      Shortlet
                     </MenuItem>
-                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                    
                   </Select>
                 </FormControl>
               </Grid>
@@ -241,97 +241,58 @@ const PostProperty = () => {
                     onChange={handleChange("type")}
                   >
                     <MenuItem value={"propertyShopper"}>
-                      {" "}
-                      Property Shopper
+                     Flats
                     </MenuItem>
                     <MenuItem value={"realEstateAgent"}>
-                      Real Estate Agent
+                      Houses
                     </MenuItem>
                     <MenuItem value={"propertyDeveloper"}>
-                      Property Developer
+                      Commercial Projects
                     </MenuItem>
-                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                    <MenuItem value={"homeOwner"}>Lands</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
             </Grid>
             <Grid container spacing={6}>
               <Grid item xs={4}>
-                <FormControl className={classes.accountFormControl}>
-                  <InputLabel id="state">Select State</InputLabel>
-                  <Select
-                    required
-                    fullWidth
-                    labelId="state"
-                    id="state"
-                    variant="outlined"
+              <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="state"
+                  label="State"
+                  name="state"
+                  autoComplete="state"
                     value={newPropertyRequest.state}
                     onChange={handleChange("state")}
-                  >
-                    <MenuItem value={"propertyShopper"}>
-                      {" "}
-                      Property Shopper
-                    </MenuItem>
-                    <MenuItem value={"realEstateAgent"}>
-                      Real Estate Agent
-                    </MenuItem>
-                    <MenuItem value={"propertyDeveloper"}>
-                      Property Developer
-                    </MenuItem>
-                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                  </Select>
-                </FormControl>
+                />
               </Grid>
               <Grid item xs={4}>
-                <FormControl className={classes.accountFormControl}>
-                  <InputLabel id="locality">Select Locality</InputLabel>
-                  <Select
-                    required
-                    fullWidth
-                    labelId="locality"
-                    id="locality"
-                    variant="outlined"
+              <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="locality"
+                  label="Locality"
+                  name="locality"
+                  autoComplete="locality"
                     value={newPropertyRequest.locality}
                     onChange={handleChange("locality")}
-                  >
-                    <MenuItem value={"propertyShopper"}>
-                      Property Shopper
-                    </MenuItem>
-                    <MenuItem value={"realEstateAgent"}>
-                      Real Estate Agent
-                    </MenuItem>
-                    <MenuItem value={"propertyDeveloper"}>
-                      Property Developer
-                    </MenuItem>
-                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                  </Select>
-                </FormControl>
+                />
               </Grid>
               <Grid item xs={4}>
-                <FormControl className={classes.accountFormControl}>
-                  <InputLabel id="area">Select Area</InputLabel>
-                  <Select
-                    required
-                    fullWidth
-                    labelId="area"
-                    id="area"
-                    variant="outlined"
+              <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="area"
+                  label="Area"
+                  name="area"
+                  autoComplete="area"
                     value={newPropertyRequest.area}
                     onChange={handleChange("area")}
-                  >
-                    <MenuItem value={"propertyShopper"}>
-                      {" "}
-                      Property Shopper
-                    </MenuItem>
-                    <MenuItem value={"realEstateAgent"}>
-                      Real Estate Agent
-                    </MenuItem>
-                    <MenuItem value={"propertyDeveloper"}>
-                      Property Developer
-                    </MenuItem>
-                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
-                  </Select>
-                </FormControl>
+                />
               </Grid>
             </Grid>
             <Grid container spacing={5}>
@@ -350,30 +311,34 @@ const PostProperty = () => {
                     onChange={handleChange("bedrooms")}
                   >
                     <MenuItem value={"propertyShopper"}>
-                      {" "}
-                      Property Shopper
+                      1 Bedroom
                     </MenuItem>
                     <MenuItem value={"realEstateAgent"}>
-                      Real Estate Agent
+                    2 Bedrooms
                     </MenuItem>
                     <MenuItem value={"propertyDeveloper"}>
-                      Property Developer
+                    3 Bedrooms
                     </MenuItem>
-                    <MenuItem value={"homeOwner"}>Home Owner</MenuItem>
+                    <MenuItem value={"homeOwner"}> 4 Bedrooms</MenuItem>
+                    <MenuItem value={"homeOwner"}> +5 Bedrooms</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
               <Grid item xs={6}>
-                <TextField
+                
+                <FormLabel component="legend">Budget</FormLabel>
+                <OutlinedInput
                   required
                   id="budget"
                   name="budget"
-                  label="Budget"
                   fullWidth
                   autoComplete="budget"
                   className={classes.label}
                   variant="outlined"
-                    value={newPropertyRequest.budget}
+                  startAdornment={
+                    <InputAdornment position="start">₦</InputAdornment>
+                  }
+                  value={newPropertyRequest.budget}
                     onChange={handleChange("budget")}
                 />
               </Grid>
@@ -387,18 +352,16 @@ const PostProperty = () => {
                 <InputLabel id="comment" style={{ paddingBottom: "10px" }}>
                   Comments
                 </InputLabel>
-                <TextareaAutosize
-                  rowsMax={20}
-                  aria-label="maximum height"
-                  style={{
-                    width: "39rem",
-                    height: "10rem",
-                  }}
-
-                    placeholder="Add additional comment here"
+                
+                <TextField
+                  id="outlined-multiline-static"
+                  // label="Description"
+                  multiline
+                  rows={10}
+                  variant="outlined"
+                  placeholder="Add additional comment here"
                     value={newPropertyRequest.comment}
                     onChange={handleChange("comment")}
-                        
                 />
               </Grid>
             </Grid>

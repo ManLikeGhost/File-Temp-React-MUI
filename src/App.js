@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import history from "./history";
 import ProtectedRoute from "./util/ProtectedRoute";
 // import { ACCESS_TOKEN_NAME } from "./constants/apiConstants";
 import AuthService from "./services/auth.service";
@@ -45,14 +44,15 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+
   useEffect(() => {
     async function fetchData() {
-      let user = AuthService.getCurrentUser();
+      let user = await AuthService.getCurrentUser();
       if (user) {
         setCurrentUser(user);
         setIsAuthenticated(true);
       }
-    }
+    };
     fetchData();
   }, []);
 
@@ -60,7 +60,7 @@ function App() {
   return (
     <div className={classes.paperContainer}>
       <CssBaseline />
-      <Router history={history} basename={process.env.PUBLIC_URL}>
+      <Router>
         <Switch>
           <Route
             path="/properties/:propertyId"
@@ -104,7 +104,7 @@ function App() {
           <ProtectedRoute
             path="/profile-settings"
             component={ProfileSettings}
-            isAuthenticated={isAuthenticated}
+            isAuthenticated={true}
             user={currentUser}
           />  
           <Route path="/profile-image">
@@ -124,9 +124,12 @@ function App() {
           <Route path="/post-property-request">
             <PostPropertyRequestPage />
           </Route>
-          <Route path="/add-listing">
-            <AddListingPage />
-          </Route>
+          
+          <ProtectedRoute
+            path="/add-listing"
+            component={AddListingPage}
+            isAuthenticated={true}
+          />
           <Route exact path="/">
             <HomePage />
           </Route>

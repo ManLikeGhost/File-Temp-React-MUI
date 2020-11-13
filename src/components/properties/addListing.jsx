@@ -8,13 +8,12 @@ import TextField from "@material-ui/core/TextField";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-
+import Alert from "@material-ui/lab/Alert";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -100,6 +99,10 @@ const useStyles = makeStyles((theme) => ({
   hideInputField: {
     display: "none",
   },
+  multiline:{
+    width: "100%"
+  },
+
   submit: {
     margin: theme.spacing(3, 0, 2),
     borderRadius: "2px",
@@ -115,10 +118,10 @@ const useStyles = makeStyles((theme) => ({
 const AddListing = () => {
   const classes = useStyles();
   const [property, setProperty] = useState({
-    publishStatus: "unpublish",
+    status: "unpublish",
     title: "",
-    marketStatus: "",
-    cat_id: "",
+    market_status: "",
+    category_id: "",
     type_id: "",
     state: "",
     locality: "",
@@ -129,18 +132,18 @@ const AddListing = () => {
     toilet: "",
     bathroom: "",
     parking: "",
-    totalArea: "",
+    total_area: "",
     videoLink: "",
     serviced: false,
     furnished: false,
     description: " ",
     featuredImage: null,
     galleryImage: null,
-    garage: "",
-    totalarea: "",
   });
-  // const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
   const [image, setImage] = useState(null);
+  const [isUploaded, setIsUploaded] = useState(false);
+  const [uploadedMessage, setUploadedMessage] = useState("");
 
   const handleChange = (prop) => (event) => {
     const value =
@@ -149,38 +152,57 @@ const AddListing = () => {
         : event.target.value;
     setProperty({ ...property, [prop]: value });
   };
-  const tokenStr = localStorage.getItem(ACCESS_TOKEN_NAME);
 
-  const handleSubmit = (event) => {
+  const { token } = JSON.parse(localStorage.getItem(ACCESS_TOKEN_NAME));
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const toBase64 = (file) =>
-      new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = (error) => reject(error);
-      });
+    console.log(property);
+    console.log(image);
+    try {
+      const formData = new FormData();
 
-    const convertedImage = toBase64(image).then((result) => result);
-
-    const newProperty = {
-      ...property,
-      galleryImage: convertedImage,
-      featuredImage: convertedImage,
-    };
-    // console.log("to be sent to server", newProperty);
-    axios
-      .post(API_BASE_URL + "/property/create", newProperty, {
-        headers: {
-          Authorization: `Bearer ${tokenStr}`,
-        },
-      })
-      .then((response) => {
-        // console.log(response);
-      })
-      .catch((err) => {
-        // console.log(err);
-      });
+      formData.append("image", image);
+      formData.append("publishStatus", property.status);
+      formData.append("title", property.title);
+      formData.append("marketStatus", property.market_status);
+      formData.append("cat_id", property.category_id);
+      formData.append("type_id", property.type_id);
+      formData.append("state", property.state);
+      formData.append("locality", property.locality);
+      formData.append("area", property.area);
+      formData.append("location", property.location);
+      formData.append("budget", property.budget);
+      formData.append("bedroom", property.bedroom);
+      formData.append("toilet", property.toilet);
+      formData.append("bathroom", property.bathroom);
+      formData.append("parking", property.parking);
+      formData.append("totalArea", property.total_area);
+      formData.append("videoLink", property.videoLink);
+      formData.append("serviced", property.serviced);
+      formData.append("furnished", property.furnished);
+      formData.append("description", property.description);
+      formData.append("featuredImage", property.featuredImage);
+      formData.append("galleryImage", property.galleryImage);
+      formData.append("garage", property.garage);
+      formData.append("totalarea", property.total_area);
+      const response = await axios.post(
+        API_BASE_URL + "/property/create",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "content-type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(response);
+      setIsUploaded(true);
+      setUploadedMessage(response.data[0].message);
+    } catch (error) {
+      setError(error);
+      console.log("There is an error", error);
+    }
   };
   return (
     <div>
@@ -192,401 +214,412 @@ const AddListing = () => {
           </Typography>
         </Grid>
       </Grid>
-      <div className={classes.formContainer}>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
-          <div className={classes.publishContainer}>
-            <FormControl component="fieldset">
-              <RadioGroup
-                aria-label="publishStatus"
-                name="publishStatus"
-                value={property.publishStatus}
-                onChange={handleChange("publishStatus")}
-              >
-                <Grid container>
-                  <Grid item xs={6}>
-                    <FormControlLabel
-                      value="publish"
-                      control={
-                        <Radio
-                          color="primary"
-                          className={classes.publishRadioButton}
-                        />
-                      }
-                      label="Publish"
-                    />
+      {isUploaded ? (
+        <Alert severity="success">{uploadedMessage}</Alert>
+      ) : (
+        <div className={classes.formContainer}>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
+            <div className={classes.publishContainer}>
+              <FormControl component="fieldset">
+                <RadioGroup
+                  aria-label="status"
+                  name="status"
+                  value={property.status}
+                  onChange={handleChange("status")}
+                >
+                  <Grid container>
+                    <Grid item xs={6}>
+                      <FormControlLabel
+                        value="publish"
+                        control={
+                          <Radio
+                            color="primary"
+                            className={classes.publishRadioButton}
+                          />
+                        }
+                        label="Publish"
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <FormControlLabel
+                        value="unpublish"
+                        control={
+                          <Radio
+                            color="primary"
+                            className={classes.publishRadioButton}
+                          />
+                        }
+                        label="Unpublish"
+                        // className={classes.publishRadioButton}
+                      />
+                    </Grid>
                   </Grid>
-                  <Grid item xs={6}>
-                    <FormControlLabel
-                      value="unpublish"
-                      control={
-                        <Radio
-                          color="primary"
-                          className={classes.publishRadioButton}
-                        />
-                      }
-                      label="Unpublish"
-                      // className={classes.publishRadioButton}
-                    />
-                  </Grid>
-                </Grid>
-              </RadioGroup>
-            </FormControl>
-          </div>
-          <Grid container spacing={5}>
-            <Grid item xs={8}>
-              <FormLabel component="legend">Title</FormLabel>
-              <TextField
-                required
-                id="title"
-                name="title"
-                placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
-                fullWidth
-                autoComplete="title"
-                className={classes.label}
-                variant="outlined"
-                value={property.title}
-                onChange={handleChange("title")}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <FormLabel component="legend">Market Status</FormLabel>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="marketStatus">Any</InputLabel>
-                <Select
-                  required
-                  fullWidth
-                  labelId="marketStatus"
-                  id="marketStatus"
-                  variant="outlined"
-                  value={property.marketStatus}
-                  onChange={handleChange("marketStatus")}
-                >
-                  <MenuItem value={"active"}>Available</MenuItem>
-                  <MenuItem value={"sold"}>Sold</MenuItem>
-                </Select>
+                </RadioGroup>
               </FormControl>
-            </Grid>
-          </Grid>
-          <Grid container spacing={5}>
-            <Grid item xs={6}>
-              <FormLabel component="legend">Category</FormLabel>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="cat_id">Select Category</InputLabel>
-                <Select
+            </div>
+            <Grid container spacing={5}>
+              <Grid item xs={8}>
+                <FormLabel component="legend">Title</FormLabel>
+                <TextField
                   required
+                  id="title"
+                  name="title"
+                  placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
                   fullWidth
-                  labelId="cat_id"
-                  id="cat_id"
+                  autoComplete="title"
+                  className={classes.label}
                   variant="outlined"
-                  value={property.cat_id}
-                  onChange={handleChange("cat_id")}
-                >
-                  <MenuItem value={"1"}>Flat</MenuItem>
-                  <MenuItem value={"2"}>Houses</MenuItem>
-                  <MenuItem value={"3"}>Commercial Projects</MenuItem>
-                  <MenuItem value={"4"}>Lands</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={6}>
-              <FormLabel component="legend">Type</FormLabel>
-              <FormControl className={classes.accountFormControl}>
-                <InputLabel id="type_id">Select Type</InputLabel>
-                <Select
-                  required
-                  fullWidth
-                  labelId="type_id"
-                  id="type_id"
-                  variant="outlined"
-                  value={property.type_id}
-                  onChange={handleChange("type_id")}
-                >
-                  <MenuItem value={"1"}>Rent</MenuItem>
-                  <MenuItem value={"2"}>Sale</MenuItem>
-                  <MenuItem value={"3"}>Shortlet</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-          </Grid>
-          <Grid container spacing={6}>
-            <Grid item xs={4}>
-              <FormLabel component="legend">Area</FormLabel>
-              <TextField
-                required
-                id="area"
-                name="area"
-                placeholder="Your area"
-                fullWidth
-                autoComplete="area"
-                className={classes.label}
-                variant="outlined"
-                value={property.area}
-                onChange={handleChange("area")}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <FormLabel component="legend">Locality</FormLabel>
-              <TextField
-                required
-                id="locality"
-                name="locality"
-                placeholder="Your locality"
-                fullWidth
-                autoComplete="locality"
-                className={classes.label}
-                variant="outlined"
-                value={property.locality}
-                onChange={handleChange("locality")}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <FormLabel component="legend">State</FormLabel>
-              <TextField
-                required
-                id="state"
-                name="state"
-                placeholder="Your state"
-                fullWidth
-                autoComplete="state"
-                className={classes.label}
-                variant="outlined"
-                value={property.state}
-                onChange={handleChange("state")}
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={5}>
-            <Grid item xs={12}>
-              <FormLabel component="legend">Location</FormLabel>
-              <TextField
-                required
-                id="location"
-                name="location"
-                placeholder="Example: 123, Doe Street, Acme Estate..."
-                fullWidth
-                autoComplete="location"
-                className={classes.label}
-                variant="outlined"
-                value={property.location}
-                onChange={handleChange("location")}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <FormLabel component="legend">Budget</FormLabel>
-              <OutlinedInput
-                required
-                id="budget"
-                name="budget"
-                fullWidth
-                autoComplete="budget"
-                className={classes.label}
-                variant="outlined"
-                startAdornment={
-                  <InputAdornment position="start">₦</InputAdornment>
-                }
-                value={property.budget}
-                onChange={handleChange("budget")}
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={5}>
-            <Grid item xs={4}>
-              <FormLabel component="legend">Bedrooms</FormLabel>
-              <TextField
-                required
-                id="bedrooms"
-                name="bedrooms"
-                // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
-                fullWidth
-                autoComplete="bedrooms"
-                className={classes.label}
-                variant="outlined"
-                value={property.bedroom}
-                onChange={handleChange("bedrooms")}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <FormLabel component="legend">Toilets</FormLabel>
-              <TextField
-                required
-                id="toilets"
-                name="toilets"
-                // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
-                fullWidth
-                autoComplete="toilets"
-                className={classes.label}
-                variant="outlined"
-                value={property.toilet}
-                onChange={handleChange("toilets")}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <FormLabel component="legend">Bathrooms</FormLabel>
-              <TextField
-                required
-                id="bathrooms"
-                name="bathrooms"
-                // placeholder="Example: 3 bathroom flat in Lekki, with standard facilities"
-                fullWidth
-                autoComplete="bathrooms"
-                className={classes.label}
-                variant="outlined"
-                value={property.bathroom}
-                onChange={handleChange("bathrooms")}
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={5}>
-            <Grid item xs={6}>
-              <FormLabel component="legend">Parking</FormLabel>
-              <TextField
-                required
-                id="parking"
-                name="parking"
-                // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
-                fullWidth
-                autoComplete="parking"
-                className={classes.label}
-                variant="outlined"
-                value={property.garage}
-                onChange={handleChange("parking")}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <FormLabel component="legend">Total Area</FormLabel>
-              <TextField
-                required
-                id="totalarea"
-                name="totalarea"
-                // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
-                fullWidth
-                autoComplete="totalarea"
-                className={classes.label}
-                variant="outlined"
-                value={property.totalarea}
-                onChange={handleChange("totalarea")}
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={5}>
-            <Grid item xs={12}>
-              <FormLabel component="legend">
-                Video Link (YouTube/Facebook)
-              </FormLabel>
-              <TextField
-                required
-                id="videoLink"
-                name="videoLink"
-                // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
-                fullWidth
-                autoComplete="videoLink"
-                className={classes.label}
-                variant="outlined"
-                value={property.videoLink}
-                onChange={handleChange("videoLink")}
-              />
-            </Grid>
-          </Grid>
-
-          <Grid container>
-            <Grid item xs={6}>
-              <div className={classes.uploadPhotoContainer}>
-                <input
-                  accept="image/*"
-                  className={classes.hideInputField}
-                  id="file"
-                  type="file"
-                  onChange={(e) => setImage(e.target.files[0])}
+                  value={property.title}
+                  onChange={handleChange("title")}
                 />
-                <label htmlFor="file">
-                  {image ? (
-                    <img src={URL.createObjectURL(image)} alt="" width="100%" />
-                  ) : (
-                    <IconButton
+              </Grid>
+              <Grid item xs={4}>
+                <FormLabel component="legend">Market Status</FormLabel>
+                <FormControl className={classes.accountFormControl}>
+                  <InputLabel id="market_status">Any</InputLabel>
+                  <Select
+                    required
+                    fullWidth
+                    labelId="market_status"
+                    id="market_status"
+                    variant="outlined"
+                    value={property.market_status}
+                    onChange={handleChange("market_status")}
+                  >
+                    <MenuItem value={"active"}>Available</MenuItem>
+                    <MenuItem value={"sold"}>Sold</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+            <Grid container spacing={5}>
+              <Grid item xs={6}>
+                <FormLabel component="legend">Category</FormLabel>
+                <FormControl className={classes.accountFormControl}>
+                  <InputLabel id="category_id">Select Category</InputLabel>
+                  <Select
+                    required
+                    fullWidth
+                    labelId="category_id"
+                    id="category_id"
+                    variant="outlined"
+                    value={property.category_id}
+                    onChange={handleChange("category_id")}
+                  >
+                    <MenuItem value={"1"}>Flat</MenuItem>
+                    <MenuItem value={"2"}>Houses</MenuItem>
+                    <MenuItem value={"3"}>Commercial Projects</MenuItem>
+                    <MenuItem value={"4"}>Lands</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={6}>
+                <FormLabel component="legend">Type</FormLabel>
+                <FormControl className={classes.accountFormControl}>
+                  <InputLabel id="type_id">Select Type</InputLabel>
+                  <Select
+                    required
+                    fullWidth
+                    labelId="type_id"
+                    id="type_id"
+                    variant="outlined"
+                    value={property.type_id}
+                    onChange={handleChange("type_id")}
+                  >
+                    <MenuItem value={"1"}>Rent</MenuItem>
+                    <MenuItem value={"2"}>Sale</MenuItem>
+                    <MenuItem value={"3"}>Shortlet</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+            <Grid container spacing={6}>
+              <Grid item xs={4}>
+                <FormLabel component="legend">Area</FormLabel>
+                <TextField
+                  required
+                  id="area"
+                  name="area"
+                  placeholder="Your area"
+                  fullWidth
+                  autoComplete="area"
+                  className={classes.label}
+                  variant="outlined"
+                  value={property.area}
+                  onChange={handleChange("area")}
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <FormLabel component="legend">Locality</FormLabel>
+                <TextField
+                  required
+                  id="locality"
+                  name="locality"
+                  placeholder="Your locality"
+                  fullWidth
+                  autoComplete="locality"
+                  className={classes.label}
+                  variant="outlined"
+                  value={property.locality}
+                  onChange={handleChange("locality")}
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <FormLabel component="legend">State</FormLabel>
+                <TextField
+                  required
+                  id="state"
+                  name="state"
+                  placeholder="Your state"
+                  fullWidth
+                  autoComplete="state"
+                  className={classes.label}
+                  variant="outlined"
+                  value={property.state}
+                  onChange={handleChange("state")}
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={5}>
+              <Grid item xs={12}>
+                <FormLabel component="legend">Location</FormLabel>
+                <TextField
+                  required
+                  id="location"
+                  name="location"
+                  placeholder="Example: 123, Doe Street, Acme Estate..."
+                  fullWidth
+                  autoComplete="location"
+                  className={classes.label}
+                  variant="outlined"
+                  value={property.location}
+                  onChange={handleChange("location")}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <FormLabel component="legend">Budget</FormLabel>
+                <OutlinedInput
+                  required
+                  id="budget"
+                  name="budget"
+                  fullWidth
+                  autoComplete="budget"
+                  className={classes.label}
+                  variant="outlined"
+                  startAdornment={
+                    <InputAdornment position="start">₦</InputAdornment>
+                  }
+                  value={property.budget}
+                  onChange={handleChange("budget")}
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={5}>
+              <Grid item xs={4}>
+                <FormLabel component="legend">Bedrooms</FormLabel>
+                <TextField
+                  required
+                  id="bedrooms"
+                  name="bedrooms"
+                  // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
+                  fullWidth
+                  autoComplete="bedrooms"
+                  className={classes.label}
+                  variant="outlined"
+                  value={property.bedroom}
+                  onChange={handleChange("bedroom")}
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <FormLabel component="legend">Toilets</FormLabel>
+                <TextField
+                  required
+                  id="toilets"
+                  name="toilets"
+                  // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
+                  fullWidth
+                  autoComplete="toilets"
+                  className={classes.label}
+                  variant="outlined"
+                  value={property.toilet}
+                  onChange={handleChange("toilet")}
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <FormLabel component="legend">Bathrooms</FormLabel>
+                <TextField
+                  required
+                  id="bathrooms"
+                  name="bathrooms"
+                  // placeholder="Example: 3 bathroom flat in Lekki, with standard facilities"
+                  fullWidth
+                  autoComplete="bathrooms"
+                  className={classes.label}
+                  variant="outlined"
+                  value={property.bathroom}
+                  onChange={handleChange("bathroom")}
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={5}>
+              <Grid item xs={6}>
+                <FormLabel component="legend">Parking</FormLabel>
+                <TextField
+                  required
+                  id="parking"
+                  name="parking"
+                  // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
+                  fullWidth
+                  autoComplete="parking"
+                  className={classes.label}
+                  variant="outlined"
+                  value={property.parking}
+                  onChange={handleChange("parking")}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <FormLabel component="legend">Total Area</FormLabel>
+                <TextField
+                  required
+                  id="total_area"
+                  name="total_area"
+                  // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
+                  fullWidth
+                  autoComplete="totalarea"
+                  className={classes.label}
+                  variant="outlined"
+                  value={property.total_area}
+                  onChange={handleChange("total_area")}
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={5}>
+              <Grid item xs={12}>
+                <FormLabel component="legend">
+                  Video Link (YouTube/Facebook)
+                </FormLabel>
+                <TextField
+                  required
+                  id="videoLink"
+                  name="videoLink"
+                  // placeholder="Example: 3 bedroom flat in Lekki, with standard facilities"
+                  fullWidth
+                  autoComplete="videoLink"
+                  className={classes.label}
+                  variant="outlined"
+                  value={property.videoLink}
+                  onChange={handleChange("videoLink")}
+                />
+              </Grid>
+            </Grid>
+
+            <Grid container>
+              <Grid item xs={6}>
+                <div className={classes.uploadPhotoContainer}>
+                  <input
+                    accept="image/*"
+                    className={classes.hideInputField}
+                    id="file"
+                    type="file"
+                    onChange={(e) => setImage(e.target.files[0])}
+                  />
+                  <label htmlFor="file">
+                    {image ? (
+                      <img
+                        src={URL.createObjectURL(image)}
+                        alt=""
+                        width="100%"
+                      />
+                    ) : (
+                      <IconButton
+                        color="primary"
+                        aria-label="upload picture"
+                        component="span"
+                        size="medium"
+                      >
+                        <AddAPhotoIcon className={classes.uploadPhotoIcon} />
+                      </IconButton>
+                    )}
+                  </label>
+                </div>
+              </Grid>
+              <Grid item xs={4}></Grid>
+              <Grid item xs={4}></Grid>
+            </Grid>
+            <Grid container>
+              <Grid item xs={2}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={property.serviced}
                       color="primary"
-                      aria-label="upload picture"
-                      component="span"
-                      size="medium"
-                    >
-                      <AddAPhotoIcon className={classes.uploadPhotoIcon} />
-                    </IconButton>
-                  )}
-                </label>
-              </div>
+                      name="Serviced"
+                      onChange={handleChange("serviced")}
+                    />
+                  }
+                  label="Serviced"
+                />
+              </Grid>
+              <Grid item xs={2}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={property.furnished}
+                      onChange={handleChange("furnished")}
+                      name="Furnished"
+                      color="primary"
+                    />
+                  }
+                  label="Furnished"
+                />
+              </Grid>
+              <Grid item xs={2}></Grid>
+              <Grid item xs={2}></Grid>
+              <Grid item xs={2}></Grid>
+              <Grid item xs={2}></Grid>
             </Grid>
-            <Grid item xs={4}></Grid>
-            <Grid item xs={4}></Grid>
-          </Grid>
-          <Grid container>
-            <Grid item xs={2}>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={property.serviced}
-                    color="primary"
-                    name="Serviced"
-                    onChange={handleChange("serviced")}
-                  />
-                }
-                label="Serviced"
-              />
-            </Grid>
-            <Grid item xs={2}>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={property.furnished}
-                    onChange={handleChange("furnished")}
-                    name="Furnished"
-                    color="primary"
-                  />
-                }
-                label="Furnished"
-              />
-            </Grid>
-            <Grid item xs={2}></Grid>
-            <Grid item xs={2}></Grid>
-            <Grid item xs={2}></Grid>
-            <Grid item xs={2}></Grid>
-          </Grid>
-          <Grid container>
-            <Grid
-              style={{
-                marginTop: "2rem",
-              }}
-            >
-              <InputLabel id="comment" style={{ paddingBottom: "10px" }}>
-                Description
-              </InputLabel>
-              <TextareaAutosize
-                rowsMax={20}
-                aria-label="maximum height"
+            <Grid container>
+              <Grid
                 style={{
-                  width: "45vw",
-                  height: "10rem",
+                  marginTop: "2rem",
                 }}
-              />
-            </Grid>
-          </Grid>
-          <Grid container>
-            <Grid item xs={4}></Grid>
-            <Grid item xs={4}></Grid>
-            {/* <Grid item xs={4}></Grid> */}
-            <Grid item xs={4}>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-                // onClick={uploadWithJSON}
               >
-                Add Listing
-              </Button>
+                <InputLabel id="comment" style={{ paddingBottom: "10px" }}>
+                  Description
+                </InputLabel>
+                
+                <TextField
+                  id="outlined-multiline-static"
+                  // label="Description"
+                  multiline
+                  rows={10}
+                  variant="outlined"
+                  className={classes.multiline}
+                  value={property.description}
+                  onChange={handleChange("description")}
+                />
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
-      </div>
+            <Grid container>
+              <Grid item xs={4}></Grid>
+              <Grid item xs={4}></Grid>
+              {/* <Grid item xs={4}></Grid> */}
+              <Grid item xs={4}>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  // onClick={uploadWithJSON}
+                >
+                  Add Listing
+                </Button>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
+      )}
     </div>
   );
 };

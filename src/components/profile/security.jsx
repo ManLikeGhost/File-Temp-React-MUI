@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "../../axios/index";
+import { ACCESS_TOKEN_NAME, API_BASE_URL } from "../../constants/apiConstants";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import ProfileSectionTitle from "./miniComponents/profilesectionTitle";
 import { makeStyles } from "@material-ui/core/styles";
@@ -78,9 +81,27 @@ const useStyles = makeStyles((theme) => ({
     width: "220.54px",
     height: "48.53px",
   },
+  error: {
+    textAlign: "center",
+    fontSize: "30px",
+    color: "red",
+  },
 }));
 const Security = () => {
   const classes = useStyles();
+  const[token, setToken] = useState("")
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const { token } = await JSON.parse(
+        localStorage.getItem(ACCESS_TOKEN_NAME)
+      );
+      setToken(token);
+    }
+    fetchData();
+  }, []);
+
   const [passwords, setPasswords] = useState({
     oldPassword: "",
     newPassword: "",
@@ -94,18 +115,36 @@ const Security = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // const { oldPassword, newPassword, confirmNewPassword } = passwords;
-
-    // const changedPassword = {
-    //   oldPassword,
-    //   newPassword,
-    //   confirmNewPassword,
-    // };
-    // this.props.setCurrentAccount(newAccount);
-    // console.log({ changedPassword });
-  };
+    const { oldPassword, newPassword, confirmNewPassword } = passwords;
+    if(newPassword === oldPassword){
+      setError("Old password is the same as new password");
+    }
+   else if (newPassword !== confirmNewPassword) {
+    setError("new password and confirm password do not match");
+      
+    } else {
+      const payload = {
+        oldPassword, newPassword, confirmNewPassword
+      };
+      try {
+        const response = await axios.post(
+          API_BASE_URL + "/change-password",
+          payload,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        
+        console.log(response)
+      } catch (error) {
+        setError(error);
+      }
+    }
+  }
 
   return (
     <div>
@@ -114,6 +153,11 @@ const Security = () => {
         <div>Manage your passwords</div>
       </ProfileSectionTitle>
       <div className="content">
+      {error ? (
+            <Typography component="h1" variant="h5" className={classes.error}>
+              {error}
+            </Typography>
+          ) : null}
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12}>
@@ -126,7 +170,7 @@ const Security = () => {
                 id="password"
                 autoComplete="current-password"
                 value={passwords.oldPassword}
-                onChange={handleChange("oldpassword")}
+                onChange={handleChange("oldPassword")}
               />
             </Grid>
             <Grid item xs={12} sm={12}>
@@ -139,7 +183,7 @@ const Security = () => {
                 id="password"
                 autoComplete="current-password"
                 value={passwords.newPassword}
-                onChange={handleChange("newpassword")}
+                onChange={handleChange("newPassword")}
               />
             </Grid>
             <Grid item xs={12} sm={12}>
